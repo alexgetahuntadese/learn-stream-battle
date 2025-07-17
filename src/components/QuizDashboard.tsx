@@ -367,6 +367,31 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     ]
   };
 
+  // Function to convert Lucide icon to emoji
+  const getIconEmoji = (IconComponent: any) => {
+    // Map of Lucide icon names to emojis
+    const iconMap: { [key: string]: string } = {
+      'BookA': '📖',
+      'Languages': '🗣️',
+      'Calculator': '🧮',
+      'Laptop': '💻',
+      'Scale': '⚖️',
+      'Dna': '🧬',
+      'FlaskConical': '🧪',
+      'Zap': '⚡',
+      'MapPin': '📍',
+      'Clock8': '🕰️',
+      'Activity': '🏃',
+      'DollarSign': '💰',
+      'Briefcase': '💼',
+      'Ruler': '📏'
+    };
+
+    // Get the component name from the displayName or function name
+    const componentName = IconComponent.displayName || IconComponent.name;
+    return iconMap[componentName] || '📚';
+  };
+
   // Mock progress data for subjects
   const getSubjectProgress = (subjectName: string) => {
     const mockData = {
@@ -470,7 +495,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     const progress = getSubjectProgress(subject.name);
     return {
       name: subject.name,
-      icon: subject.icon.name || '📚', // Convert icon component to string
+      icon: getIconEmoji(subject.icon),
       color: streamColor,
       chapters: subject.chapters?.map((chapter: string, index: number) => ({
         id: `${subject.name}-${index}`,
