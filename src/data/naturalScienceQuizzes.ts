@@ -275,55 +275,7 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
     console.log('Processing Grade 12 Biology for chapter:', chapter);
     
     const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
-    let questions: Question[] = [];
-    
-    // Get questions for the specific difficulty first
-    const specificDifficultyQuestions = getGrade12BiologyQuestions(chapter, difficultyLevel);
-    console.log(`Found ${specificDifficultyQuestions.length} ${difficulty} questions for ${chapter}`);
-    
-    // Add all questions from the specific difficulty
-    questions = [...specificDifficultyQuestions];
-    
-    // If we need more questions, add from other difficulties
-    if (questions.length < count) {
-      console.log(`Need ${count - questions.length} more questions, mixing difficulties`);
-      
-      const allDifficulties: ('easy' | 'medium' | 'hard')[] = ['easy', 'medium', 'hard'];
-      
-      for (const diff of allDifficulties) {
-        if (diff !== difficultyLevel && questions.length < count) {
-          const additionalQuestions = getGrade12BiologyQuestions(chapter, diff);
-          // Filter out questions we already have
-          const newQuestions = additionalQuestions.filter(q => 
-            !questions.find(existing => existing.id === q.id)
-          );
-          
-          // Add as many as we need
-          const questionsToAdd = newQuestions.slice(0, count - questions.length);
-          questions.push(...questionsToAdd);
-          console.log(`Added ${questionsToAdd.length} ${diff} questions`);
-        }
-      }
-    }
-    
-    // If we still don't have enough, duplicate some questions with modified IDs
-    if (questions.length < count && questions.length > 0) {
-      console.log(`Still need ${count - questions.length} more questions, duplicating with modified IDs`);
-      const originalQuestionsCount = questions.length;
-      
-      while (questions.length < count) {
-        const sourceIndex = (questions.length - originalQuestionsCount) % originalQuestionsCount;
-        const sourceQuestion = questions[sourceIndex];
-        
-        questions.push({
-          ...sourceQuestion,
-          id: `${sourceQuestion.id}_dup_${questions.length}`
-        });
-      }
-    }
-    
-    console.log(`Returning ${questions.length} questions for Grade 12 Biology ${chapter} (${difficulty})`);
-    return questions.slice(0, count);
+    return []; // Return empty array since we deleted all biology questions
   }
 
   let questions: any[] = [];
