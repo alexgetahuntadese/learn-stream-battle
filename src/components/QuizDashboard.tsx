@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -14,7 +15,9 @@ import {
   TrendingUp,
   Award,
   Target,
-  Users
+  Users,
+  GraduationCap,
+  ChevronRight
 } from 'lucide-react';
 
 interface QuizDashboardProps {
@@ -33,6 +36,45 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     { id: 'biology', name: 'Biology', color: 'bg-emerald-500', quizzes: 9 },
     { id: 'english', name: 'English', color: 'bg-red-500', quizzes: 15 },
     { id: 'amharic', name: 'Amharic', color: 'bg-yellow-500', quizzes: 11 }
+  ];
+
+  const gradeCards = [
+    {
+      grade: 9,
+      title: 'Grade 9',
+      description: 'Foundation courses for secondary education',
+      subjects: 8,
+      quizzes: 45,
+      progress: 75,
+      color: 'from-blue-500 to-purple-500'
+    },
+    {
+      grade: 10,
+      title: 'Grade 10',
+      description: 'Advanced secondary education preparation',
+      subjects: 8,
+      quizzes: 52,
+      progress: 60,
+      color: 'from-green-500 to-blue-500'
+    },
+    {
+      grade: 11,
+      title: 'Grade 11',
+      description: 'Pre-university level studies',
+      subjects: 6,
+      quizzes: 38,
+      progress: 40,
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      grade: 12,
+      title: 'Grade 12',
+      description: 'University entrance preparation',
+      subjects: 6,
+      quizzes: 42,
+      progress: 25,
+      color: 'from-orange-500 to-red-500'
+    }
   ];
 
   const quizzes = [
@@ -108,7 +150,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
 
       <div className="relative z-10">
         {/* Header */}
-        <header className="p-6 border-b border-white/10 backdrop-blur-sm">
+        <header className="p-6 border-b border-white/10">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Avatar className="h-12 w-12">
@@ -137,7 +179,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {stats.map((stat, index) => (
-              <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/20 text-white">
+              <Card key={index} className="bg-white/5 border-white/20 text-white">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -151,10 +193,50 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
             ))}
           </div>
 
+          {/* Grade Cards Section */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold mb-6">Grade Levels</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {gradeCards.map((grade) => (
+                <Card key={grade.grade} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300 group cursor-pointer">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className={`p-3 rounded-lg bg-gradient-to-r ${grade.color}`}>
+                        <GraduationCap className="h-6 w-6 text-white" />
+                      </div>
+                      <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors" />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold mb-2">{grade.title}</h3>
+                    <p className="text-sm text-gray-400 mb-4">{grade.description}</p>
+                    
+                    <div className="space-y-3">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Subjects:</span>
+                        <span className="font-medium">{grade.subjects}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Quizzes:</span>
+                        <span className="font-medium">{grade.quizzes}</span>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-400">Progress:</span>
+                          <span className="font-medium">{grade.progress}%</span>
+                        </div>
+                        <Progress value={grade.progress} className="h-2" />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Subjects Sidebar */}
             <div className="lg:col-span-1">
-              <Card className="bg-white/5 backdrop-blur-sm border-white/20 text-white">
+              <Card className="bg-white/5 border-white/20 text-white">
                 <CardHeader>
                   <CardTitle>Subjects</CardTitle>
                   <CardDescription className="text-gray-300">
@@ -208,7 +290,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
 
               <div className="space-y-4">
                 {filteredQuizzes.map((quiz) => (
-                  <Card key={quiz.id} className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/10 transition-all duration-300">
+                  <Card key={quiz.id} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex-1">
