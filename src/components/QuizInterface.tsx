@@ -25,32 +25,26 @@ interface QuizInterfaceProps {
 const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
-  const [timeLeft, setTimeLeft] = useState(quiz.duration * 60); // Convert to seconds
+  const [timeLeft, setTimeLeft] = useState(quiz.duration * 60);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [results, setResults] = useState<any>(null);
   const { toast } = useToast();
 
   const questions = useMemo(() => {
     const generateQuestions = () => {
-      // Check if this is a quiz with specific chapters
       if (quiz.chapters && quiz.chapters.length > 0) {
         const allQuestions: any[] = [];
         
-        // For each chapter, get questions based on difficulty
         quiz.chapters.forEach((chapter: string) => {
           const chapterQuestions = getQuestionsForQuiz(quiz.subject, chapter, quiz.difficulty, 2);
           allQuestions.push(...chapterQuestions);
         });
         
-        // Shuffle and return the requested number of questions
         const shuffled = allQuestions.sort(() => Math.random() - 0.5);
         return shuffled.slice(0, Math.min(quiz.questions || 10, shuffled.length));
       }
-
-      // Fallback for subjects without chapter-specific data
       return [];
     };
-
     return generateQuestions();
   }, [quiz.subject, quiz.chapters, quiz.difficulty, quiz.questions]);
 
@@ -121,7 +115,6 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   };
 
   const handleRetakeQuiz = () => {
-    // Reset all quiz state
     setCurrentQuestionIndex(0);
     setSelectedAnswers({});
     setTimeLeft(quiz.duration * 60);
@@ -134,6 +127,10 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
     });
   };
 
+  const handleBackToSubjects = () => {
+    onBack();
+  };
+
   if (!questions || questions.length === 0) {
     return (
       <div className="min-h-screen bg-slate-900 text-white p-6">
@@ -141,8 +138,8 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           <Card className="bg-slate-800 border-slate-700 text-white">
             <CardContent className="p-6 text-center">
               <p className="text-xl mb-4 text-white">No questions available for this quiz.</p>
-              <Button onClick={onBack} className="bg-gradient-to-r from-green-600 to-yellow-600 text-white">
-                Back to Dashboard
+              <Button onClick={handleBackToSubjects} className="bg-gradient-to-r from-green-600 to-yellow-600 text-white">
+                Back to Subjects
               </Button>
             </CardContent>
           </Card>
@@ -244,10 +241,10 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
-                  onClick={() => onComplete(results)}
+                  onClick={handleBackToSubjects}
                   className="bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0"
                 >
-                  Back to Dashboard
+                  Back to Subjects
                 </Button>
                 <Button 
                   variant="outline"
@@ -271,11 +268,11 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
         <div className="flex items-center justify-between mb-6">
           <Button
             variant="ghost"
-            onClick={onBack}
+            onClick={handleBackToSubjects}
             className="text-white hover:bg-slate-800"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
+            Back to Subjects
           </Button>
           
           <div className="flex items-center space-x-4">
