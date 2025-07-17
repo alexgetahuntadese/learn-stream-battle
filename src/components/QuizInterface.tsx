@@ -328,7 +328,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                 <Button 
                   variant="outline"
                   onClick={() => window.location.reload()}
-                  className="border-slate-600 text-white hover:bg-slate-700"
+                  className="border-slate-600 text-black bg-white hover:bg-slate-100"
                 >
                   <RefreshCw className="mr-2 h-4 w-4" />
                   Retake Quiz
