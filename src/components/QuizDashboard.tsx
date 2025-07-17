@@ -79,7 +79,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       grade: 11,
       title: 'Grade 11',
       description: 'Pre-university level studies',
-      subjects: 6,
+      subjects: 14,
       quizzes: 38,
       progress: 40,
       color: 'from-purple-500 to-pink-500'
@@ -100,6 +100,29 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     10: ['Quadratic Functions', 'Trigonometry', 'Statistics', 'Probability'],
     11: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'],
     12: ['Differential Calculus', 'Integral Calculus', 'Complex Numbers', 'Vectors']
+  };
+
+  const grade11Subjects = {
+    naturalScience: [
+      { name: 'Biology', icon: Dna, topics: ['Cell Biology', 'Genetics', 'Ecology', 'Human Biology'] },
+      { name: 'Chemistry', icon: FlaskConical, topics: ['Organic Chemistry', 'Physical Chemistry', 'Chemical Bonding', 'Reactions'] },
+      { name: 'Physics', icon: Zap, topics: ['Mechanics', 'Waves', 'Electricity', 'Optics'] },
+      { name: 'Technical Drawing', icon: Ruler, topics: ['Engineering Drawing', '3D Modeling', 'Geometric Construction', 'Technical Skills'] }
+    ],
+    socialScience: [
+      { name: 'Geography', icon: MapPin, topics: ['Physical Geography', 'Human Geography', 'Climate Studies', 'Regional Geography'] },
+      { name: 'History', icon: Clock8, topics: ['World History', 'Ethiopian History', 'Ancient Civilizations', 'Modern History'] },
+      { name: 'Economics', icon: DollarSign, topics: ['Microeconomics', 'Macroeconomics', 'Market Systems', 'Economic Theory'] },
+      { name: 'General Business', icon: Briefcase, topics: ['Business Fundamentals', 'Marketing Basics', 'Accounting Principles', 'Management'] }
+    ],
+    common: [
+      { name: 'English', icon: BookA, topics: ['Literature', 'Grammar', 'Writing Skills', 'Reading Comprehension'] },
+      { name: 'Civics', icon: Scale, topics: ['Government Systems', 'Constitution', 'Human Rights', 'Citizenship'] },
+      { name: 'Physical Education', icon: Activity, topics: ['Sports', 'Health Education', 'Fitness', 'Body Systems'] },
+      { name: 'Mathematics', icon: Calculator, topics: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'] },
+      { name: 'IT', icon: Laptop, topics: ['Computer Basics', 'Programming Introduction', 'Database Fundamentals', 'Internet Technology'] },
+      { name: 'National Language', icon: Languages, topics: ['Amharic Literature', 'Grammar', 'Composition', 'Language Skills'] }
+    ]
   };
 
   const grade12Subjects = {
@@ -354,6 +377,29 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                             {renderSubjectGroup("📘 Natural Science Stream", grade12Subjects.naturalScience, "bg-blue-100 text-blue-800")}
                             {renderSubjectGroup("📗 Social Science Stream", grade12Subjects.socialScience, "bg-green-100 text-green-800")}
                             {renderSubjectGroup("📙 Common Courses", grade12Subjects.common, "bg-yellow-100 text-yellow-800")}
+                          </CardContent>
+                        </Card>
+                      ) : grade.grade === 11 ? (
+                        <Card className="bg-white/5 border-white/20 text-white">
+                          <CardContent className="p-6">
+                            <div className="flex items-center justify-between mb-6">
+                              <div className="flex items-center space-x-4">
+                                <div className="p-3 rounded-lg bg-purple-500">
+                                  <BookOpen className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h4 className="text-lg font-bold">Grade 11 Subjects</h4>
+                                  <p className="text-sm text-gray-400">Pre-university level studies</p>
+                                </div>
+                              </div>
+                              <Badge variant="secondary" className="bg-purple-100 text-purple-800">
+                                14 subjects
+                              </Badge>
+                            </div>
+                            
+                            {renderSubjectGroup("📘 Natural Science Stream", grade11Subjects.naturalScience, "bg-blue-100 text-blue-800")}
+                            {renderSubjectGroup("📗 Social Science Stream", grade11Subjects.socialScience, "bg-green-100 text-green-800")}
+                            {renderSubjectGroup("📙 Common Courses", grade11Subjects.common, "bg-yellow-100 text-yellow-800")}
                           </CardContent>
                         </Card>
                       ) : (
