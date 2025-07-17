@@ -271,11 +271,11 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
   console.log('Getting questions for:', { subject, chapter, difficulty, count });
   
   // Handle Grade 12 Biology questions
-  if (subject === 'biology' && grade12BiologyQuestions[chapter as keyof typeof grade12BiologyQuestions]) {
+  if (subject === 'biology' && chapter.includes('Unit')) {
     console.log('Processing Grade 12 Biology for chapter:', chapter);
     
     const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
-    return []; // Return empty array since we deleted all biology questions
+    return getGrade12BiologyQuestions(chapter, difficultyLevel);
   }
 
   let questions: any[] = [];
