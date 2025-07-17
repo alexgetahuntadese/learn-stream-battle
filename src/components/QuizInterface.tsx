@@ -184,6 +184,20 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
     });
   };
 
+  const handleRetakeQuiz = () => {
+    // Reset all quiz state
+    setCurrentQuestionIndex(0);
+    setSelectedAnswers({});
+    setTimeLeft(quiz.duration * 60);
+    setQuizCompleted(false);
+    setResults(null);
+    
+    toast({
+      title: "Quiz Reset",
+      description: "Starting fresh quiz attempt",
+    });
+  };
+
   if (!questions || questions.length === 0) {
     return (
       <div className="min-h-screen bg-slate-900 text-white p-6">
@@ -301,7 +315,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                 </Button>
                 <Button 
                   variant="outline"
-                  onClick={() => window.location.reload()}
+                  onClick={handleRetakeQuiz}
                   className="border-slate-600 text-slate-900 bg-white hover:bg-slate-100"
                 >
                   <RefreshCw className="mr-2 h-4 w-4 text-slate-900" />
