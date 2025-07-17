@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,7 @@ import {
   Star
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { getQuestionsForQuiz } from '@/data/naturalScienceQuizzes';
 
 interface QuizInterfaceProps {
   quiz: any;
@@ -30,6 +32,22 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   const { toast } = useToast();
 
   const generateQuestions = () => {
+    // Check if this is a Natural Science quiz with specific chapters
+    if (quiz.chapters && quiz.chapters.length > 0 && (quiz.subject === 'biology' || quiz.subject === 'chemistry')) {
+      const allQuestions: any[] = [];
+      
+      // For each chapter, get questions based on difficulty
+      quiz.chapters.forEach((chapter: string) => {
+        const chapterQuestions = getQuestionsForQuiz(quiz.subject, chapter, quiz.difficulty, 2);
+        allQuestions.push(...chapterQuestions);
+      });
+      
+      // Shuffle and return the requested number of questions
+      const shuffled = allQuestions.sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, Math.min(quiz.questions || 10, shuffled.length));
+    }
+
+    // Fallback to original question sets for other subjects
     const questionSets = {
       mathematics: [
         {
@@ -89,45 +107,6 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"],
           correct: "Newton's Third Law",
           explanation: "Newton's Third Law states that for every action, there is an equal and opposite reaction"
-        }
-      ],
-      biology: [
-        {
-          id: 1,
-          question: "What is the basic unit of life?",
-          options: ["Tissue", "Organ", "Cell", "Organism"],
-          correct: "Cell",
-          explanation: "The cell is the basic structural and functional unit of all living organisms"
-        },
-        {
-          id: 2,
-          question: "Which organelle is responsible for photosynthesis?",
-          options: ["Mitochondria", "Chloroplast", "Nucleus", "Ribosome"],
-          correct: "Chloroplast",
-          explanation: "Chloroplasts contain chlorophyll and are responsible for photosynthesis in plants"
-        },
-        {
-          id: 3,
-          question: "What is DNA an abbreviation for?",
-          options: ["Deoxyribonucleic Acid", "Dinitrogen Acid", "Dynamic Nuclear Acid", "Deoxy Nuclear Acid"],
-          correct: "Deoxyribonucleic Acid",
-          explanation: "DNA stands for Deoxyribonucleic Acid, which carries genetic information"
-        }
-      ],
-      chemistry: [
-        {
-          id: 1,
-          question: "What is the chemical symbol for gold?",
-          options: ["Go", "Gd", "Au", "Ag"],
-          correct: "Au",
-          explanation: "Au comes from the Latin word 'aurum' meaning gold"
-        },
-        {
-          id: 2,
-          question: "What is the pH of pure water?",
-          options: ["6", "7", "8", "9"],
-          correct: "7",
-          explanation: "Pure water has a pH of 7, which is neutral (neither acidic nor basic)"
         }
       ]
     };
@@ -372,6 +351,14 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           <CardHeader>
             <CardTitle className="text-xl text-white">
               Question {currentQuestionIndex + 1}
+              {quiz.difficulty && (
+                <Badge className={`ml-2 ${
+                  quiz.difficulty === 'Easy' ? 'bg-green-500' :
+                  quiz.difficulty === 'Medium' ? 'bg-yellow-500' : 'bg-red-500'
+                }`}>
+                  {quiz.difficulty}
+                </Badge>
+              )}
             </CardTitle>
             <p className="text-lg leading-relaxed text-white">{currentQuestion.question}</p>
           </CardHeader>
