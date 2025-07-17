@@ -272,23 +272,37 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
   
   // Handle Grade 12 Biology questions
   if (subject === 'biology' && grade12BiologyQuestions[chapter as keyof typeof grade12BiologyQuestions]) {
-    const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
-    const questions = getGrade12BiologyQuestions(chapter, difficultyLevel);
-    console.log(`Found Grade 12 Biology questions for ${chapter} (${difficulty}):`, questions.length);
+    console.log('Processing Grade 12 Biology for chapter:', chapter);
     
-    // If we don't have enough questions for the requested difficulty, get from all difficulties
-    if (questions.length < count) {
-      console.log(`Not enough ${difficulty} questions, getting from all difficulties`);
-      const allQuestions = [
-        ...getGrade12BiologyQuestions(chapter, 'easy'),
-        ...getGrade12BiologyQuestions(chapter, 'medium'),
-        ...getGrade12BiologyQuestions(chapter, 'hard')
-      ];
-      console.log('Total questions available:', allQuestions.length);
-      return allQuestions.slice(0, count);
+    const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
+    let questions: Question[] = [];
+    
+    // Get questions for the specific difficulty first
+    const specificDifficultyQuestions = getGrade12BiologyQuestions(chapter, difficultyLevel);
+    console.log(`Found ${specificDifficultyQuestions.length} ${difficulty} questions for ${chapter}`);
+    
+    // If we have enough questions for the requested difficulty, use them
+    if (specificDifficultyQuestions.length >= count) {
+      questions = specificDifficultyQuestions.slice(0, count);
+    } else {
+      // If not enough questions for the specific difficulty, mix difficulties
+      console.log(`Not enough ${difficulty} questions, mixing difficulties`);
+      questions = [...specificDifficultyQuestions];
+      
+      // Add questions from other difficulties to reach the count
+      const allDifficulties: ('easy' | 'medium' | 'hard')[] = ['easy', 'medium', 'hard'];
+      for (const diff of allDifficulties) {
+        if (diff !== difficultyLevel && questions.length < count) {
+          const additionalQuestions = getGrade12BiologyQuestions(chapter, diff);
+          // Filter out questions we already have
+          const newQuestions = additionalQuestions.filter(q => !questions.find(existing => existing.id === q.id));
+          questions.push(...newQuestions.slice(0, count - questions.length));
+        }
+      }
     }
     
-    return questions.slice(0, count);
+    console.log(`Returning ${questions.length} questions for Grade 12 Biology ${chapter} (${difficulty})`);
+    return questions;
   }
 
   let questions: any[] = [];
