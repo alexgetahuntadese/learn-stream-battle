@@ -1,3 +1,4 @@
+
 // Grade 12 Biology Questions - organized by unit and difficulty
 export interface Question {
   id: string;
@@ -226,7 +227,7 @@ export const grade12BiologyQuestions = {
       }
     ]
   }
-} as const;
+};
 
 export const getGrade12BiologyQuestions = (chapter: string, difficulty: 'easy' | 'medium' | 'hard'): Question[] => {
   const chapterQuestions = grade12BiologyQuestions[chapter as keyof typeof grade12BiologyQuestions];
