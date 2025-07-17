@@ -1,4 +1,4 @@
-import { grade12BiologyQuestions, getGrade12BiologyQuestions } from './grade12Biology';
+import { grade12BiologyQuestions, getGrade12BiologyQuestions } from './grade12BiologyQuestions';
 
 export interface Question {
   id: string;
