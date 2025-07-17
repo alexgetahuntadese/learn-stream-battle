@@ -6,7 +6,7 @@ export const grade12BiologyQuestions: { [unit: string]: { [difficulty: string]: 
       {
         id: 'g12bio_u1_e1',
         question: 'What is the central dogma of molecular biology?',
-        options: ['Protein -> RNA -> DNA', 'DNA -> RNA -> Protein', 'RNA -> Protein -> DNA', 'Protein -> DNA -> RNA'],
+        options: ['Protein -> RNA -> DNA', 'DNA -> RNA -> Protein', 'RNA -> Protein -> RNA', 'Protein -> DNA -> RNA'],
         correct: 'DNA -> RNA -> Protein',
         explanation: 'The central dogma explains the flow of genetic information in a biological system.'
       },
@@ -144,6 +144,76 @@ export const grade12BiologyQuestions: { [unit: string]: { [difficulty: string]: 
         options: ['Unwinds DNA', 'Adds nucleotides', 'Joins DNA fragments', 'Proofreads DNA'],
         correct: 'Joins DNA fragments',
         explanation: 'DNA ligase joins the Okazaki fragments on the lagging strand to form a continuous DNA strand.'
+      },
+      {
+        id: 'g12bio_u1_m16',
+        question: 'What is the role of primase in DNA replication?',
+        options: ['Unwinds DNA', 'Synthesizes RNA primers', 'Joins DNA fragments', 'Proofreads DNA'],
+        correct: 'Synthesizes RNA primers',
+        explanation: 'Primase synthesizes short RNA primers that are needed for DNA polymerase to begin synthesis.'
+      },
+      {
+        id: 'g12bio_u1_m17',
+        question: 'Which type of RNA processing removes introns from pre-mRNA?',
+        options: ['Capping', 'Polyadenylation', 'Splicing', 'Editing'],
+        correct: 'Splicing',
+        explanation: 'Splicing is the process that removes introns and joins exons to form mature mRNA.'
+      },
+      {
+        id: 'g12bio_u1_m18',
+        question: 'What is the function of the promoter region in gene expression?',
+        options: ['Codes for amino acids', 'Provides binding site for RNA polymerase', 'Terminates transcription', 'Splices mRNA'],
+        correct: 'Provides binding site for RNA polymerase',
+        explanation: 'The promoter region provides a binding site for RNA polymerase to initiate transcription.'
+      },
+      {
+        id: 'g12bio_u1_m19',
+        question: 'What is the wobble position in the genetic code?',
+        options: ['First position of codon', 'Second position of codon', 'Third position of codon', 'All positions'],
+        correct: 'Third position of codon',
+        explanation: 'The wobble position is the third position of the codon where base pairing rules are relaxed, allowing for degeneracy in the genetic code.'
+      },
+      {
+        id: 'g12bio_u1_m20',
+        question: 'Which enzyme is responsible for adding the 5\' cap to mRNA?',
+        options: ['RNA polymerase', 'Capping enzyme', 'Ligase', 'Helicase'],
+        correct: 'Capping enzyme',
+        explanation: 'The capping enzyme adds a 7-methylguanosine cap to the 5\' end of pre-mRNA to protect it from degradation.'
+      },
+      {
+        id: 'g12bio_u1_m21',
+        question: 'What is the role of the poly-A tail in mRNA?',
+        options: ['Initiates translation', 'Protects mRNA from degradation', 'Codes for amino acids', 'Splices introns'],
+        correct: 'Protects mRNA from degradation',
+        explanation: 'The poly-A tail at the 3\' end of mRNA protects it from degradation and helps in translation efficiency.'
+      },
+      {
+        id: 'g12bio_u1_m22',
+        question: 'Which of the following is a stop codon?',
+        options: ['AUG', 'UAA', 'UUU', 'GGG'],
+        correct: 'UAA',
+        explanation: 'UAA is one of the three stop codons (UAA, UAG, UGA) that signal the termination of protein synthesis.'
+      },
+      {
+        id: 'g12bio_u1_m23',
+        question: 'What is the function of elongation factors in translation?',
+        options: ['Initiate translation', 'Facilitate ribosome movement', 'Terminate translation', 'Modify amino acids'],
+        correct: 'Facilitate ribosome movement',
+        explanation: 'Elongation factors help facilitate the movement of ribosomes along mRNA during translation.'
+      },
+      {
+        id: 'g12bio_u1_m24',
+        question: 'Which structure contains the catalytic site for peptide bond formation?',
+        options: ['Large ribosomal subunit', 'Small ribosomal subunit', 'tRNA', 'mRNA'],
+        correct: 'Large ribosomal subunit',
+        explanation: 'The large ribosomal subunit contains the peptidyl transferase center where peptide bonds are formed.'
+      },
+      {
+        id: 'g12bio_u1_m25',
+        question: 'What is the significance of the start codon AUG?',
+        options: ['Codes for any amino acid', 'Codes for methionine and starts translation', 'Stops translation', 'Codes for tryptophan'],
+        correct: 'Codes for methionine and starts translation',
+        explanation: 'AUG codes for methionine and serves as the start codon that initiates protein synthesis.'
       }
     ],
     hard: [
