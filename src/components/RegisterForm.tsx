@@ -5,217 +5,222 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, UserPlus, Eye, EyeOff } from 'lucide-react';
+import { ArrowLeft, UserPlus, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useFormValidation } from '@/hooks/useFormValidation';
 
 interface RegisterFormProps {
-  onRegister: (user: any) => void;
+  onRegister: (userData: { name: string; grade: string; school?: string }) => void;
   onSwitchToLogin: () => void;
   onBack: () => void;
 }
 
 const RegisterForm = ({ onRegister, onSwitchToLogin, onBack }: RegisterFormProps) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    grade: '',
-    school: ''
-  });
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const [selectedGrade, setSelectedGrade] = useState<string>('');
+  
+  const {
+    formState,
+    isSubmitting,
+    setIsSubmitting,
+    updateField,
+    validateForm,
+    resetForm
+  } = useFormValidation({
+    name: {
+      value: '',
+      error: '',
+      rules: { required: true, minLength: 2 }
+    },
+    email: {
+      value: '',
+      error: '',
+      rules: { required: true, email: true }
+    },
+    password: {
+      value: '',
+      error: '',
+      rules: { required: true, minLength: 6 }
+    },
+    school: {
+      value: '',
+      error: '',
+      rules: {}
+    }
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    // Validation
-    if (formData.password !== formData.confirmPassword) {
+    
+    console.log('Register form submitted');
+    
+    if (!validateForm()) {
+      console.log('Form validation failed');
       toast({
-        title: "Password mismatch",
-        description: "Passwords do not match. Please try again.",
-        variant: "destructive"
+        title: "Validation Error",
+        description: "Please fix the errors in the form",
+        variant: "destructive",
       });
-      setIsLoading(false);
       return;
     }
 
-    if (formData.password.length < 6) {
+    if (!selectedGrade) {
       toast({
-        title: "Password too short",
-        description: "Password must be at least 6 characters long.",
-        variant: "destructive"
+        title: "Grade Required",
+        description: "Please select your grade level",
+        variant: "destructive",
       });
-      setIsLoading(false);
       return;
     }
 
-    // Simulate registration process
-    setTimeout(() => {
-      const user = {
-        id: Date.now(),
-        name: formData.name,
-        email: formData.email,
-        grade: parseInt(formData.grade),
-        school: formData.school,
-        joinDate: new Date().toISOString()
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const userData = {
+        name: formState.name.value,
+        grade: selectedGrade,
+        school: formState.school.value || undefined
       };
-      onRegister(user);
+      
+      console.log('Registration successful:', userData);
+      
       toast({
-        title: "Welcome to EthioQuiz 2050!",
-        description: "Your account has been created successfully.",
+        title: "Account Created!",
+        description: "Welcome to EthioQuiz 2050",
       });
-      setIsLoading(false);
-    }, 1500);
+      
+      resetForm();
+      setSelectedGrade('');
+      onRegister(userData);
+    } catch (error) {
+      console.error('Registration error:', error);
+      toast({
+        title: "Registration Failed",
+        description: "Please try again later",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  const grades = [
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'
+  ];
 
   return (
-    <Card className="w-full max-w-md bg-white/10 backdrop-blur-md border-white/20 text-white">
-      <CardHeader className="text-center">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onBack}
-          className="absolute top-4 left-4 text-white hover:bg-white/10"
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <CardTitle className="text-2xl font-bold">Join EthioQuiz 2050</CardTitle>
-        <CardDescription className="text-gray-300">
-          Create your account and start learning
+    <Card className="w-full max-w-md bg-white/10 backdrop-blur-md border-white/20">
+      <CardHeader className="space-y-1">
+        <div className="flex items-center justify-between">
+          <Button
+            variant="ghost"
+            onClick={onBack}
+            className="text-white hover:bg-white/10 p-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </Button>
+          <CardTitle className="text-2xl text-white">Create Account</CardTitle>
+          <div className="w-10" />
+        </div>
+        <CardDescription className="text-blue-200">
+          Join thousands of Ethiopian students
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
+            <Label htmlFor="name" className="text-white">Full Name</Label>
             <Input
               id="name"
               type="text"
-              value={formData.name}
-              onChange={(e) => handleInputChange('name', e.target.value)}
               placeholder="Enter your full name"
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              value={formState.name.value}
+              onChange={(e) => updateField('name', e.target.value)}
+              className="bg-white/20 border-white/30 text-white placeholder:text-white/60"
+              disabled={isSubmitting}
               required
             />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleInputChange('email', e.target.value)}
-              placeholder="your.email@example.com"
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-              required
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="grade">Grade</Label>
-              <Select value={formData.grade} onValueChange={(value) => handleInputChange('grade', value)}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                  <SelectValue placeholder="Select grade" />
-                </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-white/20">
-                  <SelectItem value="1" className="text-white hover:bg-white/10">Grade 1</SelectItem>
-                  <SelectItem value="2" className="text-white hover:bg-white/10">Grade 2</SelectItem>
-                  <SelectItem value="3" className="text-white hover:bg-white/10">Grade 3</SelectItem>
-                  <SelectItem value="4" className="text-white hover:bg-white/10">Grade 4</SelectItem>
-                  <SelectItem value="5" className="text-white hover:bg-white/10">Grade 5</SelectItem>
-                  <SelectItem value="6" className="text-white hover:bg-white/10">Grade 6</SelectItem>
-                  <SelectItem value="7" className="text-white hover:bg-white/10">Grade 7</SelectItem>
-                  <SelectItem value="8" className="text-white hover:bg-white/10">Grade 8</SelectItem>
-                  <SelectItem value="9" className="text-white hover:bg-white/10">Grade 9</SelectItem>
-                  <SelectItem value="10" className="text-white hover:bg-white/10">Grade 10</SelectItem>
-                  <SelectItem value="11" className="text-white hover:bg-white/10">Grade 11</SelectItem>
-                  <SelectItem value="12" className="text-white hover:bg-white/10">Grade 12</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="school">School</Label>
-              <Input
-                id="school"
-                type="text"
-                value={formData.school}
-                onChange={(e) => handleInputChange('school', e.target.value)}
-                placeholder="Your school"
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-                required
-              />
-            </div>
+            {formState.name.error && (
+              <p className="text-red-300 text-sm">{formState.name.error}</p>
+            )}
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <div className="relative">
-              <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                value={formData.password}
-                onChange={(e) => handleInputChange('password', e.target.value)}
-                placeholder="Create a strong password"
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 pr-10"
-                required
-              />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-auto p-1 text-gray-400 hover:text-white hover:bg-transparent"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              </Button>
-            </div>
+            <Label htmlFor="email" className="text-white">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              value={formState.email.value}
+              onChange={(e) => updateField('email', e.target.value)}
+              className="bg-white/20 border-white/30 text-white placeholder:text-white/60"
+              disabled={isSubmitting}
+              required
+            />
+            {formState.email.error && (
+              <p className="text-red-300 text-sm">{formState.email.error}</p>
+            )}
           </div>
-
+          
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <div className="relative">
-              <Input
-                id="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
-                value={formData.confirmPassword}
-                onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                placeholder="Confirm your password"
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 pr-10"
-                required
-              />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-auto p-1 text-gray-400 hover:text-white hover:bg-transparent"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              >
-                {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              </Button>
-            </div>
+            <Label htmlFor="password" className="text-white">Password</Label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="Create a password"
+              value={formState.password.value}
+              onChange={(e) => updateField('password', e.target.value)}
+              className="bg-white/20 border-white/30 text-white placeholder:text-white/60"
+              disabled={isSubmitting}
+              required
+            />
+            {formState.password.error && (
+              <p className="text-red-300 text-sm">{formState.password.error}</p>
+            )}
           </div>
-
-          <Button 
-            type="submit" 
-            className="w-full bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0"
-            disabled={isLoading}
+          
+          <div className="space-y-2">
+            <Label htmlFor="grade" className="text-white">Grade Level</Label>
+            <Select value={selectedGrade} onValueChange={setSelectedGrade} disabled={isSubmitting}>
+              <SelectTrigger className="bg-white/20 border-white/30 text-white">
+                <SelectValue placeholder="Select your grade" />
+              </SelectTrigger>
+              <SelectContent>
+                {grades.map((grade) => (
+                  <SelectItem key={grade} value={grade}>
+                    Grade {grade}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="school" className="text-white">School (Optional)</Label>
+            <Input
+              id="school"
+              type="text"
+              placeholder="Enter your school name"
+              value={formState.school.value}
+              onChange={(e) => updateField('school', e.target.value)}
+              className="bg-white/20 border-white/30 text-white placeholder:text-white/60"
+              disabled={isSubmitting}
+            />
+          </div>
+          
+          <Button
+            type="submit"
+            className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isSubmitting}
           >
-            {isLoading ? (
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Creating account...</span>
-              </div>
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Creating Account...
+              </>
             ) : (
               <>
                 <UserPlus className="mr-2 h-4 w-4" />
@@ -224,16 +229,17 @@ const RegisterForm = ({ onRegister, onSwitchToLogin, onBack }: RegisterFormProps
             )}
           </Button>
         </form>
-
+        
         <div className="mt-6 text-center">
-          <p className="text-gray-300">
+          <p className="text-white/80">
             Already have an account?{' '}
             <Button
               variant="link"
               onClick={onSwitchToLogin}
-              className="text-yellow-400 hover:text-yellow-300 p-0 h-auto"
+              className="text-blue-300 hover:text-blue-200 p-0 font-semibold"
+              disabled={isSubmitting}
             >
-              Sign in here
+              Sign In
             </Button>
           </p>
         </div>

@@ -79,6 +79,9 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   };
 
   const handleNextQuestion = () => {
+    console.log('Next question clicked, current index:', currentQuestionIndex);
+    console.log('Total questions:', questions.length);
+    
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -87,12 +90,18 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   };
 
   const handlePreviousQuestion = () => {
+    console.log('Previous question clicked, current index:', currentQuestionIndex);
+    
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
 
   const handleSubmitQuiz = () => {
+    console.log('Submitting quiz...');
+    console.log('Selected answers:', selectedAnswers);
+    console.log('Questions:', questions);
+    
     const correctAnswers = questions.filter(q => selectedAnswers[q.id] === q.correct).length;
     const score = Math.round((correctAnswers / questions.length) * 100);
     
@@ -105,6 +114,8 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
       answers: selectedAnswers
     };
 
+    console.log('Quiz results:', quizResults);
+    
     setResults(quizResults);
     setQuizCompleted(true);
 
@@ -112,6 +123,9 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
       title: "Quiz Completed!",
       description: `You scored ${score}% (${correctAnswers}/${questions.length})`,
     });
+
+    // Call the onComplete callback
+    onComplete(quizResults);
   };
 
   const handleRetakeQuiz = () => {
@@ -337,7 +351,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
             variant="outline"
             onClick={handlePreviousQuestion}
             disabled={currentQuestionIndex === 0}
-            className="border-slate-600 text-white bg-slate-800 hover:bg-slate-700 disabled:opacity-50"
+            className="border-slate-600 text-white bg-slate-800 hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Previous
           </Button>
@@ -345,7 +359,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           <Button
             onClick={handleNextQuestion}
             disabled={!selectedAnswers[currentQuestion.id]}
-            className="bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0 disabled:opacity-50"
+            className="bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {currentQuestionIndex === questions.length - 1 ? 'Submit Quiz' : 'Next Question'}
           </Button>
