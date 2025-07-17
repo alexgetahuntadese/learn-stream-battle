@@ -99,7 +99,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     9: ['Algebra Basics', 'Linear Equations', 'Geometry Fundamentals', 'Number Systems'],
     10: ['Quadratic Functions', 'Trigonometry', 'Statistics', 'Probability'],
     11: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'],
-    12: ['Differential Calculus', 'Integral Calculus', 'Complex Numbers', 'Vectors']
+    12: ['Sequence and Series', 'Introduction to Calculus', 'Statistics', 'Introduction to linear programming', 'Mathematical Application in Business']
   };
 
   const grade9Subjects = [
@@ -170,7 +170,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       { name: 'English', icon: BookA, topics: ['Literature', 'Grammar', 'Writing Skills', 'Communication'] },
       { name: 'Civics', icon: Scale, topics: ['Government', 'Constitution', 'Human Rights', 'Democracy'] },
       { name: 'Physical Education', icon: Activity, topics: ['Sports Science', 'Health Education', 'Fitness', 'Nutrition'] },
-      { name: 'Mathematics', icon: Calculator, topics: ['Differential Calculus', 'Integral Calculus', 'Complex Numbers', 'Vectors'] },
+      { name: 'Mathematics', icon: Calculator, topics: ['Sequence and Series', 'Introduction to Calculus', 'Statistics', 'Introduction to linear programming', 'Mathematical Application in Business'] },
       { name: 'IT', icon: Laptop, topics: ['Computer Basics', 'Programming', 'Database', 'Web Development'] },
       { name: 'National Language', icon: Languages, topics: ['Amharic Literature', 'Grammar', 'Composition', 'Cultural Studies'] }
     ]
