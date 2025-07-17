@@ -1,4 +1,3 @@
-
 import { Question } from './naturalScienceQuizzes';
 
 export const grade12BiologyQuestions: { [chapter: string]: { [difficulty: string]: Question[] } } = {
@@ -743,6 +742,354 @@ export const grade12BiologyQuestions: { [chapter: string]: { [difficulty: string
         options: ['By inducing normal proteins to misfold and aggregate', 'By directly damaging DNA', 'By inhibiting protein synthesis', 'By triggering autoimmune responses'],
         correct: 'By inducing normal proteins to misfold and aggregate',
         explanation: 'Prions are misfolded proteins that can induce normal proteins of the same type to also misfold and aggregate. Unlike viruses or bacteria, prions do not contain genetic material (DNA or RNA). The misfolded prion protein (PrPSc) acts as a template that converts the normal cellular prion protein (PrPC) into the pathogenic form through a conformational change. This leads to an accumulation of misfolded proteins that form aggregates, eventually causing cellular damage, neurodegeneration, and disease in conditions like Creutzfeldt-Jakob disease, BSE (mad cow disease), and scrapie.'
+      }
+    ]
+  },
+  'Unit 4: Ecology and Environmental Biology': {
+    'easy': [
+      {
+        id: 'bio12_u4_e1',
+        question: 'What is an ecosystem?',
+        options: [
+          'A community of living organisms and their physical environment', 
+          'A single type of organism', 
+          'A type of habitat', 
+          'A geographical region'
+        ],
+        correct: 'A community of living organisms and their physical environment',
+        explanation: 'An ecosystem is a biological community of interacting organisms and their physical environment, including both living and non-living components.'
+      },
+      {
+        id: 'bio12_u4_e2',
+        question: 'What is biodiversity?',
+        options: [
+          'The variety of living organisms in a particular habitat', 
+          'The number of plants in an area', 
+          'The total number of animals', 
+          'The size of a forest'
+        ],
+        correct: 'The variety of living organisms in a particular habitat',
+        explanation: 'Biodiversity refers to the variety of life forms within a given ecosystem, including diversity of species, genetic diversity, and ecosystem diversity.'
+      },
+      {
+        id: 'bio12_u4_e3',
+        question: 'What is a food chain?',
+        options: [
+          'A sequence of organisms showing energy transfer', 
+          'A type of restaurant', 
+          'A method of cooking', 
+          'A list of edible plants'
+        ],
+        correct: 'A sequence of organisms showing energy transfer',
+        explanation: 'A food chain is a linear network of links in a food web, showing how energy and nutrients move from one organism to another in an ecosystem.'
+      },
+      {
+        id: 'bio12_u4_e4',
+        question: 'What is photosynthesis?',
+        options: [
+          'Process by which plants convert sunlight to energy', 
+          'A type of plant reproduction', 
+          'A method of plant movement', 
+          'A way of storing water'
+        ],
+        correct: 'Process by which plants convert sunlight to energy',
+        explanation: 'Photosynthesis is the process by which green plants and other organisms use sunlight to synthesize nutrients from carbon dioxide and water.'
+      },
+      {
+        id: 'bio12_u4_e5',
+        question: 'What is a habitat?',
+        options: [
+          'Natural home of an organism', 
+          'A type of animal shelter', 
+          'A scientific laboratory', 
+          'A human settlement'
+        ],
+        correct: 'Natural home of an organism',
+        explanation: 'A habitat is the natural environment in which an organism lives, characterized by specific physical conditions and interactions with other species.'
+      },
+      {
+        id: 'bio12_u4_e6',
+        question: 'What is pollution?',
+        options: [
+          'Introduction of harmful substances into the environment', 
+          'A natural weather phenomenon', 
+          'A type of plant growth', 
+          'A scientific experiment'
+        ],
+        correct: 'Introduction of harmful substances into the environment',
+        explanation: 'Pollution is the introduction of contaminants into the natural environment that cause adverse changes, affecting living organisms and the ecosystem.'
+      },
+      {
+        id: 'bio12_u4_e7',
+        question: 'What is a predator?',
+        options: [
+          'An animal that hunts other animals for food', 
+          'A type of plant', 
+          'A protective device', 
+          'A scientific instrument'
+        ],
+        correct: 'An animal that hunts other animals for food',
+        explanation: 'A predator is an organism that naturally preys on others, typically killing and eating them as part of the food chain.'
+      },
+      {
+        id: 'bio12_u4_e8',
+        question: 'What is adaptation?',
+        options: [
+          'A characteristic that helps an organism survive in its environment', 
+          'A type of animal movement', 
+          'A method of reproduction', 
+          'A scientific theory'
+        ],
+        correct: 'A characteristic that helps an organism survive in its environment',
+        explanation: 'Adaptation is a trait that helps an organism survive and reproduce in its specific environment through evolutionary processes.'
+      },
+      {
+        id: 'bio12_u4_e9',
+        question: 'What is a population?',
+        options: [
+          'Group of organisms of the same species in a specific area', 
+          'Total number of animals in a zoo', 
+          'A type of city', 
+          'A scientific measurement'
+        ],
+        correct: 'Group of organisms of the same species in a specific area',
+        explanation: 'A population is a group of organisms of the same species living and interacting in a particular area at the same time.'
+      },
+      {
+        id: 'bio12_u4_e10',
+        question: 'What is symbiosis?',
+        options: [
+          'Close relationship between two different species', 
+          'A type of plant growth', 
+          'A method of reproduction', 
+          'A scientific experiment'
+        ],
+        correct: 'Close relationship between two different species',
+        explanation: 'Symbiosis is a close and long-term biological interaction between two different biological species, which can be mutually beneficial, harmful, or neutral.'
+      }
+    ],
+    'medium': [
+      {
+        id: 'bio12_u4_m1',
+        question: 'What is the concept of ecological succession?',
+        options: [
+          'Gradual change in species composition of an ecosystem over time', 
+          'A method of plant reproduction', 
+          'A type of animal migration', 
+          'A scientific measurement technique'
+        ],
+        correct: 'Gradual change in species composition of an ecosystem over time',
+        explanation: 'Ecological succession is the process of change in the species structure of an ecological community over time, driven by environmental changes and species interactions.'
+      },
+      {
+        id: 'bio12_u4_m2',
+        question: 'What is a keystone species?',
+        options: [
+          'Species that has a disproportionate impact on its ecosystem', 
+          'The largest species in an ecosystem', 
+          'A type of endangered species', 
+          'A species that produces most oxygen'
+        ],
+        correct: 'Species that has a disproportionate impact on its ecosystem',
+        explanation: 'A keystone species plays a crucial role in maintaining the structure of an ecological community, despite not necessarily being the most abundant species.'
+      },
+      {
+        id: 'bio12_u4_m3',
+        question: 'What is biomagnification?',
+        options: [
+          'Accumulation of toxins in higher trophic levels', 
+          'A method of plant growth', 
+          'A type of chemical reaction', 
+          'A scientific measurement'
+        ],
+        correct: 'Accumulation of toxins in higher trophic levels',
+        explanation: 'Biomagnification is the progressive increase in the concentration of a substance (often a toxic chemical) in the tissues of organisms at successively higher levels of the food chain.'
+      }
+    ],
+    'hard': [
+      {
+        id: 'bio12_u4_h1',
+        question: 'Explain the concept of ecological niche',
+        options: [
+          'Unique role and position of a species within an ecosystem', 
+          'A type of animal habitat', 
+          'A method of species classification', 
+          'A scientific measurement technique'
+        ],
+        correct: 'Unique role and position of a species within an ecosystem',
+        explanation: 'An ecological niche describes the total set of biotic and abiotic conditions under which an organism can survive and reproduce, including its functional role in an ecosystem.'
+      },
+      {
+        id: 'bio12_u4_h2',
+        question: 'What is the concept of carrying capacity?',
+        options: [
+          'Maximum population size an environment can sustain', 
+          'A method of population control', 
+          'A type of scientific instrument', 
+          'A method of species classification'
+        ],
+        correct: 'Maximum population size an environment can sustain',
+        explanation: 'Carrying capacity is the maximum population size of a species that can be sustained in a particular habitat given the available resources and environmental conditions.'
+      }
+    ]
+  },
+  'Unit 5: Human Physiology': {
+    'easy': [
+      {
+        id: 'bio12_u5_e1',
+        question: 'What is the primary function of the heart?',
+        options: [
+          'Pumping blood throughout the body', 
+          'Digesting food', 
+          'Producing hormones', 
+          'Filtering air'
+        ],
+        correct: 'Pumping blood throughout the body',
+        explanation: 'The heart is a muscular organ responsible for pumping blood through the blood vessels, delivering oxygen and nutrients to the body\'s tissues.'
+      },
+      {
+        id: 'bio12_u5_e2',
+        question: 'What is the function of lungs?',
+        options: [
+          'Gas exchange (oxygen and carbon dioxide)', 
+          'Producing blood cells', 
+          'Digesting food', 
+          'Filtering water'
+        ],
+        correct: 'Gas exchange (oxygen and carbon dioxide)',
+        explanation: 'Lungs are responsible for respiration, facilitating the exchange of oxygen and carbon dioxide between the air and blood through a process called gas exchange.'
+      }
+    ],
+    'medium': [
+      {
+        id: 'bio12_u5_m1',
+        question: 'What is the function of the nervous system?',
+        options: [
+          'Transmitting signals and coordinating body functions', 
+          'Producing blood cells', 
+          'Digesting food', 
+          'Filtering toxins'
+        ],
+        correct: 'Transmitting signals and coordinating body functions',
+        explanation: 'The nervous system is responsible for transmitting signals between different parts of the body, processing information, and coordinating various physiological functions.'
+      },
+      {
+        id: 'bio12_u5_m2',
+        question: 'What is the endocrine system?',
+        options: [
+          'System of glands that produce hormones', 
+          'A type of digestive system', 
+          'A method of blood circulation', 
+          'A nerve communication network'
+        ],
+        correct: 'System of glands that produce hormones',
+        explanation: 'The endocrine system is a network of glands that produce and secrete hormones directly into the bloodstream, regulating various bodily processes.'
+      }
+    ],
+    'hard': [
+      {
+        id: 'bio12_u5_h1',
+        question: 'Explain the process of neural transmission',
+        options: [
+          'Electrical and chemical signal transmission between neurons', 
+          'A method of cell division', 
+          'A type of blood circulation', 
+          'A hormone production process'
+        ],
+        correct: 'Electrical and chemical signal transmission between neurons',
+        explanation: 'Neural transmission involves the propagation of electrical and chemical signals along neurons through action potentials and neurotransmitter release at synapses.'
+      },
+      {
+        id: 'bio12_u5_h2',
+        question: 'What is the mechanism of muscle contraction?',
+        options: [
+          'Sliding filament theory involving actin and myosin', 
+          'A method of energy production', 
+          'A type of cellular communication', 
+          'A hormone regulation process'
+        ],
+        correct: 'Sliding filament theory involving actin and myosin',
+        explanation: 'Muscle contraction occurs through the sliding filament theory, where actin and myosin filaments slide past each other, shortening the muscle fiber and generating force.'
+      }
+    ]
+  },
+  'Unit 6: Climate Change and Environmental Science': {
+    'easy': [
+      {
+        id: 'bio12_u6_e1',
+        question: 'What is global warming?',
+        options: [
+          'Gradual increase in Earth\'s average temperature', 
+          'A type of weather phenomenon', 
+          'A scientific experiment', 
+          'A method of energy production'
+        ],
+        correct: 'Gradual increase in Earth\'s average temperature',
+        explanation: 'Global warming is the long-term rise in the average temperature of the Earth\'s climate system, primarily due to human activities that increase greenhouse gas concentrations.'
+      },
+      {
+        id: 'bio12_u6_e2',
+        question: 'What are greenhouse gases?',
+        options: [
+          'Gases that trap heat in the atmosphere', 
+          'Gases used in greenhouses', 
+          'A type of air pollution', 
+          'Gases produced by plants'
+        ],
+        correct: 'Gases that trap heat in the atmosphere',
+        explanation: 'Greenhouse gases are atmospheric gases that absorb and emit radiation within the thermal infrared range, causing the greenhouse effect and contributing to global warming.'
+      }
+    ],
+    'medium': [
+      {
+        id: 'bio12_u6_m1',
+        question: 'What is the carbon cycle?',
+        options: [
+          'Continuous movement of carbon through Earth\'s systems', 
+          'A method of carbon production', 
+          'A type of chemical reaction', 
+          'A scientific measurement technique'
+        ],
+        correct: 'Continuous movement of carbon through Earth\'s systems',
+        explanation: 'The carbon cycle is the biogeochemical cycle by which carbon is exchanged among the biosphere, pedosphere, geosphere, hydrosphere, and atmosphere of the Earth.'
+      },
+      {
+        id: 'bio12_u6_m2',
+        question: 'What is biodiversity loss?',
+        options: [
+          'Reduction in variety of life forms in an ecosystem', 
+          'A type of scientific experiment', 
+          'A method of species creation', 
+          'A measurement of plant growth'
+        ],
+        correct: 'Reduction in variety of life forms in an ecosystem',
+        explanation: 'Biodiversity loss is the decrease in the variety of plant and animal life in a particular habitat or ecosystem, often due to human activities and environmental changes.'
+      }
+    ],
+    'hard': [
+      {
+        id: 'bio12_u6_h1',
+        question: 'Explain the concept of ocean acidification',
+        options: [
+          'Decrease in ocean pH due to increased CO2 absorption', 
+          'A type of marine pollution', 
+          'A method of water purification', 
+          'A scientific measurement technique'
+        ],
+        correct: 'Decrease in ocean pH due to increased CO2 absorption',
+        explanation: 'Ocean acidification is the ongoing decrease in the pH of the Earth\'s oceans, caused by the absorption of increased atmospheric carbon dioxide, which has significant impacts on marine ecosystems.'
+      },
+      {
+        id: 'bio12_u6_h2',
+        question: 'What is the concept of ecological tipping point?',
+        options: [
+          'Critical threshold where small changes cause large, irreversible shifts in ecosystem', 
+          'A method of environmental measurement', 
+          'A type of scientific experiment', 
+          'A way of classifying species'
+        ],
+        correct: 'Critical threshold where small changes cause large, irreversible shifts in ecosystem',
+        explanation: 'An ecological tipping point is a critical threshold in an ecosystem where a small change can cause a large, potentially irreversible shift in the system\'s state, often with significant environmental consequences.'
       }
     ]
   }
