@@ -61,7 +61,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       grade: 9,
       title: 'Grade 9',
       description: 'Foundation courses for secondary education',
-      subjects: 8,
+      subjects: 11,
       quizzes: 45,
       progress: 75,
       color: 'from-blue-500 to-purple-500'
@@ -101,6 +101,20 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     11: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'],
     12: ['Differential Calculus', 'Integral Calculus', 'Complex Numbers', 'Vectors']
   };
+
+  const grade9Subjects = [
+    { name: 'English', icon: BookA, topics: ['Basic Grammar', 'Reading Comprehension', 'Writing Skills', 'Literature Introduction'] },
+    { name: 'Amharic', icon: Languages, topics: ['Grammar', 'Literature', 'Composition', 'Language Skills'] },
+    { name: 'Mathematics', icon: Calculator, topics: ['Algebra Basics', 'Linear Equations', 'Geometry Fundamentals', 'Number Systems'] },
+    { name: 'Information Technology (ICT)', icon: Laptop, topics: ['Computer Basics', 'Software Applications', 'Internet Fundamentals', 'Digital Literacy'] },
+    { name: 'Civics & Ethical Education', icon: Scale, topics: ['Citizenship', 'Ethics', 'Human Rights', 'Government Basics'] },
+    { name: 'Biology', icon: Dna, topics: ['Cell Biology', 'Plant Biology', 'Human Body Systems', 'Basic Genetics'] },
+    { name: 'Chemistry', icon: FlaskConical, topics: ['Matter & Elements', 'Chemical Reactions', 'Atomic Structure', 'Basic Compounds'] },
+    { name: 'Physics', icon: Zap, topics: ['Motion & Forces', 'Energy', 'Heat & Temperature', 'Light & Sound'] },
+    { name: 'Geography', icon: MapPin, topics: ['Physical Geography', 'Climate & Weather', 'Maps & Location', 'Human Geography'] },
+    { name: 'History', icon: Clock8, topics: ['World History', 'Ethiopian History', 'Ancient Civilizations', 'Historical Thinking'] },
+    { name: 'Physical Education', icon: Activity, topics: ['Sports & Games', 'Health Education', 'Physical Fitness', 'Body Systems'] }
+  ];
 
   const grade11Subjects = {
     naturalScience: [
@@ -400,6 +414,60 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                             {renderSubjectGroup("📘 Natural Science Stream", grade11Subjects.naturalScience, "bg-blue-100 text-blue-800")}
                             {renderSubjectGroup("📗 Social Science Stream", grade11Subjects.socialScience, "bg-green-100 text-green-800")}
                             {renderSubjectGroup("📙 Common Courses", grade11Subjects.common, "bg-yellow-100 text-yellow-800")}
+                          </CardContent>
+                        </Card>
+                      ) : grade.grade === 9 ? (
+                        <Card className="bg-white/5 border-white/20 text-white">
+                          <CardContent className="p-6">
+                            <div className="flex items-center justify-between mb-6">
+                              <div className="flex items-center space-x-4">
+                                <div className="p-3 rounded-lg bg-blue-500">
+                                  <BookOpen className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h4 className="text-lg font-bold">Grade 9 Subjects</h4>
+                                  <p className="text-sm text-gray-400">Foundation courses for secondary education</p>
+                                </div>
+                              </div>
+                              <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                                11 subjects
+                              </Badge>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                              {grade9Subjects.map((subject, index) => (
+                                <Card key={index} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
+                                  <CardContent className="p-4">
+                                    <div className="flex items-center justify-between mb-3">
+                                      <div className="flex items-center space-x-3">
+                                        <div className="p-2 rounded-lg bg-blue-500">
+                                          <subject.icon className="h-5 w-5 text-white" />
+                                        </div>
+                                        <div>
+                                          <h6 className="font-semibold">{subject.name}</h6>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div className="grid grid-cols-1 gap-1 mb-3">
+                                      {subject.topics.map((topic: string, topicIndex: number) => (
+                                        <div key={topicIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
+                                          {topic}
+                                        </div>
+                                      ))}
+                                    </div>
+
+                                    <Button 
+                                      size="sm"
+                                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
+                                    >
+                                      <Play className="mr-1 h-3 w-3" />
+                                      Start Quiz
+                                    </Button>
+                                  </CardContent>
+                                </Card>
+                              ))}
+                            </div>
                           </CardContent>
                         </Card>
                       ) : (
