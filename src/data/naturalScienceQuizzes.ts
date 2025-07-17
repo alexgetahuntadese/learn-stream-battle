@@ -1,4 +1,3 @@
-
 import { grade12BiologyQuestions, getGrade12BiologyQuestions } from './grade12Biology';
 
 export interface Question {
@@ -278,12 +277,20 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
     const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
     const questions = getGrade12BiologyQuestions(chapter, difficultyLevel);
     console.log('Found Grade 12 Biology questions:', questions.length);
-    return questions.slice(0, count);
+    
+    if (questions.length > 0) {
+      return questions.slice(0, count);
+    }
+    
+    // If no questions found, log the available chapters
+    console.log('Available Grade 12 Biology chapters:', Object.keys(grade12BiologyQuestions));
+    console.log('Requested chapter:', chapter);
   }
 
-  let questions: any[] = [];
+  let questions: Question[] = [];
 
-  if (subject === 'biology') {
+  // Handle Grade 11 questions
+  if (subject === 'biology' && !chapter.includes('Unit')) {
     if (grade11BiologyQuestions[chapter]) {
       questions = grade11BiologyQuestions[chapter];
     }
@@ -301,6 +308,7 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
     }
   }
   
+  // Add some fallback questions for testing
   if (subject === 'physics') {
     switch (chapter) {
       case 'Chapter 1: Mechanics':
