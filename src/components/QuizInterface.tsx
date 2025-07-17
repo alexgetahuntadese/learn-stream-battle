@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -31,91 +30,94 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   const [results, setResults] = useState<any>(null);
   const { toast } = useToast();
 
-  const generateQuestions = () => {
-    // Check if this is a Natural Science quiz with specific chapters
-    if (quiz.chapters && quiz.chapters.length > 0 && (quiz.subject === 'biology' || quiz.subject === 'chemistry')) {
-      const allQuestions: any[] = [];
-      
-      // For each chapter, get questions based on difficulty
-      quiz.chapters.forEach((chapter: string) => {
-        const chapterQuestions = getQuestionsForQuiz(quiz.subject, chapter, quiz.difficulty, 2);
-        allQuestions.push(...chapterQuestions);
-      });
-      
-      // Shuffle and return the requested number of questions
-      const shuffled = allQuestions.sort(() => Math.random() - 0.5);
-      return shuffled.slice(0, Math.min(quiz.questions || 10, shuffled.length));
-    }
+  const questions = useMemo(() => {
+    const generateQuestions = () => {
+      // Check if this is a Natural Science quiz with specific chapters
+      if (quiz.chapters && quiz.chapters.length > 0 && (quiz.subject === 'biology' || quiz.subject === 'chemistry')) {
+        const allQuestions: any[] = [];
+        
+        // For each chapter, get questions based on difficulty
+        quiz.chapters.forEach((chapter: string) => {
+          const chapterQuestions = getQuestionsForQuiz(quiz.subject, chapter, quiz.difficulty, 2);
+          allQuestions.push(...chapterQuestions);
+        });
+        
+        // Shuffle and return the requested number of questions
+        const shuffled = allQuestions.sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, Math.min(quiz.questions || 10, shuffled.length));
+      }
 
-    // Fallback to original question sets for other subjects
-    const questionSets = {
-      mathematics: [
-        {
-          id: 1,
-          question: "What is the value of x in the equation 2x + 5 = 15?",
-          options: ["3", "5", "7", "10"],
-          correct: "5",
-          explanation: "Subtract 5 from both sides: 2x = 10, then divide by 2: x = 5"
-        },
-        {
-          id: 2,
-          question: "Which of the following is a prime number?",
-          options: ["15", "21", "17", "25"],
-          correct: "17",
-          explanation: "17 is only divisible by 1 and itself, making it a prime number"
-        },
-        {
-          id: 3,
-          question: "What is the area of a circle with radius 4 units?",
-          options: ["12π", "16π", "8π", "32π"],
-          correct: "16π",
-          explanation: "Area = πr² = π × 4² = 16π square units"
-        },
-        {
-          id: 4,
-          question: "Solve for y: 3y - 7 = 14",
-          options: ["5", "7", "9", "11"],
-          correct: "7",
-          explanation: "Add 7 to both sides: 3y = 21, then divide by 3: y = 7"
-        },
-        {
-          id: 5,
-          question: "What is 25% of 80?",
-          options: ["15", "20", "25", "30"],
-          correct: "20",
-          explanation: "25% × 80 = 0.25 × 80 = 20"
-        }
-      ],
-      physics: [
-        {
-          id: 1,
-          question: "What is the unit of force in the SI system?",
-          options: ["Newton", "Joule", "Pascal", "Watt"],
-          correct: "Newton",
-          explanation: "Newton (N) is the SI unit of force, named after Isaac Newton"
-        },
-        {
-          id: 2,
-          question: "What is the speed of light in vacuum?",
-          options: ["3 × 10⁸ m/s", "3 × 10⁶ m/s", "3 × 10¹⁰ m/s", "3 × 10⁴ m/s"],
-          correct: "3 × 10⁸ m/s",
-          explanation: "The speed of light in vacuum is approximately 299,792,458 m/s or 3 × 10⁸ m/s"
-        },
-        {
-          id: 3,
-          question: "Which law states that every action has an equal and opposite reaction?",
-          options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"],
-          correct: "Newton's Third Law",
-          explanation: "Newton's Third Law states that for every action, there is an equal and opposite reaction"
-        }
-      ]
+      // Fallback to original question sets for other subjects
+      const questionSets = {
+        mathematics: [
+          {
+            id: 1,
+            question: "What is the value of x in the equation 2x + 5 = 15?",
+            options: ["3", "5", "7", "10"],
+            correct: "5",
+            explanation: "Subtract 5 from both sides: 2x = 10, then divide by 2: x = 5"
+          },
+          {
+            id: 2,
+            question: "Which of the following is a prime number?",
+            options: ["15", "21", "17", "25"],
+            correct: "17",
+            explanation: "17 is only divisible by 1 and itself, making it a prime number"
+          },
+          {
+            id: 3,
+            question: "What is the area of a circle with radius 4 units?",
+            options: ["12π", "16π", "8π", "32π"],
+            correct: "16π",
+            explanation: "Area = πr² = π × 4² = 16π square units"
+          },
+          {
+            id: 4,
+            question: "Solve for y: 3y - 7 = 14",
+            options: ["5", "7", "9", "11"],
+            correct: "7",
+            explanation: "Add 7 to both sides: 3y = 21, then divide by 3: y = 7"
+          },
+          {
+            id: 5,
+            question: "What is 25% of 80?",
+            options: ["15", "20", "25", "30"],
+            correct: "20",
+            explanation: "25% × 80 = 0.25 × 80 = 20"
+          }
+        ],
+        physics: [
+          {
+            id: 1,
+            question: "What is the unit of force in the SI system?",
+            options: ["Newton", "Joule", "Pascal", "Watt"],
+            correct: "Newton",
+            explanation: "Newton (N) is the SI unit of force, named after Isaac Newton"
+          },
+          {
+            id: 2,
+            question: "What is the speed of light in vacuum?",
+            options: ["3 × 10⁸ m/s", "3 × 10⁶ m/s", "3 × 10¹⁰ m/s", "3 × 10⁴ m/s"],
+            correct: "3 × 10⁸ m/s",
+            explanation: "The speed of light in vacuum is approximately 299,792,458 m/s or 3 × 10⁸ m/s"
+          },
+          {
+            id: 3,
+            question: "Which law states that every action has an equal and opposite reaction?",
+            options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"],
+            correct: "Newton's Third Law",
+            explanation: "Newton's Third Law states that for every action, there is an equal and opposite reaction"
+          }
+        ]
+      };
+
+      const subjectQuestions = questionSets[quiz.subject as keyof typeof questionSets] || questionSets.mathematics;
+      return subjectQuestions.slice(0, Math.min(quiz.questions || 5, subjectQuestions.length));
     };
 
-    const subjectQuestions = questionSets[quiz.subject as keyof typeof questionSets] || questionSets.mathematics;
-    return subjectQuestions.slice(0, Math.min(quiz.questions || 5, subjectQuestions.length));
-  };
+    return generateQuestions();
+  }, [quiz.subject, quiz.chapters, quiz.difficulty, quiz.questions]);
 
-  const questions = generateQuestions();
   const currentQuestion = questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
