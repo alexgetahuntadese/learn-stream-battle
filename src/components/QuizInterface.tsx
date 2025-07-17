@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { getQuestionsForQuiz } from '@/data/naturalScienceQuizzes';
+import QuestionExplanation from './QuestionExplanation';
 
 interface QuizInterfaceProps {
   quiz: any;
@@ -28,6 +29,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   const [timeLeft, setTimeLeft] = useState(quiz.duration * 60);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [results, setResults] = useState<any>(null);
+  const [showExplanation, setShowExplanation] = useState(false);
   const { toast } = useToast();
 
   const questions = useMemo(() => {
@@ -64,6 +66,11 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
     }
   }, [timeLeft, quizCompleted]);
 
+  // Reset explanation when moving to a new question
+  useEffect(() => {
+    setShowExplanation(false);
+  }, [currentQuestionIndex]);
+
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -76,6 +83,10 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
       [currentQuestion.id]: answer
     }));
     console.log('Answer selected:', answer, 'for question:', currentQuestion.id);
+  };
+
+  const handleShowExplanation = () => {
+    setShowExplanation(true);
   };
 
   const handleNextQuestion = () => {
@@ -276,6 +287,8 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
     );
   }
 
+  const isCorrectAnswer = selectedAnswers[currentQuestion?.id] === currentQuestion?.correct;
+
   return (
     <div className="min-h-screen bg-slate-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
@@ -337,12 +350,22 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                       : 'border-slate-600 text-slate-900 bg-white hover:bg-slate-100 hover:text-slate-900'
                   }`}
                   onClick={() => handleAnswerSelect(option)}
+                  disabled={showExplanation}
                 >
                   <span className="mr-4 font-bold">{String.fromCharCode(65 + index)}.</span>
                   {option}
                 </Button>
               ))}
             </div>
+
+            {showExplanation && currentQuestion.explanation && (
+              <QuestionExplanation
+                isCorrect={isCorrectAnswer}
+                correctAnswer={currentQuestion.correct}
+                explanation={currentQuestion.explanation}
+                userAnswer={selectedAnswers[currentQuestion.id] || ""}
+              />
+            )}
           </CardContent>
         </Card>
 
@@ -356,13 +379,22 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
             Previous
           </Button>
           
-          <Button
-            onClick={handleNextQuestion}
-            disabled={!selectedAnswers[currentQuestion.id]}
-            className="bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {currentQuestionIndex === questions.length - 1 ? 'Submit Quiz' : 'Next Question'}
-          </Button>
+          {!showExplanation && selectedAnswers[currentQuestion.id] ? (
+            <Button
+              onClick={handleShowExplanation}
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white border-0"
+            >
+              Check Answer
+            </Button>
+          ) : (
+            <Button
+              onClick={handleNextQuestion}
+              disabled={!selectedAnswers[currentQuestion.id]}
+              className="bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {currentQuestionIndex === questions.length - 1 ? 'Submit Quiz' : 'Next Question'}
+            </Button>
+          )}
         </div>
 
         <div className="mt-8 p-4 bg-slate-800 rounded-lg">
