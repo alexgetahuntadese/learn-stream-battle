@@ -29,7 +29,6 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   const [results, setResults] = useState<any>(null);
   const { toast } = useToast();
 
-  // Generate questions based on quiz subject and difficulty
   const generateQuestions = () => {
     const questionSets = {
       mathematics: [
@@ -145,7 +144,6 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   console.log('Generated questions:', questions);
   console.log('Current question:', currentQuestion);
 
-  // Timer effect
   useEffect(() => {
     if (timeLeft > 0 && !quizCompleted) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -205,15 +203,14 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
     });
   };
 
-  // Early return if no questions available
   if (!questions || questions.length === 0) {
     return (
       <div className="min-h-screen bg-slate-900 text-white p-6">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-slate-800 border-slate-700 text-white">
             <CardContent className="p-6 text-center">
-              <p className="text-xl mb-4">No questions available for this quiz.</p>
-              <Button onClick={onBack} className="bg-gradient-to-r from-green-600 to-yellow-600">
+              <p className="text-xl mb-4 text-white">No questions available for this quiz.</p>
+              <Button onClick={onBack} className="bg-gradient-to-r from-green-600 to-yellow-600 text-white">
                 Back to Dashboard
               </Button>
             </CardContent>
@@ -234,7 +231,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                   <Award className="h-12 w-12 text-white" />
                 </div>
               </div>
-              <CardTitle className="text-3xl font-bold">Quiz Complete!</CardTitle>
+              <CardTitle className="text-3xl font-bold text-white">Quiz Complete!</CardTitle>
               <div className="flex justify-center items-center space-x-2 mt-4">
                 {[...Array(5)].map((_, i) => (
                   <Star 
@@ -249,16 +246,15 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
-              {/* Score Summary */}
               <div className="text-center space-y-4">
                 <div className="text-6xl font-bold bg-gradient-to-r from-green-400 to-yellow-400 bg-clip-text text-transparent">
                   {results.score}%
                 </div>
-                <p className="text-xl text-gray-300">
+                <p className="text-xl text-white">
                   {results.correctAnswers} out of {results.totalQuestions} questions correct
                 </p>
                 <Badge 
-                  className={`text-lg px-6 py-2 ${
+                  className={`text-lg px-6 py-2 text-white ${
                     results.score >= 90 ? 'bg-green-500' :
                     results.score >= 70 ? 'bg-yellow-500' :
                     results.score >= 50 ? 'bg-orange-500' : 'bg-red-500'
@@ -270,25 +266,23 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                 </Badge>
               </div>
 
-              {/* Stats */}
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div className="bg-slate-700 rounded-lg p-4">
                   <div className="text-2xl font-bold text-green-400">{results.correctAnswers}</div>
-                  <div className="text-sm text-gray-300">Correct</div>
+                  <div className="text-sm text-white">Correct</div>
                 </div>
                 <div className="bg-slate-700 rounded-lg p-4">
                   <div className="text-2xl font-bold text-red-400">{results.totalQuestions - results.correctAnswers}</div>
-                  <div className="text-sm text-gray-300">Incorrect</div>
+                  <div className="text-sm text-white">Incorrect</div>
                 </div>
                 <div className="bg-slate-700 rounded-lg p-4">
                   <div className="text-2xl font-bold text-blue-400">{Math.floor(results.timeSpent / 60)}m</div>
-                  <div className="text-sm text-gray-300">Time Spent</div>
+                  <div className="text-sm text-white">Time Spent</div>
                 </div>
               </div>
 
-              {/* Review Answers */}
               <div className="space-y-4">
-                <h3 className="text-xl font-bold">Review Your Answers</h3>
+                <h3 className="text-xl font-bold text-white">Review Your Answers</h3>
                 {questions.map((question, index) => {
                   const userAnswer = selectedAnswers[question.id];
                   const isCorrect = userAnswer === question.correct;
@@ -302,11 +296,11 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                           <XCircle className="h-6 w-6 text-red-400 flex-shrink-0 mt-1" />
                         )}
                         <div className="flex-1">
-                          <p className="font-medium mb-2">Q{index + 1}: {question.question}</p>
+                          <p className="font-medium mb-2 text-white">Q{index + 1}: {question.question}</p>
                           <div className="text-sm space-y-1">
-                            <p>Your answer: <span className={isCorrect ? 'text-green-400' : 'text-red-400'}>{userAnswer || 'Not answered'}</span></p>
+                            <p className="text-white">Your answer: <span className={isCorrect ? 'text-green-400' : 'text-red-400'}>{userAnswer || 'Not answered'}</span></p>
                             {!isCorrect && (
-                              <p>Correct answer: <span className="text-green-400">{question.correct}</span></p>
+                              <p className="text-white">Correct answer: <span className="text-green-400">{question.correct}</span></p>
                             )}
                             <p className="text-gray-300 italic">{question.explanation}</p>
                           </div>
@@ -317,7 +311,6 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                 })}
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   onClick={() => onComplete(results)}
@@ -328,9 +321,9 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                 <Button 
                   variant="outline"
                   onClick={() => window.location.reload()}
-                  className="border-slate-600 text-black bg-white hover:bg-slate-100"
+                  className="border-slate-600 text-slate-900 bg-white hover:bg-slate-100"
                 >
-                  <RefreshCw className="mr-2 h-4 w-4" />
+                  <RefreshCw className="mr-2 h-4 w-4 text-slate-900" />
                   Retake Quiz
                 </Button>
               </div>
@@ -344,7 +337,6 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   return (
     <div className="min-h-screen bg-slate-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <Button
             variant="ghost"
@@ -357,8 +349,8 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 bg-slate-800 rounded-lg px-4 py-2">
-              <Clock className="h-4 w-4" />
-              <span className={`font-mono ${timeLeft < 300 ? 'text-red-400' : 'text-white'}`}>
+              <Clock className="h-4 w-4 text-white" />
+              <span className={`font-mono text-white ${timeLeft < 300 ? 'text-red-400' : 'text-white'}`}>
                 {formatTime(timeLeft)}
               </span>
             </div>
@@ -368,22 +360,20 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           </div>
         </div>
 
-        {/* Progress */}
         <div className="mb-8">
-          <div className="flex justify-between text-sm mb-2">
+          <div className="flex justify-between text-sm mb-2 text-white">
             <span>Progress</span>
             <span>{Math.round(progress)}%</span>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
 
-        {/* Question Card */}
         <Card className="bg-slate-800 border-slate-700 text-white mb-6">
           <CardHeader>
-            <CardTitle className="text-xl">
+            <CardTitle className="text-xl text-white">
               Question {currentQuestionIndex + 1}
             </CardTitle>
-            <p className="text-lg leading-relaxed">{currentQuestion.question}</p>
+            <p className="text-lg leading-relaxed text-white">{currentQuestion.question}</p>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -394,7 +384,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                   className={`w-full text-left justify-start p-4 h-auto ${
                     selectedAnswers[currentQuestion.id] === option
                       ? 'bg-gradient-to-r from-green-600 to-yellow-600 text-white border-0'
-                      : 'border-slate-600 text-black bg-white hover:bg-slate-100 hover:text-black'
+                      : 'border-slate-600 text-slate-900 bg-white hover:bg-slate-100 hover:text-slate-900'
                   }`}
                   onClick={() => handleAnswerSelect(option)}
                 >
@@ -406,13 +396,12 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           </CardContent>
         </Card>
 
-        {/* Navigation */}
         <div className="flex justify-between">
           <Button
             variant="outline"
             onClick={handlePreviousQuestion}
             disabled={currentQuestionIndex === 0}
-            className="border-slate-600 text-white hover:bg-slate-700 disabled:opacity-50"
+            className="border-slate-600 text-white bg-slate-800 hover:bg-slate-700 disabled:opacity-50"
           >
             Previous
           </Button>
@@ -426,9 +415,8 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
           </Button>
         </div>
 
-        {/* Question Navigator */}
         <div className="mt-8 p-4 bg-slate-800 rounded-lg">
-          <h4 className="text-sm font-medium mb-3">Question Navigator</h4>
+          <h4 className="text-sm font-medium mb-3 text-white">Question Navigator</h4>
           <div className="flex flex-wrap gap-2">
             {questions.map((_, index) => (
               <Button
@@ -439,8 +427,8 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                   index === currentQuestionIndex
                     ? 'bg-gradient-to-r from-green-600 to-yellow-600 text-white border-0'
                     : selectedAnswers[questions[index].id]
-                    ? 'border-green-500 text-green-400 hover:bg-green-500/10'
-                    : 'border-slate-600 text-white hover:bg-slate-700'
+                    ? 'border-green-500 text-green-400 bg-slate-800 hover:bg-green-500/10'
+                    : 'border-slate-600 text-white bg-slate-800 hover:bg-slate-700'
                 }`}
                 onClick={() => setCurrentQuestionIndex(index)}
               >
