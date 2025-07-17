@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -19,7 +18,24 @@ import {
   GraduationCap,
   ChevronRight,
   ChevronDown,
-  Calculator
+  Calculator,
+  Microscope,
+  Globe,
+  Users,
+  Atom,
+  Dna,
+  FlaskConical,
+  Zap,
+  Ruler,
+  MapPin,
+  Clock8,
+  DollarSign,
+  Briefcase,
+  BookA,
+  Scale,
+  Activity,
+  Laptop,
+  Languages
 } from 'lucide-react';
 
 interface QuizDashboardProps {
@@ -72,7 +88,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       grade: 12,
       title: 'Grade 12',
       description: 'University entrance preparation',
-      subjects: 6,
+      subjects: 14,
       quizzes: 42,
       progress: 25,
       color: 'from-orange-500 to-red-500'
@@ -84,6 +100,29 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     10: ['Quadratic Functions', 'Trigonometry', 'Statistics', 'Probability'],
     11: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'],
     12: ['Differential Calculus', 'Integral Calculus', 'Complex Numbers', 'Vectors']
+  };
+
+  const grade12Subjects = {
+    naturalScience: [
+      { name: 'Biology', icon: Dna, topics: ['Cell Biology', 'Genetics', 'Ecology', 'Evolution'] },
+      { name: 'Chemistry', icon: FlaskConical, topics: ['Organic Chemistry', 'Physical Chemistry', 'Analytical Chemistry', 'Biochemistry'] },
+      { name: 'Physics', icon: Zap, topics: ['Mechanics', 'Thermodynamics', 'Electromagnetism', 'Modern Physics'] },
+      { name: 'Technical Drawing', icon: Ruler, topics: ['Geometric Construction', '3D Modeling', 'Engineering Drawing', 'CAD Basics'] }
+    ],
+    socialScience: [
+      { name: 'Geography', icon: MapPin, topics: ['Physical Geography', 'Human Geography', 'Environmental Geography', 'GIS Fundamentals'] },
+      { name: 'History', icon: Clock8, topics: ['World History', 'Ethiopian History', 'African History', 'Modern History'] },
+      { name: 'Economics', icon: DollarSign, topics: ['Microeconomics', 'Macroeconomics', 'Development Economics', 'International Trade'] },
+      { name: 'General Business', icon: Briefcase, topics: ['Business Management', 'Marketing', 'Accounting', 'Entrepreneurship'] }
+    ],
+    common: [
+      { name: 'English', icon: BookA, topics: ['Literature', 'Grammar', 'Writing Skills', 'Communication'] },
+      { name: 'Civics', icon: Scale, topics: ['Government', 'Constitution', 'Human Rights', 'Democracy'] },
+      { name: 'Physical Education', icon: Activity, topics: ['Sports Science', 'Health Education', 'Fitness', 'Nutrition'] },
+      { name: 'Mathematics', icon: Calculator, topics: ['Differential Calculus', 'Integral Calculus', 'Complex Numbers', 'Vectors'] },
+      { name: 'IT', icon: Laptop, topics: ['Computer Basics', 'Programming', 'Database', 'Web Development'] },
+      { name: 'National Language', icon: Languages, topics: ['Amharic Literature', 'Grammar', 'Composition', 'Cultural Studies'] }
+    ]
   };
 
   const quizzes = [
@@ -146,6 +185,51 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       default: return 'bg-gray-100 text-gray-800';
     }
   };
+
+  const renderSubjectGroup = (title: string, subjects: any[], badgeColor: string) => (
+    <div className="mb-6">
+      <div className="flex items-center mb-3">
+        <h5 className="text-md font-semibold text-white">{title}</h5>
+        <Badge variant="secondary" className={`ml-2 ${badgeColor}`}>
+          {subjects.length} subjects
+        </Badge>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {subjects.map((subject, index) => (
+          <Card key={index} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 rounded-lg bg-blue-500">
+                    <subject.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h6 className="font-semibold">{subject.name}</h6>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 gap-1 mb-3">
+                {subject.topics.map((topic: string, topicIndex: number) => (
+                  <div key={topicIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
+                    {topic}
+                  </div>
+                ))}
+              </div>
+
+              <Button 
+                size="sm"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
+              >
+                <Play className="mr-1 h-3 w-3" />
+                Start Quiz
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
@@ -249,39 +333,64 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                   
                   <CollapsibleContent className="space-y-4">
                     <div className="ml-8 mt-4">
-                      <Card className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
-                        <CardContent className="p-6">
-                          <div className="flex items-center justify-between mb-4">
-                            <div className="flex items-center space-x-4">
-                              <div className="p-3 rounded-lg bg-blue-500">
-                                <Calculator className="h-6 w-6 text-white" />
+                      {grade.grade === 12 ? (
+                        <Card className="bg-white/5 border-white/20 text-white">
+                          <CardContent className="p-6">
+                            <div className="flex items-center justify-between mb-6">
+                              <div className="flex items-center space-x-4">
+                                <div className="p-3 rounded-lg bg-orange-500">
+                                  <BookOpen className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h4 className="text-lg font-bold">Grade 12 Subjects</h4>
+                                  <p className="text-sm text-gray-400">University entrance preparation</p>
+                                </div>
                               </div>
-                              <div>
-                                <h4 className="text-lg font-bold">Mathematics</h4>
-                                <p className="text-sm text-gray-400">Core mathematical concepts</p>
-                              </div>
+                              <Badge variant="secondary" className="bg-orange-100 text-orange-800">
+                                14 subjects
+                              </Badge>
                             </div>
-                            <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                              {mathTopics[grade.grade as keyof typeof mathTopics].length} topics
-                            </Badge>
-                          </div>
-                          
-                          <div className="grid grid-cols-2 gap-2 mb-4">
-                            {mathTopics[grade.grade as keyof typeof mathTopics].map((topic, index) => (
-                              <div key={index} className="text-sm text-gray-300 bg-white/5 rounded px-3 py-2">
-                                {topic}
+                            
+                            {renderSubjectGroup("📘 Natural Science Stream", grade12Subjects.naturalScience, "bg-blue-100 text-blue-800")}
+                            {renderSubjectGroup("📗 Social Science Stream", grade12Subjects.socialScience, "bg-green-100 text-green-800")}
+                            {renderSubjectGroup("📙 Common Courses", grade12Subjects.common, "bg-yellow-100 text-yellow-800")}
+                          </CardContent>
+                        </Card>
+                      ) : (
+                        <Card className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
+                          <CardContent className="p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <div className="flex items-center space-x-4">
+                                <div className="p-3 rounded-lg bg-blue-500">
+                                  <Calculator className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h4 className="text-lg font-bold">Mathematics</h4>
+                                  <p className="text-sm text-gray-400">Core mathematical concepts</p>
+                                </div>
                               </div>
-                            ))}
-                          </div>
+                              <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                                {mathTopics[grade.grade as keyof typeof mathTopics].length} topics
+                              </Badge>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-2 mb-4">
+                              {mathTopics[grade.grade as keyof typeof mathTopics].map((topic, index) => (
+                                <div key={index} className="text-sm text-gray-300 bg-white/5 rounded px-3 py-2">
+                                  {topic}
+                                </div>
+                              ))}
+                            </div>
 
-                          <Button 
-                            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
-                          >
-                            <Play className="mr-2 h-4 w-4" />
-                            Start Mathematics Quiz
-                          </Button>
-                        </CardContent>
-                      </Card>
+                            <Button 
+                              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
+                            >
+                              <Play className="mr-2 h-4 w-4" />
+                              Start Mathematics Quiz
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      )}
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
