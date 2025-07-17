@@ -38,6 +38,8 @@ import {
   Languages
 } from 'lucide-react';
 import SubjectSection from './SubjectSection';
+import SubjectCard from './SubjectCard';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 interface QuizDashboardProps {
   user: { name: string; grade: string; school?: string };
@@ -48,6 +50,7 @@ interface QuizDashboardProps {
 const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => {
   const [selectedSubject, setSelectedSubject] = useState('all');
   const [expandedGrades, setExpandedGrades] = useState<number[]>([]);
+  const isMobile = useIsMobile();
 
   const toggleGrade = (gradeNumber: number) => {
     setExpandedGrades(prev => 
@@ -356,6 +359,27 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     ]
   };
 
+  // Mock progress data for subjects
+  const getSubjectProgress = (subjectName: string) => {
+    const mockData = {
+      'Mathematics': { completed: 8, total: 12, percentage: 67 },
+      'Physics': { completed: 6, total: 9, percentage: 67 },
+      'Chemistry': { completed: 7, total: 9, percentage: 78 },
+      'Biology': { completed: 5, total: 7, percentage: 71 },
+      'Technical Drawing': { completed: 4, total: 7, percentage: 57 },
+      'Geography': { completed: 6, total: 8, percentage: 75 },
+      'History': { completed: 7, total: 8, percentage: 88 },
+      'Economics': { completed: 5, total: 9, percentage: 56 },
+      'General Business': { completed: 6, total: 8, percentage: 75 },
+      'English': { completed: 5, total: 6, percentage: 83 },
+      'Civics': { completed: 4, total: 6, percentage: 67 },
+      'Physical Education': { completed: 5, total: 6, percentage: 83 },
+      'IT': { completed: 6, total: 8, percentage: 75 },
+      'National Language': { completed: 4, total: 6, percentage: 67 }
+    };
+    return mockData[subjectName as keyof typeof mockData] || { completed: 0, total: 10, percentage: 0 };
+  };
+
   // Function to create a quiz object with difficulty
   const createQuiz = (subject: any, grade: number, difficulty: 'Easy' | 'Medium' | 'Hard') => {
     return {
@@ -443,7 +467,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
             </div>
             <div>
               <h4 className="text-lg font-bold">Grade 12 Subjects</h4>
-              <p className="text-sm text-gray-400">University entrance preparation with detailed chapters</p>
+              <p className="text-sm text-gray-400">University entrance preparation with interactive cards</p>
             </div>
           </div>
           <Badge variant="secondary" className="bg-orange-100 text-orange-800">
@@ -451,29 +475,71 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
           </Badge>
         </div>
         
-        <SubjectSection
-          title="📘 Natural Science Stream"
-          subjects={grade12Subjects.naturalScience}
-          badgeColor="bg-blue-100 text-blue-800"
-          onSelectQuiz={onSelectQuiz}
-          grade={12}
-        />
-        
-        <SubjectSection
-          title="📗 Social Science Stream"
-          subjects={grade12Subjects.socialScience}
-          badgeColor="bg-green-100 text-green-800"
-          onSelectQuiz={onSelectQuiz}
-          grade={12}
-        />
-        
-        <SubjectSection
-          title="📙 Common Courses"
-          subjects={grade12Subjects.common}
-          badgeColor="bg-yellow-100 text-yellow-800"
-          onSelectQuiz={onSelectQuiz}
-          grade={12}
-        />
+        {/* Natural Science Stream */}
+        <div className="mb-8">
+          <div className="flex items-center mb-4">
+            <h5 className="text-lg font-semibold text-white">📘 Natural Science Stream</h5>
+            <Badge variant="secondary" className="ml-3 bg-blue-100 text-blue-800">
+              {grade12Subjects.naturalScience.length} subjects
+            </Badge>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {grade12Subjects.naturalScience.map((subject, index) => (
+              <SubjectCard
+                key={index}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={12}
+                onSelectQuiz={onSelectQuiz}
+                isMobile={isMobile}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Social Science Stream */}
+        <div className="mb-8">
+          <div className="flex items-center mb-4">
+            <h5 className="text-lg font-semibold text-white">📗 Social Science Stream</h5>
+            <Badge variant="secondary" className="ml-3 bg-green-100 text-green-800">
+              {grade12Subjects.socialScience.length} subjects
+            </Badge>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {grade12Subjects.socialScience.map((subject, index) => (
+              <SubjectCard
+                key={index}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={12}
+                onSelectQuiz={onSelectQuiz}
+                isMobile={isMobile}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Common Courses */}
+        <div className="mb-8">
+          <div className="flex items-center mb-4">
+            <h5 className="text-lg font-semibold text-white">📙 Common Courses</h5>
+            <Badge variant="secondary" className="ml-3 bg-yellow-100 text-yellow-800">
+              {grade12Subjects.common.length} subjects
+            </Badge>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {grade12Subjects.common.map((subject, index) => (
+              <SubjectCard
+                key={index}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={12}
+                onSelectQuiz={onSelectQuiz}
+                isMobile={isMobile}
+              />
+            ))}
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
