@@ -136,24 +136,24 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
 
   const grade11Subjects = {
     naturalScience: [
-      { name: 'Biology', icon: Dna, topics: ['Cell Biology', 'Genetics', 'Ecology', 'Human Biology'] },
-      { name: 'Chemistry', icon: FlaskConical, topics: ['Organic Chemistry', 'Physical Chemistry', 'Chemical Bonding', 'Reactions'] },
-      { name: 'Physics', icon: Zap, topics: ['Mechanics', 'Waves', 'Electricity', 'Optics'] },
-      { name: 'Technical Drawing', icon: Ruler, topics: ['Engineering Drawing', '3D Modeling', 'Geometric Construction', 'Technical Skills'] }
+      { name: 'Biology', icon: Dna, chapters: ['Cell Biology', 'Genetics', 'Ecology', 'Human Biology'] },
+      { name: 'Chemistry', icon: FlaskConical, chapters: ['Organic Chemistry', 'Physical Chemistry', 'Chemical Bonding', 'Reactions'] },
+      { name: 'Physics', icon: Zap, chapters: ['Mechanics', 'Waves', 'Electricity', 'Optics'] },
+      { name: 'Technical Drawing', icon: Ruler, chapters: ['Engineering Drawing', '3D Modeling', 'Geometric Construction', 'Technical Skills'] }
     ],
     socialScience: [
-      { name: 'Geography', icon: MapPin, topics: ['Physical Geography', 'Human Geography', 'Climate Studies', 'Regional Geography'] },
-      { name: 'History', icon: Clock8, topics: ['World History', 'Ethiopian History', 'Ancient Civilizations', 'Modern History'] },
-      { name: 'Economics', icon: DollarSign, topics: ['Microeconomics', 'Macroeconomics', 'Market Systems', 'Economic Theory'] },
-      { name: 'General Business', icon: Briefcase, topics: ['Business Fundamentals', 'Marketing Basics', 'Accounting Principles', 'Management'] }
+      { name: 'Geography', icon: MapPin, chapters: ['Physical Geography', 'Human Geography', 'Climate Studies', 'Regional Geography'] },
+      { name: 'History', icon: Clock8, chapters: ['World History', 'Ethiopian History', 'Ancient Civilizations', 'Modern History'] },
+      { name: 'Economics', icon: DollarSign, chapters: ['Microeconomics', 'Macroeconomics', 'Market Systems', 'Economic Theory'] },
+      { name: 'General Business', icon: Briefcase, chapters: ['Business Fundamentals', 'Marketing Basics', 'Accounting Principles', 'Management'] }
     ],
     common: [
-      { name: 'English', icon: BookA, topics: ['Literature', 'Grammar', 'Writing Skills', 'Reading Comprehension'] },
-      { name: 'Civics', icon: Scale, topics: ['Government Systems', 'Constitution', 'Human Rights', 'Citizenship'] },
-      { name: 'Physical Education', icon: Activity, topics: ['Sports', 'Health Education', 'Fitness', 'Body Systems'] },
-      { name: 'Mathematics', icon: Calculator, topics: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'] },
-      { name: 'IT', icon: Laptop, topics: ['Computer Basics', 'Programming Introduction', 'Database Fundamentals', 'Internet Technology'] },
-      { name: 'National Language', icon: Languages, topics: ['Amharic Literature', 'Grammar', 'Composition', 'Language Skills'] }
+      { name: 'English', icon: BookA, chapters: ['Literature', 'Grammar', 'Writing Skills', 'Reading Comprehension'] },
+      { name: 'Civics', icon: Scale, chapters: ['Government Systems', 'Constitution', 'Human Rights', 'Citizenship'] },
+      { name: 'Physical Education', icon: Activity, chapters: ['Sports', 'Health Education', 'Fitness', 'Body Systems'] },
+      { name: 'Mathematics', icon: Calculator, chapters: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'] },
+      { name: 'IT', icon: Laptop, chapters: ['Computer Basics', 'Programming Introduction', 'Database Fundamentals', 'Internet Technology'] },
+      { name: 'National Language', icon: Languages, chapters: ['Amharic Literature', 'Grammar', 'Composition', 'Language Skills'] }
     ]
   };
 
@@ -380,7 +380,6 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     return mockData[subjectName as keyof typeof mockData] || { completed: 0, total: 10, percentage: 0 };
   };
 
-  // Function to create a quiz object with difficulty
   const createQuiz = (subject: any, grade: number, difficulty: 'Easy' | 'Medium' | 'Hard') => {
     return {
       id: Math.random().toString(36).substr(2, 9),
@@ -456,6 +455,93 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       default: return 'bg-gray-100 text-gray-800';
     }
   };
+
+  const renderGrade11Content = () => (
+    <Card className="bg-white/5 border-white/20 text-white">
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center space-x-4">
+            <div className="p-3 rounded-lg bg-purple-500">
+              <BookOpen className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <h4 className="text-lg font-bold">Grade 11 Subjects</h4>
+              <p className="text-sm text-gray-400">Pre-university level studies with interactive cards</p>
+            </div>
+          </div>
+          <Badge variant="secondary" className="bg-purple-100 text-purple-800">
+            14 subjects
+          </Badge>
+        </div>
+        
+        {/* Natural Science Stream */}
+        <div className="mb-8">
+          <div className="flex items-center mb-4">
+            <h5 className="text-lg font-semibold text-white">📘 Natural Science Stream</h5>
+            <Badge variant="secondary" className="ml-3 bg-blue-100 text-blue-800">
+              {grade11Subjects.naturalScience.length} subjects
+            </Badge>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {grade11Subjects.naturalScience.map((subject, index) => (
+              <SubjectCard
+                key={index}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={11}
+                onSelectQuiz={onSelectQuiz}
+                isMobile={isMobile}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Social Science Stream */}
+        <div className="mb-8">
+          <div className="flex items-center mb-4">
+            <h5 className="text-lg font-semibold text-white">📗 Social Science Stream</h5>
+            <Badge variant="secondary" className="ml-3 bg-green-100 text-green-800">
+              {grade11Subjects.socialScience.length} subjects
+            </Badge>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {grade11Subjects.socialScience.map((subject, index) => (
+              <SubjectCard
+                key={index}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={11}
+                onSelectQuiz={onSelectQuiz}
+                isMobile={isMobile}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Common Courses */}
+        <div className="mb-8">
+          <div className="flex items-center mb-4">
+            <h5 className="text-lg font-semibold text-white">📙 Common Courses</h5>
+            <Badge variant="secondary" className="ml-3 bg-yellow-100 text-yellow-800">
+              {grade11Subjects.common.length} subjects
+            </Badge>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {grade11Subjects.common.map((subject, index) => (
+              <SubjectCard
+                key={index}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={11}
+                onSelectQuiz={onSelectQuiz}
+                isMobile={isMobile}
+              />
+            ))}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 
   const renderGrade12Content = () => (
     <Card className="bg-white/5 border-white/20 text-white">
@@ -646,6 +732,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                   
                   <CollapsibleContent className="space-y-4">
                     <div className="ml-8 mt-4">
+                      {grade.grade === 11 ? renderGrade11Content() : null}
                       {grade.grade === 12 ? renderGrade12Content() : null}
                     </div>
                   </CollapsibleContent>
