@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -15,7 +16,8 @@ import {
   Award,
   Target,
   GraduationCap,
-  ChevronRight
+  ChevronRight,
+  Calculator
 } from 'lucide-react';
 
 interface QuizDashboardProps {
@@ -26,15 +28,6 @@ interface QuizDashboardProps {
 
 const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => {
   const [selectedSubject, setSelectedSubject] = useState('all');
-
-  const subjects = [
-    { id: 'mathematics', name: 'Mathematics', color: 'bg-blue-500', quizzes: 12 },
-    { id: 'physics', name: 'Physics', color: 'bg-purple-500', quizzes: 8 },
-    { id: 'chemistry', name: 'Chemistry', color: 'bg-green-500', quizzes: 10 },
-    { id: 'biology', name: 'Biology', color: 'bg-emerald-500', quizzes: 9 },
-    { id: 'english', name: 'English', color: 'bg-red-500', quizzes: 15 },
-    { id: 'amharic', name: 'Amharic', color: 'bg-yellow-500', quizzes: 11 }
-  ];
 
   const gradeCards = [
     {
@@ -74,6 +67,13 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       color: 'from-orange-500 to-red-500'
     }
   ];
+
+  const mathTopics = {
+    9: ['Algebra Basics', 'Linear Equations', 'Geometry Fundamentals', 'Number Systems'],
+    10: ['Quadratic Functions', 'Trigonometry', 'Statistics', 'Probability'],
+    11: ['Advanced Algebra', 'Calculus Introduction', 'Matrices', 'Sequences & Series'],
+    12: ['Differential Calculus', 'Integral Calculus', 'Complex Numbers', 'Vectors']
+  };
 
   const quizzes = [
     {
@@ -192,39 +192,78 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
           {/* Grade Cards Section */}
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-6">Grade Levels</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="space-y-8">
               {gradeCards.map((grade) => (
-                <Card key={grade.grade} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300 group cursor-pointer">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${grade.color}`}>
-                        <GraduationCap className="h-6 w-6 text-white" />
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors" />
-                    </div>
-                    
-                    <h3 className="text-xl font-bold mb-2">{grade.title}</h3>
-                    <p className="text-sm text-gray-400 mb-4">{grade.description}</p>
-                    
-                    <div className="space-y-3">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Subjects:</span>
-                        <span className="font-medium">{grade.subjects}</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Quizzes:</span>
-                        <span className="font-medium">{grade.quizzes}</span>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-400">Progress:</span>
-                          <span className="font-medium">{grade.progress}%</span>
+                <div key={grade.grade} className="space-y-4">
+                  <Card className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300 group cursor-pointer">
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className={`p-3 rounded-lg bg-gradient-to-r ${grade.color}`}>
+                          <GraduationCap className="h-6 w-6 text-white" />
                         </div>
-                        <Progress value={grade.progress} className="h-2" />
+                        <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors" />
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      
+                      <h3 className="text-xl font-bold mb-2">{grade.title}</h3>
+                      <p className="text-sm text-gray-400 mb-4">{grade.description}</p>
+                      
+                      <div className="space-y-3">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-400">Subjects:</span>
+                          <span className="font-medium">{grade.subjects}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-400">Quizzes:</span>
+                          <span className="font-medium">{grade.quizzes}</span>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-400">Progress:</span>
+                            <span className="font-medium">{grade.progress}%</span>
+                          </div>
+                          <Progress value={grade.progress} className="h-2" />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Mathematics Subject Card */}
+                  <div className="ml-8">
+                    <Card className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center space-x-4">
+                            <div className="p-3 rounded-lg bg-blue-500">
+                              <Calculator className="h-6 w-6 text-white" />
+                            </div>
+                            <div>
+                              <h4 className="text-lg font-bold">Mathematics</h4>
+                              <p className="text-sm text-gray-400">Core mathematical concepts</p>
+                            </div>
+                          </div>
+                          <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                            {mathTopics[grade.grade as keyof typeof mathTopics].length} topics
+                          </Badge>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-2 mb-4">
+                          {mathTopics[grade.grade as keyof typeof mathTopics].map((topic, index) => (
+                            <div key={index} className="text-sm text-gray-300 bg-white/5 rounded px-3 py-2">
+                              {topic}
+                            </div>
+                          ))}
+                        </div>
+
+                        <Button 
+                          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
+                        >
+                          <Play className="mr-2 h-4 w-4" />
+                          Start Mathematics Quiz
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
