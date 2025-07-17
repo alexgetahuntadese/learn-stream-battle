@@ -1,6 +1,7 @@
+
 import { grade12BiologyQuestions, getGrade12BiologyQuestions } from './grade12Biology';
 
-interface Question {
+export interface Question {
   id: string;
   question: string;
   options: string[];
