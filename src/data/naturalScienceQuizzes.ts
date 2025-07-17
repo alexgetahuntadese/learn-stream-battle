@@ -279,12 +279,15 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
     console.log('Found Grade 12 Biology questions:', questions.length);
     
     if (questions.length > 0) {
-      return questions.slice(0, count);
+      // Shuffle questions and return the requested count
+      const shuffled = questions.sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
     }
     
     // If no questions found, log the available chapters
     console.log('Available Grade 12 Biology chapters:', Object.keys(grade12BiologyQuestions));
     console.log('Requested chapter:', chapter);
+    return [];
   }
 
   let questions: Question[] = [];
@@ -351,5 +354,8 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
   }
 
   console.log('Final generated questions:', questions.length);
-  return questions.slice(0, count);
+  
+  // Shuffle and return the requested count
+  const shuffled = questions.sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
 };
