@@ -1,4 +1,3 @@
-
 import { grade12BiologyQuestions, getGrade12BiologyQuestions } from './grade12Biology';
 
 export interface Question {
@@ -282,28 +281,49 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
     const specificDifficultyQuestions = getGrade12BiologyQuestions(chapter, difficultyLevel);
     console.log(`Found ${specificDifficultyQuestions.length} ${difficulty} questions for ${chapter}`);
     
-    // If we have enough questions for the requested difficulty, use them
-    if (specificDifficultyQuestions.length >= count) {
-      questions = specificDifficultyQuestions.slice(0, count);
-    } else {
-      // If not enough questions for the specific difficulty, mix difficulties
-      console.log(`Not enough ${difficulty} questions, mixing difficulties`);
-      questions = [...specificDifficultyQuestions];
+    // Add all questions from the specific difficulty
+    questions = [...specificDifficultyQuestions];
+    
+    // If we need more questions, add from other difficulties
+    if (questions.length < count) {
+      console.log(`Need ${count - questions.length} more questions, mixing difficulties`);
       
-      // Add questions from other difficulties to reach the count
       const allDifficulties: ('easy' | 'medium' | 'hard')[] = ['easy', 'medium', 'hard'];
+      
       for (const diff of allDifficulties) {
         if (diff !== difficultyLevel && questions.length < count) {
           const additionalQuestions = getGrade12BiologyQuestions(chapter, diff);
           // Filter out questions we already have
-          const newQuestions = additionalQuestions.filter(q => !questions.find(existing => existing.id === q.id));
-          questions.push(...newQuestions.slice(0, count - questions.length));
+          const newQuestions = additionalQuestions.filter(q => 
+            !questions.find(existing => existing.id === q.id)
+          );
+          
+          // Add as many as we need
+          const questionsToAdd = newQuestions.slice(0, count - questions.length);
+          questions.push(...questionsToAdd);
+          console.log(`Added ${questionsToAdd.length} ${diff} questions`);
         }
       }
     }
     
+    // If we still don't have enough, duplicate some questions with modified IDs
+    if (questions.length < count && questions.length > 0) {
+      console.log(`Still need ${count - questions.length} more questions, duplicating with modified IDs`);
+      const originalQuestionsCount = questions.length;
+      
+      while (questions.length < count) {
+        const sourceIndex = (questions.length - originalQuestionsCount) % originalQuestionsCount;
+        const sourceQuestion = questions[sourceIndex];
+        
+        questions.push({
+          ...sourceQuestion,
+          id: `${sourceQuestion.id}_dup_${questions.length}`
+        });
+      }
+    }
+    
     console.log(`Returning ${questions.length} questions for Grade 12 Biology ${chapter} (${difficulty})`);
-    return questions;
+    return questions.slice(0, count);
   }
 
   let questions: any[] = [];
