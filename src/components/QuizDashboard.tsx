@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -15,7 +14,6 @@ import {
   TrendingUp,
   Award,
   Target,
-  Users,
   GraduationCap,
   ChevronRight
 } from 'lucide-react';
@@ -127,9 +125,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     { icon: TrendingUp, label: 'This Week', value: '+5', color: 'text-purple-500' }
   ];
 
-  const filteredQuizzes = selectedSubject === 'all' 
-    ? quizzes 
-    : quizzes.filter(quiz => quiz.subject === selectedSubject);
+  const filteredQuizzes = quizzes;
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty.toLowerCase()) {
@@ -233,117 +229,70 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Subjects Sidebar */}
-            <div className="lg:col-span-1">
-              <Card className="bg-white/5 border-white/20 text-white">
-                <CardHeader>
-                  <CardTitle>Subjects</CardTitle>
-                  <CardDescription className="text-gray-300">
-                    Choose a subject to filter quizzes
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <Button
-                    variant={selectedSubject === 'all' ? 'default' : 'ghost'}
-                    className={`w-full justify-start ${
-                      selectedSubject === 'all' 
-                        ? 'bg-gradient-to-r from-green-600 to-yellow-600' 
-                        : 'text-white hover:bg-white/10'
-                    }`}
-                    onClick={() => setSelectedSubject('all')}
-                  >
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    All Subjects
-                  </Button>
-                  
-                  {subjects.map((subject) => (
-                    <Button
-                      key={subject.id}
-                      variant={selectedSubject === subject.id ? 'default' : 'ghost'}
-                      className={`w-full justify-start ${
-                        selectedSubject === subject.id 
-                          ? 'bg-gradient-to-r from-green-600 to-yellow-600' 
-                          : 'text-white hover:bg-white/10'
-                      }`}
-                      onClick={() => setSelectedSubject(subject.id)}
-                    >
-                      <div className={`w-3 h-3 rounded-full mr-3 ${subject.color}`}></div>
-                      {subject.name}
-                      <Badge variant="secondary" className="ml-auto bg-white/20 text-white">
-                        {subject.quizzes}
-                      </Badge>
-                    </Button>
-                  ))}
-                </CardContent>
-              </Card>
+          {/* Quizzes List - Full Width */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold">Available Quizzes</h2>
+              <Badge variant="secondary" className="bg-white/20 text-white">
+                {filteredQuizzes.length} quizzes
+              </Badge>
             </div>
 
-            {/* Quizzes List */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">Available Quizzes</h2>
-                <Badge variant="secondary" className="bg-white/20 text-white">
-                  {filteredQuizzes.length} quizzes
-                </Badge>
-              </div>
-
-              <div className="space-y-4">
-                {filteredQuizzes.map((quiz) => (
-                  <Card key={quiz.id} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold mb-2">{quiz.title}</h3>
-                          <div className="flex items-center space-x-4 text-sm text-gray-300">
-                            <div className="flex items-center">
-                              <Clock className="mr-1 h-4 w-4" />
-                              {quiz.duration} min
-                            </div>
-                            <div className="flex items-center">
-                              <BookOpen className="mr-1 h-4 w-4" />
-                              {quiz.questions} questions
-                            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredQuizzes.map((quiz) => (
+                <Card key={quiz.id} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2">{quiz.title}</h3>
+                        <div className="flex items-center space-x-4 text-sm text-gray-300">
+                          <div className="flex items-center">
+                            <Clock className="mr-1 h-4 w-4" />
+                            {quiz.duration} min
                           </div>
-                        </div>
-                        
-                        <div className="flex items-center space-x-2">
-                          <Badge className={getDifficultyColor(quiz.difficulty)}>
-                            {quiz.difficulty}
-                          </Badge>
-                          {quiz.completed && (
-                            <Badge variant="secondary" className="bg-green-100 text-green-800">
-                              <Award className="mr-1 h-3 w-3" />
-                              {quiz.score}%
-                            </Badge>
-                          )}
+                          <div className="flex items-center">
+                            <BookOpen className="mr-1 h-4 w-4" />
+                            {quiz.questions} questions
+                          </div>
                         </div>
                       </div>
+                      
+                      <div className="flex items-center space-x-2">
+                        <Badge className={getDifficultyColor(quiz.difficulty)}>
+                          {quiz.difficulty}
+                        </Badge>
+                        {quiz.completed && (
+                          <Badge variant="secondary" className="bg-green-100 text-green-800">
+                            <Award className="mr-1 h-3 w-3" />
+                            {quiz.score}%
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
 
-                      {quiz.completed ? (
-                        <div className="space-y-2">
-                          <div className="flex justify-between text-sm">
-                            <span>Score: {quiz.score}%</span>
-                            <span>Completed</span>
-                          </div>
-                          <Progress 
-                            value={quiz.score} 
-                            className="h-2"
-                          />
+                    {quiz.completed ? (
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>Score: {quiz.score}%</span>
+                          <span>Completed</span>
                         </div>
-                      ) : (
-                        <Button 
-                          onClick={() => onSelectQuiz(quiz)}
-                          className="w-full bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0"
-                        >
-                          <Play className="mr-2 h-4 w-4" />
-                          Start Quiz
-                        </Button>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                        <Progress 
+                          value={quiz.score} 
+                          className="h-2"
+                        />
+                      </div>
+                    ) : (
+                      <Button 
+                        onClick={() => onSelectQuiz(quiz)}
+                        className="w-full bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white border-0"
+                      >
+                        <Play className="mr-2 h-4 w-4" />
+                        Start Quiz
+                      </Button>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
