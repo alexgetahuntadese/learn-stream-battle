@@ -106,6 +106,76 @@ const unit1Questions = {
       options: ['To identify individuals', 'To count chromosomes', 'To measure proteins', 'To study cells'],
       correct: 'To identify individuals',
       explanation: 'DNA fingerprinting creates unique genetic profiles that can be used to identify individuals.'
+    },
+    {
+      id: 'bio12_u1_e16',
+      question: 'What is tissue culture?',
+      options: ['Growing cells in a controlled environment', 'Studying animal behavior', 'Examining fossils', 'Measuring temperature'],
+      correct: 'Growing cells in a controlled environment',
+      explanation: 'Tissue culture involves growing plant or animal cells in artificial media under controlled conditions.'
+    },
+    {
+      id: 'bio12_u1_e17',
+      question: 'Which organism is commonly used to produce insulin?',
+      options: ['Bacteria', 'Elephants', 'Trees', 'Fish'],
+      correct: 'Bacteria',
+      explanation: 'Genetically modified bacteria (E. coli) are commonly used to produce human insulin for diabetes treatment.'
+    },
+    {
+      id: 'bio12_u1_e18',
+      question: 'What is a DNA probe?',
+      options: ['A DNA sequence used to detect specific genes', 'A tool for cutting DNA', 'A type of microscope', 'A chemical solution'],
+      correct: 'A DNA sequence used to detect specific genes',
+      explanation: 'DNA probes are short DNA sequences that can bind to complementary sequences to detect specific genes.'
+    },
+    {
+      id: 'bio12_u1_e19',
+      question: 'What is the main advantage of biotechnology in agriculture?',
+      options: ['Increased crop yield and resistance', 'Reduced soil quality', 'Higher costs', 'Less nutrition'],
+      correct: 'Increased crop yield and resistance',
+      explanation: 'Biotechnology helps create crops with higher yields and resistance to pests and diseases.'
+    },
+    {
+      id: 'bio12_u1_e20',
+      question: 'What is forensic biotechnology used for?',
+      options: ['Solving crimes using biological evidence', 'Cooking food', 'Building houses', 'Weather prediction'],
+      correct: 'Solving crimes using biological evidence',
+      explanation: 'Forensic biotechnology uses DNA analysis and other biological techniques to solve criminal cases.'
+    },
+    {
+      id: 'bio12_u1_e21',
+      question: 'What is bacterial transformation?',
+      options: ['Introducing foreign DNA into bacteria', 'Bacteria changing shape', 'Bacteria reproducing', 'Bacteria dying'],
+      correct: 'Introducing foreign DNA into bacteria',
+      explanation: 'Bacterial transformation is the process of introducing foreign DNA into bacterial cells.'
+    },
+    {
+      id: 'bio12_u1_e22',
+      question: 'What is the role of DNA polymerase in PCR?',
+      options: ['Synthesizes new DNA strands', 'Cuts DNA', 'Joins proteins', 'Destroys RNA'],
+      correct: 'Synthesizes new DNA strands',
+      explanation: 'DNA polymerase synthesizes new DNA strands by adding nucleotides during PCR amplification.'
+    },
+    {
+      id: 'bio12_u1_e23',
+      question: 'What is gene sequencing?',
+      options: ['Determining the order of nucleotides in DNA', 'Counting genes', 'Removing genes', 'Copying genes'],
+      correct: 'Determining the order of nucleotides in DNA',
+      explanation: 'Gene sequencing determines the exact order of nucleotides (A, T, G, C) in a DNA molecule.'
+    },
+    {
+      id: 'bio12_u1_e24',
+      question: 'What is the purpose of gel electrophoresis?',
+      options: ['Separate DNA fragments by size', 'Heat DNA', 'Cool DNA', 'Color DNA'],
+      correct: 'Separate DNA fragments by size',
+      explanation: 'Gel electrophoresis separates DNA fragments based on their size using an electric field.'
+    },
+    {
+      id: 'bio12_u1_e25',
+      question: 'What is a biological vector?',
+      options: ['An organism that carries and transfers genes', 'A type of disease', 'A measurement tool', 'A chemical compound'],
+      correct: 'An organism that carries and transfers genes',
+      explanation: 'Biological vectors are organisms (like bacteria or viruses) used to transfer genetic material between cells.'
     }
   ],
   medium: [
