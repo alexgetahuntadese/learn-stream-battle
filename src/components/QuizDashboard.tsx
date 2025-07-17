@@ -176,15 +176,15 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     ]
   };
 
-  // Function to create a quiz object
-  const createQuiz = (subject: any, grade: number) => {
+  // Function to create a quiz object with difficulty
+  const createQuiz = (subject: any, grade: number, difficulty: 'Easy' | 'Medium' | 'Hard') => {
     return {
       id: Math.random().toString(36).substr(2, 9),
-      title: `${subject.name} - Grade ${grade}`,
+      title: `${subject.name} - Grade ${grade} (${difficulty})`,
       subject: subject.name.toLowerCase().replace(/\s+/g, '_'),
-      difficulty: 'Medium',
-      duration: 45,
-      questions: 20,
+      difficulty: difficulty,
+      duration: difficulty === 'Easy' ? 30 : difficulty === 'Medium' ? 45 : 60,
+      questions: difficulty === 'Easy' ? 15 : difficulty === 'Medium' ? 20 : 25,
       completed: false,
       score: null,
       grade: grade,
@@ -284,14 +284,32 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                 ))}
               </div>
 
-              <Button 
-                size="sm"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
-                onClick={() => onSelectQuiz(createQuiz(subject, 12))}
-              >
-                <Play className="mr-1 h-3 w-3" />
-                Start Quiz
-              </Button>
+              <div className="space-y-2">
+                <div className="text-xs text-gray-300 mb-2">Choose Difficulty:</div>
+                <div className="grid grid-cols-3 gap-1">
+                  <Button 
+                    size="sm"
+                    className="text-xs bg-green-600 hover:bg-green-700 text-white border-0"
+                    onClick={() => onSelectQuiz(createQuiz(subject, 12, 'Easy'))}
+                  >
+                    Easy
+                  </Button>
+                  <Button 
+                    size="sm"
+                    className="text-xs bg-yellow-600 hover:bg-yellow-700 text-white border-0"
+                    onClick={() => onSelectQuiz(createQuiz(subject, 12, 'Medium'))}
+                  >
+                    Medium
+                  </Button>
+                  <Button 
+                    size="sm"
+                    className="text-xs bg-red-600 hover:bg-red-700 text-white border-0"
+                    onClick={() => onSelectQuiz(createQuiz(subject, 12, 'Hard'))}
+                  >
+                    Hard
+                  </Button>
+                </div>
+              </div>
             </CardContent>
           </Card>
         ))}
@@ -411,7 +429,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                                 </div>
                                 <div>
                                   <h4 className="text-lg font-bold">Grade 12 Subjects</h4>
-                                  <p className="text-sm text-gray-400">University entrance preparation</p>
+                                  <p className="text-sm text-gray-400">University entrance preparation with difficulty levels</p>
                                 </div>
                               </div>
                               <Badge variant="secondary" className="bg-orange-100 text-orange-800">
