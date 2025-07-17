@@ -155,24 +155,203 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
 
   const grade12Subjects = {
     naturalScience: [
-      { name: 'Biology', icon: Dna, topics: ['Cell Biology', 'Genetics', 'Ecology', 'Evolution'] },
-      { name: 'Chemistry', icon: FlaskConical, topics: ['Organic Chemistry', 'Physical Chemistry', 'Analytical Chemistry', 'Biochemistry'] },
-      { name: 'Physics', icon: Zap, topics: ['Mechanics', 'Thermodynamics', 'Electromagnetism', 'Modern Physics'] },
-      { name: 'Technical Drawing', icon: Ruler, topics: ['Geometric Construction', '3D Modeling', 'Engineering Drawing', 'CAD Basics'] }
+      { 
+        name: 'Biology', 
+        icon: Dna, 
+        chapters: [
+          'Chapter 1: Cell Biology and Genetics',
+          'Chapter 2: Human Biology and Health',
+          'Chapter 3: Reproduction and Development',
+          'Chapter 4: Heredity and Genetics',
+          'Chapter 5: Evolution',
+          'Chapter 6: Ecology and Environmental Biology',
+          'Chapter 7: Biotechnology'
+        ]
+      },
+      { 
+        name: 'Chemistry', 
+        icon: FlaskConical, 
+        chapters: [
+          'Chapter 1: Atomic Structure and Periodic Properties',
+          'Chapter 2: Chemical Bonding',
+          'Chapter 3: States of Matter',
+          'Chapter 4: Solutions',
+          'Chapter 5: Chemical Kinetics',
+          'Chapter 6: Chemical Equilibrium',
+          'Chapter 7: Acids and Bases',
+          'Chapter 8: Redox Reactions and Electrochemistry',
+          'Chapter 9: Organic Chemistry'
+        ]
+      },
+      { 
+        name: 'Physics', 
+        icon: Zap, 
+        chapters: [
+          'Chapter 1: Mechanics',
+          'Chapter 2: Thermal Physics',
+          'Chapter 3: Oscillations and Waves',
+          'Chapter 4: Electricity and Magnetism',
+          'Chapter 5: Electromagnetic Induction',
+          'Chapter 6: Alternating Current',
+          'Chapter 7: Electromagnetic Waves',
+          'Chapter 8: Optics',
+          'Chapter 9: Modern Physics'
+        ]
+      },
+      { 
+        name: 'Technical Drawing', 
+        icon: Ruler, 
+        chapters: [
+          'Chapter 1: Introduction to Technical Drawing',
+          'Chapter 2: Geometric Construction',
+          'Chapter 3: Orthographic Projection',
+          'Chapter 4: Isometric Drawing',
+          'Chapter 5: Sectional Views',
+          'Chapter 6: Working Drawings',
+          'Chapter 7: Computer-Aided Design (CAD)'
+        ]
+      }
     ],
     socialScience: [
-      { name: 'Geography', icon: MapPin, topics: ['Physical Geography', 'Human Geography', 'Environmental Geography', 'GIS Fundamentals'] },
-      { name: 'History', icon: Clock8, topics: ['World History', 'Ethiopian History', 'African History', 'Modern History'] },
-      { name: 'Economics', icon: DollarSign, topics: ['Microeconomics', 'Macroeconomics', 'Development Economics', 'International Trade'] },
-      { name: 'General Business', icon: Briefcase, topics: ['Business Management', 'Marketing', 'Accounting', 'Entrepreneurship'] }
+      { 
+        name: 'Geography', 
+        icon: MapPin, 
+        chapters: [
+          'Chapter 1: Physical Geography of the World',
+          'Chapter 2: Population and Settlement',
+          'Chapter 3: Economic Geography',
+          'Chapter 4: Political Geography',
+          'Chapter 5: Environmental Geography',
+          'Chapter 6: Regional Geography of Africa',
+          'Chapter 7: Geography of Ethiopia and the Horn',
+          'Chapter 8: Geographic Information Systems (GIS)'
+        ]
+      },
+      { 
+        name: 'History', 
+        icon: Clock8, 
+        chapters: [
+          'Chapter 1: The Ancient World',
+          'Chapter 2: Medieval Period',
+          'Chapter 3: The Modern World (1500-1800)',
+          'Chapter 4: Age of Revolution and Nationalism',
+          'Chapter 5: The 20th Century World',
+          'Chapter 6: Contemporary World',
+          'Chapter 7: African History',
+          'Chapter 8: Ethiopian History'
+        ]
+      },
+      { 
+        name: 'Economics', 
+        icon: DollarSign, 
+        chapters: [
+          'Chapter 1: Introduction to Economics',
+          'Chapter 2: Demand, Supply and Market Equilibrium',
+          'Chapter 3: Consumer Behavior and Demand Analysis',
+          'Chapter 4: Production and Cost Analysis',
+          'Chapter 5: Market Structure and Pricing',
+          'Chapter 6: Factor Markets',
+          'Chapter 7: National Income and Economic Growth',
+          'Chapter 8: Money, Banking and Monetary Policy',
+          'Chapter 9: International Trade and Finance'
+        ]
+      },
+      { 
+        name: 'General Business', 
+        icon: Briefcase, 
+        chapters: [
+          'Chapter 1: Introduction to Business',
+          'Chapter 2: Business Organization and Management',
+          'Chapter 3: Marketing Management',
+          'Chapter 4: Financial Management',
+          'Chapter 5: Human Resource Management',
+          'Chapter 6: Production and Operations Management',
+          'Chapter 7: Business Ethics and Social Responsibility',
+          'Chapter 8: Entrepreneurship and Small Business'
+        ]
+      }
     ],
     common: [
-      { name: 'English', icon: BookA, topics: ['Literature', 'Grammar', 'Writing Skills', 'Communication'] },
-      { name: 'Civics', icon: Scale, topics: ['Government', 'Constitution', 'Human Rights', 'Democracy'] },
-      { name: 'Physical Education', icon: Activity, topics: ['Sports Science', 'Health Education', 'Fitness', 'Nutrition'] },
-      { name: 'Mathematics', icon: Calculator, topics: ['Sequence and Series', 'Introduction to Calculus', 'Statistics', 'Introduction to linear programming', 'Mathematical Application in Business'] },
-      { name: 'IT', icon: Laptop, topics: ['Computer Basics', 'Programming', 'Database', 'Web Development'] },
-      { name: 'National Language', icon: Languages, topics: ['Amharic Literature', 'Grammar', 'Composition', 'Cultural Studies'] }
+      { 
+        name: 'English', 
+        icon: BookA, 
+        chapters: [
+          'Chapter 1: Reading Comprehension and Critical Analysis',
+          'Chapter 2: Grammar and Language Usage',
+          'Chapter 3: Writing Skills and Composition',
+          'Chapter 4: Literature and Literary Analysis',
+          'Chapter 5: Speaking and Listening Skills',
+          'Chapter 6: Research and Academic Writing'
+        ]
+      },
+      { 
+        name: 'Civics', 
+        icon: Scale, 
+        chapters: [
+          'Chapter 1: Principles of Democracy',
+          'Chapter 2: Constitutional Government',
+          'Chapter 3: Rule of Law and Human Rights',
+          'Chapter 4: Citizenship and Civic Participation',
+          'Chapter 5: Political Parties and Elections',
+          'Chapter 6: International Relations and Organizations'
+        ]
+      },
+      { 
+        name: 'Physical Education', 
+        icon: Activity, 
+        chapters: [
+          'Chapter 1: Health and Wellness',
+          'Chapter 2: Exercise Physiology',
+          'Chapter 3: Sports and Games',
+          'Chapter 4: Physical Fitness and Training',
+          'Chapter 5: Sports Psychology',
+          'Chapter 6: Sports Management and Organization'
+        ]
+      },
+      { 
+        name: 'Mathematics', 
+        icon: Calculator, 
+        chapters: [
+          'Chapter 1: Relations and Functions',
+          'Chapter 2: Sequences and Series',
+          'Chapter 3: Permutations and Combinations',
+          'Chapter 4: Binomial Theorem',
+          'Chapter 5: Limits and Derivatives',
+          'Chapter 6: Applications of Derivatives',
+          'Chapter 7: Integrals and Applications',
+          'Chapter 8: Differential Equations',
+          'Chapter 9: Probability',
+          'Chapter 10: Statistics',
+          'Chapter 11: Linear Programming',
+          'Chapter 12: Mathematical Applications in Business'
+        ]
+      },
+      { 
+        name: 'IT', 
+        icon: Laptop, 
+        chapters: [
+          'Chapter 1: Computer Systems and Architecture',
+          'Chapter 2: Operating Systems',
+          'Chapter 3: Programming Fundamentals',
+          'Chapter 4: Database Management Systems',
+          'Chapter 5: Computer Networks and Internet',
+          'Chapter 6: Web Development',
+          'Chapter 7: Computer Security',
+          'Chapter 8: Emerging Technologies'
+        ]
+      },
+      { 
+        name: 'National Language', 
+        icon: Languages, 
+        chapters: [
+          'Chapter 1: Amharic Grammar and Syntax',
+          'Chapter 2: Classical Amharic Literature',
+          'Chapter 3: Modern Amharic Literature',
+          'Chapter 4: Poetry and Prose Analysis',
+          'Chapter 5: Creative Writing',
+          'Chapter 6: Cultural and Historical Context'
+        ]
+      }
     ]
   };
 
@@ -188,7 +367,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       completed: false,
       score: null,
       grade: grade,
-      topics: subject.topics
+      chapters: subject.chapters || subject.topics
     };
   };
 
@@ -276,10 +455,10 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 gap-1 mb-3">
-                {subject.topics.map((topic: string, topicIndex: number) => (
-                  <div key={topicIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
-                    {topic}
+              <div className="grid grid-cols-1 gap-1 mb-3 max-h-32 overflow-y-auto">
+                {(subject.chapters || subject.topics || []).map((item: string, itemIndex: number) => (
+                  <div key={itemIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
+                    {item}
                   </div>
                 ))}
               </div>
@@ -429,7 +608,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                                 </div>
                                 <div>
                                   <h4 className="text-lg font-bold">Grade 12 Subjects</h4>
-                                  <p className="text-sm text-gray-400">University entrance preparation with difficulty levels</p>
+                                  <p className="text-sm text-gray-400">University entrance preparation with detailed chapters</p>
                                 </div>
                               </div>
                               <Badge variant="secondary" className="bg-orange-100 text-orange-800">
