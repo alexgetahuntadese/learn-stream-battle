@@ -1,3 +1,4 @@
+import { grade12Mathematics, getMathQuestionsForQuiz } from './grade12Mathematics';
 
 export interface QuizQuestion {
   id: number;
@@ -1139,10 +1140,17 @@ export const naturalScienceQuizzes: SubjectQuizData = {
         chapter: "Chapter 9: Organic Chemistry"
       }
     ]
-  }
+  },
+  mathematics: grade12Mathematics
 };
 
 export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty: 'Easy' | 'Medium' | 'Hard', questionCount: number = 5): QuizQuestion[] => {
+  // Handle mathematics separately
+  if (subject.toLowerCase() === 'mathematics') {
+    return getMathQuestionsForQuiz(chapter, difficulty, questionCount) as QuizQuestion[];
+  }
+  
+  // Handle other subjects (biology, chemistry)
   const subjectData = naturalScienceQuizzes[subject.toLowerCase()];
   if (!subjectData) return [];
   
