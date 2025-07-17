@@ -163,13 +163,12 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
         name: 'Biology', 
         icon: Dna, 
         chapters: [
-          'Chapter 1: Cell Biology and Genetics',
-          'Chapter 2: Human Biology and Health',
-          'Chapter 3: Reproduction and Development',
-          'Chapter 4: Heredity and Genetics',
-          'Chapter 5: Evolution',
-          'Chapter 6: Ecology and Environmental Biology',
-          'Chapter 7: Biotechnology'
+          'Unit 1: Application of Biology',
+          'Unit 2: Microorganisms',
+          'Unit 3: Energy transformation',
+          'Unit 4: Evolution',
+          'Unit 5: Human Body System',
+          'Unit 6: Climate Change'
         ]
       },
       { 
