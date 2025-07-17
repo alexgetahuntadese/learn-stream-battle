@@ -176,6 +176,22 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     ]
   };
 
+  // Function to create a quiz object
+  const createQuiz = (subject: any, grade: number) => {
+    return {
+      id: Math.random().toString(36).substr(2, 9),
+      title: `${subject.name} - Grade ${grade}`,
+      subject: subject.name.toLowerCase().replace(/\s+/g, '_'),
+      difficulty: 'Medium',
+      duration: 45,
+      questions: 20,
+      completed: false,
+      score: null,
+      grade: grade,
+      topics: subject.topics
+    };
+  };
+
   const quizzes = [
     {
       id: 1,
@@ -271,6 +287,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
               <Button 
                 size="sm"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
+                onClick={() => onSelectQuiz(createQuiz(subject, 12))}
               >
                 <Play className="mr-1 h-3 w-3" />
                 Start Quiz
