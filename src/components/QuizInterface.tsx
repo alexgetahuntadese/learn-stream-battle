@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -209,9 +208,9 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   // Early return if no questions available
   if (!questions || questions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white p-6">
+      <div className="min-h-screen bg-slate-900 text-white p-6">
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
+          <Card className="bg-slate-800 border-slate-700 text-white">
             <CardContent className="p-6 text-center">
               <p className="text-xl mb-4">No questions available for this quiz.</p>
               <Button onClick={onBack} className="bg-gradient-to-r from-green-600 to-yellow-600">
@@ -226,9 +225,9 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
 
   if (quizCompleted && results) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white p-6">
+      <div className="min-h-screen bg-slate-900 text-white p-6">
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
+          <Card className="bg-slate-800 border-slate-700 text-white">
             <CardHeader className="text-center">
               <div className="flex justify-center mb-4">
                 <div className="p-4 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full">
@@ -273,15 +272,15 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="bg-white/5 rounded-lg p-4">
+                <div className="bg-slate-700 rounded-lg p-4">
                   <div className="text-2xl font-bold text-green-400">{results.correctAnswers}</div>
                   <div className="text-sm text-gray-300">Correct</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-4">
+                <div className="bg-slate-700 rounded-lg p-4">
                   <div className="text-2xl font-bold text-red-400">{results.totalQuestions - results.correctAnswers}</div>
                   <div className="text-sm text-gray-300">Incorrect</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-4">
+                <div className="bg-slate-700 rounded-lg p-4">
                   <div className="text-2xl font-bold text-blue-400">{Math.floor(results.timeSpent / 60)}m</div>
                   <div className="text-sm text-gray-300">Time Spent</div>
                 </div>
@@ -295,7 +294,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                   const isCorrect = userAnswer === question.correct;
                   
                   return (
-                    <div key={question.id} className="bg-white/5 rounded-lg p-4">
+                    <div key={question.id} className="bg-slate-700 rounded-lg p-4">
                       <div className="flex items-start space-x-3">
                         {isCorrect ? (
                           <CheckCircle2 className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
@@ -329,7 +328,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                 <Button 
                   variant="outline"
                   onClick={() => window.location.reload()}
-                  className="border-white/20 text-white hover:bg-white/10"
+                  className="border-slate-600 text-white hover:bg-slate-700"
                 >
                   <RefreshCw className="mr-2 h-4 w-4" />
                   Retake Quiz
@@ -343,27 +342,27 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white p-6">
+    <div className="min-h-screen bg-slate-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <Button
             variant="ghost"
             onClick={onBack}
-            className="text-white hover:bg-white/10"
+            className="text-white hover:bg-slate-800"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
           
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
+            <div className="flex items-center space-x-2 bg-slate-800 rounded-lg px-4 py-2">
               <Clock className="h-4 w-4" />
               <span className={`font-mono ${timeLeft < 300 ? 'text-red-400' : 'text-white'}`}>
                 {formatTime(timeLeft)}
               </span>
             </div>
-            <Badge variant="secondary" className="bg-white/20 text-white">
+            <Badge variant="secondary" className="bg-slate-700 text-white border-slate-600">
               {currentQuestionIndex + 1} / {questions.length}
             </Badge>
           </div>
@@ -379,7 +378,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
         </div>
 
         {/* Question Card */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white mb-6">
+        <Card className="bg-slate-800 border-slate-700 text-white mb-6">
           <CardHeader>
             <CardTitle className="text-xl">
               Question {currentQuestionIndex + 1}
@@ -395,7 +394,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                   className={`w-full text-left justify-start p-4 h-auto ${
                     selectedAnswers[currentQuestion.id] === option
                       ? 'bg-gradient-to-r from-green-600 to-yellow-600 text-white border-0'
-                      : 'border-white/20 text-white hover:bg-white/10'
+                      : 'border-slate-600 text-white hover:bg-slate-700'
                   }`}
                   onClick={() => handleAnswerSelect(option)}
                 >
@@ -413,7 +412,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
             variant="outline"
             onClick={handlePreviousQuestion}
             disabled={currentQuestionIndex === 0}
-            className="border-white/20 text-white hover:bg-white/10 disabled:opacity-50"
+            className="border-slate-600 text-white hover:bg-slate-700 disabled:opacity-50"
           >
             Previous
           </Button>
@@ -428,7 +427,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
         </div>
 
         {/* Question Navigator */}
-        <div className="mt-8 p-4 bg-white/5 rounded-lg">
+        <div className="mt-8 p-4 bg-slate-800 rounded-lg">
           <h4 className="text-sm font-medium mb-3">Question Navigator</h4>
           <div className="flex flex-wrap gap-2">
             {questions.map((_, index) => (
@@ -441,7 +440,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                     ? 'bg-gradient-to-r from-green-600 to-yellow-600 text-white border-0'
                     : selectedAnswers[questions[index].id]
                     ? 'border-green-500 text-green-400 hover:bg-green-500/10'
-                    : 'border-white/20 text-white hover:bg-white/10'
+                    : 'border-slate-600 text-white hover:bg-slate-700'
                 }`}
                 onClick={() => setCurrentQuestionIndex(index)}
               >
