@@ -47,14 +47,6 @@ interface QuizDashboardProps {
   onSelectQuiz: (quiz: any) => void;
 }
 
-interface Chapter {
-  id: string;
-  name: string;
-  progress: number;
-  totalQuizzes: number;
-  completedQuizzes: number;
-}
-
 const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => {
   const [selectedSubject, setSelectedSubject] = useState('all');
   const [expandedGrades, setExpandedGrades] = useState<number[]>([]);
@@ -367,31 +359,6 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     ]
   };
 
-  // Function to convert Lucide icon to emoji
-  const getIconEmoji = (IconComponent: any) => {
-    // Map of Lucide icon names to emojis
-    const iconMap: { [key: string]: string } = {
-      'BookA': '📖',
-      'Languages': '🗣️',
-      'Calculator': '🧮',
-      'Laptop': '💻',
-      'Scale': '⚖️',
-      'Dna': '🧬',
-      'FlaskConical': '🧪',
-      'Zap': '⚡',
-      'MapPin': '📍',
-      'Clock8': '🕰️',
-      'Activity': '🏃',
-      'DollarSign': '💰',
-      'Briefcase': '💼',
-      'Ruler': '📏'
-    };
-
-    // Get the component name from the displayName or function name
-    const componentName = IconComponent.displayName || IconComponent.name;
-    return iconMap[componentName] || '📚';
-  };
-
   // Mock progress data for subjects
   const getSubjectProgress = (subjectName: string) => {
     const mockData = {
@@ -490,26 +457,6 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     }
   };
 
-  // Function to convert Grade 12 subject data to SubjectCard format
-  const formatSubjectForCard = (subject: any, streamColor: string) => {
-    const progress = getSubjectProgress(subject.name);
-    return {
-      name: subject.name,
-      icon: getIconEmoji(subject.icon),
-      color: streamColor,
-      chapters: subject.chapters?.map((chapter: string, index: number) => ({
-        id: `${subject.name}-${index}`,
-        name: chapter,
-        progress: Math.floor(Math.random() * 100), // Mock progress
-        totalQuizzes: 5,
-        completedQuizzes: Math.floor(Math.random() * 5)
-      })) || [],
-      totalQuizzes: progress.total,
-      completedQuizzes: progress.completed,
-      progress: progress.percentage
-    };
-  };
-
   const renderGrade12Content = () => (
     <Card className="bg-white/5 border-white/20 text-white">
       <CardContent className="p-6">
@@ -540,9 +487,11 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
             {grade12Subjects.naturalScience.map((subject, index) => (
               <SubjectCard
                 key={index}
-                subject={formatSubjectForCard(subject, 'from-blue-500 to-cyan-500')}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={12}
                 onSelectQuiz={onSelectQuiz}
-                availableQuizzes={[]}
+                isMobile={isMobile}
               />
             ))}
           </div>
@@ -560,9 +509,11 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
             {grade12Subjects.socialScience.map((subject, index) => (
               <SubjectCard
                 key={index}
-                subject={formatSubjectForCard(subject, 'from-green-500 to-emerald-500')}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={12}
                 onSelectQuiz={onSelectQuiz}
-                availableQuizzes={[]}
+                isMobile={isMobile}
               />
             ))}
           </div>
@@ -580,9 +531,11 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
             {grade12Subjects.common.map((subject, index) => (
               <SubjectCard
                 key={index}
-                subject={formatSubjectForCard(subject, 'from-yellow-500 to-orange-500')}
+                subject={subject}
+                progress={getSubjectProgress(subject.name)}
+                grade={12}
                 onSelectQuiz={onSelectQuiz}
-                availableQuizzes={[]}
+                isMobile={isMobile}
               />
             ))}
           </div>
