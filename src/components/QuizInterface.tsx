@@ -394,7 +394,7 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
                   className={`w-full text-left justify-start p-4 h-auto ${
                     selectedAnswers[currentQuestion.id] === option
                       ? 'bg-gradient-to-r from-green-600 to-yellow-600 text-white border-0'
-                      : 'border-slate-600 text-white hover:bg-slate-700 hover:text-white'
+                      : 'border-slate-600 text-black bg-white hover:bg-slate-100 hover:text-black'
                   }`}
                   onClick={() => handleAnswerSelect(option)}
                 >
