@@ -37,6 +37,7 @@ import {
   Laptop,
   Languages
 } from 'lucide-react';
+import SubjectSection from './SubjectSection';
 
 interface QuizDashboardProps {
   user: { name: string; grade: string; school?: string };
@@ -432,68 +433,49 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     }
   };
 
-  const renderSubjectGroup = (title: string, subjects: any[], badgeColor: string) => (
-    <div className="mb-6">
-      <div className="flex items-center mb-3">
-        <h5 className="text-md font-semibold text-white">{title}</h5>
-        <Badge variant="secondary" className={`ml-2 ${badgeColor}`}>
-          {subjects.length} subjects
-        </Badge>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {subjects.map((subject, index) => (
-          <Card key={index} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 rounded-lg bg-blue-500">
-                    <subject.icon className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h6 className="font-semibold">{subject.name}</h6>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-1 gap-1 mb-3 max-h-32 overflow-y-auto">
-                {(subject.chapters || subject.topics || []).map((item: string, itemIndex: number) => (
-                  <div key={itemIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
-                    {item}
-                  </div>
-                ))}
-              </div>
-
-              <div className="space-y-2">
-                <div className="text-xs text-gray-300 mb-2">Choose Difficulty:</div>
-                <div className="grid grid-cols-3 gap-1">
-                  <Button 
-                    size="sm"
-                    className="text-xs bg-green-600 hover:bg-green-700 text-white border-0"
-                    onClick={() => onSelectQuiz(createQuiz(subject, 12, 'Easy'))}
-                  >
-                    Easy
-                  </Button>
-                  <Button 
-                    size="sm"
-                    className="text-xs bg-yellow-600 hover:bg-yellow-700 text-white border-0"
-                    onClick={() => onSelectQuiz(createQuiz(subject, 12, 'Medium'))}
-                  >
-                    Medium
-                  </Button>
-                  <Button 
-                    size="sm"
-                    className="text-xs bg-red-600 hover:bg-red-700 text-white border-0"
-                    onClick={() => onSelectQuiz(createQuiz(subject, 12, 'Hard'))}
-                  >
-                    Hard
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
+  const renderGrade12Content = () => (
+    <Card className="bg-white/5 border-white/20 text-white">
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center space-x-4">
+            <div className="p-3 rounded-lg bg-orange-500">
+              <BookOpen className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <h4 className="text-lg font-bold">Grade 12 Subjects</h4>
+              <p className="text-sm text-gray-400">University entrance preparation with detailed chapters</p>
+            </div>
+          </div>
+          <Badge variant="secondary" className="bg-orange-100 text-orange-800">
+            14 subjects
+          </Badge>
+        </div>
+        
+        <SubjectSection
+          title="📘 Natural Science Stream"
+          subjects={grade12Subjects.naturalScience}
+          badgeColor="bg-blue-100 text-blue-800"
+          onSelectQuiz={onSelectQuiz}
+          grade={12}
+        />
+        
+        <SubjectSection
+          title="📗 Social Science Stream"
+          subjects={grade12Subjects.socialScience}
+          badgeColor="bg-green-100 text-green-800"
+          onSelectQuiz={onSelectQuiz}
+          grade={12}
+        />
+        
+        <SubjectSection
+          title="📙 Common Courses"
+          subjects={grade12Subjects.common}
+          badgeColor="bg-yellow-100 text-yellow-800"
+          onSelectQuiz={onSelectQuiz}
+          grade={12}
+        />
+      </CardContent>
+    </Card>
   );
 
   return (
@@ -598,161 +580,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                   
                   <CollapsibleContent className="space-y-4">
                     <div className="ml-8 mt-4">
-                      {grade.grade === 12 ? (
-                        <Card className="bg-white/5 border-white/20 text-white">
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-6">
-                              <div className="flex items-center space-x-4">
-                                <div className="p-3 rounded-lg bg-orange-500">
-                                  <BookOpen className="h-6 w-6 text-white" />
-                                </div>
-                                <div>
-                                  <h4 className="text-lg font-bold">Grade 12 Subjects</h4>
-                                  <p className="text-sm text-gray-400">University entrance preparation with detailed chapters</p>
-                                </div>
-                              </div>
-                              <Badge variant="secondary" className="bg-orange-100 text-orange-800">
-                                14 subjects
-                              </Badge>
-                            </div>
-                            
-                            {renderSubjectGroup("📘 Natural Science Stream", grade12Subjects.naturalScience, "bg-blue-100 text-blue-800")}
-                            {renderSubjectGroup("📗 Social Science Stream", grade12Subjects.socialScience, "bg-green-100 text-green-800")}
-                            {renderSubjectGroup("📙 Common Courses", grade12Subjects.common, "bg-yellow-100 text-yellow-800")}
-                          </CardContent>
-                        </Card>
-                      ) : grade.grade === 11 ? (
-                        <Card className="bg-white/5 border-white/20 text-white">
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-6">
-                              <div className="flex items-center space-x-4">
-                                <div className="p-3 rounded-lg bg-purple-500">
-                                  <BookOpen className="h-6 w-6 text-white" />
-                                </div>
-                                <div>
-                                  <h4 className="text-lg font-bold">Grade 11 Subjects</h4>
-                                  <p className="text-sm text-gray-400">Pre-university level studies</p>
-                                </div>
-                              </div>
-                              <Badge variant="secondary" className="bg-purple-100 text-purple-800">
-                                14 subjects
-                              </Badge>
-                            </div>
-                            
-                            {renderSubjectGroup("📘 Natural Science Stream", grade11Subjects.naturalScience, "bg-blue-100 text-blue-800")}
-                            {renderSubjectGroup("📗 Social Science Stream", grade11Subjects.socialScience, "bg-green-100 text-green-800")}
-                            {renderSubjectGroup("📙 Common Courses", grade11Subjects.common, "bg-yellow-100 text-yellow-800")}
-                          </CardContent>
-                        </Card>
-                      ) : grade.grade === 10 ? (
-                        <Card className="bg-white/5 border-white/20 text-white">
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-6">
-                              <div className="flex items-center space-x-4">
-                                <div className="p-3 rounded-lg bg-green-500">
-                                  <BookOpen className="h-6 w-6 text-white" />
-                                </div>
-                                <div>
-                                  <h4 className="text-lg font-bold">Grade 10 Subjects</h4>
-                                  <p className="text-sm text-gray-400">Advanced secondary education preparation</p>
-                                </div>
-                              </div>
-                              <Badge variant="secondary" className="bg-green-100 text-green-800">
-                                11 subjects
-                              </Badge>
-                            </div>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                              {grade10Subjects.map((subject, index) => (
-                                <Card key={index} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
-                                  <CardContent className="p-4">
-                                    <div className="flex items-center justify-between mb-3">
-                                      <div className="flex items-center space-x-3">
-                                        <div className="p-2 rounded-lg bg-green-500">
-                                          <subject.icon className="h-5 w-5 text-white" />
-                                        </div>
-                                        <div>
-                                          <h6 className="font-semibold">{subject.name}</h6>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    
-                                    <div className="grid grid-cols-1 gap-1 mb-3">
-                                      {subject.topics.map((topic: string, topicIndex: number) => (
-                                        <div key={topicIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
-                                          {topic}
-                                        </div>
-                                      ))}
-                                    </div>
-
-                                    <Button 
-                                      size="sm"
-                                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
-                                    >
-                                      <Play className="mr-1 h-3 w-3" />
-                                      Start Quiz
-                                    </Button>
-                                  </CardContent>
-                                </Card>
-                              ))}
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ) : grade.grade === 9 ? (
-                        <Card className="bg-white/5 border-white/20 text-white">
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-6">
-                              <div className="flex items-center space-x-4">
-                                <div className="p-3 rounded-lg bg-blue-500">
-                                  <BookOpen className="h-6 w-6 text-white" />
-                                </div>
-                                <div>
-                                  <h4 className="text-lg font-bold">Grade 9 Subjects</h4>
-                                  <p className="text-sm text-gray-400">Foundation courses for secondary education</p>
-                                </div>
-                              </div>
-                              <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                                11 subjects
-                              </Badge>
-                            </div>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                              {grade9Subjects.map((subject, index) => (
-                                <Card key={index} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
-                                  <CardContent className="p-4">
-                                    <div className="flex items-center justify-between mb-3">
-                                      <div className="flex items-center space-x-3">
-                                        <div className="p-2 rounded-lg bg-blue-500">
-                                          <subject.icon className="h-5 w-5 text-white" />
-                                        </div>
-                                        <div>
-                                          <h6 className="font-semibold">{subject.name}</h6>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    
-                                    <div className="grid grid-cols-1 gap-1 mb-3">
-                                      {subject.topics.map((topic: string, topicIndex: number) => (
-                                        <div key={topicIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
-                                          {topic}
-                                        </div>
-                                      ))}
-                                    </div>
-
-                                    <Button 
-                                      size="sm"
-                                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
-                                    >
-                                      <Play className="mr-1 h-3 w-3" />
-                                      Start Quiz
-                                    </Button>
-                                  </CardContent>
-                                </Card>
-                              ))}
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ) : null}
+                      {grade.grade === 12 ? renderGrade12Content() : null}
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
