@@ -1,3 +1,4 @@
+
 import { grade12BiologyQuestions, getGrade12BiologyQuestions } from './grade12Biology';
 
 export interface Question {
@@ -275,7 +276,9 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
     console.log('Processing Grade 12 Biology for chapter:', chapter);
     
     const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
-    return getGrade12BiologyQuestions(chapter, difficultyLevel);
+    const questions = getGrade12BiologyQuestions(chapter, difficultyLevel);
+    console.log('Found Grade 12 Biology questions:', questions.length);
+    return questions.slice(0, count);
   }
 
   let questions: any[] = [];
