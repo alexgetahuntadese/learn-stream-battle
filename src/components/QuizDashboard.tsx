@@ -316,18 +316,11 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
         name: 'Mathematics', 
         icon: Calculator, 
         chapters: [
-          'Chapter 1: Relations and Functions',
-          'Chapter 2: Sequences and Series',
-          'Chapter 3: Permutations and Combinations',
-          'Chapter 4: Binomial Theorem',
-          'Chapter 5: Limits and Derivatives',
-          'Chapter 6: Applications of Derivatives',
-          'Chapter 7: Integrals and Applications',
-          'Chapter 8: Differential Equations',
-          'Chapter 9: Probability',
-          'Chapter 10: Statistics',
-          'Chapter 11: Linear Programming',
-          'Chapter 12: Mathematical Applications in Business'
+          'Unit 1: Sequence and Series',
+          'Unit 2: Introduction to Calculus',
+          'Unit 3: Statistics',
+          'Unit 4: Introduction to Linear Programming',
+          'Unit 5: Mathematical Application in Business'
         ]
       },
       { 
@@ -359,7 +352,6 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     ]
   };
 
-  // Mock progress data for subjects
   const getSubjectProgress = (subjectName: string) => {
     const mockData = {
       'Mathematics': { completed: 8, total: 12, percentage: 67 },
