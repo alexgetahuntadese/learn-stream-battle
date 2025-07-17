@@ -1,2231 +1,1337 @@
 
-export const grade12BiologyQuestions = {
-  "Unit 1: Application of Biology": {
+interface Question {
+  id: string;
+  question: string;
+  options: string[];
+  correct: string;
+  explanation?: string;
+}
+
+interface UnitQuestions {
+  easy: Question[];
+  medium: Question[];
+  hard: Question[];
+}
+
+export const grade12BiologyQuestions: { [unit: string]: UnitQuestions } = {
+  'Unit 1: Application of Biology': {
     easy: [
       {
-        id: "bio12_u1_e1",
-        question: "What is the main focus of applied biology?",
-        options: [
-          "Using biological knowledge to solve real-world problems",
-          "Studying only theoretical concepts",
-          "Memorizing biological facts",
-          "Avoiding practical applications"
-        ],
-        correct: "Using biological knowledge to solve real-world problems",
-        explanation: "Applied biology focuses on using biological knowledge and principles to address practical problems and improve human life."
+        id: 'bio12_u1_e1',
+        question: 'What is the main focus of applied biology?',
+        options: ['Using biological knowledge to solve real-world problems', 'Studying only theoretical concepts', 'Memorizing biological facts', 'Avoiding practical applications'],
+        correct: 'Using biological knowledge to solve real-world problems',
+        explanation: 'Applied biology focuses on using biological knowledge and principles to address practical problems and improve human life.'
       },
       {
-        id: "bio12_u1_e2",
-        question: "Which field combines biology with engineering principles?",
-        options: [
-          "Bioengineering",
-          "Pure biology",
-          "Mathematics",
-          "Chemistry"
-        ],
-        correct: "Bioengineering",
-        explanation: "Bioengineering (or biomedical engineering) combines biological sciences with engineering principles to develop solutions for medical and biological problems."
+        id: 'bio12_u1_e2',
+        question: 'Which field combines biology with engineering principles?',
+        options: ['Bioengineering', 'Pure biology', 'Mathematics', 'Chemistry'],
+        correct: 'Bioengineering',
+        explanation: 'Bioengineering (or biomedical engineering) combines biological sciences with engineering principles to develop solutions for medical and biological problems.'
       },
       {
-        id: "bio12_u1_e3",
-        question: "What is biotechnology?",
-        options: [
-          "The use of living organisms to develop useful products",
-          "The study of rocks and minerals",
-          "The analysis of weather patterns",
-          "The construction of buildings"
-        ],
-        correct: "The use of living organisms to develop useful products",
-        explanation: "Biotechnology involves using living organisms, cells, or biological processes to develop products and technologies that benefit society."
+        id: 'bio12_u1_e3',
+        question: 'What is biotechnology?',
+        options: ['The use of living organisms to develop products', 'The study of rocks', 'The study of weather', 'The study of space'],
+        correct: 'The use of living organisms to develop products',
+        explanation: 'Biotechnology is the use of living organisms, cells, or biological processes to develop products and technologies that improve human life.'
       },
       {
-        id: "bio12_u1_e4",
-        question: "Which of the following is an example of medical biotechnology?",
-        options: [
-          "Production of insulin using bacteria",
-          "Building bridges",
-          "Mining coal",
-          "Weather forecasting"
-        ],
-        correct: "Production of insulin using bacteria",
-        explanation: "Medical biotechnology includes using genetically modified bacteria to produce human insulin for diabetes treatment."
+        id: 'bio12_u1_e4',
+        question: 'Which of the following is an example of applied biology?',
+        options: ['Medicine', 'Astronomy', 'Geology', 'Physics'],
+        correct: 'Medicine',
+        explanation: 'Medicine is a direct application of biological knowledge to treat diseases and improve human health.'
       },
       {
-        id: "bio12_u1_e5",
-        question: "What does agricultural biotechnology primarily focus on?",
-        options: [
-          "Improving crop yield and quality",
-          "Building farm equipment",
-          "Weather prediction",
-          "Soil excavation"
-        ],
-        correct: "Improving crop yield and quality",
-        explanation: "Agricultural biotechnology focuses on developing improved crops with better yield, disease resistance, and nutritional content."
+        id: 'bio12_u1_e5',
+        question: 'What is the role of biology in agriculture?',
+        options: ['Improving crop yields and quality', 'Building machines', 'Creating software', 'Studying planets'],
+        correct: 'Improving crop yields and quality',
+        explanation: 'Biology helps in developing better crops, understanding plant diseases, and improving agricultural practices.'
       },
       {
-        id: "bio12_u1_e6",
-        question: "Which technique is commonly used in modern biotechnology?",
-        options: [
-          "Genetic engineering",
-          "Coal mining",
-          "Metal welding",
-          "Stone carving"
-        ],
-        correct: "Genetic engineering",
-        explanation: "Genetic engineering is a fundamental technique in biotechnology that allows modification of genetic material to achieve desired traits."
+        id: 'bio12_u1_e6',
+        question: 'Which field studies the application of biology in environmental protection?',
+        options: ['Environmental biology', 'Pure mathematics', 'Computer science', 'Mechanical engineering'],
+        correct: 'Environmental biology',
+        explanation: 'Environmental biology applies biological principles to understand and solve environmental problems.'
       },
       {
-        id: "bio12_u1_e7",
-        question: "What is bioinformatics?",
-        options: [
-          "The application of computer science to biological data",
-          "The study of animal behavior",
-          "The analysis of rock formations",
-          "The design of buildings"
-        ],
-        correct: "The application of computer science to biological data",
-        explanation: "Bioinformatics combines computer science with biology to analyze and interpret biological data, especially genetic sequences."
+        id: 'bio12_u1_e7',
+        question: 'What is the main goal of medical biotechnology?',
+        options: ['Developing treatments and cures for diseases', 'Creating entertainment', 'Building houses', 'Making clothes'],
+        correct: 'Developing treatments and cures for diseases',
+        explanation: 'Medical biotechnology focuses on using biological processes to develop medical treatments, vaccines, and cures.'
       },
       {
-        id: "bio12_u1_e8",
-        question: "Which field studies the interaction between biology and society?",
-        options: [
-          "Bioethics",
-          "Geology",
-          "Astronomy",
-          "Physics"
-        ],
-        correct: "Bioethics",
-        explanation: "Bioethics examines the ethical implications of biological research and applications on society."
+        id: 'bio12_u1_e8',
+        question: 'Which of these is an application of biology in industry?',
+        options: ['Fermentation processes', 'Metal welding', 'Road construction', 'Car manufacturing'],
+        correct: 'Fermentation processes',
+        explanation: 'Fermentation is a biological process used in industries to produce food, beverages, and other products.'
       },
       {
-        id: "bio12_u1_e9",
-        question: "What is the primary goal of conservation biology?",
-        options: [
-          "Protecting biodiversity and ecosystems",
-          "Building more cities",
-          "Increasing industrial production",
-          "Expanding agriculture"
-        ],
-        correct: "Protecting biodiversity and ecosystems",
-        explanation: "Conservation biology aims to protect and preserve biodiversity and natural ecosystems for future generations."
+        id: 'bio12_u1_e9',
+        question: 'What is the importance of biology in food production?',
+        options: ['Ensuring food safety and quality', 'Building cooking equipment', 'Creating recipes', 'Designing restaurants'],
+        correct: 'Ensuring food safety and quality',
+        explanation: 'Biology helps in understanding food safety, preservation, nutrition, and quality control in food production.'
       },
       {
-        id: "bio12_u1_e10",
-        question: "Which application of biology helps in crime investigation?",
-        options: [
-          "Forensic biology",
-          "Plant breeding",
-          "Animal training",
-          "Weather monitoring"
-        ],
-        correct: "Forensic biology",
-        explanation: "Forensic biology uses biological evidence like DNA analysis to help solve crimes and identify individuals."
+        id: 'bio12_u1_e10',
+        question: 'Which career directly applies biological knowledge?',
+        options: ['Veterinarian', 'Accountant', 'Lawyer', 'Pilot'],
+        correct: 'Veterinarian',
+        explanation: 'Veterinarians apply biological knowledge to treat and care for animals.'
       }
     ],
     medium: [
       {
-        id: "bio12_u1_m1",
-        question: "What is the significance of recombinant DNA technology in medicine?",
-        options: [
-          "It allows production of human proteins in bacteria",
-          "It helps in weather prediction",
-          "It improves soil quality",
-          "It enhances building construction"
-        ],
-        correct: "It allows production of human proteins in bacteria",
-        explanation: "Recombinant DNA technology enables the insertion of human genes into bacteria, allowing mass production of human proteins like insulin and growth hormone."
+        id: 'bio12_u1_m1',
+        question: 'What is genetic engineering primarily used for?',
+        options: ['Modifying genes to create desired traits', 'Building computers', 'Creating art', 'Studying history'],
+        correct: 'Modifying genes to create desired traits',
+        explanation: 'Genetic engineering involves manipulating genes to produce organisms with desired characteristics.'
       },
       {
-        id: "bio12_u1_m2",
-        question: "Which technique is used to amplify small amounts of DNA for analysis?",
-        options: [
-          "Polymerase Chain Reaction (PCR)",
-          "Photosynthesis",
-          "Cellular respiration",
-          "Protein synthesis"
-        ],
-        correct: "Polymerase Chain Reaction (PCR)",
-        explanation: "PCR is a molecular technique that amplifies specific DNA sequences, making it possible to analyze even tiny amounts of genetic material."
+        id: 'bio12_u1_m2',
+        question: 'Which technique is used to produce insulin for diabetics?',
+        options: ['Recombinant DNA technology', 'Solar energy', 'Nuclear fusion', 'Chemical synthesis only'],
+        correct: 'Recombinant DNA technology',
+        explanation: 'Recombinant DNA technology is used to produce human insulin in bacteria for treating diabetes.'
       },
       {
-        id: "bio12_u1_m3",
-        question: "What is the role of restriction enzymes in biotechnology?",
-        options: [
-          "They cut DNA at specific sequences",
-          "They produce energy",
-          "They synthesize proteins",
-          "They break down carbohydrates"
-        ],
-        correct: "They cut DNA at specific sequences",
-        explanation: "Restriction enzymes are molecular scissors that cut DNA at specific recognition sequences, essential for genetic engineering."
+        id: 'bio12_u1_m3',
+        question: 'What is the role of enzymes in industrial biotechnology?',
+        options: ['Catalyzing specific reactions', 'Providing energy', 'Storing information', 'Building structures'],
+        correct: 'Catalyzing specific reactions',
+        explanation: 'Enzymes are used in industry as biological catalysts to speed up specific chemical reactions.'
       },
       {
-        id: "bio12_u1_m4",
-        question: "How do genetically modified crops benefit agriculture?",
-        options: [
-          "They can resist pests and diseases while improving yield",
-          "They require more water",
-          "They grow slower than normal crops",
-          "They produce less food"
-        ],
-        correct: "They can resist pests and diseases while improving yield",
-        explanation: "GM crops are engineered to have traits like pest resistance, disease resistance, and improved nutritional content, leading to higher yields."
+        id: 'bio12_u1_m4',
+        question: 'Which organism is commonly used in biotechnology for protein production?',
+        options: ['E. coli bacteria', 'Oak trees', 'Lions', 'Rocks'],
+        correct: 'E. coli bacteria',
+        explanation: 'E. coli bacteria are commonly used in biotechnology because they can be easily modified to produce proteins.'
       },
       {
-        id: "bio12_u1_m5",
-        question: "What is gene therapy?",
-        options: [
-          "Treatment of genetic disorders by introducing healthy genes",
-          "Surgery to remove organs",
-          "Physical exercise for muscles",
-          "Mental health counseling"
-        ],
-        correct: "Treatment of genetic disorders by introducing healthy genes",
-        explanation: "Gene therapy involves introducing functional genes into patients to treat or prevent genetic diseases."
+        id: 'bio12_u1_m5',
+        question: 'What is bioremediation?',
+        options: ['Using organisms to clean up environmental pollutants', 'Building new cities', 'Creating music', 'Painting pictures'],
+        correct: 'Using organisms to clean up environmental pollutants',
+        explanation: 'Bioremediation uses living organisms to remove or neutralize environmental contaminants.'
       },
       {
-        id: "bio12_u1_m6",
-        question: "Which application uses microorganisms to clean up environmental pollution?",
-        options: [
-          "Bioremediation",
-          "Photosynthesis",
-          "Digestion",
-          "Circulation"
-        ],
-        correct: "Bioremediation",
-        explanation: "Bioremediation uses microorganisms to break down pollutants and clean up contaminated environments."
+        id: 'bio12_u1_m6',
+        question: 'Which field combines biology with computer science?',
+        options: ['Bioinformatics', 'Pure chemistry', 'Mechanical engineering', 'Literature'],
+        correct: 'Bioinformatics',
+        explanation: 'Bioinformatics uses computational methods to analyze biological data and solve biological problems.'
       },
       {
-        id: "bio12_u1_m7",
-        question: "What is pharmacogenomics?",
-        options: [
-          "Study of how genes affect drug response",
-          "Study of plant genetics",
-          "Study of animal behavior",
-          "Study of weather patterns"
-        ],
-        correct: "Study of how genes affect drug response",
-        explanation: "Pharmacogenomics studies how genetic variations affect individual responses to medications, enabling personalized medicine."
+        id: 'bio12_u1_m7',
+        question: 'What is tissue engineering?',
+        options: ['Creating biological tissues for medical use', 'Building machines', 'Designing clothes', 'Writing books'],
+        correct: 'Creating biological tissues for medical use',
+        explanation: 'Tissue engineering involves growing biological tissues in the laboratory for medical applications.'
       },
       {
-        id: "bio12_u1_m8",
-        question: "Which technique is used to sequence entire genomes?",
-        options: [
-          "Next-generation sequencing",
-          "Simple observation",
-          "Manual counting",
-          "Chemical analysis"
-        ],
-        correct: "Next-generation sequencing",
-        explanation: "Next-generation sequencing technologies allow rapid and cost-effective sequencing of entire genomes."
+        id: 'bio12_u1_m8',
+        question: 'Which application of biology helps in crime investigation?',
+        options: ['DNA fingerprinting', 'Weather forecasting', 'Stock market analysis', 'Music composition'],
+        correct: 'DNA fingerprinting',
+        explanation: 'DNA fingerprinting uses biological techniques to identify individuals in criminal investigations.'
       },
       {
-        id: "bio12_u1_m9",
-        question: "What is synthetic biology?",
-        options: [
-          "Engineering biological systems with new functions",
-          "Studying existing organisms only",
-          "Building mechanical devices",
-          "Analyzing soil composition"
-        ],
-        correct: "Engineering biological systems with new functions",
-        explanation: "Synthetic biology involves designing and constructing new biological parts, devices, and systems with novel functions."
+        id: 'bio12_u1_m9',
+        question: 'What is the purpose of biological pest control?',
+        options: ['Using natural enemies to control pests', 'Building stronger buildings', 'Creating entertainment', 'Improving transportation'],
+        correct: 'Using natural enemies to control pests',
+        explanation: 'Biological pest control uses natural predators or parasites to control harmful pests in agriculture.'
       },
       {
-        id: "bio12_u1_m10",
-        question: "How does CRISPR-Cas9 technology work?",
-        options: [
-          "It acts as molecular scissors to edit specific DNA sequences",
-          "It produces energy for cells",
-          "It helps in protein folding",
-          "It aids in cellular division"
-        ],
-        correct: "It acts as molecular scissors to edit specific DNA sequences",
-        explanation: "CRISPR-Cas9 is a precise gene-editing tool that can cut DNA at specific locations and allow for targeted genetic modifications."
+        id: 'bio12_u1_m10',
+        question: 'Which biotechnology application helps in organ transplantation?',
+        options: ['Immunosuppressive therapy', 'Solar panels', 'Computer programming', 'Road construction'],
+        correct: 'Immunosuppressive therapy',
+        explanation: 'Immunosuppressive therapy uses biological knowledge to prevent organ rejection in transplant patients.'
       }
     ],
     hard: [
       {
-        id: "bio12_u1_h1",
-        question: "What are the ethical implications of human genetic engineering?",
-        options: [
-          "Concerns about equality, consent, and unintended consequences",
-          "No ethical concerns exist",
-          "Only benefits without risks",
-          "Simple technical challenges"
-        ],
-        correct: "Concerns about equality, consent, and unintended consequences",
-        explanation: "Human genetic engineering raises complex ethical issues including potential for inequality, informed consent challenges, and unknown long-term consequences."
+        id: 'bio12_u1_h1',
+        question: 'What is CRISPR-Cas9 technology primarily used for?',
+        options: ['Precise gene editing', 'Weather prediction', 'Building construction', 'Music production'],
+        correct: 'Precise gene editing',
+        explanation: 'CRISPR-Cas9 is a revolutionary gene-editing technology that allows precise modification of DNA sequences.'
       },
       {
-        id: "bio12_u1_h2",
-        question: "How do biosafety regulations impact biotechnology research?",
-        options: [
-          "They ensure safe handling of genetically modified organisms",
-          "They prevent all research",
-          "They have no effect on research",
-          "They only apply to animals"
-        ],
-        correct: "They ensure safe handling of genetically modified organisms",
-        explanation: "Biosafety regulations establish protocols for safely conducting research with GMOs to protect human health and the environment."
+        id: 'bio12_u1_h2',
+        question: 'Which technique is used to produce monoclonal antibodies?',
+        options: ['Hybridoma technology', 'Solar energy conversion', 'Metal forging', 'Oil refining'],
+        correct: 'Hybridoma technology',
+        explanation: 'Hybridoma technology fuses immune cells with immortal cells to produce monoclonal antibodies for medical use.'
       },
       {
-        id: "bio12_u1_h3",
-        question: "What is the significance of epigenetic modifications in biotechnology?",
-        options: [
-          "They control gene expression without changing DNA sequence",
-          "They only affect DNA structure",
-          "They have no biological function",
-          "They only occur in plants"
-        ],
-        correct: "They control gene expression without changing DNA sequence",
-        explanation: "Epigenetic modifications like methylation and histone modifications regulate gene expression and are targets for therapeutic interventions."
+        id: 'bio12_u1_h3',
+        question: 'What is the principle behind PCR (Polymerase Chain Reaction)?',
+        options: ['Amplifying specific DNA sequences', 'Generating electricity', 'Creating music', 'Building bridges'],
+        correct: 'Amplifying specific DNA sequences',
+        explanation: 'PCR uses repeated cycles of heating and cooling to amplify specific DNA sequences millions of times.'
       },
       {
-        id: "bio12_u1_h4",
-        question: "How does systems biology differ from traditional biological approaches?",
-        options: [
-          "It studies biological systems as integrated networks",
-          "It focuses only on individual genes",
-          "It ignores interactions between components",
-          "It uses only simple experimental methods"
-        ],
-        correct: "It studies biological systems as integrated networks",
-        explanation: "Systems biology takes a holistic approach, studying complex interactions between biological components rather than individual parts."
+        id: 'bio12_u1_h4',
+        question: 'Which application uses stem cells for therapeutic purposes?',
+        options: ['Regenerative medicine', 'Computer manufacturing', 'Food packaging', 'Textile production'],
+        correct: 'Regenerative medicine',
+        explanation: 'Regenerative medicine uses stem cells to repair or replace damaged tissues and organs.'
       },
       {
-        id: "bio12_u1_h5",
-        question: "What challenges exist in translating biotechnology from lab to clinical application?",
-        options: [
-          "Safety testing, regulatory approval, and scalability issues",
-          "No challenges exist",
-          "Only cost considerations",
-          "Simple technical problems"
-        ],
-        correct: "Safety testing, regulatory approval, and scalability issues",
-        explanation: "Translating biotechnology requires extensive safety testing, regulatory approval processes, and solving scalability challenges for mass production."
+        id: 'bio12_u1_h5',
+        question: 'What is pharmacogenomics?',
+        options: ['Study of how genes affect drug response', 'Study of plant growth', 'Study of weather patterns', 'Study of rock formations'],
+        correct: 'Study of how genes affect drug response',
+        explanation: 'Pharmacogenomics studies how genetic variations affect individual responses to medications.'
       },
       {
-        id: "bio12_u1_h6",
-        question: "How do intellectual property rights affect biotechnology innovation?",
-        options: [
-          "They can both incentivize innovation and limit access",
-          "They only benefit innovation",
-          "They have no effect",
-          "They only create barriers"
-        ],
-        correct: "They can both incentivize innovation and limit access",
-        explanation: "Patent rights can encourage innovation by protecting investments but may also limit access to important biotechnologies."
+        id: 'bio12_u1_h6',
+        question: 'Which biotechnology application involves modifying organisms to produce pharmaceuticals?',
+        options: ['Biopharming', 'Mining', 'Logging', 'Fishing'],
+        correct: 'Biopharming',
+        explanation: 'Biopharming uses genetically modified plants or animals to produce pharmaceutical compounds.'
       },
       {
-        id: "bio12_u1_h7",
-        question: "What is the role of computational modeling in biotechnology?",
-        options: [
-          "Predicting biological system behavior and optimizing designs",
-          "Only storing data",
-          "Simple calculations",
-          "No significant role"
-        ],
-        correct: "Predicting biological system behavior and optimizing designs",
-        explanation: "Computational modeling helps predict how biological systems will behave and optimize biotechnology designs before experimental testing."
+        id: 'bio12_u1_h7',
+        question: 'What is synthetic biology?',
+        options: ['Engineering biological systems for specific purposes', 'Creating artificial weather', 'Building virtual reality', 'Composing digital music'],
+        correct: 'Engineering biological systems for specific purposes',
+        explanation: 'Synthetic biology involves designing and constructing new biological parts and systems for useful purposes.'
       },
       {
-        id: "bio12_u1_h8",
-        question: "How do regulatory frameworks vary globally for biotechnology?",
-        options: [
-          "Different countries have varying safety standards and approval processes",
-          "All countries have identical regulations",
-          "No regulations exist anywhere",
-          "Only one country regulates biotechnology"
-        ],
-        correct: "Different countries have varying safety standards and approval processes",
-        explanation: "Global regulatory frameworks for biotechnology vary significantly, affecting international development and commercialization of biotechnology products."
+        id: 'bio12_u1_h8',
+        question: 'Which technique is used in gene therapy?',
+        options: ['Introducing functional genes into cells', 'Building robots', 'Creating websites', 'Designing fashion'],
+        correct: 'Introducing functional genes into cells',
+        explanation: 'Gene therapy involves introducing healthy genes into cells to treat or prevent genetic diseases.'
       },
       {
-        id: "bio12_u1_h9",
-        question: "What is the potential of personalized medicine based on genomics?",
-        options: [
-          "Tailoring treatments based on individual genetic profiles",
-          "Using the same treatment for everyone",
-          "Ignoring genetic differences",
-          "Only treating symptoms"
-        ],
-        correct: "Tailoring treatments based on individual genetic profiles",
-        explanation: "Personalized medicine uses individual genetic information to customize prevention, diagnosis, and treatment strategies for better outcomes."
+        id: 'bio12_u1_h9',
+        question: 'What is the role of biomarkers in personalized medicine?',
+        options: ['Predicting treatment response', 'Building houses', 'Creating entertainment', 'Designing vehicles'],
+        correct: 'Predicting treatment response',
+        explanation: 'Biomarkers are biological indicators used to predict how patients will respond to specific treatments.'
       },
       {
-        id: "bio12_u1_h10",
-        question: "How does biotechnology contribute to sustainable development?",
-        options: [
-          "Developing eco-friendly solutions for energy, agriculture, and waste management",
-          "Only increasing industrial production",
-          "Ignoring environmental concerns",
-          "Focusing solely on profit"
-        ],
-        correct: "Developing eco-friendly solutions for energy, agriculture, and waste management",
-        explanation: "Biotechnology contributes to sustainability through biofuels, efficient agriculture, biodegradable materials, and waste treatment solutions."
+        id: 'bio12_u1_h10',
+        question: 'Which application uses biological systems to produce biofuels?',
+        options: ['Metabolic engineering', 'Nuclear physics', 'Mechanical engineering', 'Civil engineering'],
+        correct: 'Metabolic engineering',
+        explanation: 'Metabolic engineering modifies cellular metabolism to produce biofuels from biological materials.'
       }
     ]
   },
-  "Unit 2: Microorganisms": {
+  'Unit 2: Microorganisms': {
     easy: [
       {
-        id: "bio12_u2_e1",
-        question: "What are microorganisms?",
-        options: [
-          "Microscopic living organisms",
-          "Large visible animals",
-          "Non-living particles",
-          "Chemical compounds"
-        ],
-        correct: "Microscopic living organisms",
-        explanation: "Microorganisms are microscopic living organisms that can only be seen with the aid of a microscope."
+        id: 'bio12_u2_e1',
+        question: 'What are microorganisms?',
+        options: ['Microscopic living organisms', 'Large animals', 'Plants only', 'Non-living things'],
+        correct: 'Microscopic living organisms',
+        explanation: 'Microorganisms are tiny living things that can only be seen with a microscope.'
       },
       {
-        id: "bio12_u2_e2",
-        question: "Which of the following is NOT a type of microorganism?",
-        options: [
-          "Elephant",
-          "Bacteria",
-          "Virus",
-          "Fungi"
-        ],
-        correct: "Elephant",
-        explanation: "Elephants are large mammals, not microorganisms. Bacteria, viruses, and fungi are all types of microorganisms."
+        id: 'bio12_u2_e2',
+        question: 'Which of these is a type of microorganism?',
+        options: ['Bacteria', 'Elephants', 'Trees', 'Rocks'],
+        correct: 'Bacteria',
+        explanation: 'Bacteria are single-celled microorganisms that are found everywhere in the environment.'
       },
       {
-        id: "bio12_u2_e3",
-        question: "What is the basic unit of bacterial structure?",
-        options: [
-          "Cell",
-          "Tissue",
-          "Organ",
-          "Organ system"
-        ],
-        correct: "Cell",
-        explanation: "Bacteria are single-celled organisms, so the cell is their basic structural and functional unit."
+        id: 'bio12_u2_e3',
+        question: 'What do we call microorganisms that cause disease?',
+        options: ['Pathogens', 'Nutrients', 'Vitamins', 'Minerals'],
+        correct: 'Pathogens',
+        explanation: 'Pathogens are microorganisms that can cause disease in humans, animals, or plants.'
       },
       {
-        id: "bio12_u2_e4",
-        question: "Which type of microorganism requires a host cell to reproduce?",
-        options: [
-          "Viruses",
-          "Bacteria",
-          "Algae",
-          "Protozoa"
-        ],
-        correct: "Viruses",
-        explanation: "Viruses are obligate intracellular parasites that require a host cell to reproduce and carry out metabolic activities."
+        id: 'bio12_u2_e4',
+        question: 'Which microorganism is used to make bread rise?',
+        options: ['Yeast', 'Virus', 'Algae', 'Protozoa'],
+        correct: 'Yeast',
+        explanation: 'Yeast is a fungus that ferments sugars and produces carbon dioxide, which makes bread rise.'
       },
       {
-        id: "bio12_u2_e5",
-        question: "What is the process by which bacteria reproduce?",
-        options: [
-          "Binary fission",
-          "Photosynthesis",
-          "Respiration",
-          "Digestion"
-        ],
-        correct: "Binary fission",
-        explanation: "Bacteria reproduce asexually through binary fission, where one cell divides into two identical daughter cells."
+        id: 'bio12_u2_e5',
+        question: 'What is the basic structure of a virus?',
+        options: ['Genetic material surrounded by protein coat', 'Cell wall and nucleus', 'Chloroplasts and mitochondria', 'Blood and bones'],
+        correct: 'Genetic material surrounded by protein coat',
+        explanation: 'Viruses consist of genetic material (DNA or RNA) enclosed in a protein coat called a capsid.'
       },
       {
-        id: "bio12_u2_e6",
-        question: "Which microorganisms are responsible for fermentation in bread making?",
-        options: [
-          "Yeasts",
-          "Bacteria only",
-          "Viruses",
-          "Algae"
-        ],
-        correct: "Yeasts",
-        explanation: "Yeasts, particularly Saccharomyces cerevisiae, are responsible for fermentation in bread making, producing carbon dioxide that makes bread rise."
+        id: 'bio12_u2_e6',
+        question: 'Which microorganism can photosynthesize?',
+        options: ['Algae', 'Bacteria only', 'Viruses', 'Fungi'],
+        correct: 'Algae',
+        explanation: 'Algae are microorganisms that contain chlorophyll and can perform photosynthesis.'
       },
       {
-        id: "bio12_u2_e7",
-        question: "What do we call microorganisms that cause disease?",
-        options: [
-          "Pathogens",
-          "Symbionts",
-          "Decomposers",
-          "Producers"
-        ],
-        correct: "Pathogens",
-        explanation: "Pathogens are microorganisms that cause disease in their host organisms."
+        id: 'bio12_u2_e7',
+        question: 'What do beneficial bacteria in our gut help with?',
+        options: ['Digestion', 'Breathing', 'Hearing', 'Seeing'],
+        correct: 'Digestion',
+        explanation: 'Beneficial bacteria in the gut help break down food and aid in the digestion process.'
       },
       {
-        id: "bio12_u2_e8",
-        question: "Which structure helps bacteria move?",
-        options: [
-          "Flagella",
-          "Nucleus",
-          "Chloroplast",
-          "Mitochondria"
-        ],
-        correct: "Flagella",
-        explanation: "Flagella are whip-like structures that help bacteria move through their environment."
+        id: 'bio12_u2_e8',
+        question: 'Which method is commonly used to kill harmful microorganisms?',
+        options: ['Sterilization', 'Fertilization', 'Pollination', 'Hibernation'],
+        correct: 'Sterilization',
+        explanation: 'Sterilization is the process of killing or removing all microorganisms from an object or surface.'
       },
       {
-        id: "bio12_u2_e9",
-        question: "What is the main difference between prokaryotic and eukaryotic cells?",
-        options: [
-          "Prokaryotes lack a membrane-bound nucleus",
-          "Eukaryotes are smaller",
-          "Prokaryotes have more organelles",
-          "Eukaryotes reproduce faster"
-        ],
-        correct: "Prokaryotes lack a membrane-bound nucleus",
-        explanation: "The main difference is that prokaryotic cells (like bacteria) lack a membrane-bound nucleus, while eukaryotic cells have one."
+        id: 'bio12_u2_e9',
+        question: 'What is fermentation?',
+        options: ['A process where microorganisms break down sugars', 'Building houses', 'Growing plants', 'Swimming'],
+        correct: 'A process where microorganisms break down sugars',
+        explanation: 'Fermentation is a metabolic process where microorganisms convert sugars into other compounds like alcohol or acids.'
       },
       {
-        id: "bio12_u2_e10",
-        question: "Which microorganisms are important for nitrogen fixation in soil?",
-        options: [
-          "Nitrogen-fixing bacteria",
-          "Viruses",
-          "Algae",
-          "Protozoa"
-        ],
-        correct: "Nitrogen-fixing bacteria",
-        explanation: "Nitrogen-fixing bacteria convert atmospheric nitrogen into forms that plants can use, playing a crucial role in the nitrogen cycle."
+        id: 'bio12_u2_e10',
+        question: 'Which disease is caused by bacteria?',
+        options: ['Tuberculosis', 'Common cold', 'Malaria', 'Diabetes'],
+        correct: 'Tuberculosis',
+        explanation: 'Tuberculosis is a bacterial infection caused by Mycobacterium tuberculosis.'
       }
     ],
     medium: [
       {
-        id: "bio12_u2_m1",
-        question: "What is the significance of bacterial endospores?",
-        options: [
-          "They allow bacteria to survive harsh conditions",
-          "They help in reproduction",
-          "They produce energy",
-          "They store genetic material"
-        ],
-        correct: "They allow bacteria to survive harsh conditions",
-        explanation: "Endospores are dormant, resistant structures that allow bacteria to survive extreme conditions like heat, radiation, and chemicals."
+        id: 'bio12_u2_m1',
+        question: 'What is the difference between gram-positive and gram-negative bacteria?',
+        options: ['Cell wall structure', 'Size', 'Color', 'Shape only'],
+        correct: 'Cell wall structure',
+        explanation: 'Gram-positive bacteria have thick peptidoglycan cell walls, while gram-negative bacteria have thin peptidoglycan walls with an outer membrane.'
       },
       {
-        id: "bio12_u2_m2",
-        question: "How do antibiotics work against bacterial infections?",
-        options: [
-          "They interfere with essential bacterial processes",
-          "They boost the immune system only",
-          "They kill all microorganisms",
-          "They prevent viral infections"
-        ],
-        correct: "They interfere with essential bacterial processes",
-        explanation: "Antibiotics work by targeting specific bacterial processes like cell wall synthesis, protein synthesis, or DNA replication."
+        id: 'bio12_u2_m2',
+        question: 'Which type of reproduction is common in bacteria?',
+        options: ['Binary fission', 'Sexual reproduction only', 'Budding only', 'Fragmentation only'],
+        correct: 'Binary fission',
+        explanation: 'Binary fission is the primary method of reproduction in bacteria, where one cell divides into two identical cells.'
       },
       {
-        id: "bio12_u2_m3",
-        question: "What is horizontal gene transfer in bacteria?",
-        options: [
-          "Transfer of genetic material between bacteria",
-          "Vertical inheritance from parent to offspring",
-          "Gene expression regulation",
-          "Protein synthesis"
-        ],
-        correct: "Transfer of genetic material between bacteria",
-        explanation: "Horizontal gene transfer allows bacteria to exchange genetic material through processes like conjugation, transformation, and transduction."
+        id: 'bio12_u2_m3',
+        question: 'What is an antibiotic?',
+        options: ['A substance that kills or inhibits bacteria', 'A type of virus', 'A plant hormone', 'A type of food'],
+        correct: 'A substance that kills or inhibits bacteria',
+        explanation: 'Antibiotics are medications that either kill bacteria or prevent their growth and reproduction.'
       },
       {
-        id: "bio12_u2_m4",
-        question: "Which process allows some bacteria to produce their own food using light?",
-        options: [
-          "Photosynthesis",
-          "Fermentation",
-          "Respiration",
-          "Decomposition"
-        ],
-        correct: "Photosynthesis",
-        explanation: "Some bacteria, called cyanobacteria, can perform photosynthesis, using light energy to produce their own food like plants."
+        id: 'bio12_u2_m4',
+        question: 'Which structure helps bacteria move?',
+        options: ['Flagella', 'Nucleus', 'Chloroplasts', 'Mitochondria'],
+        correct: 'Flagella',
+        explanation: 'Flagella are whip-like structures that help bacteria swim and move through liquid environments.'
       },
       {
-        id: "bio12_u2_m5",
-        question: "What is the role of normal flora in the human body?",
-        options: [
-          "They protect against pathogens and aid in digestion",
-          "They only cause diseases",
-          "They have no function",
-          "They only consume nutrients"
-        ],
-        correct: "They protect against pathogens and aid in digestion",
-        explanation: "Normal flora (microbiome) protects against pathogenic microorganisms, aids in digestion, and contributes to immune system development."
+        id: 'bio12_u2_m5',
+        question: 'What is the role of fungi in ecosystems?',
+        options: ['Decomposers', 'Primary producers only', 'Top predators', 'Herbivores only'],
+        correct: 'Decomposers',
+        explanation: 'Fungi play a crucial role as decomposers, breaking down dead organic matter and recycling nutrients.'
       },
       {
-        id: "bio12_u2_m6",
-        question: "How do bacteriophages affect bacterial populations?",
-        options: [
-          "They infect and kill bacteria",
-          "They help bacteria reproduce",
-          "They provide nutrients to bacteria",
-          "They have no effect on bacteria"
-        ],
-        correct: "They infect and kill bacteria",
-        explanation: "Bacteriophages are viruses that specifically infect bacteria, often leading to bacterial cell death and population control."
+        id: 'bio12_u2_m6',
+        question: 'How do viruses reproduce?',
+        options: ['By hijacking host cell machinery', 'By binary fission', 'By photosynthesis', 'By breathing'],
+        correct: 'By hijacking host cell machinery',
+        explanation: 'Viruses cannot reproduce on their own and must infect host cells to use their machinery for replication.'
       },
       {
-        id: "bio12_u2_m7",
-        question: "What is quorum sensing in bacteria?",
-        options: [
-          "Communication system based on cell density",
-          "Individual cell behavior",
-          "Random genetic mutations",
-          "Energy production mechanism"
-        ],
-        correct: "Communication system based on cell density",
-        explanation: "Quorum sensing is a bacterial communication system that allows them to coordinate behavior based on population density."
+        id: 'bio12_u2_m7',
+        question: 'What is pasteurization?',
+        options: ['Heat treatment to kill harmful microorganisms', 'Growing plants', 'Building structures', 'Creating art'],
+        correct: 'Heat treatment to kill harmful microorganisms',
+        explanation: 'Pasteurization is a process that uses controlled heat to kill harmful microorganisms in food and beverages.'
       },
       {
-        id: "bio12_u2_m8",
-        question: "Which factor contributes to antibiotic resistance in bacteria?",
-        options: [
-          "Overuse and misuse of antibiotics",
-          "Proper antibiotic use",
-          "Vaccination",
-          "Improved hygiene"
-        ],
-        correct: "Overuse and misuse of antibiotics",
-        explanation: "Antibiotic resistance develops when antibiotics are overused or misused, creating selective pressure for resistant bacterial strains."
+        id: 'bio12_u2_m8',
+        question: 'Which microorganism causes malaria?',
+        options: ['Plasmodium (protozoa)', 'Bacteria', 'Virus', 'Fungus'],
+        correct: 'Plasmodium (protozoa)',
+        explanation: 'Malaria is caused by Plasmodium, a parasitic protozoan transmitted by mosquitoes.'
       },
       {
-        id: "bio12_u2_m9",
-        question: "What is the difference between aerobic and anaerobic bacteria?",
-        options: [
-          "Aerobic bacteria require oxygen, anaerobic bacteria do not",
-          "They are the same",
-          "Anaerobic bacteria are larger",
-          "Aerobic bacteria reproduce faster"
-        ],
-        correct: "Aerobic bacteria require oxygen, anaerobic bacteria do not",
-        explanation: "Aerobic bacteria require oxygen for respiration, while anaerobic bacteria can survive without oxygen and may even be poisoned by it."
+        id: 'bio12_u2_m9',
+        question: 'What is antibiotic resistance?',
+        options: ['Bacteria evolving to survive antibiotic treatment', 'Viruses becoming stronger', 'Plants growing faster', 'Animals becoming larger'],
+        correct: 'Bacteria evolving to survive antibiotic treatment',
+        explanation: 'Antibiotic resistance occurs when bacteria develop mechanisms to survive exposure to antibiotics.'
       },
       {
-        id: "bio12_u2_m10",
-        question: "How do prions differ from other infectious agents?",
-        options: [
-          "They are infectious proteins without nucleic acids",
-          "They are larger than bacteria",
-          "They require antibiotics for treatment",
-          "They only infect plants"
-        ],
-        correct: "They are infectious proteins without nucleic acids",
-        explanation: "Prions are unique infectious agents consisting only of misfolded proteins, lacking nucleic acids unlike viruses, bacteria, or fungi."
+        id: 'bio12_u2_m10',
+        question: 'Which process do some bacteria use to obtain energy without oxygen?',
+        options: ['Anaerobic respiration', 'Photosynthesis only', 'Aerobic respiration only', 'Digestion'],
+        correct: 'Anaerobic respiration',
+        explanation: 'Anaerobic respiration allows bacteria to generate energy without using oxygen as the final electron acceptor.'
       }
     ],
     hard: [
       {
-        id: "bio12_u2_h1",
-        question: "How do biofilms contribute to bacterial pathogenicity and antibiotic resistance?",
-        options: [
-          "They protect bacteria and reduce antibiotic penetration",
-          "They make bacteria more sensitive to antibiotics",
-          "They prevent bacterial growth",
-          "They have no effect on pathogenicity"
-        ],
-        correct: "They protect bacteria and reduce antibiotic penetration",
-        explanation: "Biofilms are complex bacterial communities surrounded by protective matrices that shield bacteria from antibiotics and immune responses."
+        id: 'bio12_u2_h1',
+        question: 'What is horizontal gene transfer in bacteria?',
+        options: ['Transfer of genes between bacterial cells', 'Vertical inheritance only', 'Cell division', 'Energy production'],
+        correct: 'Transfer of genes between bacterial cells',
+        explanation: 'Horizontal gene transfer allows bacteria to share genetic material with other bacterial cells, contributing to evolution and antibiotic resistance.'
       },
       {
-        id: "bio12_u2_h2",
-        question: "What is the significance of the CRISPR-Cas system in bacteria?",
-        options: [
-          "It provides adaptive immunity against viruses",
-          "It helps in energy production",
-          "It aids in reproduction",
-          "It stores nutrients"
-        ],
-        correct: "It provides adaptive immunity against viruses",
-        explanation: "CRISPR-Cas is a bacterial adaptive immune system that remembers and defends against viral infections by cutting viral DNA."
+        id: 'bio12_u2_h2',
+        question: 'Which mechanism do bacteria use for conjugation?',
+        options: ['Pilus formation', 'Photosynthesis', 'Respiration', 'Digestion'],
+        correct: 'Pilus formation',
+        explanation: 'Conjugation involves the formation of a pilus (bridge) between bacterial cells to transfer genetic material.'
       },
       {
-        id: "bio12_u2_h3",
-        question: "How do extremophile microorganisms survive in extreme environments?",
-        options: [
-          "They have specialized proteins and metabolic pathways",
-          "They hibernate until conditions improve",
-          "They migrate to better environments",
-          "They cannot actually survive extreme conditions"
-        ],
-        correct: "They have specialized proteins and metabolic pathways",
-        explanation: "Extremophiles have evolved specialized proteins, enzymes, and metabolic pathways that function optimally in extreme conditions."
+        id: 'bio12_u2_h3',
+        question: 'What is the significance of endospores in bacteria?',
+        options: ['Survival in harsh conditions', 'Faster reproduction', 'Better nutrition', 'Improved movement'],
+        correct: 'Survival in harsh conditions',
+        explanation: 'Endospores are highly resistant structures that allow bacteria to survive extreme conditions like heat, radiation, and chemicals.'
       },
       {
-        id: "bio12_u2_h4",
-        question: "What role do microorganisms play in global biogeochemical cycles?",
-        options: [
-          "They are essential drivers of nutrient cycling",
-          "They have minimal impact on global cycles",
-          "They only consume nutrients",
-          "They only affect local environments"
-        ],
-        correct: "They are essential drivers of nutrient cycling",
-        explanation: "Microorganisms are crucial for global biogeochemical cycles, mediating the cycling of carbon, nitrogen, sulfur, and phosphorus."
+        id: 'bio12_u2_h4',
+        question: 'Which viral replication cycle involves integration into the host genome?',
+        options: ['Lysogenic cycle', 'Lytic cycle only', 'Photosynthesis', 'Respiration'],
+        correct: 'Lysogenic cycle',
+        explanation: 'In the lysogenic cycle, viral DNA integrates into the host cell\'s genome and remains dormant until activated.'
       },
       {
-        id: "bio12_u2_h5",
-        question: "How does viral evolution occur and what are its implications?",
-        options: [
-          "Through high mutation rates and genetic recombination",
-          "Viruses do not evolve",
-          "Only through host cell changes",
-          "Through environmental pressure only"
-        ],
-        correct: "Through high mutation rates and genetic recombination",
-        explanation: "Viral evolution occurs rapidly through high mutation rates and genetic recombination, leading to new strains that may escape immunity."
+        id: 'bio12_u2_h5',
+        question: 'What is quorum sensing in bacteria?',
+        options: ['Cell-to-cell communication', 'Individual cell growth', 'Energy production', 'Waste removal'],
+        correct: 'Cell-to-cell communication',
+        explanation: 'Quorum sensing is a bacterial communication system that allows cells to coordinate behavior based on population density.'
       },
       {
-        id: "bio12_u2_h6",
-        question: "What is the concept of the holobiont in microbiology?",
-        options: [
-          "Host organism plus its associated microbiome",
-          "Individual bacterial cells",
-          "Viral particles only",
-          "Fungal networks"
-        ],
-        correct: "Host organism plus its associated microbiome",
-        explanation: "A holobiont refers to a host organism and its associated microbiome, considered as a single ecological and evolutionary unit."
+        id: 'bio12_u2_h6',
+        question: 'Which enzyme do restriction enzymes target in bacteria?',
+        options: ['Foreign DNA', 'Proteins only', 'Lipids only', 'Carbohydrates only'],
+        correct: 'Foreign DNA',
+        explanation: 'Restriction enzymes are part of bacterial defense systems that cut foreign DNA at specific recognition sequences.'
       },
       {
-        id: "bio12_u2_h7",
-        question: "How do microorganisms contribute to climate change?",
-        options: [
-          "They produce and consume greenhouse gases",
-          "They have no effect on climate",
-          "They only cool the planet",
-          "They only warm the planet"
-        ],
-        correct: "They produce and consume greenhouse gases",
-        explanation: "Microorganisms both produce greenhouse gases (like methane and CO2) and consume them, playing complex roles in climate regulation."
+        id: 'bio12_u2_h7',
+        question: 'What is the role of biofilms in bacterial communities?',
+        options: ['Protection and cooperation', 'Individual survival only', 'Faster movement', 'Energy storage'],
+        correct: 'Protection and cooperation',
+        explanation: 'Biofilms are structured communities of bacteria embedded in a protective matrix that enhances survival and cooperation.'
       },
       {
-        id: "bio12_u2_h8",
-        question: "What is the significance of the microbiome in human health and disease?",
-        options: [
-          "It influences immunity, metabolism, and mental health",
-          "It has no effect on health",
-          "It only causes diseases",
-          "It only affects digestion"
-        ],
-        correct: "It influences immunity, metabolism, and mental health",
-        explanation: "The human microbiome influences multiple aspects of health including immune function, metabolism, and even mental health through the gut-brain axis."
+        id: 'bio12_u2_h8',
+        question: 'Which mechanism allows some bacteria to fix nitrogen?',
+        options: ['Nitrogenase enzyme', 'Photosynthesis only', 'Fermentation only', 'Respiration only'],
+        correct: 'Nitrogenase enzyme',
+        explanation: 'Nitrogenase is the enzyme complex that allows nitrogen-fixing bacteria to convert atmospheric nitrogen into ammonia.'
       },
       {
-        id: "bio12_u2_h9",
-        question: "How do synthetic biology approaches modify microorganisms?",
-        options: [
-          "By engineering genetic circuits and metabolic pathways",
-          "Only by changing their environment",
-          "By physical modifications only",
-          "Microorganisms cannot be modified"
-        ],
-        correct: "By engineering genetic circuits and metabolic pathways",
-        explanation: "Synthetic biology engineers microorganisms by designing genetic circuits and metabolic pathways to perform novel functions."
+        id: 'bio12_u2_h9',
+        question: 'What is the difference between bacteriophages and other viruses?',
+        options: ['They specifically infect bacteria', 'They are larger', 'They contain more DNA', 'They reproduce faster'],
+        correct: 'They specifically infect bacteria',
+        explanation: 'Bacteriophages are viruses that specifically target and infect bacterial cells.'
       },
       {
-        id: "bio12_u2_h10",
-        question: "What are the challenges in studying unculturable microorganisms?",
-        options: [
-          "They cannot be grown in laboratory conditions",
-          "They are too small to observe",
-          "They reproduce too quickly",
-          "They are not actually alive"
-        ],
-        correct: "They cannot be grown in laboratory conditions",
-        explanation: "Many microorganisms cannot be cultured in laboratory conditions, requiring molecular techniques like metagenomics for study."
+        id: 'bio12_u2_h10',
+        question: 'Which process involves bacteria converting organic matter in oxygen-depleted environments?',
+        options: ['Anaerobic digestion', 'Photosynthesis', 'Aerobic respiration', 'Protein synthesis'],
+        correct: 'Anaerobic digestion',
+        explanation: 'Anaerobic digestion is the process where bacteria break down organic matter in the absence of oxygen, producing methane and other compounds.'
       }
     ]
   },
-  "Unit 3: Energy transformation": {
+  'Unit 3: Energy transformation': {
     easy: [
       {
-        id: "bio12_u3_e1",
-        question: "What is the primary source of energy for most life on Earth?",
-        options: [
-          "The Sun",
-          "Wind",
-          "Water",
-          "Soil"
-        ],
-        correct: "The Sun",
-        explanation: "The Sun is the primary source of energy for most life on Earth, providing energy for photosynthesis which forms the base of most food chains."
+        id: 'bio12_u3_e1',
+        question: 'What is energy transformation?',
+        options: ['Converting one form of energy to another', 'Creating energy from nothing', 'Destroying energy', 'Storing energy permanently'],
+        correct: 'Converting one form of energy to another',
+        explanation: 'Energy transformation is the process of changing energy from one form to another, following the law of conservation of energy.'
       },
       {
-        id: "bio12_u3_e2",
-        question: "What is ATP?",
-        options: [
-          "The energy currency of cells",
-          "A type of protein",
-          "A carbohydrate",
-          "A lipid"
-        ],
-        correct: "The energy currency of cells",
-        explanation: "ATP (Adenosine Triphosphate) is the primary energy currency of cells, storing and providing energy for cellular processes."
+        id: 'bio12_u3_e2',
+        question: 'Which process converts light energy into chemical energy?',
+        options: ['Photosynthesis', 'Respiration', 'Digestion', 'Excretion'],
+        correct: 'Photosynthesis',
+        explanation: 'Photosynthesis converts light energy from the sun into chemical energy stored in glucose molecules.'
       },
       {
-        id: "bio12_u3_e3",
-        question: "Where does photosynthesis occur in plant cells?",
-        options: [
-          "Chloroplasts",
-          "Mitochondria",
-          "Nucleus",
-          "Ribosomes"
-        ],
-        correct: "Chloroplasts",
-        explanation: "Photosynthesis occurs in chloroplasts, specialized organelles in plant cells that contain chlorophyll."
+        id: 'bio12_u3_e3',
+        question: 'What is ATP?',
+        options: ['Energy currency of cells', 'A type of protein', 'A vitamin', 'A mineral'],
+        correct: 'Energy currency of cells',
+        explanation: 'ATP (Adenosine Triphosphate) is the primary energy currency used by cells for various biological processes.'
       },
       {
-        id: "bio12_u3_e4",
-        question: "What is the main product of photosynthesis?",
-        options: [
-          "Glucose",
-          "Protein",
-          "Lipid",
-          "ATP"
-        ],
-        correct: "Glucose",
-        explanation: "The main product of photosynthesis is glucose, a simple sugar that plants use for energy and building other molecules."
+        id: 'bio12_u3_e4',
+        question: 'Where does photosynthesis occur in plant cells?',
+        options: ['Chloroplasts', 'Nucleus', 'Mitochondria', 'Vacuole'],
+        correct: 'Chloroplasts',
+        explanation: 'Photosynthesis occurs in chloroplasts, which contain the green pigment chlorophyll that captures light energy.'
       },
       {
-        id: "bio12_u3_e5",
-        question: "What gas is released during photosynthesis?",
-        options: [
-          "Oxygen",
-          "Carbon dioxide",
-          "Nitrogen",
-          "Hydrogen"
-        ],
-        correct: "Oxygen",
-        explanation: "Oxygen is released as a byproduct during photosynthesis when water molecules are split to provide electrons."
+        id: 'bio12_u3_e5',
+        question: 'What is cellular respiration?',
+        options: ['Breaking down glucose to release energy', 'Making glucose from light', 'Building proteins', 'Storing water'],
+        correct: 'Breaking down glucose to release energy',
+        explanation: 'Cellular respiration is the process of breaking down glucose and other molecules to release energy in the form of ATP.'
       },
       {
-        id: "bio12_u3_e6",
-        question: "Where does cellular respiration occur?",
-        options: [
-          "Mitochondria",
-          "Chloroplasts",
-          "Nucleus",
-          "Golgi apparatus"
-        ],
-        correct: "Mitochondria",
-        explanation: "Cellular respiration primarily occurs in mitochondria, the powerhouses of the cell."
+        id: 'bio12_u3_e6',
+        question: 'Which gas is produced during photosynthesis?',
+        options: ['Oxygen', 'Carbon dioxide', 'Nitrogen', 'Hydrogen'],
+        correct: 'Oxygen',
+        explanation: 'Oxygen is released as a byproduct during photosynthesis when water molecules are split.'
       },
       {
-        id: "bio12_u3_e7",
-        question: "What is the main purpose of cellular respiration?",
-        options: [
-          "To produce ATP",
-          "To produce glucose",
-          "To produce proteins",
-          "To produce DNA"
-        ],
-        correct: "To produce ATP",
-        explanation: "The main purpose of cellular respiration is to produce ATP by breaking down glucose and other organic molecules."
+        id: 'bio12_u3_e7',
+        question: 'What do plants need for photosynthesis?',
+        options: ['Light, carbon dioxide, and water', 'Only water', 'Only light', 'Only carbon dioxide'],
+        correct: 'Light, carbon dioxide, and water',
+        explanation: 'Photosynthesis requires light energy, carbon dioxide from the air, and water from the soil.'
       },
       {
-        id: "bio12_u3_e8",
-        question: "What gas is consumed during cellular respiration?",
-        options: [
-          "Oxygen",
-          "Carbon dioxide",
-          "Nitrogen",
-          "Hydrogen"
-        ],
-        correct: "Oxygen",
-        explanation: "Oxygen is consumed during cellular respiration as the final electron acceptor in the electron transport chain."
+        id: 'bio12_u3_e8',
+        question: 'Where does cellular respiration occur?',
+        options: ['Mitochondria', 'Chloroplasts', 'Nucleus', 'Cell wall'],
+        correct: 'Mitochondria',
+        explanation: 'Cellular respiration primarily occurs in mitochondria, which are known as the powerhouses of the cell.'
       },
       {
-        id: "bio12_u3_e9",
-        question: "What is fermentation?",
-        options: [
-          "Anaerobic breakdown of glucose",
-          "Aerobic breakdown of glucose",
-          "Protein synthesis",
-          "DNA replication"
-        ],
-        correct: "Anaerobic breakdown of glucose",
-        explanation: "Fermentation is the anaerobic breakdown of glucose that occurs when oxygen is not available for cellular respiration."
+        id: 'bio12_u3_e9',
+        question: 'What is the main product of photosynthesis?',
+        options: ['Glucose', 'Protein', 'Fat', 'Mineral'],
+        correct: 'Glucose',
+        explanation: 'Glucose is the main product of photosynthesis, serving as a source of energy and building material for plants.'
       },
       {
-        id: "bio12_u3_e10",
-        question: "Which pigment is primarily responsible for capturing light energy in photosynthesis?",
-        options: [
-          "Chlorophyll",
-          "Hemoglobin",
-          "Melanin",
-          "Carotene"
-        ],
-        correct: "Chlorophyll",
-        explanation: "Chlorophyll is the primary pigment responsible for capturing light energy during photosynthesis."
+        id: 'bio12_u3_e10',
+        question: 'Which process releases carbon dioxide?',
+        options: ['Cellular respiration', 'Photosynthesis', 'Protein synthesis', 'DNA replication'],
+        correct: 'Cellular respiration',
+        explanation: 'Cellular respiration releases carbon dioxide as a waste product when glucose is broken down for energy.'
       }
     ],
     medium: [
       {
-        id: "bio12_u3_m1",
-        question: "What are the two main stages of photosynthesis?",
-        options: [
-          "Light-dependent and light-independent reactions",
-          "Glycolysis and fermentation",
-          "Krebs cycle and electron transport",
-          "Transcription and translation"
-        ],
-        correct: "Light-dependent and light-independent reactions",
-        explanation: "Photosynthesis consists of light-dependent reactions (photo-reactions) and light-independent reactions (Calvin cycle)."
+        id: 'bio12_u3_m1',
+        question: 'What are the two main stages of photosynthesis?',
+        options: ['Light-dependent and light-independent reactions', 'Day and night reactions', 'Fast and slow reactions', 'Hot and cold reactions'],
+        correct: 'Light-dependent and light-independent reactions',
+        explanation: 'Photosynthesis consists of light-dependent reactions (photo reactions) and light-independent reactions (Calvin cycle).'
       },
       {
-        id: "bio12_u3_m2",
-        question: "Where do the light-dependent reactions of photosynthesis occur?",
-        options: [
-          "Thylakoid membranes",
-          "Stroma",
-          "Cytoplasm",
-          "Nucleus"
-        ],
-        correct: "Thylakoid membranes",
-        explanation: "Light-dependent reactions occur in the thylakoid membranes of chloroplasts where chlorophyll is embedded."
+        id: 'bio12_u3_m2',
+        question: 'What is the role of chlorophyll in photosynthesis?',
+        options: ['Absorbing light energy', 'Storing water', 'Producing oxygen', 'Breaking down glucose'],
+        correct: 'Absorbing light energy',
+        explanation: 'Chlorophyll is the green pigment that absorbs light energy, particularly red and blue wavelengths, for photosynthesis.'
       },
       {
-        id: "bio12_u3_m3",
-        question: "What is the Calvin cycle?",
-        options: [
-          "The light-independent reactions of photosynthesis",
-          "A stage of cellular respiration",
-          "DNA replication process",
-          "Protein synthesis pathway"
-        ],
-        correct: "The light-independent reactions of photosynthesis",
-        explanation: "The Calvin cycle comprises the light-independent reactions of photosynthesis, where CO2 is fixed into glucose."
+        id: 'bio12_u3_m3',
+        question: 'Which molecule carries energy within cells?',
+        options: ['ATP', 'DNA', 'RNA', 'Protein'],
+        correct: 'ATP',
+        explanation: 'ATP (Adenosine Triphosphate) is the primary energy-carrying molecule in cells.'
       },
       {
-        id: "bio12_u3_m4",
-        question: "What are the three main stages of cellular respiration?",
-        options: [
-          "Glycolysis, Krebs cycle, and electron transport chain",
-          "Light reactions, Calvin cycle, and fermentation",
-          "Transcription, translation, and replication",
-          "Photosynthesis, respiration, and fermentation"
-        ],
-        correct: "Glycolysis, Krebs cycle, and electron transport chain",
-        explanation: "Cellular respiration consists of glycolysis, the Krebs cycle, and the electron transport chain."
+        id: 'bio12_u3_m4',
+        question: 'What happens during glycolysis?',
+        options: ['Glucose is broken down into pyruvate', 'Glucose is made from light', 'Proteins are synthesized', 'DNA is replicated'],
+        correct: 'Glucose is broken down into pyruvate',
+        explanation: 'Glycolysis is the first stage of cellular respiration where glucose is broken down into two pyruvate molecules.'
       },
       {
-        id: "bio12_u3_m5",
-        question: "How many ATP molecules are typically produced from one glucose molecule during cellular respiration?",
-        options: [
-          "About 36-38 ATP",
-          "2 ATP",
-          "10 ATP",
-          "100 ATP"
-        ],
-        correct: "About 36-38 ATP",
-        explanation: "Cellular respiration typically produces about 36-38 ATP molecules from one glucose molecule through all stages combined."
+        id: 'bio12_u3_m5',
+        question: 'What is the Calvin cycle?',
+        options: ['Light-independent reactions of photosynthesis', 'Light-dependent reactions', 'Part of cellular respiration', 'DNA replication process'],
+        correct: 'Light-independent reactions of photosynthesis',
+        explanation: 'The Calvin cycle is the light-independent phase of photosynthesis where carbon dioxide is fixed into glucose.'
       },
       {
-        id: "bio12_u3_m6",
-        question: "What is the role of NADH in cellular respiration?",
-        options: [
-          "Electron carrier that transfers energy to ATP synthesis",
-          "Final electron acceptor",
-          "Glucose breakdown enzyme",
-          "Oxygen storage molecule"
-        ],
-        correct: "Electron carrier that transfers energy to ATP synthesis",
-        explanation: "NADH is an important electron carrier that transfers high-energy electrons to the electron transport chain for ATP synthesis."
+        id: 'bio12_u3_m6',
+        question: 'Which process produces the most ATP?',
+        options: ['Aerobic respiration', 'Fermentation', 'Photosynthesis', 'Protein synthesis'],
+        correct: 'Aerobic respiration',
+        explanation: 'Aerobic respiration produces the most ATP (about 36-38 molecules per glucose) compared to other cellular processes.'
       },
       {
-        id: "bio12_u3_m7",
-        question: "What happens during glycolysis?",
-        options: [
-          "Glucose is broken down into pyruvate",
-          "CO2 is fixed into glucose",
-          "Oxygen is produced",
-          "Proteins are synthesized"
-        ],
-        correct: "Glucose is broken down into pyruvate",
-        explanation: "During glycolysis, glucose is broken down into two molecules of pyruvate, producing a small amount of ATP."
+        id: 'bio12_u3_m7',
+        question: 'What is fermentation?',
+        options: ['Anaerobic breakdown of glucose', 'Aerobic breakdown of glucose', 'Synthesis of glucose', 'Storage of glucose'],
+        correct: 'Anaerobic breakdown of glucose',
+        explanation: 'Fermentation is the anaerobic breakdown of glucose that produces less ATP than aerobic respiration.'
       },
       {
-        id: "bio12_u3_m8",
-        question: "What is chemiosmosis?",
-        options: [
-          "ATP synthesis driven by proton gradient",
-          "Glucose breakdown process",
-          "Oxygen consumption",
-          "Carbon dioxide fixation"
-        ],
-        correct: "ATP synthesis driven by proton gradient",
-        explanation: "Chemiosmosis is the process where ATP is synthesized using the energy from a proton gradient across a membrane."
+        id: 'bio12_u3_m8',
+        question: 'Which wavelengths of light are most effective for photosynthesis?',
+        options: ['Red and blue', 'Green and yellow', 'Only white', 'Only infrared'],
+        correct: 'Red and blue',
+        explanation: 'Red and blue wavelengths are most effectively absorbed by chlorophyll for photosynthesis.'
       },
       {
-        id: "bio12_u3_m9",
-        question: "Why is oxygen important in cellular respiration?",
-        options: [
-          "It serves as the final electron acceptor",
-          "It provides carbon for glucose",
-          "It stores energy",
-          "It breaks down glucose directly"
-        ],
-        correct: "It serves as the final electron acceptor",
-        explanation: "Oxygen serves as the final electron acceptor in the electron transport chain, allowing the process to continue efficiently."
+        id: 'bio12_u3_m9',
+        question: 'What is the function of NADH in cellular respiration?',
+        options: ['Electron carrier', 'Energy storage', 'Glucose synthesis', 'Protein building'],
+        correct: 'Electron carrier',
+        explanation: 'NADH is an electron carrier that transfers electrons to the electron transport chain in cellular respiration.'
       },
       {
-        id: "bio12_u3_m10",
-        question: "What is the relationship between photosynthesis and cellular respiration?",
-        options: [
-          "They are complementary processes in the carbon-oxygen cycle",
-          "They are identical processes",
-          "They have no relationship",
-          "One occurs only in plants, the other only in animals"
-        ],
-        correct: "They are complementary processes in the carbon-oxygen cycle",
-        explanation: "Photosynthesis and cellular respiration are complementary processes that cycle carbon and oxygen through ecosystems."
+        id: 'bio12_u3_m10',
+        question: 'Where do the light-dependent reactions occur?',
+        options: ['Thylakoid membranes', 'Stroma', 'Nucleus', 'Cytoplasm'],
+        correct: 'Thylakoid membranes',
+        explanation: 'Light-dependent reactions occur in the thylakoid membranes of chloroplasts where chlorophyll is located.'
       }
     ],
     hard: [
       {
-        id: "bio12_u3_h1",
-        question: "How does the structure of chloroplasts optimize photosynthetic efficiency?",
-        options: [
-          "Thylakoid stacking maximizes light capture and surface area",
-          "Random organization improves efficiency",
-          "Structure has no effect on efficiency",
-          "Simplicity improves function"
-        ],
-        correct: "Thylakoid stacking maximizes light capture and surface area",
-        explanation: "Chloroplast structure with stacked thylakoids (grana) maximizes light capture surface area and optimizes electron transport efficiency."
+        id: 'bio12_u3_h1',
+        question: 'What is the net equation for photosynthesis?',
+        options: ['6CO2 + 6H2O + light → C6H12O6 + 6O2', '6O2 + 6H2O → C6H12O6 + 6CO2', 'C6H12O6 → 6CO2 + 6H2O', 'ATP → ADP + Pi'],
+        correct: '6CO2 + 6H2O + light → C6H12O6 + 6O2',
+        explanation: 'The net equation shows that photosynthesis uses carbon dioxide, water, and light energy to produce glucose and oxygen.'
       },
       {
-        id: "bio12_u3_h2",
-        question: "What is the significance of the Q cycle in photosynthesis?",
-        options: [
-          "It ensures efficient electron transport and proton pumping",
-          "It breaks down glucose",
-          "It produces oxygen directly",
-          "It has no significant role"
-        ],
-        correct: "It ensures efficient electron transport and proton pumping",
-        explanation: "The Q cycle (plastoquinone cycle) ensures efficient electron transport between photosystems and contributes to proton gradient formation."
+        id: 'bio12_u3_h2',
+        question: 'What is chemiosmosis?',
+        options: ['ATP synthesis using proton gradient', 'Glucose breakdown', 'DNA replication', 'Protein synthesis'],
+        correct: 'ATP synthesis using proton gradient',
+        explanation: 'Chemiosmosis is the process where ATP is synthesized using the energy from a proton gradient across a membrane.'
       },
       {
-        id: "bio12_u3_h3",
-        question: "How do C4 and CAM plants differ from C3 plants in their photosynthetic mechanisms?",
-        options: [
-          "They have evolved mechanisms to concentrate CO2 and reduce photorespiration",
-          "They produce different amounts of glucose",
-          "They use different light wavelengths",
-          "They don't perform photosynthesis"
-        ],
-        correct: "They have evolved mechanisms to concentrate CO2 and reduce photorespiration",
-        explanation: "C4 and CAM plants have evolved specialized mechanisms to concentrate CO2 around RuBisCO, reducing photorespiration and improving efficiency."
+        id: 'bio12_u3_h3',
+        question: 'Which enzyme fixes carbon dioxide in the Calvin cycle?',
+        options: ['RuBisCO', 'ATP synthase', 'Cytochrome', 'NADH dehydrogenase'],
+        correct: 'RuBisCO',
+        explanation: 'RuBisCO (Ribulose-1,5-bisphosphate carboxylase/oxygenase) is the enzyme that catalyzes carbon fixation in the Calvin cycle.'
       },
       {
-        id: "bio12_u3_h4",
-        question: "What is photorespiration and why is it considered inefficient?",
-        options: [
-          "RuBisCO binds oxygen instead of CO2, reducing photosynthetic efficiency",
-          "Plants respire in the light",
-          "Chlorophyll breaks down in bright light",
-          "ATP production decreases"
-        ],
-        correct: "RuBisCO binds oxygen instead of CO2, reducing photosynthetic efficiency",
-        explanation: "Photorespiration occurs when RuBisCO binds oxygen instead of CO2, leading to energy loss and reduced photosynthetic efficiency."
+        id: 'bio12_u3_h4',
+        question: 'What is the electron transport chain?',
+        options: ['Series of protein complexes that transfer electrons', 'DNA replication machinery', 'Protein synthesis pathway', 'Glucose breakdown pathway'],
+        correct: 'Series of protein complexes that transfer electrons',
+        explanation: 'The electron transport chain is a series of protein complexes that transfer electrons and pump protons to generate ATP.'
       },
       {
-        id: "bio12_u3_h5",
-        question: "How does substrate-level phosphorylation differ from oxidative phosphorylation?",
-        options: [
-          "Substrate-level occurs directly in metabolic reactions, oxidative uses electron transport",
-          "They are the same process",
-          "One produces more ATP than the other",
-          "One occurs only in plants"
-        ],
-        correct: "Substrate-level occurs directly in metabolic reactions, oxidative uses electron transport",
-        explanation: "Substrate-level phosphorylation directly transfers phosphate to ADP, while oxidative phosphorylation uses electron transport and chemiosmosis."
+        id: 'bio12_u3_h5',
+        question: 'What is photorespiration?',
+        options: ['Wasteful pathway when RuBisCO binds oxygen', 'Normal photosynthesis', 'Cellular respiration in light', 'Glucose synthesis'],
+        correct: 'Wasteful pathway when RuBisCO binds oxygen',
+        explanation: 'Photorespiration is a wasteful process that occurs when RuBisCO binds oxygen instead of carbon dioxide, reducing photosynthetic efficiency.'
       },
       {
-        id: "bio12_u3_h6",
-        question: "What is the role of uncoupling proteins in mitochondria?",
-        options: [
-          "They allow proton flow without ATP synthesis, generating heat",
-          "They increase ATP production",
-          "They prevent electron transport",
-          "They store energy"
-        ],
-        correct: "They allow proton flow without ATP synthesis, generating heat",
-        explanation: "Uncoupling proteins allow protons to flow across the inner mitochondrial membrane without synthesizing ATP, generating heat instead."
+        id: 'bio12_u3_h6',
+        question: 'What is the role of cytochrome c in cellular respiration?',
+        options: ['Electron carrier in the electron transport chain', 'Glucose breakdown', 'ATP synthesis', 'Oxygen production'],
+        correct: 'Electron carrier in the electron transport chain',
+        explanation: 'Cytochrome c is a mobile electron carrier that transfers electrons between complex III and complex IV in the electron transport chain.'
       },
       {
-        id: "bio12_u3_h7",
-        question: "How do metabolic flexibility and substrate switching optimize energy production?",
-        options: [
-          "Cells can switch between different fuel sources based on availability",
-          "Cells use only one type of fuel",
-          "Metabolism is fixed and unchanging",
-          "Energy production is always constant"
-        ],
-        correct: "Cells can switch between different fuel sources based on availability",
-        explanation: "Metabolic flexibility allows cells to switch between glucose, fatty acids, and amino acids as fuel sources based on availability and needs."
+        id: 'bio12_u3_h7',
+        question: 'What is substrate-level phosphorylation?',
+        options: ['Direct transfer of phosphate to ADP', 'Phosphorylation using light', 'Phosphorylation using oxygen', 'Phosphorylation in chloroplasts'],
+        correct: 'Direct transfer of phosphate to ADP',
+        explanation: 'Substrate-level phosphorylation is the direct transfer of a phosphate group from a substrate molecule to ADP to form ATP.'
       },
       {
-        id: "bio12_u3_h8",
-        question: "What is the significance of allosteric regulation in metabolic pathways?",
-        options: [
-          "It allows fine-tuned control of enzyme activity and metabolic flux",
-          "It permanently activates all enzymes",
-          "It has no effect on metabolism",
-          "It only inhibits enzyme activity"
-        ],
-        correct: "It allows fine-tuned control of enzyme activity and metabolic flux",
-        explanation: "Allosteric regulation allows cells to fine-tune enzyme activity in response to changing conditions and metabolic demands."
+        id: 'bio12_u3_h8',
+        question: 'What is the P680 reaction center?',
+        options: ['Photosystem II chlorophyll that absorbs 680nm light', 'Photosystem I component', 'Cellular respiration enzyme', 'Calvin cycle enzyme'],
+        correct: 'Photosystem II chlorophyll that absorbs 680nm light',
+        explanation: 'P680 is the reaction center chlorophyll in photosystem II that absorbs light at 680 nanometers wavelength.'
       },
       {
-        id: "bio12_u3_h9",
-        question: "How do reactive oxygen species (ROS) affect cellular energy metabolism?",
-        options: [
-          "They can damage cellular components but also serve as signaling molecules",
-          "They only cause damage",
-          "They increase energy production",
-          "They have no effect on metabolism"
-        ],
-        correct: "They can damage cellular components but also serve as signaling molecules",
-        explanation: "ROS are byproducts of metabolism that can cause oxidative damage but also function as important signaling molecules in metabolic regulation."
+        id: 'bio12_u3_h9',
+        question: 'What happens during the oxidative phosphorylation?',
+        options: ['ATP synthesis coupled to electron transport', 'Glucose breakdown', 'Calvin cycle reactions', 'Fermentation'],
+        correct: 'ATP synthesis coupled to electron transport',
+        explanation: 'Oxidative phosphorylation couples the oxidation of NADH and FADH2 through electron transport to ATP synthesis.'
       },
       {
-        id: "bio12_u3_h10",
-        question: "What is the concept of metabolic syndrome in relation to energy transformation?",
-        options: [
-          "Dysregulation of energy metabolism leading to multiple health issues",
-          "Normal metabolic function",
-          "Increased energy efficiency",
-          "Single enzyme deficiency"
-        ],
-        correct: "Dysregulation of energy metabolism leading to multiple health issues",
-        explanation: "Metabolic syndrome involves dysregulation of energy metabolism, including insulin resistance and altered lipid metabolism, leading to various health problems."
+        id: 'bio12_u3_h10',
+        question: 'What is the significance of the proton-motive force?',
+        options: ['Drives ATP synthesis', 'Breaks down glucose', 'Fixes carbon dioxide', 'Synthesizes proteins'],
+        correct: 'Drives ATP synthesis',
+        explanation: 'The proton-motive force is the electrochemical gradient of protons that drives ATP synthesis through ATP synthase.'
       }
     ]
   },
-  "Unit 4: Evolution": {
+  'Unit 4: Evolution': {
     easy: [
       {
-        id: "bio12_u4_e1",
-        question: "What is evolution?",
-        options: [
-          "Change in species over time",
-          "Individual organisms changing during their lifetime",
-          "Creation of new species instantly",
-          "Loss of all genetic variation"
-        ],
-        correct: "Change in species over time",
-        explanation: "Evolution is the change in heritable traits of biological populations over successive generations."
+        id: 'bio12_u4_e1',
+        question: 'What is evolution?',
+        options: ['Change in species over time', 'Growth of an individual', 'Daily changes in behavior', 'Seasonal migration'],
+        correct: 'Change in species over time',
+        explanation: 'Evolution is the process by which species change and develop over long periods of time.'
       },
       {
-        id: "bio12_u4_e2",
-        question: "Who proposed the theory of evolution by natural selection?",
-        options: [
-          "Charles Darwin",
-          "Gregor Mendel",
-          "Louis Pasteur",
-          "Isaac Newton"
-        ],
-        correct: "Charles Darwin",
-        explanation: "Charles Darwin proposed the theory of evolution by natural selection, published in 'On the Origin of Species' in 1859."
+        id: 'bio12_u4_e2',
+        question: 'Who proposed the theory of evolution by natural selection?',
+        options: ['Charles Darwin', 'Albert Einstein', 'Isaac Newton', 'Gregor Mendel'],
+        correct: 'Charles Darwin',
+        explanation: 'Charles Darwin proposed the theory of evolution by natural selection based on his observations and research.'
       },
       {
-        id: "bio12_u4_e3",
-        question: "What is natural selection?",
-        options: [
-          "Survival and reproduction of the fittest individuals",
-          "Random mating in populations",
-          "Artificial breeding by humans",
-          "Immediate adaptation to environment"
-        ],
-        correct: "Survival and reproduction of the fittest individuals",
-        explanation: "Natural selection is the process where individuals with favorable traits are more likely to survive and reproduce."
+        id: 'bio12_u4_e3',
+        question: 'What is natural selection?',
+        options: ['Survival of the fittest', 'Random changes', 'Human breeding', 'Seasonal changes'],
+        correct: 'Survival of the fittest',
+        explanation: 'Natural selection is the process where organisms with favorable traits are more likely to survive and reproduce.'
       },
       {
-        id: "bio12_u4_e4",
-        question: "What provides evidence for evolution?",
-        options: [
-          "Fossils",
-          "Personal beliefs",
-          "Random observations",
-          "Imagination"
-        ],
-        correct: "Fossils",
-        explanation: "Fossils provide direct evidence of how species have changed over time and are key evidence for evolution."
+        id: 'bio12_u4_e4',
+        question: 'What are fossils?',
+        options: ['Preserved remains of ancient organisms', 'Living organisms', 'Modern bones', 'Artificial structures'],
+        correct: 'Preserved remains of ancient organisms',
+        explanation: 'Fossils are preserved remains or traces of organisms that lived in the past, providing evidence for evolution.'
       },
       {
-        id: "bio12_u4_e5",
-        question: "What is a species?",
-        options: [
-          "A group of organisms that can interbreed and produce fertile offspring",
-          "Any group of similar-looking organisms",
-          "Organisms living in the same area",
-          "Organisms that eat the same food"
-        ],
-        correct: "A group of organisms that can interbreed and produce fertile offspring",
-        explanation: "A species is typically defined as a group of organisms capable of interbreeding and producing fertile offspring."
+        id: 'bio12_u4_e5',
+        question: 'What is adaptation?',
+        options: ['Traits that help organisms survive', 'Daily routines', 'Learning new skills', 'Changing seasons'],
+        correct: 'Traits that help organisms survive',
+        explanation: 'Adaptations are inherited traits that increase an organism\'s ability to survive and reproduce in its environment.'
       },
       {
-        id: "bio12_u4_e6",
-        question: "What is adaptation?",
-        options: [
-          "A trait that helps an organism survive in its environment",
-          "Any change in an organism",
-          "Learning new behaviors",
-          "Moving to a new environment"
-        ],
-        correct: "A trait that helps an organism survive in its environment",
-        explanation: "An adaptation is a heritable trait that increases an organism's fitness in its environment."
+        id: 'bio12_u4_e6',
+        question: 'What is a species?',
+        options: ['Group of organisms that can interbreed', 'Individual animals', 'Group of plants only', 'Single organism'],
+        correct: 'Group of organisms that can interbreed',
+        explanation: 'A species is a group of organisms that can interbreed and produce fertile offspring.'
       },
       {
-        id: "bio12_u4_e7",
-        question: "What is meant by 'survival of the fittest'?",
-        options: [
-          "Organisms best adapted to their environment survive and reproduce",
-          "Only the strongest organisms survive",
-          "Only the fastest organisms survive",
-          "Only the largest organisms survive"
-        ],
-        correct: "Organisms best adapted to their environment survive and reproduce",
-        explanation: "'Fitness' in evolutionary terms refers to reproductive success, not physical strength or speed."
+        id: 'bio12_u4_e7',
+        question: 'What causes genetic variation in populations?',
+        options: ['Mutations and sexual reproduction', 'Only environment', 'Only age', 'Only diet'],
+        correct: 'Mutations and sexual reproduction',
+        explanation: 'Genetic variation in populations is primarily caused by mutations and the mixing of genes during sexual reproduction.'
       },
       {
-        id: "bio12_u4_e8",
-        question: "What is genetic variation?",
-        options: [
-          "Differences in genetic makeup among individuals",
-          "Identical genes in all individuals",
-          "Changes in environment",
-          "Behavioral differences only"
-        ],
-        correct: "Differences in genetic makeup among individuals",
-        explanation: "Genetic variation refers to differences in genetic makeup among individuals in a population."
+        id: 'bio12_u4_e8',
+        question: 'What is selective breeding?',
+        options: ['Humans choosing which organisms reproduce', 'Natural reproduction', 'Random mating', 'Seasonal breeding'],
+        correct: 'Humans choosing which organisms reproduce',
+        explanation: 'Selective breeding is when humans deliberately choose which organisms should reproduce to get desired traits.'
       },
       {
-        id: "bio12_u4_e9",
-        question: "What is a mutation?",
-        options: [
-          "A change in DNA sequence",
-          "A new species",
-          "An adaptation",
-          "A behavior change"
-        ],
-        correct: "A change in DNA sequence",
-        explanation: "A mutation is a change in the DNA sequence that can introduce new genetic variation into populations."
+        id: 'bio12_u4_e9',
+        question: 'What evidence supports evolution?',
+        options: ['Fossils, DNA similarities, and anatomy', 'Only behavior', 'Only size differences', 'Only color patterns'],
+        correct: 'Fossils, DNA similarities, and anatomy',
+        explanation: 'Evolution is supported by multiple lines of evidence including fossils, DNA comparisons, anatomical similarities, and more.'
       },
       {
-        id: "bio12_u4_e10",
-        question: "What are homologous structures?",
-        options: [
-          "Similar structures in different species due to common ancestry",
-          "Identical functions in different species",
-          "Structures that look exactly the same",
-          "Structures found only in one species"
-        ],
-        correct: "Similar structures in different species due to common ancestry",
-        explanation: "Homologous structures are similar structures in different species that evolved from a common ancestor."
+        id: 'bio12_u4_e10',
+        question: 'What is extinction?',
+        options: ['When all members of a species die out', 'When animals migrate', 'When animals hibernate', 'When animals change color'],
+        correct: 'When all members of a species die out',
+        explanation: 'Extinction occurs when all members of a species die out and the species no longer exists.'
       }
     ],
     medium: [
       {
-        id: "bio12_u4_m1",
-        question: "What is the difference between directional and stabilizing selection?",
-        options: [
-          "Directional selection favors one extreme, stabilizing selection favors the average",
-          "They are the same type of selection",
-          "Directional selection is random",
-          "Stabilizing selection eliminates all variation"
-        ],
-        correct: "Directional selection favors one extreme, stabilizing selection favors the average",
-        explanation: "Directional selection shifts traits in one direction, while stabilizing selection favors intermediate traits and reduces variation."
+        id: 'bio12_u4_m1',
+        question: 'What is genetic drift?',
+        options: ['Random changes in gene frequencies', 'Directed evolution', 'Mutation rate', 'Migration patterns'],
+        correct: 'Random changes in gene frequencies',
+        explanation: 'Genetic drift is the random change in gene frequencies in a population, especially noticeable in small populations.'
       },
       {
-        id: "bio12_u4_m2",
-        question: "What is genetic drift?",
-        options: [
-          "Random changes in allele frequencies in small populations",
-          "Directed evolution toward a goal",
-          "Only occurs in large populations",
-          "Always improves fitness"
-        ],
-        correct: "Random changes in allele frequencies in small populations",
-        explanation: "Genetic drift is the random change in allele frequencies that occurs in all populations but has stronger effects in smaller populations."
+        id: 'bio12_u4_m2',
+        question: 'What is the founder effect?',
+        options: ['Loss of genetic variation when few individuals start new population', 'Increase in population size', 'New species formation', 'Environmental change'],
+        correct: 'Loss of genetic variation when few individuals start new population',
+        explanation: 'The founder effect occurs when a small group establishes a new population, resulting in reduced genetic diversity.'
       },
       {
-        id: "bio12_u4_m3",
-        question: "What is the founder effect?",
-        options: [
-          "Loss of genetic variation when a small group starts a new population",
-          "Increase in genetic variation",
-          "No change in population genetics",
-          "Only affects large populations"
-        ],
-        correct: "Loss of genetic variation when a small group starts a new population",
-        explanation: "The founder effect occurs when a small group establishes a new population, resulting in reduced genetic diversity."
+        id: 'bio12_u4_m3',
+        question: 'What is convergent evolution?',
+        options: ['Similar traits evolving independently', 'Species becoming identical', 'Related species diverging', 'Extinction of species'],
+        correct: 'Similar traits evolving independently',
+        explanation: 'Convergent evolution occurs when unrelated species develop similar traits due to similar environmental pressures.'
       },
       {
-        id: "bio12_u4_m4",
-        question: "What is speciation?",
-        options: [
-          "The formation of new species",
-          "The extinction of species",
-          "The merging of species",
-          "The movement of species"
-        ],
-        correct: "The formation of new species",
-        explanation: "Speciation is the evolutionary process by which populations evolve to become distinct species."
+        id: 'bio12_u4_m4',
+        question: 'What is speciation?',
+        options: ['Formation of new species', 'Death of species', 'Migration of species', 'Growth of individuals'],
+        correct: 'Formation of new species',
+        explanation: 'Speciation is the evolutionary process by which new species arise from existing species.'
       },
       {
-        id: "bio12_u4_m5",
-        question: "What is reproductive isolation?",
-        options: [
-          "Mechanisms that prevent interbreeding between populations",
-          "Geographic separation only",
-          "Behavioral differences only",
-          "Genetic similarity"
-        ],
-        correct: "Mechanisms that prevent interbreeding between populations",
-        explanation: "Reproductive isolation includes various mechanisms that prevent different populations from interbreeding and producing fertile offspring."
+        id: 'bio12_u4_m5',
+        question: 'What is adaptive radiation?',
+        options: ['Rapid evolution of many species from common ancestor', 'Slow evolution', 'Species extinction', 'Individual adaptation'],
+        correct: 'Rapid evolution of many species from common ancestor',
+        explanation: 'Adaptive radiation is the rapid diversification of a species into many new species adapted to different environments.'
       },
       {
-        id: "bio12_u4_m6",
-        question: "What is convergent evolution?",
-        options: [
-          "Similar traits evolving independently in unrelated species",
-          "Different traits in related species",
-          "Species becoming more different over time",
-          "Random changes in traits"
-        ],
-        correct: "Similar traits evolving independently in unrelated species",
-        explanation: "Convergent evolution occurs when unrelated species independently evolve similar traits in response to similar environmental pressures."
+        id: 'bio12_u4_m6',
+        question: 'What is gene flow?',
+        options: ['Movement of genes between populations', 'Gene expression', 'DNA replication', 'Protein synthesis'],
+        correct: 'Movement of genes between populations',
+        explanation: 'Gene flow is the transfer of genetic material between separate populations through migration and breeding.'
       },
       {
-        id: "bio12_u4_m7",
-        question: "What is the Hardy-Weinberg principle?",
-        options: [
-          "A model describing allele frequencies in non-evolving populations",
-          "A theory about natural selection",
-          "A method for creating new species",
-          "A way to measure fitness"
-        ],
-        correct: "A model describing allele frequencies in non-evolving populations",
-        explanation: "The Hardy-Weinberg principle describes the genetic equilibrium in populations where evolution is not occurring."
+        id: 'bio12_u4_m7',
+        question: 'What is sexual selection?',
+        options: ['Selection based on mating success', 'Natural disaster survival', 'Food competition', 'Shelter building'],
+        correct: 'Selection based on mating success',
+        explanation: 'Sexual selection is the process where traits that increase mating success are favored, even if they don\'t improve survival.'
       },
       {
-        id: "bio12_u4_m8",
-        question: "What is coevolution?",
-        options: [
-          "Reciprocal evolutionary changes between interacting species",
-          "Independent evolution of species",
-          "Evolution in the same direction",
-          "No evolutionary change"
-        ],
-        correct: "Reciprocal evolutionary changes between interacting species",
-        explanation: "Coevolution occurs when two or more species influence each other's evolutionary path through close ecological interactions."
+        id: 'bio12_u4_m8',
+        question: 'What are homologous structures?',
+        options: ['Similar structures from common ancestor', 'Identical functions only', 'Same size structures', 'Same color patterns'],
+        correct: 'Similar structures from common ancestor',
+        explanation: 'Homologous structures are similar anatomical features in different species that evolved from a common ancestor.'
       },
       {
-        id: "bio12_u4_m9",
-        question: "What is adaptive radiation?",
-        options: [
-          "Rapid evolution of many species from a common ancestor",
-          "Slow evolution of one species",
-          "Extinction of multiple species",
-          "Migration of species"
-        ],
-        correct: "Rapid evolution of many species from a common ancestor",
-        explanation: "Adaptive radiation is the rapid evolution of diversely adapted species from a common ancestor, often in response to new environmental opportunities."
+        id: 'bio12_u4_m9',
+        question: 'What is the bottleneck effect?',
+        options: ['Severe reduction in population size', 'Population growth', 'Species formation', 'Geographic separation'],
+        correct: 'Severe reduction in population size',
+        explanation: 'The bottleneck effect occurs when a population\'s size is significantly reduced, leading to loss of genetic diversity.'
       },
       {
-        id: "bio12_u4_m10",
-        question: "What evidence supports the endosymbiotic theory?",
-        options: [
-          "Mitochondria and chloroplasts have their own DNA and ribosomes",
-          "All organelles are identical",
-          "Cells have no internal structures",
-          "DNA is only found in the nucleus"
-        ],
-        correct: "Mitochondria and chloroplasts have their own DNA and ribosomes",
-        explanation: "The endosymbiotic theory is supported by evidence that mitochondria and chloroplasts have their own DNA and ribosomes, similar to bacteria."
+        id: 'bio12_u4_m10',
+        question: 'What is coevolution?',
+        options: ['Evolution of two species in response to each other', 'Evolution of one species only', 'Random evolution', 'Reverse evolution'],
+        correct: 'Evolution of two species in response to each other',
+        explanation: 'Coevolution occurs when two or more species evolve in response to each other\'s evolutionary changes.'
       }
     ],
     hard: [
       {
-        id: "bio12_u4_h1",
-        question: "How does neutral evolution challenge traditional views of natural selection?",
-        options: [
-          "Many genetic changes may be selectively neutral rather than adaptive",
-          "All evolution is driven by natural selection",
-          "Neutral changes cannot occur",
-          "Selection always favors beneficial mutations"
-        ],
-        correct: "Many genetic changes may be selectively neutral rather than adaptive",
-        explanation: "Neutral theory suggests that many evolutionary changes result from random drift of neutral mutations rather than positive selection."
+        id: 'bio12_u4_h1',
+        question: 'What is the Hardy-Weinberg principle?',
+        options: ['Mathematical model for gene frequencies in populations', 'Natural selection model', 'Mutation rate calculation', 'Migration pattern'],
+        correct: 'Mathematical model for gene frequencies in populations',
+        explanation: 'The Hardy-Weinberg principle describes the conditions under which gene frequencies remain constant in a population.'
       },
       {
-        id: "bio12_u4_h2",
-        question: "What is the significance of horizontal gene transfer in prokaryotic evolution?",
-        options: [
-          "It allows rapid acquisition of new traits across species boundaries",
-          "It only occurs in eukaryotes",
-          "It prevents evolution",
-          "It has no evolutionary significance"
-        ],
-        correct: "It allows rapid acquisition of new traits across species boundaries",
-        explanation: "Horizontal gene transfer enables prokaryotes to rapidly acquire beneficial traits from other species, accelerating evolutionary adaptation."
+        id: 'bio12_u4_h2',
+        question: 'What are the five factors that can disrupt Hardy-Weinberg equilibrium?',
+        options: ['Mutation, gene flow, genetic drift, selection, non-random mating', 'Only mutation', 'Only selection', 'Only migration'],
+        correct: 'Mutation, gene flow, genetic drift, selection, non-random mating',
+        explanation: 'The five evolutionary forces that can change gene frequencies are mutation, gene flow, genetic drift, natural selection, and non-random mating.'
       },
       {
-        id: "bio12_u4_h3",
-        question: "How do epigenetic modifications contribute to evolutionary processes?",
-        options: [
-          "They can be heritable and influence gene expression across generations",
-          "They have no effect on evolution",
-          "They only affect individual organisms",
-          "They prevent genetic change"
-        ],
-        correct: "They can be heritable and influence gene expression across generations",
-        explanation: "Epigenetic modifications can be inherited and influence evolution by affecting gene expression patterns without changing DNA sequence."
+        id: 'bio12_u4_h3',
+        question: 'What is punctuated equilibrium?',
+        options: ['Rapid evolutionary change followed by stability', 'Constant evolutionary change', 'No evolutionary change', 'Reverse evolution'],
+        correct: 'Rapid evolutionary change followed by stability',
+        explanation: 'Punctuated equilibrium suggests that evolution occurs in rapid bursts followed by long periods of stability.'
       },
       {
-        id: "bio12_u4_h4",
-        question: "What is the role of sexual selection in evolution?",
-        options: [
-          "It drives evolution of traits that improve mating success",
-          "It has no effect on evolution",
-          "It only affects survival",
-          "It eliminates all variation"
-        ],
-        correct: "It drives evolution of traits that improve mating success",
-        explanation: "Sexual selection favors traits that increase mating success, even if they don't improve survival, leading to elaborate displays and ornaments."
+        id: 'bio12_u4_h4',
+        question: 'What is allopatric speciation?',
+        options: ['Speciation due to geographic isolation', 'Speciation in same location', 'Speciation due to behavior only', 'Speciation due to time only'],
+        correct: 'Speciation due to geographic isolation',
+        explanation: 'Allopatric speciation occurs when populations are geographically separated and evolve into different species.'
       },
       {
-        id: "bio12_u4_h5",
-        question: "How does the molecular clock concept help in evolutionary studies?",
-        options: [
-          "It estimates evolutionary time based on genetic differences",
-          "It measures real time only",
-          "It has no application in evolution",
-          "It only works for fossils"
-        ],
-        correct: "It estimates evolutionary time based on genetic differences",
-        explanation: "The molecular clock uses the rate of genetic changes to estimate when species diverged from common ancestors."
+        id: 'bio12_u4_h5',
+        question: 'What is sympatric speciation?',
+        options: ['Speciation without geographic isolation', 'Speciation with geographic isolation', 'Speciation in water only', 'Speciation in air only'],
+        correct: 'Speciation without geographic isolation',
+        explanation: 'Sympatric speciation occurs when new species form within the same geographic area without physical barriers.'
       },
       {
-        id: "bio12_u4_h6",
-        question: "What is punctuated equilibrium?",
-        options: [
-          "Evolution occurs in rapid bursts followed by long periods of stasis",
-          "Evolution occurs at constant rates",
-          "Evolution never occurs",
-          "Evolution only occurs gradually"
-        ],
-        correct: "Evolution occurs in rapid bursts followed by long periods of stasis",
-        explanation: "Punctuated equilibrium suggests that evolution often occurs in rapid bursts of change followed by long periods of relative stability."
+        id: 'bio12_u4_h6',
+        question: 'What is molecular evolution?',
+        options: ['Evolution at the DNA and protein level', 'Evolution of body size only', 'Evolution of behavior only', 'Evolution of color only'],
+        correct: 'Evolution at the DNA and protein level',
+        explanation: 'Molecular evolution studies changes in DNA sequences and proteins over time to understand evolutionary relationships.'
       },
       {
-        id: "bio12_u4_h7",
-        question: "How do developmental constraints influence evolutionary pathways?",
-        options: [
-          "They limit possible evolutionary changes based on developmental mechanisms",
-          "They have no effect on evolution",
-          "They allow unlimited change",
-          "They prevent all development"
-        ],
-        correct: "They limit possible evolutionary changes based on developmental mechanisms",
-        explanation: "Developmental constraints limit evolutionary possibilities because changes must be compatible with existing developmental systems."
+        id: 'bio12_u4_h7',
+        question: 'What is the molecular clock hypothesis?',
+        options: ['DNA changes at relatively constant rate', 'DNA never changes', 'DNA changes rapidly', 'DNA changes randomly'],
+        correct: 'DNA changes at relatively constant rate',
+        explanation: 'The molecular clock hypothesis suggests that DNA sequences evolve at relatively constant rates, allowing estimation of divergence times.'
       },
       {
-        id: "bio12_u4_h8",
-        question: "What is the significance of gene duplication in evolution?",
-        options: [
-          "It provides raw material for evolution of new gene functions",
-          "It always causes harmful effects",
-          "It prevents evolution",
-          "It has no evolutionary significance"
-        ],
-        correct: "It provides raw material for evolution of new gene functions",
-        explanation: "Gene duplication creates extra copies that can evolve new functions while maintaining the original function in one copy."
+        id: 'bio12_u4_h8',
+        question: 'What is kin selection?',
+        options: ['Natural selection favoring relatives', 'Selection against relatives', 'Random selection', 'Individual selection only'],
+        correct: 'Natural selection favoring relatives',
+        explanation: 'Kin selection is a form of natural selection where individuals favor the reproductive success of their relatives.'
       },
       {
-        id: "bio12_u4_h9",
-        question: "How does the concept of evolvability influence evolutionary theory?",
-        options: [
-          "Some lineages may be more capable of evolving than others",
-          "All lineages evolve at the same rate",
-          "Evolution is impossible",
-          "Evolvability is not a real concept"
-        ],
-        correct: "Some lineages may be more capable of evolving than others",
-        explanation: "Evolvability refers to a lineage's capacity to evolve, which can vary based on genetic architecture and developmental systems."
+        id: 'bio12_u4_h9',
+        question: 'What is phylogenetic analysis?',
+        options: ['Study of evolutionary relationships between organisms', 'Study of individual development', 'Study of behavior only', 'Study of ecology only'],
+        correct: 'Study of evolutionary relationships between organisms',
+        explanation: 'Phylogenetic analysis uses molecular and morphological data to reconstruct evolutionary relationships between species.'
       },
       {
-        id: "bio12_u4_h10",
-        question: "What is the extended evolutionary synthesis?",
-        options: [
-          "An expanded framework incorporating new mechanisms of inheritance and development",
-          "The original Darwinian theory only",
-          "A rejection of evolution",
-          "A simplified version of evolution"
-        ],
-        correct: "An expanded framework incorporating new mechanisms of inheritance and development",
-        explanation: "The extended evolutionary synthesis incorporates new insights about development, epigenetics, and other factors that influence evolution."
+        id: 'bio12_u4_h10',
+        question: 'What is the neutral theory of molecular evolution?',
+        options: ['Most molecular changes are selectively neutral', 'All changes are beneficial', 'All changes are harmful', 'No molecular changes occur'],
+        correct: 'Most molecular changes are selectively neutral',
+        explanation: 'The neutral theory suggests that most molecular evolutionary changes are due to random genetic drift rather than natural selection.'
       }
     ]
   },
-  "Unit 5: Human Body System": {
+  'Unit 5: Human Body System': {
     easy: [
       {
-        id: "bio12_u5_e1",
-        question: "What is the basic unit of the nervous system?",
-        options: [
-          "Neuron",
-          "Muscle cell",
-          "Blood cell",
-          "Bone cell"
-        ],
-        correct: "Neuron",
-        explanation: "The neuron is the basic functional unit of the nervous system, specialized for transmitting electrical and chemical signals."
+        id: 'bio12_u5_e1',
+        question: 'What is the main function of the circulatory system?',
+        options: ['Transport blood throughout the body', 'Digest food', 'Breathe air', 'Think and remember'],
+        correct: 'Transport blood throughout the body',
+        explanation: 'The circulatory system transports blood, oxygen, nutrients, and waste products throughout the body.'
       },
       {
-        id: "bio12_u5_e2",
-        question: "Which system is responsible for transporting nutrients and oxygen throughout the body?",
-        options: [
-          "Circulatory system",
-          "Digestive system",
-          "Respiratory system",
-          "Nervous system"
-        ],
-        correct: "Circulatory system",
-        explanation: "The circulatory system, consisting of the heart, blood vessels, and blood, transports nutrients, oxygen, and waste products throughout the body."
+        id: 'bio12_u5_e2',
+        question: 'What is the largest organ in the human body?',
+        options: ['Skin', 'Heart', 'Brain', 'Liver'],
+        correct: 'Skin',
+        explanation: 'The skin is the largest organ in the human body, covering and protecting the entire body surface.'
       },
       {
-        id: "bio12_u5_e3",
-        question: "What is the main function of the respiratory system?",
-        options: [
-          "Gas exchange (oxygen and carbon dioxide)",
-          "Digestion of food",
-          "Filtration of blood",
-          "Movement of the body"
-        ],
-        correct: "Gas exchange (oxygen and carbon dioxide)",
-        explanation: "The respiratory system's main function is gas exchange, bringing oxygen into the body and removing carbon dioxide."
+        id: 'bio12_u5_e3',
+        question: 'What is the main function of the respiratory system?',
+        options: ['Exchange gases (oxygen and carbon dioxide)', 'Digest food', 'Filter blood', 'Produce hormones'],
+        correct: 'Exchange gases (oxygen and carbon dioxide)',
+        explanation: 'The respiratory system is responsible for taking in oxygen and removing carbon dioxide from the body.'
       },
       {
-        id: "bio12_u5_e4",
-        question: "Which organ is the control center of the nervous system?",
-        options: [
-          "Brain",
-          "Heart",
-          "Lungs",
-          "Liver"
-        ],
-        correct: "Brain",
-        explanation: "The brain is the control center of the nervous system, processing information and coordinating body functions."
+        id: 'bio12_u5_e4',
+        question: 'What is the main function of the digestive system?',
+        options: ['Break down food and absorb nutrients', 'Pump blood', 'Control movement', 'Filter waste'],
+        correct: 'Break down food and absorb nutrients',
+        explanation: 'The digestive system breaks down food into nutrients that can be absorbed and used by the body.'
       },
       {
-        id: "bio12_u5_e5",
-        question: "What is the function of red blood cells?",
-        options: [
-          "Transport oxygen",
-          "Fight infections",
-          "Clot blood",
-          "Digest food"
-        ],
-        correct: "Transport oxygen",
-        explanation: "Red blood cells contain hemoglobin, which binds to oxygen and transports it from the lungs to body tissues."
+        id: 'bio12_u5_e5',
+        question: 'What controls most body functions?',
+        options: ['Nervous system', 'Skeletal system', 'Muscular system', 'Integumentary system'],
+        correct: 'Nervous system',
+        explanation: 'The nervous system, including the brain and spinal cord, controls and coordinates most body functions.'
       },
       {
-        id: "bio12_u5_e6",
-        question: "Which system breaks down food into nutrients?",
-        options: [
-          "Digestive system",
-          "Circulatory system",
-          "Respiratory system",
-          "Excretory system"
-        ],
-        correct: "Digestive system",
-        explanation: "The digestive system breaks down food into smaller nutrients that can be absorbed and used by the body."
+        id: 'bio12_u5_e6',
+        question: 'What is the function of kidneys?',
+        options: ['Filter waste from blood', 'Pump blood', 'Digest food', 'Produce saliva'],
+        correct: 'Filter waste from blood',
+        explanation: 'Kidneys filter waste products and excess water from the blood to produce urine.'
       },
       {
-        id: "bio12_u5_e7",
-        question: "What is the main function of the kidneys?",
-        options: [
-          "Filter waste from blood",
-          "Pump blood",
-          "Digest food",
-          "Produce hormones only"
-        ],
-        correct: "Filter waste from blood",
-        explanation: "The kidneys filter waste products and excess water from the blood, forming urine for elimination."
+        id: 'bio12_u5_e7',
+        question: 'What connects bones to muscles?',
+        options: ['Tendons', 'Ligaments', 'Cartilage', 'Nerves'],
+        correct: 'Tendons',
+        explanation: 'Tendons are tough connective tissues that connect muscles to bones, allowing movement.'
       },
       {
-        id: "bio12_u5_e8",
-        question: "Which type of muscle is found in the heart?",
-        options: [
-          "Cardiac muscle",
-          "Skeletal muscle",
-          "Smooth muscle",
-          "Voluntary muscle"
-        ],
-        correct: "Cardiac muscle",
-        explanation: "Cardiac muscle is specialized heart muscle that contracts rhythmically and involuntarily to pump blood."
+        id: 'bio12_u5_e8',
+        question: 'What is the function of white blood cells?',
+        options: ['Fight infections', 'Carry oxygen', 'Clot blood', 'Store nutrients'],
+        correct: 'Fight infections',
+        explanation: 'White blood cells are part of the immune system and help fight infections and diseases.'
       },
       {
-        id: "bio12_u5_e9",
-        question: "What is homeostasis?",
-        options: [
-          "Maintaining stable internal conditions",
-          "Growing larger",
-          "Moving from place to place",
-          "Reproducing"
-        ],
-        correct: "Maintaining stable internal conditions",
-        explanation: "Homeostasis is the body's ability to maintain stable internal conditions despite changes in the external environment."
+        id: 'bio12_u5_e9',
+        question: 'What is the main function of red blood cells?',
+        options: ['Carry oxygen', 'Fight infection', 'Clot blood', 'Digest food'],
+        correct: 'Carry oxygen',
+        explanation: 'Red blood cells contain hemoglobin and are responsible for carrying oxygen from the lungs to body tissues.'
       },
       {
-        id: "bio12_u5_e10",
-        question: "Which system protects the body from disease?",
-        options: [
-          "Immune system",
-          "Skeletal system",
-          "Muscular system",
-          "Reproductive system"
-        ],
-        correct: "Immune system",
-        explanation: "The immune system protects the body from pathogens and foreign substances that could cause disease."
+        id: 'bio12_u5_e10',
+        question: 'What protects the brain?',
+        options: ['Skull', 'Ribs', 'Spine', 'Skin'],
+        correct: 'Skull',
+        explanation: 'The skull is a bony structure that protects the brain from injury.'
       }
     ],
     medium: [
       {
-        id: "bio12_u5_m1",
-        question: "What is the difference between the central and peripheral nervous systems?",
-        options: [
-          "CNS includes brain and spinal cord, PNS includes all other nerves",
-          "They are the same system",
-          "CNS is voluntary, PNS is involuntary",
-          "CNS controls movement, PNS controls senses"
-        ],
-        correct: "CNS includes brain and spinal cord, PNS includes all other nerves",
-        explanation: "The central nervous system consists of the brain and spinal cord, while the peripheral nervous system includes all nerves outside the CNS."
+        id: 'bio12_u5_m1',
+        question: 'What is homeostasis?',
+        options: ['Maintaining stable internal conditions', 'Growing larger', 'Moving around', 'Reproducing'],
+        correct: 'Maintaining stable internal conditions',
+        explanation: 'Homeostasis is the process by which the body maintains stable internal conditions despite external changes.'
       },
       {
-        id: "bio12_u5_m2",
-        question: "How does the endocrine system differ from the nervous system in communication?",
-        options: [
-          "Endocrine uses hormones in blood, nervous uses electrical signals",
-          "They use the same communication method",
-          "Endocrine is faster than nervous",
-          "Only nervous system communicates"
-        ],
-        correct: "Endocrine uses hormones in blood, nervous uses electrical signals",
-        explanation: "The endocrine system uses chemical messengers (hormones) transported by blood, while the nervous system uses electrical signals through neurons."
+        id: 'bio12_u5_m2',
+        question: 'What is the role of insulin in the body?',
+        options: ['Regulates blood sugar levels', 'Fights infections', 'Carries oxygen', 'Digests proteins'],
+        correct: 'Regulates blood sugar levels',
+        explanation: 'Insulin is a hormone that helps regulate blood glucose levels by allowing cells to take up glucose.'
       },
       {
-        id: "bio12_u5_m3",
-        question: "What is the cardiac cycle?",
-        options: [
-          "The sequence of events during one heartbeat",
-          "Blood circulation through the body",
-          "Heart rate changes",
-          "Cardiac muscle development"
-        ],
-        correct: "The sequence of events during one heartbeat",
-        explanation: "The cardiac cycle includes systole (contraction) and diastole (relaxation) phases that occur during each heartbeat."
+        id: 'bio12_u5_m3',
+        question: 'What is the function of the lymphatic system?',
+        options: ['Immune defense and fluid balance', 'Digestion only', 'Breathing only', 'Blood circulation only'],
+        correct: 'Immune defense and fluid balance',
+        explanation: 'The lymphatic system helps with immune defense and maintains fluid balance in the body.'
       },
       {
-        id: "bio12_u5_m4",
-        question: "What is the role of alveoli in gas exchange?",
-        options: [
-          "Provide large surface area for oxygen and carbon dioxide exchange",
-          "Filter air particles",
-          "Produce mucus",
-          "Control breathing rate"
-        ],
-        correct: "Provide large surface area for oxygen and carbon dioxide exchange",
-        explanation: "Alveoli are tiny air sacs in the lungs that provide a large surface area for efficient gas exchange between air and blood."
+        id: 'bio12_u5_m4',
+        question: 'What is the difference between arteries and veins?',
+        options: ['Arteries carry blood away from heart, veins carry blood to heart', 'No difference', 'Arteries are smaller', 'Veins are stronger'],
+        correct: 'Arteries carry blood away from heart, veins carry blood to heart',
+        explanation: 'Arteries transport oxygenated blood away from the heart, while veins return deoxygenated blood to the heart.'
       },
       {
-        id: "bio12_u5_m5",
-        question: "How do antibodies function in immune defense?",
-        options: [
-          "They bind to specific antigens to neutralize threats",
-          "They digest all foreign substances",
-          "They produce white blood cells",
-          "They create physical barriers"
-        ],
-        correct: "They bind to specific antigens to neutralize threats",
-        explanation: "Antibodies are Y-shaped proteins that bind specifically to antigens, marking them for destruction or neutralizing their harmful effects."
+        id: 'bio12_u5_m5',
+        question: 'What is the function of the endocrine system?',
+        options: ['Produces and regulates hormones', 'Digests food', 'Pumps blood', 'Filters air'],
+        correct: 'Produces and regulates hormones',
+        explanation: 'The endocrine system produces hormones that regulate various body functions including growth, metabolism, and reproduction.'
       },
       {
-        id: "bio12_u5_m6",
-        question: "What is the function of nephrons in the kidneys?",
-        options: [
-          "Filter blood and produce urine",
-          "Store urine",
-          "Transport urine to bladder",
-          "Regulate blood pressure only"
-        ],
-        correct: "Filter blood and produce urine",
-        explanation: "Nephrons are the functional units of kidneys that filter blood, reabsorb useful substances, and produce urine."
+        id: 'bio12_u5_m6',
+        question: 'What is the role of the liver in digestion?',
+        options: ['Produces bile to digest fats', 'Breaks down proteins', 'Absorbs water', 'Stores food'],
+        correct: 'Produces bile to digest fats',
+        explanation: 'The liver produces bile, which helps emulsify and digest fats in the small intestine.'
       },
       {
-        id: "bio12_u5_m7",
-        question: "How does insulin regulate blood glucose levels?",
-        options: [
-          "It promotes glucose uptake by cells and storage as glycogen",
-          "It increases glucose production",
-          "It prevents glucose absorption",
-          "It has no effect on glucose"
-        ],
-        correct: "It promotes glucose uptake by cells and storage as glycogen",
-        explanation: "Insulin lowers blood glucose by promoting cellular glucose uptake and conversion to glycogen for storage in liver and muscles."
+        id: 'bio12_u5_m7',
+        question: 'What is the function of the cerebellum?',
+        options: ['Coordinates movement and balance', 'Controls breathing', 'Processes emotions', 'Stores memories'],
+        correct: 'Coordinates movement and balance',
+        explanation: 'The cerebellum coordinates voluntary movements, balance, and posture.'
       },
       {
-        id: "bio12_u5_m8",
-        question: "What is the role of hemoglobin in oxygen transport?",
-        options: [
-          "It binds oxygen in lungs and releases it in tissues",
-          "It produces oxygen",
-          "It stores oxygen permanently",
-          "It prevents oxygen transport"
-        ],
-        correct: "It binds oxygen in lungs and releases it in tissues",
-        explanation: "Hemoglobin is an iron-containing protein that reversibly binds oxygen, allowing efficient transport from lungs to tissues."
+        id: 'bio12_u5_m8',
+        question: 'What is the role of platelets in blood?',
+        options: ['Blood clotting', 'Carrying oxygen', 'Fighting infection', 'Transporting nutrients'],
+        correct: 'Blood clotting',
+        explanation: 'Platelets are cell fragments that help in blood clotting to prevent bleeding when blood vessels are damaged.'
       },
       {
-        id: "bio12_u5_m9",
-        question: "What is peristalsis in the digestive system?",
-        options: [
-          "Wave-like muscle contractions that move food through the digestive tract",
-          "Chemical breakdown of food",
-          "Absorption of nutrients",
-          "Production of digestive enzymes"
-        ],
-        correct: "Wave-like muscle contractions that move food through the digestive tract",
-        explanation: "Peristalsis consists of coordinated muscle contractions that propel food through the digestive system from esophagus to intestines."
+        id: 'bio12_u5_m9',
+        question: 'What is the function of the spinal cord?',
+        options: ['Transmits messages between brain and body', 'Pumps blood', 'Filters air', 'Digests food'],
+        correct: 'Transmits messages between brain and body',
+        explanation: 'The spinal cord acts as a highway for nerve signals traveling between the brain and the rest of the body.'
       },
       {
-        id: "bio12_u5_m10",
-        question: "How do T cells and B cells differ in immune function?",
-        options: [
-          "T cells provide cell-mediated immunity, B cells produce antibodies",
-          "They have identical functions",
-          "T cells only fight viruses, B cells only fight bacteria",
-          "T cells are larger than B cells"
-        ],
-        correct: "T cells provide cell-mediated immunity, B cells produce antibodies",
-        explanation: "T cells provide cell-mediated immunity by directly attacking infected cells, while B cells produce antibodies for humoral immunity."
+        id: 'bio12_u5_m10',
+        question: 'What is the role of the pancreas?',
+        options: ['Produces digestive enzymes and insulin', 'Pumps blood', 'Filters urine', 'Stores oxygen'],
+        correct: 'Produces digestive enzymes and insulin',
+        explanation: 'The pancreas has dual functions: producing digestive enzymes for the digestive system and insulin for blood sugar regulation.'
       }
     ],
     hard: [
       {
-        id: "bio12_u5_h1",
-        question: "How does synaptic plasticity contribute to learning and memory?",
-        options: [
-          "Changes in synaptic strength create lasting modifications in neural circuits",
-          "Synapses remain completely unchanged",
-          "All synapses have the same strength",
-          "Plasticity prevents learning"
-        ],
-        correct: "Changes in synaptic strength create lasting modifications in neural circuits",
-        explanation: "Synaptic plasticity involves strengthening or weakening of synaptic connections, which underlies learning and memory formation."
+        id: 'bio12_u5_h1',
+        question: 'What is the mechanism of muscle contraction?',
+        options: ['Sliding filament theory', 'Swelling theory', 'Rotation theory', 'Compression theory'],
+        correct: 'Sliding filament theory',
+        explanation: 'Muscle contraction occurs through the sliding filament mechanism where actin and myosin filaments slide past each other.'
       },
       {
-        id: "bio12_u5_h2",
-        question: "What is the significance of the blood-brain barrier?",
-        options: [
-          "It selectively controls what substances can enter brain tissue",
-          "It prevents all substances from entering the brain",
-          "It allows free passage of all molecules",
-          "It has no protective function"
-        ],
-        correct: "It selectively controls what substances can enter brain tissue",
-        explanation: "The blood-brain barrier is a selective barrier that protects the brain by controlling which substances can pass from blood into brain tissue."
+        id: 'bio12_u5_h2',
+        question: 'What is the role of ADH (antidiuretic hormone)?',
+        options: ['Regulates water reabsorption in kidneys', 'Controls heart rate', 'Stimulates growth', 'Regulates calcium'],
+        correct: 'Regulates water reabsorption in kidneys',
+        explanation: 'ADH controls water reabsorption in the kidneys to maintain proper fluid balance in the body.'
       },
       {
-        id: "bio12_u5_h3",
-        question: "How does the renin-angiotensin-aldosterone system regulate blood pressure?",
-        options: [
-          "It controls blood volume and vessel constriction through hormone cascades",
-          "It only affects heart rate",
-          "It decreases blood pressure only",
-          "It has no effect on blood pressure"
-        ],
-        correct: "It controls blood volume and vessel constriction through hormone cascades",
-        explanation: "This system regulates blood pressure by controlling blood volume through kidney function and causing vasoconstriction when blood pressure drops."
+        id: 'bio12_u5_h3',
+        question: 'What is the Frank-Starling mechanism?',
+        options: ['Heart pumps more when filled with more blood', 'Brain controls heart rate', 'Lungs regulate breathing', 'Kidneys filter blood'],
+        correct: 'Heart pumps more when filled with more blood',
+        explanation: 'The Frank-Starling mechanism describes how the heart automatically adjusts its pumping strength based on the amount of blood returning to it.'
       },
       {
-        id: "bio12_u5_h4",
-        question: "What is the role of surfactant in lung function?",
-        options: [
-          "It reduces surface tension to prevent alveolar collapse",
-          "It produces oxygen",
-          "It filters air particles",
-          "It controls breathing rate"
-        ],
-        correct: "It reduces surface tension to prevent alveolar collapse",
-        explanation: "Surfactant is a phospholipid compound that reduces surface tension in alveoli, preventing them from collapsing and facilitating breathing."
+        id: 'bio12_u5_h4',
+        question: 'What is the blood-brain barrier?',
+        options: ['Selective barrier protecting brain from harmful substances', 'Physical wall around brain', 'Blood vessel in brain', 'Brain tissue type'],
+        correct: 'Selective barrier protecting brain from harmful substances',
+        explanation: 'The blood-brain barrier is a highly selective barrier that protects the brain from potentially harmful substances while allowing essential nutrients to pass through.'
       },
       {
-        id: "bio12_u5_h5",
-        question: "How does the complement system enhance immune responses?",
-        options: [
-          "It amplifies antibody and cellular immune responses through protein cascades",
-          "It replaces antibodies entirely",
-          "It prevents immune responses",
-          "It only works independently"
-        ],
-        correct: "It amplifies antibody and cellular immune responses through protein cascades",
-        explanation: "The complement system consists of proteins that enhance immune responses by promoting inflammation, cell lysis, and opsonization."
+        id: 'bio12_u5_h5',
+        question: 'What is the complement system?',
+        options: ['Protein cascade enhancing immune response', 'Digestive enzyme system', 'Nervous system component', 'Circulatory system part'],
+        correct: 'Protein cascade enhancing immune response',
+        explanation: 'The complement system is a cascade of proteins that enhances the immune system\'s ability to clear pathogens and damaged cells.'
       },
       {
-        id: "bio12_u5_h6",
-        question: "What is the significance of the Frank-Starling mechanism in cardiac function?",
-        options: [
-          "Heart contractility increases with greater venous return",
-          "Heart rate remains constant regardless of blood volume",
-          "It prevents heart contractions",
-          "It only affects heart size"
-        ],
-        correct: "Heart contractility increases with greater venous return",
-        explanation: "The Frank-Starling mechanism ensures that the heart pumps out the blood it receives by increasing contractile force when more blood enters."
+        id: 'bio12_u5_h6',
+        question: 'What is the role of the hypothalamus?',
+        options: ['Links nervous and endocrine systems', 'Processes visual information', 'Controls voluntary movement', 'Stores long-term memory'],
+        correct: 'Links nervous and endocrine systems',
+        explanation: 'The hypothalamus serves as the crucial link between the nervous and endocrine systems, controlling many homeostatic functions.'
       },
       {
-        id: "bio12_u5_h7",
-        question: "How do stem cells contribute to tissue repair and regeneration?",
-        options: [
-          "They can differentiate into specialized cell types to replace damaged tissue",
-          "They only exist during development",
-          "They cannot change into other cell types",
-          "They prevent tissue repair"
-        ],
-        correct: "They can differentiate into specialized cell types to replace damaged tissue",
-        explanation: "Stem cells maintain the ability to differentiate into various cell types, enabling tissue repair and regeneration throughout life."
+        id: 'bio12_u5_h7',
+        question: 'What is negative feedback in homeostasis?',
+        options: ['Response that opposes the original stimulus', 'Response that enhances the original stimulus', 'No response to stimulus', 'Random response'],
+        correct: 'Response that opposes the original stimulus',
+        explanation: 'Negative feedback is a regulatory mechanism where the response opposes the original stimulus to maintain homeostasis.'
       },
       {
-        id: "bio12_u5_h8",
-        question: "What is the role of the hypothalamic-pituitary axis in hormone regulation?",
-        options: [
-          "It coordinates endocrine function through releasing and inhibiting hormones",
-          "It produces only one hormone",
-          "It has no regulatory function",
-          "It only affects growth"
-        ],
-        correct: "It coordinates endocrine function through releasing and inhibiting hormones",
-        explanation: "The hypothalamic-pituitary axis is the master control system that regulates many endocrine functions through complex hormone interactions."
+        id: 'bio12_u5_h8',
+        question: 'What is the glomerular filtration rate (GFR)?',
+        options: ['Rate of filtrate formation in kidneys', 'Heart pumping rate', 'Breathing rate', 'Digestive rate'],
+        correct: 'Rate of filtrate formation in kidneys',
+        explanation: 'GFR is the volume of filtrate formed per minute by both kidneys, indicating kidney function efficiency.'
       },
       {
-        id: "bio12_u5_h9",
-        question: "How does autoimmunity develop and what are its consequences?",
-        options: [
-          "Immune system mistakenly attacks the body's own tissues",
-          "Immune system becomes completely inactive",
-          "It only affects elderly people",
-          "It improves immune function"
-        ],
-        correct: "Immune system mistakenly attacks the body's own tissues",
-        explanation: "Autoimmunity occurs when the immune system fails to recognize self-antigens and attacks the body's own cells and tissues."
+        id: 'bio12_u5_h9',
+        question: 'What is the role of surfactant in lungs?',
+        options: ['Reduces surface tension in alveoli', 'Carries oxygen', 'Filters air', 'Produces mucus'],
+        correct: 'Reduces surface tension in alveoli',
+        explanation: 'Surfactant reduces surface tension in the alveoli, preventing lung collapse and making breathing easier.'
       },
       {
-        id: "bio12_u5_h10",
-        question: "What is the significance of circadian rhythms in human physiology?",
-        options: [
-          "They synchronize biological processes with environmental light-dark cycles",
-          "They have no effect on body functions",
-          "They only affect sleep",
-          "They are purely psychological"
-        ],
-        correct: "They synchronize biological processes with environmental light-dark cycles",
-        explanation: "Circadian rhythms coordinate various physiological processes including sleep-wake cycles, hormone release, and metabolism with environmental cues."
+        id: 'bio12_u5_h10',
+        question: 'What is synaptic plasticity?',
+        options: ['Ability of synapses to strengthen or weaken over time', 'Physical shape of neurons', 'Speed of nerve impulses', 'Number of neurons'],
+        correct: 'Ability of synapses to strengthen or weaken over time',
+        explanation: 'Synaptic plasticity is the ability of connections between neurons to change in strength, which is fundamental to learning and memory.'
       }
     ]
   },
-  "Unit 6: Climate Change": {
+  'Unit 6: Climate Change': {
     easy: [
       {
-        id: "bio12_u6_e1",
-        question: "What is climate change?",
-        options: [
-          "Long-term changes in global weather patterns",
-          "Daily weather variations",
-          "Seasonal changes",
-          "Local temperature fluctuations"
-        ],
-        correct: "Long-term changes in global weather patterns",
-        explanation: "Climate change refers to long-term shifts in global or regional weather patterns, particularly warming due to human activities since the mid-20th century."
+        id: 'bio12_u6_e1',
+        question: 'What is climate change?',
+        options: ['Long-term changes in global weather patterns', 'Daily weather changes', 'Seasonal changes', 'Monthly temperature changes'],
+        correct: 'Long-term changes in global weather patterns',
+        explanation: 'Climate change refers to long-term shifts in global weather patterns and temperatures over decades or longer periods.'
       },
       {
-        id: "bio12_u6_e2",
-        question: "What is the greenhouse effect?",
-        options: [
-          "Trapping of heat in Earth's atmosphere by greenhouse gases",
-          "Growing plants in greenhouses",
-          "Cooling of the Earth",
-          "Removal of gases from atmosphere"
-        ],
-        correct: "Trapping of heat in Earth's atmosphere by greenhouse gases",
-        explanation: "The greenhouse effect is the process by which greenhouse gases trap heat in Earth's atmosphere, keeping the planet warm enough to support life."
+        id: 'bio12_u6_e2',
+        question: 'What is the main cause of current climate change?',
+        options: ['Human activities', 'Natural disasters only', 'Solar radiation only', 'Ocean currents only'],
+        correct: 'Human activities',
+        explanation: 'Current climate change is primarily caused by human activities, especially the burning of fossil fuels and deforestation.'
       },
       {
-        id: "bio12_u6_e3",
-        question: "Which gas is the most significant contributor to human-caused climate change?",
-        options: [
-          "Carbon dioxide (CO2)",
-          "Oxygen (O2)",
-          "Nitrogen (N2)",
-          "Argon (Ar)"
-        ],
-        correct: "Carbon dioxide (CO2)",
-        explanation: "Carbon dioxide is the most significant greenhouse gas contributing to human-caused climate change, primarily from burning fossil fuels."
+        id: 'bio12_u6_e3',
+        question: 'What is the greenhouse effect?',
+        options: ['Trapping of heat in Earth\'s atmosphere', 'Growing plants in greenhouses', 'Making glass structures', 'Cooling the Earth'],
+        correct: 'Trapping of heat in Earth\'s atmosphere',
+        explanation: 'The greenhouse effect is the process where certain gases in the atmosphere trap heat, warming the Earth\'s surface.'
       },
       {
-        id: "bio12_u6_e4",
-        question: "What is the main cause of increased CO2 in the atmosphere?",
-        options: [
-          "Burning fossil fuels",
-          "Plant respiration",
-          "Ocean evaporation",
-          "Volcanic eruptions"
-        ],
-        correct: "Burning fossil fuels",
-        explanation: "The primary cause of increased atmospheric CO2 is human activities, particularly burning fossil fuels for energy and transportation."
+        id: 'bio12_u6_e4',
+        question: 'Which gas is the most important greenhouse gas?',
+        options: ['Carbon dioxide', 'Oxygen', 'Nitrogen', 'Hydrogen'],
+        correct: 'Carbon dioxide',
+        explanation: 'Carbon dioxide is the most significant greenhouse gas contributing to climate change, mainly from burning fossil fuels.'
       },
       {
-        id: "bio12_u6_e5",
-        question: "How does deforestation contribute to climate change?",
-        options: [
-          "It reduces CO2 absorption and releases stored carbon",
-          "It increases oxygen production",
-          "It cools the atmosphere",
-          "It has no effect on climate"
-        ],
-        correct: "It reduces CO2 absorption and releases stored carbon",
-        explanation: "Deforestation reduces the number of trees that absorb CO2 and releases the carbon stored in tree biomass, contributing to climate change."
+        id: 'bio12_u6_e5',
+        question: 'What happens to polar ice due to climate change?',
+        options: ['It melts', 'It grows thicker', 'It changes color', 'It moves to different locations'],
+        correct: 'It melts',
+        explanation: 'Rising global temperatures cause polar ice caps and glaciers to melt, contributing to sea level rise.'
       },
       {
-        id: "bio12_u6_e6",
-        question: "What is a major consequence of climate change for ecosystems?",
-        options: [
-          "Changes in species distribution and habitat loss",
-          "No changes to ecosystems",
-          "Improved conditions for all species",
-          "Increased biodiversity everywhere"
-        ],
-        correct: "Changes in species distribution and habitat loss",
-        explanation: "Climate change causes shifts in temperature and precipitation patterns, leading to habitat changes and forcing species to migrate or adapt."
+        id: 'bio12_u6_e6',
+        question: 'How does climate change affect sea levels?',
+        options: ['Sea levels rise', 'Sea levels drop', 'Sea levels stay the same', 'Sea levels fluctuate randomly'],
+        correct: 'Sea levels rise',
+        explanation: 'Climate change causes sea levels to rise due to melting ice and thermal expansion of warmer ocean water.'
       },
       {
-        id: "bio12_u6_e7",
-        question: "What is ocean acidification?",
-        options: [
-          "Decrease in ocean pH due to CO2 absorption",
-          "Increase in ocean temperature",
-          "Addition of acid rain to oceans",
-          "Natural ocean chemistry"
-        ],
-        correct: "Decrease in ocean pH due to CO2 absorption",
-        explanation: "Ocean acidification occurs when oceans absorb CO2 from the atmosphere, forming carbonic acid and lowering ocean pH."
+        id: 'bio12_u6_e7',
+        question: 'What is deforestation?',
+        options: ['Cutting down forests', 'Planting new trees', 'Moving forests', 'Painting trees'],
+        correct: 'Cutting down forests',
+        explanation: 'Deforestation is the clearing or removal of forests, which reduces the Earth\'s ability to absorb carbon dioxide.'
       },
       {
-        id: "bio12_u6_e8",
-        question: "Which renewable energy source uses sunlight?",
-        options: [
-          "Solar power",
-          "Wind power",
-          "Hydroelectric power",
-          "Geothermal power"
-        ],
-        correct: "Solar power",
-        explanation: "Solar power harnesses energy from sunlight using photovoltaic panels or solar thermal systems to generate electricity."
+        id: 'bio12_u6_e8',
+        question: 'How do forests help with climate change?',
+        options: ['They absorb carbon dioxide', 'They produce carbon dioxide', 'They reflect sunlight only', 'They have no effect'],
+        correct: 'They absorb carbon dioxide',
+        explanation: 'Forests help mitigate climate change by absorbing carbon dioxide from the atmosphere during photosynthesis.'
       },
       {
-        id: "bio12_u6_e9",
-        question: "What is mitigation in the context of climate change?",
-        options: [
-          "Actions to reduce greenhouse gas emissions",
-          "Adapting to climate change effects",
-          "Ignoring climate change",
-          "Increasing fossil fuel use"
-        ],
-        correct: "Actions to reduce greenhouse gas emissions",
-        explanation: "Climate change mitigation involves actions to reduce or prevent the emission of greenhouse gases to limit future warming."
+        id: 'bio12_u6_e9',
+        question: 'What can individuals do to help reduce climate change?',
+        options: ['Use less energy and reduce waste', 'Use more energy', 'Ignore the problem', 'Only governments can help'],
+        correct: 'Use less energy and reduce waste',
+        explanation: 'Individuals can help by reducing energy consumption, using renewable energy, recycling, and making sustainable choices.'
       },
       {
-        id: "bio12_u6_e10",
-        question: "What is adaptation in climate change context?",
-        options: [
-          "Adjusting to current and expected climate change effects",
-          "Preventing all climate change",
-          "Stopping greenhouse gas emissions",
-          "Reversing global warming"
-        ],
-        correct: "Adjusting to current and expected climate change effects",
-        explanation: "Climate adaptation involves adjusting natural or human systems to actual or expected climate change effects to minimize harm."
+        id: 'bio12_u6_e10',
+        question: 'What is renewable energy?',
+        options: ['Energy from sources that don\'t run out', 'Energy that can only be used once', 'Energy from fossil fuels', 'Energy that is expensive'],
+        correct: 'Energy from sources that don\'t run out',
+        explanation: 'Renewable energy comes from sources that naturally replenish, such as solar, wind, and hydroelectric power.'
       }
     ],
     medium: [
       {
-        id: "bio12_u6_m1",
-        question: "How do feedback loops amplify climate change?",
-        options: [
-          "Positive feedbacks accelerate warming, creating self-reinforcing cycles",
-          "All feedbacks slow down climate change",
-          "Feedbacks have no effect on climate",
-          "Only negative feedbacks exist"
-        ],
-        correct: "Positive feedbacks accelerate warming, creating self-reinforcing cycles",
-        explanation: "Positive feedback loops in climate systems amplify warming effects, such as ice melting reducing reflectivity and causing more warming."
+        id: 'bio12_u6_m1',
+        question: 'What is ocean acidification?',
+        options: ['Increase in ocean acidity due to CO2 absorption', 'Decrease in ocean temperature', 'Increase in ocean salinity', 'Change in ocean color'],
+        correct: 'Increase in ocean acidity due to CO2 absorption',
+        explanation: 'Ocean acidification occurs when oceans absorb excess atmospheric CO2, making the water more acidic and harming marine life.'
       },
       {
-        id: "bio12_u6_m2",
-        question: "What is the role of methane in climate change?",
-        options: [
-          "It's a potent greenhouse gas with stronger warming effect than CO2",
-          "It cools the atmosphere",
-          "It has no greenhouse effect",
-          "It's identical to CO2 in effect"
-        ],
-        correct: "It's a potent greenhouse gas with stronger warming effect than CO2",
-        explanation: "Methane is a powerful greenhouse gas that traps much more heat per molecule than CO2, though it has a shorter atmospheric lifetime."
+        id: 'bio12_u6_m2',
+        question: 'What is coral bleaching?',
+        options: ['Loss of algae from coral due to stress', 'Natural coral reproduction', 'Coral growing process', 'Coral changing location'],
+        correct: 'Loss of algae from coral due to stress',
+        explanation: 'Coral bleaching occurs when corals expel their symbiotic algae due to stress from warming waters, causing them to turn white.'
       },
       {
-        id: "bio12_u6_m3",
-        question: "How does climate change affect the water cycle?",
-        options: [
-          "It intensifies evaporation and alters precipitation patterns",
-          "It stops the water cycle completely",
-          "It has no effect on water",
-          "It only affects ocean water"
-        ],
-        correct: "It intensifies evaporation and alters precipitation patterns",
-        explanation: "Climate change intensifies the water cycle through increased evaporation and changes precipitation patterns, leading to more extreme weather."
+        id: 'bio12_u6_m3',
+        question: 'What are carbon footprints?',
+        options: ['Total greenhouse gas emissions from activities', 'Footprints made of carbon', 'Black marks on the ground', 'Fossil fuel reserves'],
+        correct: 'Total greenhouse gas emissions from activities',
+        explanation: 'A carbon footprint measures the total amount of greenhouse gases produced directly and indirectly by human activities.'
       },
       {
-        id: "bio12_u6_m4",
-        question: "What is the significance of tipping points in climate systems?",
-        options: [
-          "They represent thresholds beyond which changes become irreversible",
-          "They are points where climate change stops",
-          "They make climate change reversible",
-          "They have no significance"
-        ],
-        correct: "They represent thresholds beyond which changes become irreversible",
-        explanation: "Climate tipping points are critical thresholds where small changes can lead to large, potentially irreversible changes in climate systems."
+        id: 'bio12_u6_m4',
+        question: 'What is permafrost?',
+        options: ['Permanently frozen ground', 'Temporary ice', 'Surface snow', 'Liquid water underground'],
+        correct: 'Permanently frozen ground',
+        explanation: 'Permafrost is ground that remains frozen year-round; its melting due to warming releases stored carbon into the atmosphere.'
       },
       {
-        id: "bio12_u6_m5",
-        question: "How does climate change affect coral reefs?",
-        options: [
-          "Rising temperatures and acidification cause coral bleaching",
-          "It improves coral health",
-          "It has no effect on corals",
-          "It only affects fish, not corals"
-        ],
-        correct: "Rising temperatures and acidification cause coral bleaching",
-        explanation: "Climate change causes coral bleaching through rising sea temperatures and ocean acidification, threatening coral reef ecosystems."
+        id: 'bio12_u6_m5',
+        question: 'How does climate change affect biodiversity?',
+        options: ['Threatens species survival and ecosystem balance', 'Increases all species populations', 'Has no effect on biodiversity', 'Only affects plants'],
+        correct: 'Threatens species survival and ecosystem balance',
+        explanation: 'Climate change threatens biodiversity by altering habitats, disrupting food chains, and forcing species to adapt or migrate.'
       },
       {
-        id: "bio12_u6_m6",
-        question: "What is carbon sequestration?",
-        options: [
-          "The process of capturing and storing atmospheric CO2",
-          "Releasing carbon into atmosphere",
-          "Converting carbon to other elements",
-          "Destroying carbon completely"
-        ],
-        correct: "The process of capturing and storing atmospheric CO2",
-        explanation: "Carbon sequestration involves capturing CO2 from the atmosphere and storing it in forests, soils, oceans, or geological formations."
+        id: 'bio12_u6_m6',
+        question: 'What is carbon sequestration?',
+        options: ['Process of capturing and storing carbon dioxide', 'Releasing carbon dioxide', 'Converting carbon to oxygen', 'Burning carbon'],
+        correct: 'Process of capturing and storing carbon dioxide',
+        explanation: 'Carbon sequestration is the process of capturing CO2 from the atmosphere and storing it to reduce greenhouse gas concentrations.'
       },
       {
-        id: "bio12_u6_m7",
-        question: "How do changes in Arctic ice affect global climate?",
-        options: [
-          "Reduced ice decreases reflection, accelerating warming",
-          "Ice changes have no global effect",
-          "Less ice causes global cooling",
-          "Ice only affects local Arctic climate"
-        ],
-        correct: "Reduced ice decreases reflection, accelerating warming",
-        explanation: "Arctic ice loss reduces the Earth's ability to reflect sunlight (albedo effect), causing more heat absorption and accelerating global warming."
+        id: 'bio12_u6_m7',
+        question: 'What is the urban heat island effect?',
+        options: ['Cities being warmer than surrounding areas', 'Islands getting hotter', 'Heat moving from cities', 'Islands moving to cities'],
+        correct: 'Cities being warmer than surrounding areas',
+        explanation: 'The urban heat island effect occurs when urban areas are significantly warmer than surrounding rural areas due to human activities and infrastructure.'
       },
       {
-        id: "bio12_u6_m8",
-        question: "What is the relationship between climate change and extreme weather events?",
-        options: [
-          "Climate change increases frequency and intensity of extreme weather",
-          "Extreme weather decreases with climate change",
-          "There is no relationship",
-          "Only temperature extremes are affected"
-        ],
-        correct: "Climate change increases frequency and intensity of extreme weather",
-        explanation: "Climate change increases the likelihood and intensity of extreme weather events including heat waves, droughts, floods, and storms."
+        id: 'bio12_u6_m8',
+        question: 'What is climate adaptation?',
+        options: ['Adjusting to climate change impacts', 'Preventing climate change', 'Ignoring climate change', 'Reversing climate change'],
+        correct: 'Adjusting to climate change impacts',
+        explanation: 'Climate adaptation involves making adjustments to natural or human systems in response to actual or expected climate change impacts.'
       },
       {
-        id: "bio12_u6_m9",
-        question: "How do urban areas contribute to and experience climate change differently?",
-        options: [
-          "Cities produce more emissions and experience urban heat islands",
-          "Cities have no effect on climate",
-          "Urban areas are cooler than rural areas",
-          "Cities only experience benefits"
-        ],
-        correct: "Cities produce more emissions and experience urban heat islands",
-        explanation: "Urban areas are major sources of greenhouse gas emissions and experience enhanced warming through the urban heat island effect."
+        id: 'bio12_u6_m9',
+        question: 'What is climate mitigation?',
+        options: ['Reducing greenhouse gas emissions', 'Adapting to climate change', 'Studying climate patterns', 'Measuring temperature'],
+        correct: 'Reducing greenhouse gas emissions',
+        explanation: 'Climate mitigation involves efforts to reduce or prevent the emission of greenhouse gases to limit future climate change.'
       },
       {
-        id: "bio12_u6_m10",
-        question: "What role do forests play in climate regulation?",
-        options: [
-          "They absorb CO2, regulate water cycles, and influence weather patterns",
-          "They only provide oxygen",
-          "They contribute to warming",
-          "They have no climate effects"
-        ],
-        correct: "They absorb CO2, regulate water cycles, and influence weather patterns",
-        explanation: "Forests act as carbon sinks, regulate local and regional water cycles, and influence weather patterns through evapotranspiration."
+        id: 'bio12_u6_m10',
+        question: 'How does agriculture contribute to climate change?',
+        options: ['Through greenhouse gas emissions and land use changes', 'By cooling the atmosphere', 'By absorbing all CO2', 'Agriculture has no climate impact'],
+        correct: 'Through greenhouse gas emissions and land use changes',
+        explanation: 'Agriculture contributes to climate change through methane from livestock, CO2 from machinery, and land use changes like deforestation.'
       }
     ],
     hard: [
       {
-        id: "bio12_u6_h1",
-        question: "How do cloud formation and properties respond to climate change, and what are the implications?",
-        options: [
-          "Cloud responses create complex feedbacks that can either amplify or dampen warming",
-          "Clouds always increase warming",
-          "Clouds always reduce warming",
-          "Clouds are unaffected by climate change"
-        ],
-        correct: "Cloud responses create complex feedbacks that can either amplify or dampen warming",
-        explanation: "Cloud responses to climate change involve complex feedbacks - changes in cloud cover, altitude, and properties can either enhance or reduce warming effects."
+        id: 'bio12_u6_h1',
+        question: 'What is the albedo effect?',
+        options: ['Reflectivity of Earth\'s surface affecting temperature', 'Absorption of all sunlight', 'Color changes in the atmosphere', 'Movement of clouds'],
+        correct: 'Reflectivity of Earth\'s surface affecting temperature',
+        explanation: 'The albedo effect refers to how much sunlight is reflected by Earth\'s surface; lower albedo (darker surfaces) absorbs more heat, contributing to warming.'
       },
       {
-        id: "bio12_u6_h2",
-        question: "What is the significance of thermohaline circulation in global climate systems?",
-        options: [
-          "It drives global ocean currents that redistribute heat and regulate regional climates",
-          "It only affects local ocean temperatures",
-          "It has no impact on climate",
-          "It only moves salt, not heat"
-        ],
-        correct: "It drives global ocean currents that redistribute heat and regulate regional climates",
-        explanation: "Thermohaline circulation is the global ocean conveyor belt that redistributes heat globally and regulates regional climates through density-driven currents."
+        id: 'bio12_u6_h2',
+        question: 'What are tipping points in climate systems?',
+        options: ['Thresholds beyond which changes become irreversible', 'Points where climate improves', 'Maximum safe temperatures', 'Areas with no climate change'],
+        correct: 'Thresholds beyond which changes become irreversible',
+        explanation: 'Climate tipping points are critical thresholds beyond which small changes can lead to large, potentially irreversible changes in the climate system.'
       },
       {
-        id: "bio12_u6_h3",
-        question: "How do paleoclimate records inform our understanding of current climate change?",
-        options: [
-          "They provide context for natural variability and rate of current changes",
-          "They show current changes are normal",
-          "They are irrelevant to current climate",
-          "They only show cooling periods"
-        ],
-        correct: "They provide context for natural variability and rate of current changes",
-        explanation: "Paleoclimate records help scientists understand natural climate variability and show that current warming is unprecedented in rate and likely cause."
+        id: 'bio12_u6_h3',
+        question: 'What is the thermohaline circulation?',
+        options: ['Global ocean current system driven by temperature and salinity', 'Local wind patterns', 'Atmospheric pressure changes', 'Volcanic activity'],
+        correct: 'Global ocean current system driven by temperature and salinity',
+        explanation: 'Thermohaline circulation is the global ocean conveyor belt driven by differences in water density due to temperature and salinity variations.'
       },
       {
-        id: "bio12_u6_h4",
-        question: "What are the biogeochemical implications of climate change on carbon, nitrogen, and phosphorus cycles?",
-        options: [
-          "Climate change alters cycling rates and availability of these essential nutrients",
-          "Nutrient cycles are unaffected by climate",
-          "Only carbon cycling is affected",
-          "Climate change stops all biogeochemical cycles"
-        ],
-        correct: "Climate change alters cycling rates and availability of these essential nutrients",
-        explanation: "Climate change affects the rates and patterns of biogeochemical cycles, influencing nutrient availability and ecosystem productivity."
+        id: 'bio12_u6_h4',
+        question: 'What is radiative forcing?',
+        options: ['Measure of how factors influence Earth\'s energy balance', 'Solar energy output', 'Wind speed measurement', 'Ocean temperature'],
+        correct: 'Measure of how factors influence Earth\'s energy balance',
+        explanation: 'Radiative forcing measures the difference between solar energy absorbed and energy radiated back to space, indicating warming or cooling influences.'
       },
       {
-        id: "bio12_u6_h5",
-        question: "How do climate-ecosystem interactions create non-linear responses to warming?",
-        options: [
-          "Ecosystem thresholds can cause sudden shifts in structure and function",
-          "All ecosystem responses are gradual and predictable",
-          "Ecosystems don't respond to climate change",
-          "Responses are always linear"
-        ],
-        correct: "Ecosystem thresholds can cause sudden shifts in structure and function",
-        explanation: "Climate-ecosystem interactions can create tipping points where gradual climate changes trigger sudden, non-linear ecosystem transformations."
+        id: 'bio12_u6_h5',
+        question: 'What is geoengineering?',
+        options: ['Large-scale interventions to counteract climate change', 'Natural climate processes', 'Small-scale environmental projects', 'Studying geological formations'],
+        correct: 'Large-scale interventions to counteract climate change',
+        explanation: 'Geoengineering involves large-scale technological interventions designed to counteract climate change by removing CO2 or managing solar radiation.'
       },
       {
-        id: "bio12_u6_h6",
-        question: "What is the role of geoengineering proposals in climate change responses?",
-        options: [
-          "They aim to artificially modify climate systems but carry significant risks and uncertainties",
-          "They are proven solutions with no risks",
-          "They are unnecessary and impossible",
-          "They only focus on adaptation"
-        ],
-        correct: "They aim to artificially modify climate systems but carry significant risks and uncertainties",
-        explanation: "Geoengineering proposals involve large-scale technological interventions to counteract climate change, but they carry significant risks and ethical concerns."
+        id: 'bio12_u6_h6',
+        question: 'What is the carbon cycle feedback loop?',
+        options: ['Self-reinforcing process affecting carbon storage', 'Linear carbon flow', 'Carbon destruction process', 'Carbon creation process'],
+        correct: 'Self-reinforcing process affecting carbon storage',
+        explanation: 'Carbon cycle feedback loops can either amplify or reduce climate change effects, such as warming leading to less carbon storage in forests.'
       },
       {
-        id: "bio12_u6_h7",
-        question: "How do socioeconomic factors influence vulnerability to climate change impacts?",
-        options: [
-          "Poverty and inequality increase vulnerability while wealth provides adaptive capacity",
-          "All people are equally vulnerable",
-          "Wealth increases vulnerability",
-          "Socioeconomic factors are irrelevant"
-        ],
-        correct: "Poverty and inequality increase vulnerability while wealth provides adaptive capacity",
-        explanation: "Socioeconomic factors strongly influence climate vulnerability - poor and marginalized communities often face higher exposure and lower adaptive capacity."
+        id: 'bio12_u6_h7',
+        question: 'What is phenological shift?',
+        options: ['Changes in timing of biological events', 'Physical movement of species', 'Changes in species appearance', 'Changes in population size'],
+        correct: 'Changes in timing of biological events',
+        explanation: 'Phenological shifts are changes in the timing of biological events like flowering or migration due to climate change.'
       },
       {
-        id: "bio12_u6_h8",
-        question: "What are the challenges in attributing specific events to climate change?",
-        options: [
-          "Natural variability makes it difficult to attribute individual events to human influence",
-          "All extreme events are due to climate change",
-          "No events can be attributed to climate change",
-          "Attribution is always straightforward"
-        ],
-        correct: "Natural variability makes it difficult to attribute individual events to human influence",
-        explanation: "Climate attribution science works to determine the role of human-caused climate change in specific events, accounting for natural variability."
+        id: 'bio12_u6_h8',
+        question: 'What is climate sensitivity?',
+        options: ['Temperature response to doubled CO2 concentrations', 'Speed of climate change', 'Climate measurement accuracy', 'Regional climate differences'],
+        correct: 'Temperature response to doubled CO2 concentrations',
+        explanation: 'Climate sensitivity measures how much global average temperature would increase if atmospheric CO2 concentrations were doubled.'
       },
       {
-        id: "bio12_u6_h9",
-        question: "How do international climate agreements address the global nature of climate change?",
-        options: [
-          "They attempt to coordinate global action while addressing different national circumstances",
-          "They impose identical requirements on all countries",
-          "They are purely voluntary with no enforcement",
-          "They only address individual country actions"
-        ],
-        correct: "They attempt to coordinate global action while addressing different national circumstances",
-        explanation: "International climate agreements seek to coordinate global responses while recognizing different capabilities and responsibilities among nations."
+        id: 'bio12_u6_h9',
+        question: 'What is the role of methane hydrates in climate change?',
+        options: ['Potential source of methane emissions from warming', 'Carbon storage solution', 'Cooling mechanism', 'Oxygen production'],
+        correct: 'Potential source of methane emissions from warming',
+        explanation: 'Methane hydrates are ice-like crystals containing methane that could be released as potent greenhouse gases if warming continues.'
       },
       {
-        id: "bio12_u6_h10",
-        question: "What is the concept of planetary boundaries in relation to climate change?",
-        options: [
-          "They define safe operating spaces for humanity within Earth system limits",
-          "They are physical boundaries around the planet",
-          "They only apply to atmospheric conditions",
-          "They have no scientific basis"
-        ],
-        correct: "They define safe operating spaces for humanity within Earth system limits",
-        explanation: "Planetary boundaries represent thresholds for key Earth system processes that define a safe operating space for humanity, with climate change being one critical boundary."
+        id: 'bio12_u6_h10',
+        question: 'What is the concept of planetary boundaries?',
+        options: ['Safe operating limits for Earth systems', 'Physical borders between countries', 'Limits of space exploration', 'Ocean depth measurements'],
+        correct: 'Safe operating limits for Earth systems',
+        explanation: 'Planetary boundaries define safe operating limits for Earth systems within which humanity can continue to develop and thrive.'
       }
     ]
   }
 };
 
-// Helper function to get questions for a specific unit and difficulty
-export const getGrade12BiologyQuestions = (unit: string, difficulty: 'easy' | 'medium' | 'hard') => {
-  const unitQuestions = grade12BiologyQuestions[unit as keyof typeof grade12BiologyQuestions];
-  if (!unitQuestions) return [];
+export const getGrade12BiologyQuestions = (unit: string, difficulty: 'easy' | 'medium' | 'hard'): Question[] => {
+  const unitQuestions = grade12BiologyQuestions[unit];
+  if (!unitQuestions) {
+    console.log(`No questions found for unit: ${unit}`);
+    return [];
+  }
   
-  return unitQuestions[difficulty] || [];
-};
-
-// Helper function to get all questions for a unit
-export const getAllQuestionsForUnit = (unit: string) => {
-  const unitQuestions = grade12BiologyQuestions[unit as keyof typeof grade12BiologyQuestions];
-  if (!unitQuestions) return [];
-  
-  return [
-    ...unitQuestions.easy,
-    ...unitQuestions.medium,
-    ...unitQuestions.hard
-  ];
+  const questions = unitQuestions[difficulty] || [];
+  console.log(`Found ${questions.length} ${difficulty} questions for ${unit}`);
+  return questions;
 };
