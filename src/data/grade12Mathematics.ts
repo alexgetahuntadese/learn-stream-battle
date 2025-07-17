@@ -1,4 +1,3 @@
-
 export interface MathQuizQuestion {
   id: number;
   question: string;
@@ -209,7 +208,6 @@ export const grade12Mathematics: MathSubjectData = {
     }
   ],
   "Unit 2: Introduction to Calculus": [
-    // Easy Questions (7)
     {
       id: 2001,
       question: "What is the derivative of f(x) = 3x²?",
@@ -273,7 +271,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Easy",
       chapter: "Unit 2: Introduction to Calculus"
     },
-    // Medium Questions (7)
     {
       id: 2008,
       question: "Find the derivative of f(x) = (2x + 1)³.",
@@ -337,7 +334,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Medium",
       chapter: "Unit 2: Introduction to Calculus"
     },
-    // Hard Questions (7)
     {
       id: 2015,
       question: "Find the derivative of f(x) = ln(x² + 1).",
@@ -403,7 +399,6 @@ export const grade12Mathematics: MathSubjectData = {
     }
   ],
   "Unit 3: Statistics": [
-    // Easy Questions (7)
     {
       id: 3001,
       question: "What is the mean of the data set: 2, 4, 6, 8, 10?",
@@ -467,7 +462,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Easy",
       chapter: "Unit 3: Statistics"
     },
-    // Medium Questions (7)
     {
       id: 3008,
       question: "Calculate the variance of the data set: 4, 6, 8, 10, 12.",
@@ -531,7 +525,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Medium",
       chapter: "Unit 3: Statistics"
     },
-    // Hard Questions (7)
     {
       id: 3015,
       question: "A survey of 100 students shows that 60 like math, 50 like science, and 30 like both. How many students like neither subject?",
@@ -597,7 +590,6 @@ export const grade12Mathematics: MathSubjectData = {
     }
   ],
   "Unit 4: Introduction to Linear Programming": [
-    // Easy Questions (7)
     {
       id: 4001,
       question: "What is the objective function in linear programming?",
@@ -661,7 +653,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Easy",
       chapter: "Unit 4: Introduction to Linear Programming"
     },
-    // Medium Questions (7)
     {
       id: 4008,
       question: "Solve: Maximize Z = 2x + 3y subject to x + y ≤ 4, x ≥ 0, y ≥ 0. What is the maximum value?",
@@ -725,7 +716,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Medium",
       chapter: "Unit 4: Introduction to Linear Programming"
     },
-    // Hard Questions (7)
     {
       id: 4015,
       question: "A company produces two products A and B. Product A requires 2 hours of labor and 1 unit of material. Product B requires 1 hour of labor and 2 units of material. Available: 100 hours of labor, 80 units of material. Profit: $3 for A, $4 for B. What is the maximum profit?",
@@ -791,7 +781,6 @@ export const grade12Mathematics: MathSubjectData = {
     }
   ],
   "Unit 5: Mathematical Application in Business": [
-    // Easy Questions (7)
     {
       id: 5001,
       question: "What is simple interest on $1000 at 5% per year for 2 years?",
@@ -855,7 +844,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Easy",
       chapter: "Unit 5: Mathematical Application in Business"
     },
-    // Medium Questions (7)
     {
       id: 5008,
       question: "Find the present value of $5000 due in 3 years at 8% compound interest.",
@@ -919,7 +907,6 @@ export const grade12Mathematics: MathSubjectData = {
       difficulty: "Medium",
       chapter: "Unit 5: Mathematical Application in Business"
     },
-    // Hard Questions (7)
     {
       id: 5015,
       question: "A company wants to minimize inventory costs. If holding cost is $2 per unit per year, ordering cost is $50 per order, and annual demand is 1000 units, what is the economic order quantity (EOQ)?",
