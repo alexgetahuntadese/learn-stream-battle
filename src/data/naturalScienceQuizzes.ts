@@ -267,14 +267,27 @@ const grade11TechnicalDrawingQuestions: { [chapter: string]: Question[] } = {
   ]
 };
 
-export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty: string, count: number = 10) => {
+export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty: string, count: number = 15) => {
   console.log('Getting questions for:', { subject, chapter, difficulty, count });
   
   // Handle Grade 12 Biology questions
   if (subject === 'biology' && grade12BiologyQuestions[chapter as keyof typeof grade12BiologyQuestions]) {
     const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
     const questions = getGrade12BiologyQuestions(chapter, difficultyLevel);
-    console.log('Found Grade 12 Biology questions:', questions.length);
+    console.log(`Found Grade 12 Biology questions for ${chapter} (${difficulty}):`, questions.length);
+    
+    // If we don't have enough questions for the requested difficulty, get from all difficulties
+    if (questions.length < count) {
+      console.log(`Not enough ${difficulty} questions, getting from all difficulties`);
+      const allQuestions = [
+        ...getGrade12BiologyQuestions(chapter, 'easy'),
+        ...getGrade12BiologyQuestions(chapter, 'medium'),
+        ...getGrade12BiologyQuestions(chapter, 'hard')
+      ];
+      console.log('Total questions available:', allQuestions.length);
+      return allQuestions.slice(0, count);
+    }
+    
     return questions.slice(0, count);
   }
 
@@ -339,6 +352,6 @@ export const getQuestionsForQuiz = (subject: string, chapter: string, difficulty
     }
   }
 
-  console.log('Generated questions:', questions);
+  console.log('Final generated questions:', questions.length);
   return questions.slice(0, count);
 };
