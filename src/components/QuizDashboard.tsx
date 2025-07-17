@@ -70,7 +70,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
       grade: 10,
       title: 'Grade 10',
       description: 'Advanced secondary education preparation',
-      subjects: 8,
+      subjects: 11,
       quizzes: 52,
       progress: 60,
       color: 'from-green-500 to-blue-500'
@@ -114,6 +114,20 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
     { name: 'Geography', icon: MapPin, topics: ['Physical Geography', 'Climate & Weather', 'Maps & Location', 'Human Geography'] },
     { name: 'History', icon: Clock8, topics: ['World History', 'Ethiopian History', 'Ancient Civilizations', 'Historical Thinking'] },
     { name: 'Physical Education', icon: Activity, topics: ['Sports & Games', 'Health Education', 'Physical Fitness', 'Body Systems'] }
+  ];
+
+  const grade10Subjects = [
+    { name: 'English', icon: BookA, topics: ['Literature Analysis', 'Advanced Grammar', 'Essay Writing', 'Communication Skills'] },
+    { name: 'Amharic', icon: Languages, topics: ['Advanced Grammar', 'Literature Study', 'Creative Writing', 'Language Arts'] },
+    { name: 'Mathematics', icon: Calculator, topics: ['Quadratic Functions', 'Trigonometry', 'Statistics', 'Probability'] },
+    { name: 'Information Technology (ICT)', icon: Laptop, topics: ['Programming Basics', 'Database Fundamentals', 'Web Development', 'Computer Networks'] },
+    { name: 'Civics & Ethical Education', icon: Scale, topics: ['Democracy', 'Constitutional Law', 'Social Ethics', 'Global Citizenship'] },
+    { name: 'Biology', icon: Dna, topics: ['Advanced Cell Biology', 'Genetics', 'Evolution', 'Ecology Basics'] },
+    { name: 'Chemistry', icon: FlaskConical, topics: ['Chemical Bonding', 'Organic Chemistry', 'Acids & Bases', 'Stoichiometry'] },
+    { name: 'Physics', icon: Zap, topics: ['Waves & Optics', 'Electricity', 'Magnetism', 'Thermodynamics'] },
+    { name: 'Geography', icon: MapPin, topics: ['Regional Geography', 'Environmental Geography', 'Economic Geography', 'Cartography'] },
+    { name: 'History', icon: Clock8, topics: ['Modern History', 'African History', 'Social Movements', 'Historical Analysis'] },
+    { name: 'Physical Education', icon: Activity, topics: ['Advanced Sports', 'Exercise Science', 'Health & Wellness', 'Team Leadership'] }
   ];
 
   const grade11Subjects = {
@@ -416,6 +430,60 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                             {renderSubjectGroup("📙 Common Courses", grade11Subjects.common, "bg-yellow-100 text-yellow-800")}
                           </CardContent>
                         </Card>
+                      ) : grade.grade === 10 ? (
+                        <Card className="bg-white/5 border-white/20 text-white">
+                          <CardContent className="p-6">
+                            <div className="flex items-center justify-between mb-6">
+                              <div className="flex items-center space-x-4">
+                                <div className="p-3 rounded-lg bg-green-500">
+                                  <BookOpen className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h4 className="text-lg font-bold">Grade 10 Subjects</h4>
+                                  <p className="text-sm text-gray-400">Advanced secondary education preparation</p>
+                                </div>
+                              </div>
+                              <Badge variant="secondary" className="bg-green-100 text-green-800">
+                                11 subjects
+                              </Badge>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                              {grade10Subjects.map((subject, index) => (
+                                <Card key={index} className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
+                                  <CardContent className="p-4">
+                                    <div className="flex items-center justify-between mb-3">
+                                      <div className="flex items-center space-x-3">
+                                        <div className="p-2 rounded-lg bg-green-500">
+                                          <subject.icon className="h-5 w-5 text-white" />
+                                        </div>
+                                        <div>
+                                          <h6 className="font-semibold">{subject.name}</h6>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div className="grid grid-cols-1 gap-1 mb-3">
+                                      {subject.topics.map((topic: string, topicIndex: number) => (
+                                        <div key={topicIndex} className="text-xs text-gray-300 bg-white/5 rounded px-2 py-1">
+                                          {topic}
+                                        </div>
+                                      ))}
+                                    </div>
+
+                                    <Button 
+                                      size="sm"
+                                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
+                                    >
+                                      <Play className="mr-1 h-3 w-3" />
+                                      Start Quiz
+                                    </Button>
+                                  </CardContent>
+                                </Card>
+                              ))}
+                            </div>
+                          </CardContent>
+                        </Card>
                       ) : grade.grade === 9 ? (
                         <Card className="bg-white/5 border-white/20 text-white">
                           <CardContent className="p-6">
@@ -470,41 +538,7 @@ const QuizDashboard = ({ user, onLogout, onSelectQuiz }: QuizDashboardProps) => 
                             </div>
                           </CardContent>
                         </Card>
-                      ) : (
-                        <Card className="bg-white/5 border-white/20 text-white hover:bg-white/10 transition-all duration-300">
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-4">
-                              <div className="flex items-center space-x-4">
-                                <div className="p-3 rounded-lg bg-blue-500">
-                                  <Calculator className="h-6 w-6 text-white" />
-                                </div>
-                                <div>
-                                  <h4 className="text-lg font-bold">Mathematics</h4>
-                                  <p className="text-sm text-gray-400">Core mathematical concepts</p>
-                                </div>
-                              </div>
-                              <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                                {mathTopics[grade.grade as keyof typeof mathTopics].length} topics
-                              </Badge>
-                            </div>
-                            
-                            <div className="grid grid-cols-2 gap-2 mb-4">
-                              {mathTopics[grade.grade as keyof typeof mathTopics].map((topic, index) => (
-                                <div key={index} className="text-sm text-gray-300 bg-white/5 rounded px-3 py-2">
-                                  {topic}
-                                </div>
-                              ))}
-                            </div>
-
-                            <Button 
-                              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
-                            >
-                              <Play className="mr-2 h-4 w-4" />
-                              Start Mathematics Quiz
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      )}
+                      ) : null}
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
