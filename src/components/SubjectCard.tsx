@@ -4,8 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui/drawer';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { BookOpen, Play, Clock, Award, ArrowLeft } from 'lucide-react';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
@@ -70,6 +71,11 @@ const SubjectCard = ({ subject, onSelectQuiz, availableQuizzes }: SubjectCardPro
       quiz.chapters?.includes(chapterName) || 
       quiz.title.toLowerCase().includes(chapterName.toLowerCase())
     );
+  };
+
+  // Prevent modal from closing on scroll events
+  const handleModalInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+    e.stopPropagation();
   };
 
   const renderChapterContent = () => {
@@ -207,15 +213,29 @@ const SubjectCard = ({ subject, onSelectQuiz, availableQuizzes }: SubjectCardPro
         </Card>
 
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
-          <DrawerContent className="bg-slate-900 border-slate-700">
+          <DrawerContent 
+            className="bg-slate-900 border-slate-700"
+            onPointerDownOutside={(e) => {
+              // Only close if clicking outside, not on scroll
+              if (e.target !== e.currentTarget) {
+                e.preventDefault();
+              }
+            }}
+          >
             <DrawerHeader>
               <DrawerTitle className="text-white">
                 {selectedChapter ? selectedChapter.name : subject.name}
               </DrawerTitle>
             </DrawerHeader>
-            <div className="p-4 pb-8">
-              {content}
-            </div>
+            <ScrollArea className="flex-1 p-4 pb-8">
+              <div 
+                onClick={handleModalInteraction}
+                onTouchStart={handleModalInteraction}
+                onTouchMove={handleModalInteraction}
+              >
+                {content}
+              </div>
+            </ScrollArea>
           </DrawerContent>
         </Drawer>
       </>
@@ -255,15 +275,29 @@ const SubjectCard = ({ subject, onSelectQuiz, availableQuizzes }: SubjectCardPro
       </Card>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-white max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent 
+          className="bg-slate-900 border-slate-700 text-white max-w-2xl max-h-[80vh]"
+          onPointerDownOutside={(e) => {
+            // Only close if clicking outside, not on scroll
+            if (e.target !== e.currentTarget) {
+              e.preventDefault();
+            }
+          }}
+        >
           <DialogHeader>
             <DialogTitle className="text-white">
               {selectedChapter ? selectedChapter.name : subject.name}
             </DialogTitle>
           </DialogHeader>
-          <div className="mt-4">
-            {content}
-          </div>
+          <ScrollArea className="mt-4 max-h-[60vh]">
+            <div 
+              onClick={handleModalInteraction}
+              onTouchStart={handleModalInteraction}
+              onTouchMove={handleModalInteraction}
+            >
+              {content}
+            </div>
+          </ScrollArea>
         </DialogContent>
       </Dialog>
     </>
