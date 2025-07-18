@@ -30,10 +30,44 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [results, setResults] = useState<any>(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [questions, setQuestions] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
-  const questions = useMemo(() => {
-    const generateQuestions = () => {
+  useEffect(() => {
+    const loadQuestions = async () => {
+      setIsLoading(true);
+      
+      if (quiz.subject === 'mathematics' && quiz.chapters && quiz.chapters.length > 0) {
+        try {
+          const { getQuestionsFromSupabase } = await import('@/services/questionService');
+          const supabaseQuestions = await getQuestionsFromSupabase(
+            quiz.subject,
+            quiz.chapters,
+            quiz.difficulty,
+            quiz.questions || 10
+          );
+          
+          if (supabaseQuestions.length > 0) {
+            const formattedQuestions = supabaseQuestions.map(q => ({
+              id: parseInt(q.id),
+              question: q.question,
+              options: q.options,
+              correct: q.correct_answer,
+              explanation: q.explanation,
+              difficulty: q.difficulty,
+              chapter: q.chapter_name
+            }));
+            setQuestions(formattedQuestions);
+            setIsLoading(false);
+            return;
+          }
+        } catch (error) {
+          console.error('Error loading from Supabase:', error);
+        }
+      }
+      
+      // Fallback to local data
       if (quiz.chapters && quiz.chapters.length > 0) {
         const allQuestions: any[] = [];
         
@@ -43,11 +77,12 @@ const QuizInterface = ({ quiz, user, onComplete, onBack }: QuizInterfaceProps) =
         });
         
         const shuffled = allQuestions.sort(() => Math.random() - 0.5);
-        return shuffled.slice(0, Math.min(quiz.questions || 10, shuffled.length));
+        setQuestions(shuffled.slice(0, Math.min(quiz.questions || 10, shuffled.length)));
       }
-      return [];
+      setIsLoading(false);
     };
-    return generateQuestions();
+    
+    loadQuestions();
   }, [quiz.subject, quiz.chapters, quiz.difficulty, quiz.questions]);
 
   const currentQuestion = questions[currentQuestionIndex];
