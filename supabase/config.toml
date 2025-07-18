@@ -1,1 +1,4 @@
 project_id = "inrscavonzaqqjbvawtd"
+
+[functions.import-math-data]
+verify_jwt = false

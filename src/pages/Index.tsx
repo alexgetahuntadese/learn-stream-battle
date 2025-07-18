@@ -6,6 +6,7 @@ import LoginForm from "@/components/LoginForm";
 import RegisterForm from "@/components/RegisterForm";
 import QuizDashboard from "@/components/QuizDashboard";
 import QuizInterface from "@/components/QuizInterface";
+import { ImportMathData } from "@/components/ImportMathData";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState<'home' | 'login' | 'register' | 'dashboard' | 'quiz'>('home');
@@ -156,6 +157,11 @@ const Index = () => {
               <div className="text-sm">Powered</div>
             </div>
           </div>
+        </div>
+
+        {/* Import Math Data Component - Admin only, temporary */}
+        <div className="mt-8 flex justify-center">
+          <ImportMathData />
         </div>
       </div>
     </div>
