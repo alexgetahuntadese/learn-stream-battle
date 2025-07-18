@@ -451,49 +451,77 @@ Deno.serve(async (req) => {
     for (const [chapterName, questions] of Object.entries(grade12Mathematics)) {
       console.log(`Processing chapter: ${chapterName}`);
 
-      // Create or get chapter
-      const { data: chapter, error: chapterError } = await supabase
+      // First check if chapter exists, if not create it
+      let { data: chapter, error: chapterSelectError } = await supabase
         .from('chapters')
-        .upsert({
-          subject_id: mathSubject.id,
-          name: chapterName,
-          description: `Mathematics questions for ${chapterName}`
-        })
         .select('id')
+        .eq('subject_id', mathSubject.id)
+        .eq('name', chapterName)
         .single();
 
-      if (chapterError || !chapter) {
-        console.error(`Error creating chapter ${chapterName}:`, chapterError);
+      if (chapterSelectError && chapterSelectError.code === 'PGRST116') {
+        // Chapter doesn't exist, create it
+        const { data: newChapter, error: chapterInsertError } = await supabase
+          .from('chapters')
+          .insert({
+            subject_id: mathSubject.id,
+            name: chapterName,
+            description: `Mathematics questions for ${chapterName}`,
+            order_index: Object.keys(grade12Mathematics).indexOf(chapterName) + 1
+          })
+          .select('id')
+          .single();
+
+        if (chapterInsertError) {
+          console.error(`Error creating chapter ${chapterName}:`, chapterInsertError);
+          continue;
+        }
+        
+        chapter = newChapter;
+      } else if (chapterSelectError) {
+        console.error(`Error finding chapter ${chapterName}:`, chapterSelectError);
         continue;
       }
 
-      console.log(`Chapter created/found: ${chapter.id}`);
 
-      // Insert questions for this chapter
-      const questionsToInsert = questions.map(q => ({
-        legacy_id: q.id,
-        chapter_id: chapter.id,
-        question: q.question,
-        options: q.options,
-        correct_answer: q.correct,
-        explanation: q.explanation,
-        difficulty: q.difficulty
-      }));
+      
+      console.log(`Chapter ready: ${chapter.id} for ${chapterName}`);
 
-      const { error: questionsError } = await supabase
-        .from('quiz_questions')
-        .upsert(questionsToInsert, { 
-          onConflict: 'legacy_id',
-          ignoreDuplicates: true 
-        });
+      // Insert questions one by one to handle duplicates properly
+      let chapterImportCount = 0;
+      for (const q of questions) {
+        // Check if question already exists
+        const { data: existingQuestion } = await supabase
+          .from('quiz_questions')
+          .select('id')
+          .eq('legacy_id', q.id)
+          .single();
 
-      if (questionsError) {
-        console.error(`Error inserting questions for ${chapterName}:`, questionsError);
-        continue;
+        if (!existingQuestion) {
+          const { error: questionError } = await supabase
+            .from('quiz_questions')
+            .insert({
+              legacy_id: q.id,
+              chapter_id: chapter.id,
+              question: q.question,
+              options: q.options,
+              correct_answer: q.correct,
+              explanation: q.explanation,
+              difficulty: q.difficulty
+            });
+
+          if (!questionError) {
+            chapterImportCount++;
+            totalImported++;
+          } else {
+            console.error(`Error inserting question ${q.id}:`, questionError);
+          }
+        } else {
+          console.log(`Question ${q.id} already exists, skipping`);
+        }
       }
 
-      totalImported += questions.length;
-      console.log(`Imported ${questions.length} questions for ${chapterName}`);
+      console.log(`Imported ${chapterImportCount} new questions for ${chapterName}`);
     }
 
     console.log(`Import completed. Total questions imported: ${totalImported}`);
