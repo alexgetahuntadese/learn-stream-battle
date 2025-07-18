@@ -7,6 +7,7 @@ import RegisterForm from "@/components/RegisterForm";
 import QuizDashboard from "@/components/QuizDashboard";
 import QuizInterface from "@/components/QuizInterface";
 import { ImportMathData } from "@/components/ImportMathData";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState<'home' | 'login' | 'register' | 'dashboard' | 'quiz'>('home');
@@ -160,8 +161,20 @@ const Index = () => {
         </div>
 
         {/* Import Math Data Component - Admin only, temporary */}
-        <div className="mt-8 flex justify-center">
+        <div className="flex gap-4 justify-center">
           <ImportMathData />
+          <Button 
+            variant="outline"
+            onClick={async () => {
+              const { data, error } = await supabase.from('quiz_questions').select('count');
+              console.log('Question count:', data?.length || 0);
+              const { getQuestionsFromSupabase } = await import('@/services/questionService');
+              const questions = await getQuestionsFromSupabase('mathematics', ['Unit 1: Sequence and Series'], 'Easy', 5);
+              console.log('Test questions loaded:', questions);
+            }}
+          >
+            Test Load Questions
+          </Button>
         </div>
       </div>
     </div>
