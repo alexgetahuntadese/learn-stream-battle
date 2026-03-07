@@ -436,6 +436,19 @@ const ChaptersPage = () => {
     return descriptions[chapterName] || "Comprehensive study of chemistry concepts";
   };
 
+  const getGrade11EconomicsChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: Theory Of Consumer Behavior And Demand": "Study utility theory, demand analysis, elasticity, indifference curves, and consumer equilibrium",
+      "Unit 2: Market Structure And The Decision Of Firms": "Explore perfect competition, monopoly, oligopoly, monopolistic competition, and firm decision-making",
+      "Unit 3: National Income Accounting": "Learn GDP measurement, income approaches, and macroeconomic aggregates",
+      "Unit 4: Consumption, Saving And Investment": "Understand consumption functions, saving behavior, investment determinants, and the multiplier effect",
+      "Unit 5: Trade And Finance": "Study international trade theories, balance of payments, exchange rates, and trade policies",
+      "Unit 6: Economic Development": "Explore development theories, poverty, inequality, and strategies for economic growth",
+      "Unit 7: Main Sectors, Sectorial Policies And Strategies Of Ethiopia": "Examine Ethiopia's economic sectors, development plans, and policy strategies"
+    };
+    return descriptions[chapterName] || "Comprehensive study of economic concepts and principles";
+  };
+
   const getGrade11MathChapterDescription = (chapterName: string) => {
     const descriptions: { [key: string]: string } = {
       "Unit 1: Relations and Functions": "Study ordered pairs, domain, range, composition, and inverse of functions",
