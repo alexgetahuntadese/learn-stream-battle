@@ -1,9 +1,21 @@
 
+import { useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen, Clock, Target } from 'lucide-react';
+import { ArrowLeft, BookOpen, Clock, Target, Sparkles, GraduationCap } from 'lucide-react';
+
+const generateStars = (count: number) =>
+  Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 3 + 1,
+    duration: Math.random() * 4 + 3,
+    delay: Math.random() * 5,
+    opacity: Math.random() * 0.5 + 0.1,
+  }));
 import { 
   Calculator, 
   Atom, 
@@ -25,6 +37,7 @@ import {
 const SubjectsPage = () => {
   const navigate = useNavigate();
   const { grade } = useParams();
+  const stars = useMemo(() => generateStars(40), []);
 
   const subjectIcons = {
     'Mathematics': Calculator,
@@ -166,81 +179,97 @@ const SubjectsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 p-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center mb-8">
-          <Button 
-            variant="ghost" 
-            className="text-white hover:bg-white/20 mr-4"
-            onClick={() => navigate('/grades')}
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Grades
-          </Button>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8 overflow-hidden relative">
+      {/* Floating stars */}
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="absolute rounded-full bg-white pointer-events-none"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            opacity: star.opacity,
+            animation: `float-star ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
+          }}
+        />
+      ))}
 
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-white mb-4">
-            Grade {grade} Subjects
+      {/* Decorative background elements */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-600/10 rounded-full blur-3xl animate-pulse [animation-delay:1s]" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <Button
+          variant="ghost"
+          className="text-white/70 hover:text-white hover:bg-white/5 mb-8 transition-colors"
+          onClick={() => navigate('/grades')}
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Grades
+        </Button>
+
+        <div className="text-center mb-12 opacity-0 animate-fade-in" style={{ animationFillMode: 'forwards' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-sm mb-6">
+            <GraduationCap className="h-4 w-4" />
+            Grade {grade} • Ethiopian Curriculum
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+            Choose a Subject
           </h1>
-          <p className="text-xl text-blue-200">
-            Choose a subject to explore chapters and start learning
+          <p className="text-lg text-white/50 max-w-md mx-auto">
+            Explore chapters and start learning
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {subjects.map((subject) => {
+          {subjects.map((subject, index) => {
             const IconComponent = subject.icon;
             return (
-              <Card 
+              <div
                 key={subject.name}
-                className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer group"
                 onClick={() => handleSubjectSelect(subject.name)}
+                className="group relative cursor-pointer opacity-0 animate-fade-in"
+                style={{ animationDelay: `${0.1 + 0.08 * index}s`, animationFillMode: 'forwards' }}
               >
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="p-3 rounded-lg bg-blue-500 group-hover:bg-blue-400 transition-colors">
-                        <IconComponent className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-white text-xl">
-                          {subject.name}
-                        </CardTitle>
-                        <Badge className={getDifficultyColor(subject.difficulty)}>
-                          {subject.difficulty}
-                        </Badge>
-                      </div>
+                {/* Glow effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-2xl opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-500" />
+
+                <div className="relative bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/[0.15] group-hover:scale-[1.02] shadow-2xl h-full">
+                  <Sparkles className="absolute top-4 right-4 h-4 w-4 text-white/10 group-hover:text-white/30 transition-colors duration-500" />
+
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg group-hover:shadow-violet-500/30 transition-shadow duration-500">
+                      <IconComponent className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-1">{subject.name}</h3>
+                      <Badge className={`${getDifficultyColor(subject.difficulty)} text-xs`}>
+                        {subject.difficulty}
+                      </Badge>
                     </div>
                   </div>
-                  <CardDescription className="text-blue-200 mt-2">
-                    {subject.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
-                    <div className="flex items-center">
-                      <BookOpen className="mr-2 h-4 w-4" />
+
+                  <p className="text-white/40 text-sm mb-5">{subject.description}</p>
+
+                  <div className="flex items-center gap-4 text-white/40 text-sm mb-5">
+                    <div className="flex items-center gap-1.5">
+                      <BookOpen className="h-3.5 w-3.5" />
                       <span>{subject.chapters} chapters</span>
                     </div>
-                    <div className="flex items-center">
-                      <Clock className="mr-2 h-4 w-4" />
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="h-3.5 w-3.5" />
                       <span>{subject.estimatedTime}</span>
                     </div>
                   </div>
-                  
-                  <Button 
-                    className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleSubjectSelect(subject.name);
-                    }}
-                  >
-                    Explore Chapters
-                    <Target className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
+
+                  <div className="flex items-center text-white/30 group-hover:text-violet-300 text-sm transition-colors duration-300">
+                    <span>Explore chapters</span>
+                    <ArrowLeft className="ml-2 h-4 w-4 rotate-180 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
