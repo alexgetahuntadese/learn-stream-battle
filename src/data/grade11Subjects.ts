@@ -118,12 +118,16 @@ export const grade11Subjects: Grade11Subject[] = [
     icon: 'BookOpen',
     description: 'English language skills, literature, and communication',
     chapters: [
-      'Chapter 1: Reading Comprehension',
-      'Chapter 2: Grammar and Vocabulary',
-      'Chapter 3: Writing Skills',
-      'Chapter 4: Literature Analysis',
-      'Chapter 5: Communication Skills',
-      'Chapter 6: Critical Thinking'
+      'Unit 1: Environmental Hazards',
+      'Unit 2: Civilization',
+      'Unit 3: Causes of Road Traffic Accidents',
+      'Unit 4: People and Natural Resources',
+      'Unit 5: Irrigation',
+      'Unit 6: Global Warming',
+      'Unit 7: Patriotism',
+      'Unit 8: Efficiency of Health Services',
+      'Unit 9: Indigenous Conflict Resolution',
+      'Unit 10: Artificial Intelligence'
     ],
     category: 'Languages'
   },
