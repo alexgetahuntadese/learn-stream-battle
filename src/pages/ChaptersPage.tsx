@@ -19,6 +19,7 @@ import { grade11AgricultureQuestions } from '@/data/grade11AgricultureQuestions'
 import { grade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
 import { grade11Chemistry } from '@/data/grade11Chemistry';
 import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
+import { grade11EnglishQuestions } from '@/data/grade11EnglishQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -143,6 +144,32 @@ const ChaptersPage = () => {
           id: index + 1,
           title: chapterName,
           description: getGrade11EconomicsChapterDescription(chapterName),
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
+    // Handle Grade 11 English
+    if (decodedSubject === 'English' && grade === '11') {
+      return Object.keys(grade11EnglishQuestions).map((chapterName, index) => {
+        const questions = grade11EnglishQuestions[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: getGrade11EnglishChapterDescription(chapterName),
           duration: getDurationEstimate(questions.length),
           difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
           progress: Math.floor(Math.random() * 101),
