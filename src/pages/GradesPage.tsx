@@ -1,7 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
 import { ArrowLeft, BookOpen, Trophy, Sparkles, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
+
+const generateStars = (count: number) =>
+  Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 3 + 1,
+    duration: Math.random() * 4 + 3,
+    delay: Math.random() * 5,
+    opacity: Math.random() * 0.5 + 0.1,
+  }));
 
 const gradeData = [
   {
@@ -27,9 +39,26 @@ const gradeData = [
 const GradesPage = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const stars = useMemo(() => generateStars(50), []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8 overflow-hidden relative">
+      {/* Floating stars */}
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="absolute rounded-full bg-white pointer-events-none"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            opacity: star.opacity,
+            animation: `float-star ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
+          }}
+        />
+      ))}
+
       {/* Decorative background elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-600/10 rounded-full blur-3xl animate-pulse [animation-delay:1s]" />
