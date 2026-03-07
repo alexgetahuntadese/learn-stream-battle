@@ -463,6 +463,22 @@ const ChaptersPage = () => {
     return descriptions[chapterName] || "Comprehensive study of chemistry concepts";
   };
 
+  const getGrade11EnglishChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: Environmental Hazards": "Explore causes and impacts of environmental hazards through listening, debating, skimming, scanning, and vocabulary inference skills",
+      "Unit 2: Civilization": "Study civilization and cultural development through note-taking, summarizing, relative clauses, reported speech, and perfect tenses",
+      "Unit 3: Causes of Road Traffic Accidents": "Examine traffic accident causes using cause-and-effect essays, comprehension strategies, and adverbial clauses of reason and result",
+      "Unit 4: People and Natural Resources": "Explore human-environment interaction through expository writing, phrasal verbs, prefixes, suffixes, and adverbial clauses of purpose",
+      "Unit 5: Irrigation": "Study irrigation systems through listening for detail, synthesizing texts, gerunds, infinitives, participles, and articles",
+      "Unit 6: Global Warming": "Address global warming causes and effects through compare-and-contrast essays, conditional clauses, and tense usage",
+      "Unit 7: Patriotism": "Discuss patriotism through business letters, narrative essays, the verb wish, simple past tense, and reported speech",
+      "Unit 8: Efficiency of Health Services": "Examine health services through summarizing, interviewing, panel discussions, argumentative writing, and quantifiers",
+      "Unit 9: Indigenous Conflict Resolution": "Explore conflict resolution through summary writing, oral presentations, thesis identification, adverbs, and phrasal verbs",
+      "Unit 10: Artificial Intelligence": "Introduce AI concepts through note-taking, synthesizing, public speaking, descriptive essays, and conditional sentences"
+    };
+    return descriptions[chapterName] || "Comprehensive study of English language skills and communication";
+  };
+
   const getGrade11EconomicsChapterDescription = (chapterName: string) => {
     const descriptions: { [key: string]: string } = {
       "Unit 1: Theory Of Consumer Behavior And Demand": "Study utility theory, demand analysis, elasticity, indifference curves, and consumer equilibrium",
