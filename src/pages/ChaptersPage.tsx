@@ -19,6 +19,7 @@ import { grade11AgricultureQuestions } from '@/data/grade11AgricultureQuestions'
 import { grade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
 import { grade11Chemistry } from '@/data/grade11Chemistry';
 import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
+import { grade11EnglishQuestions } from '@/data/grade11EnglishQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -143,6 +144,32 @@ const ChaptersPage = () => {
           id: index + 1,
           title: chapterName,
           description: getGrade11EconomicsChapterDescription(chapterName),
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
+    // Handle Grade 11 English
+    if (decodedSubject === 'English' && grade === '11') {
+      return Object.keys(grade11EnglishQuestions).map((chapterName, index) => {
+        const questions = grade11EnglishQuestions[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: getGrade11EnglishChapterDescription(chapterName),
           duration: getDurationEstimate(questions.length),
           difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
           progress: Math.floor(Math.random() * 101),
@@ -483,6 +510,22 @@ const ChaptersPage = () => {
       "Chapter 16: Diversified Food Production and Consumption": "Explore food diversification, processing, and sustainable consumption"
     };
     return descriptions[chapterName] || "Comprehensive study of agricultural concepts and practices";
+  };
+
+  const getGrade11EnglishChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: Environmental Hazards": "Explore environmental threats, their causes, effects, and how to communicate about ecological challenges",
+      "Unit 2: Civilization": "Study the development of human civilizations, cultural heritage, and historical analysis through language",
+      "Unit 3: Causes of Road Traffic Accidents": "Examine road safety issues, analyze causes of accidents, and develop persuasive writing skills",
+      "Unit 4: People and Natural Resources": "Investigate the relationship between human activities and natural resources through reading and writing",
+      "Unit 5: Irrigation": "Learn about irrigation systems, agricultural water management, and technical writing skills",
+      "Unit 6: Global Warming": "Analyze climate change causes and effects while developing argumentative and analytical writing",
+      "Unit 7: Patriotism": "Explore concepts of national identity, civic responsibility, and persuasive rhetoric",
+      "Unit 8: Efficiency of Health Services": "Examine healthcare systems, service delivery, and develop report writing and analytical skills",
+      "Unit 9: Indigenous Conflict Resolution": "Study traditional conflict resolution methods, mediation, and academic discourse skills",
+      "Unit 10: Artificial Intelligence": "Explore AI concepts, ethical implications, and develop critical thinking and essay writing skills"
+    };
+    return descriptions[chapterName] || "Comprehensive study of English language skills and communication";
   };
 
   const getChapterDescription = (chapterName: string) => {
