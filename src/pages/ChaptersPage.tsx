@@ -18,6 +18,7 @@ import { grade11Biology } from '@/data/grade11Biology';
 import { grade11AgricultureQuestions } from '@/data/grade11AgricultureQuestions';
 import { grade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
 import { grade11Chemistry } from '@/data/grade11Chemistry';
+import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -116,6 +117,32 @@ const ChaptersPage = () => {
           id: index + 1,
           title: chapterName,
           description: getGrade11ChemistryChapterDescription(chapterName),
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
+    // Handle Grade 11 Economics
+    if (decodedSubject === 'Economics' && grade === '11') {
+      return Object.keys(grade11EconomicsQuestions).map((chapterName, index) => {
+        const questions = grade11EconomicsQuestions[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: getGrade11EconomicsChapterDescription(chapterName),
           duration: getDurationEstimate(questions.length),
           difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
           progress: Math.floor(Math.random() * 101),
@@ -407,6 +434,19 @@ const ChaptersPage = () => {
       "Unit 6: Some Important Oxygen-containing Organic Compounds": "Explore alcohols, aldehydes, ketones, carboxylic acids, and esters"
     };
     return descriptions[chapterName] || "Comprehensive study of chemistry concepts";
+  };
+
+  const getGrade11EconomicsChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: Theory Of Consumer Behavior And Demand": "Study utility theory, demand analysis, elasticity, indifference curves, and consumer equilibrium",
+      "Unit 2: Market Structure And The Decision Of Firms": "Explore perfect competition, monopoly, oligopoly, monopolistic competition, and firm decision-making",
+      "Unit 3: National Income Accounting": "Learn GDP measurement, income approaches, and macroeconomic aggregates",
+      "Unit 4: Consumption, Saving And Investment": "Understand consumption functions, saving behavior, investment determinants, and the multiplier effect",
+      "Unit 5: Trade And Finance": "Study international trade theories, balance of payments, exchange rates, and trade policies",
+      "Unit 6: Economic Development": "Explore development theories, poverty, inequality, and strategies for economic growth",
+      "Unit 7: Main Sectors, Sectorial Policies And Strategies Of Ethiopia": "Examine Ethiopia's economic sectors, development plans, and policy strategies"
+    };
+    return descriptions[chapterName] || "Comprehensive study of economic concepts and principles";
   };
 
   const getGrade11MathChapterDescription = (chapterName: string) => {

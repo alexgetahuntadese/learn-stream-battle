@@ -97,6 +97,22 @@ export const grade11Subjects: Grade11Subject[] = [
     category: 'Other'
   },
   {
+    id: 'economics',
+    name: 'Economics',
+    icon: 'TrendingUp',
+    description: 'Economic theories, market structures, national income, trade, and development',
+    chapters: [
+      'Unit 1: Theory Of Consumer Behavior And Demand',
+      'Unit 2: Market Structure And The Decision Of Firms',
+      'Unit 3: National Income Accounting',
+      'Unit 4: Consumption, Saving And Investment',
+      'Unit 5: Trade And Finance',
+      'Unit 6: Economic Development',
+      'Unit 7: Main Sectors, Sectorial Policies And Strategies Of Ethiopia'
+    ],
+    category: 'Social Sciences'
+  },
+  {
     id: 'english',
     name: 'English',
     icon: 'BookOpen',
