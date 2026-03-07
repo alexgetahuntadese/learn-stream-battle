@@ -397,6 +397,18 @@ const ChaptersPage = () => {
     return descriptions[chapterName] || "Comprehensive study of biological concepts and life processes";
   };
 
+  const getGrade11ChemistryChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: Atomic Structure And Periodic Properties Of The Elements": "Study atomic models, electron configuration, quantum numbers, and periodic trends",
+      "Unit 2: Chemical Bonding": "Explore ionic, covalent, and metallic bonds, Lewis structures, and molecular geometry",
+      "Unit 3: Physical State Of Matter": "Understand gases, liquids, solids, phase changes, and the kinetic molecular theory",
+      "Unit 4: Chemical Kinetics": "Learn about reaction rates, rate laws, factors affecting rates, and reaction mechanisms",
+      "Unit 5: Chemical Equilibrium": "Study reversible reactions, equilibrium constants, Le Chatelier's principle, and applications",
+      "Unit 6: Some Important Oxygen-containing Organic Compounds": "Explore alcohols, aldehydes, ketones, carboxylic acids, and esters"
+    };
+    return descriptions[chapterName] || "Comprehensive study of chemistry concepts";
+  };
+
   const getGrade11MathChapterDescription = (chapterName: string) => {
     const descriptions: { [key: string]: string } = {
       "Unit 1: Relations and Functions": "Study ordered pairs, domain, range, composition, and inverse of functions",
