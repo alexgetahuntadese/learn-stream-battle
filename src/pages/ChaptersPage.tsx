@@ -19,7 +19,6 @@ import { grade11AgricultureQuestions } from '@/data/grade11AgricultureQuestions'
 import { grade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
 import { grade11Chemistry } from '@/data/grade11Chemistry';
 import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
-import { grade11EnglishQuestions } from '@/data/grade11EnglishQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -144,32 +143,6 @@ const ChaptersPage = () => {
           id: index + 1,
           title: chapterName,
           description: getGrade11EconomicsChapterDescription(chapterName),
-          duration: getDurationEstimate(questions.length),
-          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
-          progress: Math.floor(Math.random() * 101),
-          isCompleted: Math.random() > 0.7,
-          questionsCount: questions.length,
-          difficultyBreakdown: {
-            easy: easyQuestions,
-            medium: mediumQuestions,
-            hard: hardQuestions
-          }
-        };
-      });
-    }
-
-    // Handle Grade 11 English
-    if (decodedSubject === 'English' && grade === '11') {
-      return Object.keys(grade11EnglishQuestions).map((chapterName, index) => {
-        const questions = grade11EnglishQuestions[chapterName];
-        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
-        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
-        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
-        
-        return {
-          id: index + 1,
-          title: chapterName,
-          description: getGrade11EnglishChapterDescription(chapterName),
           duration: getDurationEstimate(questions.length),
           difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
           progress: Math.floor(Math.random() * 101),
@@ -461,22 +434,6 @@ const ChaptersPage = () => {
       "Unit 6: Some Important Oxygen-containing Organic Compounds": "Explore alcohols, aldehydes, ketones, carboxylic acids, and esters"
     };
     return descriptions[chapterName] || "Comprehensive study of chemistry concepts";
-  };
-
-  const getGrade11EnglishChapterDescription = (chapterName: string) => {
-    const descriptions: { [key: string]: string } = {
-      "Unit 1: Environmental Hazards": "Explore causes and impacts of environmental hazards through listening, debating, skimming, scanning, and vocabulary inference skills",
-      "Unit 2: Civilization": "Study civilization and cultural development through note-taking, summarizing, relative clauses, reported speech, and perfect tenses",
-      "Unit 3: Causes of Road Traffic Accidents": "Examine traffic accident causes using cause-and-effect essays, comprehension strategies, and adverbial clauses of reason and result",
-      "Unit 4: People and Natural Resources": "Explore human-environment interaction through expository writing, phrasal verbs, prefixes, suffixes, and adverbial clauses of purpose",
-      "Unit 5: Irrigation": "Study irrigation systems through listening for detail, synthesizing texts, gerunds, infinitives, participles, and articles",
-      "Unit 6: Global Warming": "Address global warming causes and effects through compare-and-contrast essays, conditional clauses, and tense usage",
-      "Unit 7: Patriotism": "Discuss patriotism through business letters, narrative essays, the verb wish, simple past tense, and reported speech",
-      "Unit 8: Efficiency of Health Services": "Examine health services through summarizing, interviewing, panel discussions, argumentative writing, and quantifiers",
-      "Unit 9: Indigenous Conflict Resolution": "Explore conflict resolution through summary writing, oral presentations, thesis identification, adverbs, and phrasal verbs",
-      "Unit 10: Artificial Intelligence": "Introduce AI concepts through note-taking, synthesizing, public speaking, descriptive essays, and conditional sentences"
-    };
-    return descriptions[chapterName] || "Comprehensive study of English language skills and communication";
   };
 
   const getGrade11EconomicsChapterDescription = (chapterName: string) => {
