@@ -47,13 +47,12 @@ export const grade11Subjects: Grade11Subject[] = [
     icon: 'Flask',
     description: 'Chemical principles, reactions, and laboratory techniques',
     chapters: [
-      'Chapter 1: Atomic Structure',
-      'Chapter 2: Chemical Bonding',
-      'Chapter 3: States of Matter',
-      'Chapter 4: Chemical Reactions',
-      'Chapter 5: Acids and Bases',
-      'Chapter 6: Organic Chemistry',
-      'Chapter 7: Environmental Chemistry'
+      'Unit 1: Atomic Structure And Periodic Properties Of The Elements',
+      'Unit 2: Chemical Bonding',
+      'Unit 3: Physical State Of Matter',
+      'Unit 4: Chemical Kinetics',
+      'Unit 5: Chemical Equilibrium',
+      'Unit 6: Some Important Oxygen-containing Organic Compounds'
     ],
     category: 'Natural Sciences'
   },
