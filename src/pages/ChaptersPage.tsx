@@ -17,6 +17,7 @@ import { grade12ITQuestions } from '@/data/grade12ITQuestions';
 import { grade11Biology } from '@/data/grade11Biology';
 import { grade11AgricultureQuestions } from '@/data/grade11AgricultureQuestions';
 import { grade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
+import { grade11Chemistry } from '@/data/grade11Chemistry';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -89,6 +90,32 @@ const ChaptersPage = () => {
           id: index + 1,
           title: chapterName,
           description: getGrade11MathChapterDescription(chapterName),
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
+    // Handle Grade 11 Chemistry
+    if (decodedSubject === 'Chemistry' && grade === '11') {
+      return Object.keys(grade11Chemistry).map((chapterName, index) => {
+        const questions = grade11Chemistry[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: getGrade11ChemistryChapterDescription(chapterName),
           duration: getDurationEstimate(questions.length),
           difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
           progress: Math.floor(Math.random() * 101),
@@ -368,6 +395,18 @@ const ChaptersPage = () => {
       "Unit 6: Population and natural resources": "Investigate population dynamics, environmental factors, and sustainable resource management"
     };
     return descriptions[chapterName] || "Comprehensive study of biological concepts and life processes";
+  };
+
+  const getGrade11ChemistryChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: Atomic Structure And Periodic Properties Of The Elements": "Study atomic models, electron configuration, quantum numbers, and periodic trends",
+      "Unit 2: Chemical Bonding": "Explore ionic, covalent, and metallic bonds, Lewis structures, and molecular geometry",
+      "Unit 3: Physical State Of Matter": "Understand gases, liquids, solids, phase changes, and the kinetic molecular theory",
+      "Unit 4: Chemical Kinetics": "Learn about reaction rates, rate laws, factors affecting rates, and reaction mechanisms",
+      "Unit 5: Chemical Equilibrium": "Study reversible reactions, equilibrium constants, Le Chatelier's principle, and applications",
+      "Unit 6: Some Important Oxygen-containing Organic Compounds": "Explore alcohols, aldehydes, ketones, carboxylic acids, and esters"
+    };
+    return descriptions[chapterName] || "Comprehensive study of chemistry concepts";
   };
 
   const getGrade11MathChapterDescription = (chapterName: string) => {
