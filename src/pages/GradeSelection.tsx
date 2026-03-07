@@ -7,12 +7,6 @@ const GradeSelection = () => {
   const navigate = useNavigate();
 
   const grades = [
-    { number: 5, students: '10,600+', subjects: 10 },
-    { number: 6, students: '10,300+', subjects: 10 },
-    { number: 7, students: '9,800+', subjects: 11 },
-    { number: 8, students: '9,500+', subjects: 11 },
-    { number: 9, students: '9,200+', subjects: 12 },
-    { number: 10, students: '8,900+', subjects: 12 },
     { number: 11, students: '8,600+', subjects: 13 },
     { number: 12, students: '8,300+', subjects: 14 },
   ];
