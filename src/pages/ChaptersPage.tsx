@@ -1,9 +1,20 @@
+import { useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-// import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, Play, CheckCircle, Clock, BookOpen, Target } from 'lucide-react';
+import { ArrowLeft, Play, CheckCircle, Clock, BookOpen, Target, Sparkles, GraduationCap } from 'lucide-react';
+
+const generateStars = (count: number) =>
+  Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 3 + 1,
+    duration: Math.random() * 4 + 3,
+    delay: Math.random() * 5,
+    opacity: Math.random() * 0.5 + 0.1,
+  }));
 import { grade12Mathematics } from '@/data/grade12Mathematics';
 import { grade12BiologyQuestions } from '@/data/grade12BiologyQuestions';
 import { grade12ChemistryQuestions } from '@/data/grade12ChemistryQuestions';
@@ -25,6 +36,7 @@ const ChaptersPage = () => {
   const navigate = useNavigate();
   const { grade, subject } = useParams();
   const decodedSubject = decodeURIComponent(subject || '');
+  const stars = useMemo(() => generateStars(40), []);
 
   // Get chapters based on subject and grade
   const getChaptersForSubject = () => {
@@ -697,37 +709,60 @@ const ChaptersPage = () => {
   const overallProgress = Math.round(chapters.reduce((acc, chapter) => acc + chapter.progress, 0) / chapters.length);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 p-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center mb-8">
-          <Button 
-            variant="ghost" 
-            className="text-white hover:bg-white/20 mr-4"
-            onClick={() => navigate(`/grade/${grade}/subjects`)}
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Subjects
-          </Button>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8 overflow-hidden relative">
+      {/* Floating stars */}
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="absolute rounded-full bg-white pointer-events-none"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            opacity: star.opacity,
+            animation: `float-star ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
+          }}
+        />
+      ))}
 
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-white mb-4">
+      {/* Decorative background elements */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-600/10 rounded-full blur-3xl animate-pulse [animation-delay:1s]" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <Button
+          variant="ghost"
+          className="text-white/70 hover:text-white hover:bg-white/5 mb-8 transition-colors"
+          onClick={() => navigate(`/grade/${grade}/subjects`)}
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Subjects
+        </Button>
+
+        <div className="text-center mb-12 opacity-0 animate-fade-in" style={{ animationFillMode: 'forwards' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-sm mb-6">
+            <GraduationCap className="h-4 w-4" />
+            Grade {grade} • {decodedSubject}
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
             {decodedSubject} Chapters
           </h1>
-          <p className="text-xl text-blue-200 mb-6">
-            Grade {grade} • Choose a chapter to start your quiz
+          <p className="text-lg text-white/50 max-w-md mx-auto mb-8">
+            Choose a chapter to start your quiz
           </p>
-          
-          <div className="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-white font-medium">Overall Progress</span>
-              <span className={`font-bold ${getProgressColor(overallProgress)}`}>
+
+          {/* Overall Progress */}
+          <div className="max-w-sm mx-auto bg-white/[0.04] backdrop-blur-xl rounded-2xl p-5 border border-white/[0.08]">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-white/70 font-medium text-sm">Overall Progress</span>
+              <span className={`font-bold text-sm ${getProgressColor(overallProgress)}`}>
                 {overallProgress}%
               </span>
             </div>
-            <div className="h-3 bg-white/20 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-500" 
+            <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full transition-all duration-700"
                 style={{ width: `${overallProgress}%` }}
               />
             </div>
@@ -735,105 +770,109 @@ const ChaptersPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {chapters.map((chapter) => (
-            <Card 
+          {chapters.map((chapter, index) => (
+            <div
               key={chapter.id}
-              className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300"
+              className="group relative opacity-0 animate-fade-in"
+              style={{ animationDelay: `${0.1 + 0.06 * index}s`, animationFillMode: 'forwards' }}
             >
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center mb-2">
-                      <CardTitle className="text-white text-lg mr-3">
-                        Chapter {chapter.id}
-                      </CardTitle>
-                      {chapter.isCompleted && (
-                        <CheckCircle className="h-5 w-5 text-green-500" />
-                      )}
-                    </div>
-                    <CardTitle className="text-white text-xl mb-2">
-                      {chapter.title}
-                    </CardTitle>
-                    <Badge className={getDifficultyColor(chapter.difficulty)}>
-                      {chapter.difficulty}
-                    </Badge>
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-2xl opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-500" />
+
+              <div className="relative bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/[0.15] shadow-2xl h-full flex flex-col">
+                <Sparkles className="absolute top-4 right-4 h-4 w-4 text-white/10 group-hover:text-white/30 transition-colors duration-500" />
+
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 text-white text-sm font-bold shadow-lg">
+                    {chapter.id}
                   </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-white leading-tight">{chapter.title}</h3>
+                  </div>
+                  {chapter.isCompleted && (
+                    <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0" />
+                  )}
                 </div>
-                <CardDescription className="text-blue-200 mt-2">
-                  {chapter.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
-                  <div className="flex items-center">
-                    <Clock className="mr-2 h-4 w-4" />
+
+                <Badge className={`${getDifficultyColor(chapter.difficulty)} text-xs w-fit mb-3`}>
+                  {chapter.difficulty}
+                </Badge>
+
+                <p className="text-white/40 text-sm mb-4 flex-1">{chapter.description}</p>
+
+                {/* Stats */}
+                <div className="flex items-center gap-4 text-white/40 text-xs mb-4">
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="h-3.5 w-3.5" />
                     <span>{chapter.duration}</span>
                   </div>
-                  <div className="flex items-center">
-                    <Target className="mr-2 h-4 w-4" />
+                  <div className="flex items-center gap-1.5">
+                    <Target className="h-3.5 w-3.5" />
                     <span>{chapter.questionsCount} questions</span>
                   </div>
                 </div>
 
                 {/* Difficulty Breakdown */}
-                <div className="bg-white/5 rounded-lg p-3 space-y-2">
-                  <h4 className="text-white font-medium text-sm">Questions by Difficulty</h4>
+                <div className="bg-white/[0.03] rounded-xl p-3 mb-4 border border-white/[0.05]">
+                  <h4 className="text-white/50 font-medium text-xs mb-2">Questions by Difficulty</h4>
                   <div className="grid grid-cols-3 gap-2 text-xs">
                     <div className="text-center">
-                      <div className="text-green-400 font-bold">{chapter.difficultyBreakdown.easy}</div>
-                      <div className="text-gray-400">Easy</div>
+                      <div className="text-emerald-400 font-bold">{chapter.difficultyBreakdown.easy}</div>
+                      <div className="text-white/30">Easy</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-yellow-400 font-bold">{chapter.difficultyBreakdown.medium}</div>
-                      <div className="text-gray-400">Medium</div>
+                      <div className="text-amber-400 font-bold">{chapter.difficultyBreakdown.medium}</div>
+                      <div className="text-white/30">Medium</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-red-400 font-bold">{chapter.difficultyBreakdown.hard}</div>
-                      <div className="text-gray-400">Hard</div>
+                      <div className="text-rose-400 font-bold">{chapter.difficultyBreakdown.hard}</div>
+                      <div className="text-white/30">Hard</div>
                     </div>
                   </div>
                 </div>
 
+                {/* Progress */}
                 {chapter.progress > 0 && (
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-300">Progress</span>
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <span className="text-white/40">Progress</span>
                       <span className={`font-medium ${getProgressColor(chapter.progress)}`}>
                         {chapter.progress}%
                       </span>
                     </div>
-                    <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-gradient-to-r from-green-500 to-blue-500" 
+                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"
                         style={{ width: `${chapter.progress}%` }}
                       />
                     </div>
                   </div>
                 )}
-                
-                {/* Difficulty Selection Buttons */}
-                <div className="space-y-2">
-                  <h4 className="text-white font-medium text-sm">Choose Difficulty</h4>
+
+                {/* Difficulty Buttons */}
+                <div>
+                  <h4 className="text-white/50 font-medium text-xs mb-2">Choose Difficulty</h4>
                   <div className="grid grid-cols-3 gap-2">
-                    <Button 
+                    <Button
                       size="sm"
-                      className="bg-green-600 hover:bg-green-700 text-white"
+                      className="bg-emerald-600/80 hover:bg-emerald-500 text-white text-xs border-0"
                       onClick={() => handleStartQuiz(chapter.id, chapter.title, 'Easy')}
                       disabled={chapter.difficultyBreakdown.easy === 0}
                     >
                       Easy
                     </Button>
-                    <Button 
+                    <Button
                       size="sm"
-                      className="bg-yellow-600 hover:bg-yellow-700 text-white"
+                      className="bg-amber-600/80 hover:bg-amber-500 text-white text-xs border-0"
                       onClick={() => handleStartQuiz(chapter.id, chapter.title, 'Medium')}
                       disabled={chapter.difficultyBreakdown.medium === 0}
                     >
                       Medium
                     </Button>
-                    <Button 
+                    <Button
                       size="sm"
-                      className="bg-red-600 hover:bg-red-700 text-white"
+                      className="bg-rose-600/80 hover:bg-rose-500 text-white text-xs border-0"
                       onClick={() => handleStartQuiz(chapter.id, chapter.title, 'Hard')}
                       disabled={chapter.difficultyBreakdown.hard === 0}
                     >
@@ -841,8 +880,8 @@ const ChaptersPage = () => {
                     </Button>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>
