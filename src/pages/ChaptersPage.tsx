@@ -18,6 +18,7 @@ import { grade11Biology } from '@/data/grade11Biology';
 import { grade11AgricultureQuestions } from '@/data/grade11AgricultureQuestions';
 import { grade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
 import { grade11Chemistry } from '@/data/grade11Chemistry';
+import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
