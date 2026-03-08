@@ -131,7 +131,7 @@ const SessionPage = () => {
 
   if (!session) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-800 to-indigo-700 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 flex items-center justify-center">
         <div className="text-white text-xl">{t('common.loading')}</div>
       </div>
     );
