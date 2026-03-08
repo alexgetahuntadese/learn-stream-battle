@@ -334,12 +334,12 @@ const QuizPage = () => {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -349,11 +349,11 @@ const QuizPage = () => {
           </h2>
         </div>
         <div className="space-y-4">
-          <Skeleton className="h-4 w-[250px] bg-slate-700" />
-          <Skeleton className="h-4 w-[400px] bg-slate-700" />
-          <Skeleton className="h-10 bg-slate-700" />
-          <Skeleton className="h-10 bg-slate-700" />
-          <Skeleton className="h-10 bg-slate-700" />
+          <Skeleton className="h-4 w-[250px] bg-white/[0.08]" />
+          <Skeleton className="h-4 w-[400px] bg-white/[0.08]" />
+          <Skeleton className="h-10 bg-white/[0.08]" />
+          <Skeleton className="h-10 bg-white/[0.08]" />
+          <Skeleton className="h-10 bg-white/[0.08]" />
         </div>
       </div>
     );
