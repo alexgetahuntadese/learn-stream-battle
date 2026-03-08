@@ -45,6 +45,9 @@ const App = () => (
                 <Route path="/career-simulator" element={<ProtectedRoute><CareerSimulatorPage /></ProtectedRoute>} />
                 <Route path="/performance" element={<ProtectedRoute><PerformancePage /></ProtectedRoute>} />
                 <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+                <Route path="/matric" element={<ProtectedRoute><MatricExamPage /></ProtectedRoute>} />
+                <Route path="/matric/:year" element={<ProtectedRoute><MatricYearPage /></ProtectedRoute>} />
+                <Route path="/matric/:year/:subject" element={<ProtectedRoute><MatricQuizPage /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
