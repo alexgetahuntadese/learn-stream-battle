@@ -113,7 +113,7 @@ const Results = ({
             >
               {score} {t('results.outOf')} {totalQuestions} {t('results.correct').toLowerCase()}
             </Badge>
-            <p className="text-lg text-gray-300">
+            <p className="text-lg text-white/60">
               {getPerformanceMessage(percentage)}
             </p>
           </div>
