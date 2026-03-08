@@ -18,6 +18,8 @@ import { getGrade11AgricultureQuestions } from '@/data/grade11AgricultureQuestio
 import { getGrade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
 import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 import { getGrade10BiologyQuestions } from '@/data/grade10BiologyQuestions';
+import { grade10MathematicsQuestions } from '@/data/grade10MathematicsQuestions';
+import { grade10PhysicsQuestions } from '@/data/grade10PhysicsQuestions';
 
 import QuestionCard from '@/components/QuestionCard';
 import Results from '@/components/Results';
@@ -50,10 +52,35 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
     // Handle Grade 10
     if (grade === '10') {
       const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
-      if (subject === 'biology') {
+      if (subject === 'biology' || subject === 'Biology') {
         allQuestions = getGrade10BiologyQuestions(chapter, difficultyLevel, count);
         return allQuestions;
       }
+      
+      // Handle Math and Physics via their data objects
+      let grade10Data: any = null;
+      switch (subject) {
+        case 'Mathematics':
+        case 'mathematics':
+          grade10Data = grade10MathematicsQuestions[chapter];
+          break;
+        case 'Physics':
+        case 'physics':
+          grade10Data = grade10PhysicsQuestions[chapter];
+          break;
+      }
+      
+      if (grade10Data && Array.isArray(grade10Data)) {
+        const filtered = grade10Data.filter((q: any) => q.difficulty?.toLowerCase() === difficultyLevel).slice(0, count);
+        return filtered.map((q: any, index: number) => ({
+          id: q.id || `q-${index}`,
+          question: q.question,
+          options: q.options,
+          correct: q.correct,
+          explanation: q.explanation || 'No explanation provided.'
+        }));
+      }
+      
       console.warn(`Grade 10 ${subject} questions not yet available`);
       return [];
     }
