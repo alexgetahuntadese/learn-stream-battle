@@ -141,7 +141,8 @@ const SessionPage = () => {
 
   if (session.status === 'completed') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4 overflow-hidden relative">
+        <StarField starCount={30} shootingCount={2} />
         <div className="max-w-2xl mx-auto">
           <Card className="bg-white/10 backdrop-blur-md border-white/20">
             <CardHeader className="text-center">
