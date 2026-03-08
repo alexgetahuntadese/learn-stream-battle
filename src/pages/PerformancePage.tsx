@@ -36,7 +36,7 @@ const PerformancePage = () => {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 flex items-center justify-center">
         <div className="text-white">{t('common.loading')}</div>
       </div>
     );
