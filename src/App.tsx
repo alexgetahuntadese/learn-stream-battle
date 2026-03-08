@@ -19,6 +19,9 @@ import PerformancePage from "./pages/PerformancePage";
 import ProfilePage from "./pages/ProfilePage";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
+import MatricExamPage from "./pages/MatricExamPage";
+import MatricYearPage from "./pages/MatricYearPage";
+import MatricQuizPage from "./pages/MatricQuizPage";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +45,9 @@ const App = () => (
                 <Route path="/career-simulator" element={<ProtectedRoute><CareerSimulatorPage /></ProtectedRoute>} />
                 <Route path="/performance" element={<ProtectedRoute><PerformancePage /></ProtectedRoute>} />
                 <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+                <Route path="/matric" element={<ProtectedRoute><MatricExamPage /></ProtectedRoute>} />
+                <Route path="/matric/:year" element={<ProtectedRoute><MatricYearPage /></ProtectedRoute>} />
+                <Route path="/matric/:year/:subject" element={<ProtectedRoute><MatricQuizPage /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>

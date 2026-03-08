@@ -1,7 +1,7 @@
 
 import { useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote } from "lucide-react";
+import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote, ScrollText } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import TopBar from "@/components/TopBar";
 import { getRecentAttempts } from "@/lib/performanceUtils";
@@ -90,7 +90,16 @@ const Index = () => {
       accent: "from-amber-400 to-orange-500",
       glow: "amber-500",
       ring: "ring-amber-400/30",
-      colSpan: true,
+    },
+    {
+      icon: ScrollText,
+      title: "📜 National Matric Exams",
+      description: "Practice with real past national exam questions organized by year.",
+      buttonText: "Browse Past Exams",
+      route: '/matric',
+      accent: "from-orange-500 to-red-500",
+      glow: "orange-500",
+      ring: "ring-orange-400/30",
     },
   ];
 
@@ -166,7 +175,7 @@ const Index = () => {
               <div
                 key={index}
                 onClick={() => navigate(feature.route)}
-                className={`group relative cursor-pointer opacity-0 animate-fade-in ${feature.colSpan ? 'md:col-span-2' : ''}`}
+                className={`group relative cursor-pointer opacity-0 animate-fade-in ${(feature as any).colSpan ? 'md:col-span-2' : ''}`}
                 style={{ animationDelay: `${0.3 + 0.15 * index}s`, animationFillMode: 'forwards' }}
               >
                 <div className={`absolute -inset-1 bg-gradient-to-r ${feature.accent} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`} />
