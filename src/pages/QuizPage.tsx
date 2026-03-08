@@ -18,6 +18,8 @@ import { getGrade11AgricultureQuestions } from '@/data/grade11AgricultureQuestio
 import { getGrade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
 import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 import { getGrade10BiologyQuestions } from '@/data/grade10BiologyQuestions';
+import { grade10MathematicsQuestions } from '@/data/grade10MathematicsQuestions';
+import { grade10PhysicsQuestions } from '@/data/grade10PhysicsQuestions';
 
 import QuestionCard from '@/components/QuestionCard';
 import Results from '@/components/Results';
