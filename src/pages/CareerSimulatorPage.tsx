@@ -173,7 +173,7 @@ const CareerSimulatorPage = () => {
                     <div className="flex items-center gap-2 text-green-400"><Brain className="h-5 w-5" /><span className="font-semibold text-white">Key Skills</span></div>
                     <div className="flex flex-wrap gap-1">
                       {introData.careerInfo.requiredSkills?.map((s: string, i: number) => (
-                        <Badge key={i} className="bg-white/10 text-gray-300 text-xs">{s}</Badge>
+                        <Badge key={i} className="bg-white/[0.08] text-white/60 text-xs">{s}</Badge>
                       ))}
                     </div>
                     <div className="flex items-center gap-2 text-purple-400 mt-3"><TrendingUp className="h-5 w-5" /><span className="font-semibold text-white">Growth</span></div>
