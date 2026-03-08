@@ -439,6 +439,32 @@ const ChaptersPage = () => {
       });
     }
 
+    // Handle Grade 11 Physics
+    if (decodedSubject === 'Physics' && grade === '11') {
+      return Object.keys(grade11Physics).map((chapterName, index) => {
+        const questions = grade11Physics[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: `Grade 11 Physics - ${chapterName}`,
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
     // Handle Grade 11 Geography
     if (decodedSubject === 'Geography' && grade === '11') {
       return Object.keys(grade11GeographyQuestions).map((chapterName, index) => {
