@@ -18,6 +18,7 @@ import CareerSuggestions from '@/components/performance/CareerSuggestions';
 import PerformanceHistory from '@/components/performance/PerformanceHistory';
 import ProgressOverTime from '@/components/performance/ProgressOverTime';
 import { useLanguage } from '@/i18n/LanguageContext';
+import TopBar from "@/components/TopBar";
 
 const PerformancePage = () => {
   const navigate = useNavigate();
