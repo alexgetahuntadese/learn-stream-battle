@@ -553,6 +553,21 @@ const ChaptersPage = () => {
     return descriptions[chapterName] || "Comprehensive study of economic concepts and principles";
   };
 
+  const getGrade11HistoryChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: History, Historiography, And Human Evolution": "Introduction to historical study, historiography methods, prehistory, and human evolution",
+      "Unit 2: Major Spots Of Ancient World Civilizations Up To C.500 A.D": "Rise of ancient civilizations in Africa, Asia, Europe, and the spread of Christianity",
+      "Unit 3: Peoples, States, And Historical Processes In Ethiopia And The Horn To The End Of The 13th Century": "Aksumite Kingdom, Sultanate of Shewa, Zagwe Dynasty, and Horn of Africa history",
+      "Unit 4: The Middle Ages And Early Modern World, C. 500 AD-1789": "Feudalism, capitalism, Renaissance, Reformation, Enlightenment, and global exploration",
+      "Unit 5: Peoples And States Of Africa To 1500": "Ancient and medieval African states, spread of Islam, and inter-regional exchanges",
+      "Unit 6: Africa And The Outside World: 1500-1880": "Slave trade, legitimate trade, European exploration, and missionary activities in Africa",
+      "Unit 7: States, Principalities, Population Movements, And Interactions In Ethiopia": "Christian Highland Kingdom, Islamic expansion, and population movements in Ethiopia",
+      "Unit 8: Political, Social, And Economic Processes In Ethiopia, Mid 16th To Mid-19th Century": "Zemene Mesafint, Gondarine period, land tenure, and socio-economic structures",
+      "Unit 9: The Age Of Revolutions, 1789 To 1815": "Industrial Revolution, American independence, French Revolution, and the rise of Napoleon"
+    };
+    return descriptions[chapterName] || "Comprehensive study of historical events and processes";
+  };
+
   const getGrade11MathChapterDescription = (chapterName: string) => {
     const descriptions: { [key: string]: string } = {
       "Unit 1: Relations and Functions": "Study ordered pairs, domain, range, composition, and inverse of functions",
