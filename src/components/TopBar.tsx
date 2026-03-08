@@ -9,7 +9,7 @@ const TopBar = () => {
   const { user, signOut } = useAuth();
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end gap-1 px-4 py-2 bg-slate-950/80 backdrop-blur-md border-b border-white/[0.04]">
+    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end gap-1 px-4 py-2 bg-purple-950/80 backdrop-blur-md border-b border-white/[0.04]">
       <LanguageSwitcher />
       {user ? (
         <>

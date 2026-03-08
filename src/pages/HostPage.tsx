@@ -60,7 +60,7 @@ const HostPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-800 to-indigo-700 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4">
       <div className="max-w-md mx-auto">
         <Button
           variant="ghost"

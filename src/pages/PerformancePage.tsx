@@ -36,7 +36,7 @@ const PerformancePage = () => {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-95950 flex items-center justify-center">
         <div className="text-white">{t('common.loading')}</div>
       </div>
     );
@@ -54,7 +54,7 @@ const PerformancePage = () => {
   const scoreGrade = getScoreGrade(averageScore);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 pt-14 px-4 pb-4 md:p-8 md:pt-14">
+    <div className="min-h-screen bg-gradient-to-br fropurple-950 via-violet-900 to-purple-95900 pt-14 px-4 pb-4 md:p-8 md:pt-14">
       <TopBar />
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
