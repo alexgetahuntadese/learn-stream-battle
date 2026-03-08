@@ -119,7 +119,7 @@ const Results = ({
           </div>
         </CardHeader>
         <CardContent className="text-center space-y-4">
-          <div className="flex items-center justify-center space-x-2 text-gray-300">
+          <div className="flex items-center justify-center space-x-2 text-white/60">
             <Clock className="h-5 w-5" />
             <span>{t('results.timeTaken')}: {timeTaken}</span>
           </div>
