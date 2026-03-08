@@ -43,6 +43,7 @@ import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
 import { grade11EnglishQuestions } from '@/data/grade11EnglishQuestions';
 import { grade11GeographyQuestions } from '@/data/grade11GeographyQuestions';
 import { grade11HistoryQuestions } from '@/data/grade11HistoryQuestions';
+import { grade11AmharicQuestions } from '@/data/grade11AmharicQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
