@@ -335,7 +335,7 @@ const QuizPage = () => {
 
   if (isLoading) {
     return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
       <TopBar />
         <div className="flex items-center mb-6">
           <Button
