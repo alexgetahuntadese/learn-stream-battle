@@ -48,6 +48,7 @@ const SubjectsPage = () => {
   const navigate = useNavigate();
   const { grade } = useParams();
   const stars = useMemo(() => generateStars(40), []);
+  const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   const subjectIcons = {
     'Mathematics': Calculator,
@@ -202,6 +203,23 @@ const SubjectsPage = () => {
             height: `${star.size}px`,
             opacity: star.opacity,
             animation: `float-star ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
+          }}
+        />
+      ))}
+
+      {/* Shooting stars */}
+      {shootingStars.map((star) => (
+        <div
+          key={`shooting-${star.id}`}
+          className="absolute pointer-events-none"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            height: '2px',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), rgba(168,130,255,0.6), transparent)',
+            borderRadius: '9999px',
+            animation: `shooting-star ${star.duration}s ease-in ${star.totalDelay}s infinite`,
+            boxShadow: '0 0 6px 1px rgba(168,130,255,0.4)',
           }}
         />
       ))}
