@@ -15,6 +15,16 @@ const generateStars = (count: number) =>
     delay: Math.random() * 5,
     opacity: Math.random() * 0.5 + 0.1,
   }));
+
+const generateShootingStars = (count: number) =>
+  Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 60 + 20,
+    y: Math.random() * 40 + 5,
+    duration: Math.random() * 2 + 1.5,
+    delay: Math.random() * 8 + 4 + i * 6,
+    totalDelay: Math.random() * 15 + 8 + i * 8,
+  }));
 import { grade12Mathematics } from '@/data/grade12Mathematics';
 import { grade12BiologyQuestions } from '@/data/grade12BiologyQuestions';
 import { grade12ChemistryQuestions } from '@/data/grade12ChemistryQuestions';
@@ -37,6 +47,7 @@ const ChaptersPage = () => {
   const { grade, subject } = useParams();
   const decodedSubject = decodeURIComponent(subject || '');
   const stars = useMemo(() => generateStars(40), []);
+  const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   // Get chapters based on subject and grade
   const getChaptersForSubject = () => {
@@ -722,6 +733,23 @@ const ChaptersPage = () => {
             height: `${star.size}px`,
             opacity: star.opacity,
             animation: `float-star ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
+          }}
+        />
+      ))}
+
+      {/* Shooting stars */}
+      {shootingStars.map((star) => (
+        <div
+          key={`shooting-${star.id}`}
+          className="absolute pointer-events-none"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            height: '2px',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), rgba(168,130,255,0.6), transparent)',
+            borderRadius: '9999px',
+            animation: `shooting-star ${star.duration}s ease-in ${star.totalDelay}s infinite`,
+            boxShadow: '0 0 6px 1px rgba(168,130,255,0.4)',
           }}
         />
       ))}
