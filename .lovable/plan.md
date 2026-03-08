@@ -1,99 +1,28 @@
 
 
-# Add Afan Oromo Language Support
+## Plan: Fix Grade 11 Physics
 
-## Overview
-Add bilingual support (English / Afan Oromo) to the EthioQuiz platform, allowing users to switch the entire UI to Afan Oromo (Oromiffa). This involves creating a translation system and translating all user-facing text.
+The Grade 11 Physics data file currently has only **6 questions** (1 per difficulty across 2 chapters). It needs **180 questions** (10 Easy + 10 Medium + 10 Hard per chapter × 6 chapters) and a proper ChaptersPage handler.
 
-## Approach
-Create a lightweight custom i18n system using React Context (no external library needed) with translation files for English and Afan Oromo.
+### Changes
 
-## New Files
+**1. Rewrite `src/data/grade11Physics.ts`**
+Expand from 6 to 180 questions across all 6 chapters defined in `grade11Subjects.ts`:
+- Chapter 1: Mechanics (Newton's laws, kinematics, momentum, work/energy)
+- Chapter 2: Waves and Sound (wave properties, sound, Doppler effect)
+- Chapter 3: Heat and Thermodynamics (temperature, heat transfer, gas laws, entropy)
+- Chapter 4: Electricity and Magnetism (circuits, Ohm's law, magnetic fields, electromagnetic induction)
+- Chapter 5: Optics (reflection, refraction, lenses, mirrors, wave optics)
+- Chapter 6: Modern Physics (photoelectric effect, atomic models, nuclear physics, relativity)
 
-| File | Purpose |
-|------|---------|
-| `src/i18n/translations/en.ts` | English translation strings |
-| `src/i18n/translations/om.ts` | Afan Oromo translation strings |
-| `src/i18n/LanguageContext.tsx` | React context provider for language state and translation function |
-| `src/components/LanguageSwitcher.tsx` | Toggle button/dropdown to switch between English and Afan Oromo |
+Each chapter: 10 Easy, 10 Medium, 10 Hard. Same interface already defined in the file.
 
-## Translation Structure
+**2. Add Grade 11 Physics handler in `src/pages/ChaptersPage.tsx`**
+- Import `grade11Physics` (already imported? — no, it's not imported, only grade12 is)
+- Add `import { grade11Physics } from '@/data/grade11Physics'`
+- Add a handler block for `decodedSubject === 'Physics' && grade === '11'` that reads from `grade11Physics`, computing question counts and difficulty breakdowns dynamically (same pattern as Grade 12 Physics handler)
 
-Translations will be organized by page/feature area:
+**3. Verify `src/lib/quizUtils.ts`** — already has `"Physics": grade11Physics` registered. No change needed.
 
-```text
-translations = {
-  common: { back, home, loading, ... },
-  index: { title, subtitle, exploreSubjects, browseQuizzes, ... },
-  grades: { selectGrade, chooseGrade, hostSession, joinSession, ... },
-  quiz: { question, next, previous, submit, checkAnswer, ... },
-  results: { complete, score, correct, incorrect, retake, ... },
-  performance: { dashboard, overallGrade, averageScore, ... },
-  host: { hostQuiz, yourName, createSession, ... },
-  join: { joinQuiz, enterCode, ... },
-  career: { careerSuggestions, matchScore, ... },
-  subjects: { mathematics, physics, chemistry, biology, ... }
-}
-```
-
-## Key Afan Oromo Translations (Sample)
-
-| English | Afan Oromo |
-|---------|------------|
-| EthioQuiz 2050 | EthioQuiz 2050 |
-| Select Your Grade | Sadarkaa Kee Filadhu |
-| Browse Quizzes | Qormaata Ilaali |
-| My Performance | Gahee Koo |
-| Host Session | Waldaa Qopheessi |
-| Join Session | Waldaa Makamii |
-| Quiz Complete! | Qormaanni Xumurameera! |
-| Score | Qabxii |
-| Question | Gaaffii |
-| Next | Itti Aanee |
-| Previous | Kan Dura |
-| Submit | Galchi |
-| Back | Duubatti |
-| Correct | Sirrii |
-| Incorrect | Dogoggora |
-
-## Modified Files
-
-| File | Changes |
-|------|---------|
-| `src/App.tsx` | Wrap app in `LanguageProvider` |
-| `src/pages/Index.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/GradesPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/PerformancePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/HostPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/JoinPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/SessionPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/ProfilePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizInterface.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/Results.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizDashboard.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/performance/*.tsx` | Replace hardcoded text with `t()` calls |
-
-## Language Switcher UI
-
-- A floating button or header toggle on every page showing "EN / OM"
-- Selected language saved to `localStorage` so it persists across sessions
-- Placed in the top-right corner of the main layout
-
-## Implementation Order
-
-1. Create translation files (`en.ts` and `om.ts`) with all UI strings
-2. Create `LanguageContext.tsx` with provider, `useLanguage` hook, and `t()` function
-3. Create `LanguageSwitcher.tsx` component
-4. Wrap `App.tsx` in `LanguageProvider`
-5. Update all pages and components to use `t()` for text rendering
-6. Test language switching across all pages
-
-## Technical Details
-
-- Language preference stored in `localStorage` key `preferred_language`
-- Default language: English (`en`)
-- The `t()` function takes a dot-notation key (e.g., `t('quiz.next')`) and returns the translated string
-- Falls back to English if a translation key is missing in Afan Oromo
-- Quiz question content stays in English (translating question banks is a separate effort)
-- Only UI chrome/labels are translated
+**4. Verify `src/pages/QuizPage.tsx`** — already imports `getGrade11PhysicsQuestions` and handles Grade 11 Physics. No change needed.
 
