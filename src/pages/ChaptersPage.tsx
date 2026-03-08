@@ -45,6 +45,7 @@ import { grade11GeographyQuestions } from '@/data/grade11GeographyQuestions';
 import { grade11HistoryQuestions } from '@/data/grade11HistoryQuestions';
 import { grade11AmharicQuestions } from '@/data/grade11AmharicQuestions';
 import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
+import { grade11Physics } from '@/data/grade11Physics';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
