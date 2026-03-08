@@ -334,12 +334,12 @@ const QuizPage = () => {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -349,11 +349,11 @@ const QuizPage = () => {
           </h2>
         </div>
         <div className="space-y-4">
-          <Skeleton className="h-4 w-[250px] bg-slate-700" />
-          <Skeleton className="h-4 w-[400px] bg-slate-700" />
-          <Skeleton className="h-10 bg-slate-700" />
-          <Skeleton className="h-10 bg-slate-700" />
-          <Skeleton className="h-10 bg-slate-700" />
+          <Skeleton className="h-4 w-[250px] bg-white/[0.08]" />
+          <Skeleton className="h-4 w-[400px] bg-white/[0.08]" />
+          <Skeleton className="h-10 bg-white/[0.08]" />
+          <Skeleton className="h-10 bg-white/[0.08]" />
+          <Skeleton className="h-10 bg-white/[0.08]" />
         </div>
       </div>
     );
@@ -361,12 +361,12 @@ const QuizPage = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -380,14 +380,14 @@ const QuizPage = () => {
           <div className="space-x-4">
             <Button 
               onClick={initializeQuestions}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white"
             >
               Try Again
             </Button>
             <Button 
               variant="outline"
               onClick={handleBackToChapters}
-              className="border-white/20 text-white hover:bg-white/10"
+              className="border-white/[0.08] text-white hover:bg-white/10"
             >
               Go Back
             </Button>
@@ -399,12 +399,12 @@ const QuizPage = () => {
 
   if (!subject || !chapterId || !difficulty) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -422,12 +422,12 @@ const QuizPage = () => {
 
   if (questions.length === 0) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -441,7 +441,7 @@ const QuizPage = () => {
           <Button 
             variant="outline"
             onClick={handleBackToChapters}
-            className="border-white/20 text-white hover:bg-white/10"
+            className="border-white/[0.08] text-white hover:bg-white/10"
           >
             Choose Different Chapter
           </Button>
@@ -454,12 +454,12 @@ const QuizPage = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -472,7 +472,7 @@ const QuizPage = () => {
           <p className="text-red-400">Unable to load the current question. Please try refreshing the page.</p>
           <Button 
             onClick={initializeQuestions}
-            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+            className="mt-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white"
           >
             Retry
           </Button>
@@ -482,13 +482,13 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -510,7 +510,7 @@ const QuizPage = () => {
         />
       ) : (
         <div className="space-y-6">
-          <p className="text-gray-300 mb-2">
+          <p className="text-white/50 mb-2">
             Time Elapsed: <span className="font-bold text-white">{formatTime(elapsedTime)}</span>
           </p>
           
@@ -525,7 +525,7 @@ const QuizPage = () => {
           />
           
           <div className="flex justify-between items-center">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-white/40">
               Question {currentQuestionIndex + 1} of {questions.length}
             </div>
             <div className="flex gap-3">
@@ -542,7 +542,7 @@ const QuizPage = () => {
               <Button 
                 onClick={handleNextQuestion} 
                 disabled={!selectedAnswers[currentQuestionIndex]}
-                className="bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50"
+                className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white disabled:opacity-50"
               >
                 {currentQuestionIndex === questions.length - 1 ? 'Finish' : 'Next Question'}
               </Button>

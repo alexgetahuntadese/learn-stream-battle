@@ -87,7 +87,7 @@ const CareerSimulatorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate0 p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
@@ -99,14 +99,14 @@ const CareerSimulatorPage = () => {
               <Sparkles className="h-7 w-7 text-yellow-400" />
               Future Me Mode
             </h1>
-            <p className="text-purple-200 text-sm">AI-Powered Career Simulator</p>
+            <p className="text-pwwwhite/5sm">AI-Powered Career Simulator</p>
           </div>
         </div>
 
         {/* Career Selection */}
         {stage === 'select' && (
           <div className="space-y-4 animate-fade-in">
-            <p className="text-purple-100 text-center text-lg mb-6">Choose a career to experience a day in their life ✨</p>
+            <p className="text-purwhiwhite/6enter text-lg mb-6">Choose a career to experience a day in their life ✨</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               {simulatorCareers.map((career) => (
                 <Card
@@ -117,7 +117,7 @@ const CareerSimulatorPage = () => {
                   <CardContent className="p-4 text-center">
                     <span className="text-4xl block mb-2">{career.icon}</span>
                     <h3 className="text-white font-semibold text-sm">{career.name}</h3>
-                    <Badge variant="outline" className="mt-1 text-[10px] border-white/20 text-gray-400">{career.field}</Badge>
+                    <Badge variant="outline" className="mt-1 text-[10px] border-white/[0.08] text-white/40">{career.field}</Badge>
                   </CardContent>
                 </Card>
               ))}
@@ -129,8 +129,8 @@ const CareerSimulatorPage = () => {
         {stage === 'loading' && (
           <div className="flex flex-col items-center justify-center py-24 animate-fade-in">
             <Loader2 className="h-12 w-12 text-purple-400 animate-spin mb-4" />
-            <p className="text-purple-200 text-lg">Generating your scenario...</p>
-            <p className="text-purple-300/60 text-sm mt-1">AI is crafting a unique experience for you</p>
+            <p className="text-white/60 text-lg">Generating your scenario...</p>
+            <p className="text-white/30 text-sm mt-1">AI is crafting a unique experience for you</p>
           </div>
         )}
 
@@ -159,11 +159,11 @@ const CareerSimulatorPage = () => {
                 <Card className="bg-white/5 border-white/10">
                   <CardContent className="p-4 space-y-3">
                     <div className="flex items-center gap-2 text-yellow-400"><Banknote className="h-5 w-5" /><span className="font-semibold text-white">Salary</span></div>
-                    <p className="text-gray-300 text-sm">{introData.careerInfo.salaryRange}</p>
+                    <p className="text-white/60 text-sm">{introData.careerInfo.salaryRange}</p>
                     <div className="flex items-center gap-2 text-blue-400 mt-3"><GraduationCap className="h-5 w-5" /><span className="font-semibold text-white">Universities</span></div>
                     <div className="flex flex-wrap gap-1">
                       {introData.careerInfo.universities?.map((u: string, i: number) => (
-                        <Badge key={i} variant="outline" className="text-xs border-white/20 text-gray-300">{u}</Badge>
+                        <Badge key={i} variant="outline" className="text-xs border-white/[0.08] text-white/60">{u}</Badge>
                       ))}
                     </div>
                   </CardContent>
@@ -173,11 +173,11 @@ const CareerSimulatorPage = () => {
                     <div className="flex items-center gap-2 text-green-400"><Brain className="h-5 w-5" /><span className="font-semibold text-white">Key Skills</span></div>
                     <div className="flex flex-wrap gap-1">
                       {introData.careerInfo.requiredSkills?.map((s: string, i: number) => (
-                        <Badge key={i} className="bg-white/10 text-gray-300 text-xs">{s}</Badge>
+                        <Badge key={i} className="bg-white/[0.08] text-white/60 text-xs">{s}</Badge>
                       ))}
                     </div>
                     <div className="flex items-center gap-2 text-purple-400 mt-3"><TrendingUp className="h-5 w-5" /><span className="font-semibold text-white">Growth</span></div>
-                    <p className="text-gray-300 text-sm">{introData.careerInfo.growthOutlook}</p>
+                    <p className="text-white/60 text-sm">{introData.careerInfo.growthOutlook}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -213,19 +213,19 @@ const CareerSimulatorPage = () => {
                 {scenarioData.outcome && (
                   <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
                     <p className="text-green-300 text-sm font-medium mb-1">📌 What happened:</p>
-                    <p className="text-gray-200">{scenarioData.outcome}</p>
+                    <p className="text-white/70">{scenarioData.outcome}</p>
                   </div>
                 )}
                 {scenarioData.progressNote && (
-                  <p className="text-purple-300 text-sm italic">💡 {scenarioData.progressNote}</p>
+                   <p className="text-violet-300 text-sm italic">💡 {scenarioData.progressNote}</p>
                 )}
                 <div className="bg-black/20 rounded-lg p-4">
                   <p className="font-semibold text-white mb-1">⚡ New Challenge:</p>
-                  <p className="text-gray-200">{scenarioData.newScenario}</p>
+                  <p className="text-white/70">{scenarioData.newScenario}</p>
                 </div>
                 {scenarioData.skillsUsed && (
                   <div className="flex gap-2 items-center">
-                    <span className="text-gray-400 text-sm">Skills used:</span>
+                    <span className="text-white/40 text-sm">Skills used:</span>
                     {scenarioData.skillsUsed.map((s: string, i: number) => (
                       <Badge key={i} className="bg-blue-500/20 text-blue-300 text-xs">{s}</Badge>
                     ))}
@@ -275,7 +275,7 @@ const CareerSimulatorPage = () => {
                   <h3 className="text-green-400 font-semibold mb-3">💪 Your Strengths</h3>
                   <ul className="space-y-2">
                     {finalData.strengths?.map((s: string, i: number) => (
-                      <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+                      <li key={i} className="text-white/60 text-sm flex items-start gap-2">
                         <span className="text-green-400 mt-0.5">✓</span> {s}
                       </li>
                     ))}
@@ -287,7 +287,7 @@ const CareerSimulatorPage = () => {
                   <h3 className="text-orange-400 font-semibold mb-3">📈 Areas to Improve</h3>
                   <ul className="space-y-2">
                     {finalData.areasToImprove?.map((s: string, i: number) => (
-                      <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+                      <li key={i} className="text-white/60 text-sm flex items-start gap-2">
                         <span className="text-orange-400 mt-0.5">→</span> {s}
                       </li>
                     ))}
@@ -300,7 +300,7 @@ const CareerSimulatorPage = () => {
               <Card className="bg-white/5 border-white/10">
                 <CardContent className="p-5">
                   <h3 className="text-purple-400 font-semibold mb-2">🎓 Advice</h3>
-                  <p className="text-gray-300">{finalData.advice}</p>
+                  <p className="text-white/60">{finalData.advice}</p>
                 </CardContent>
               </Card>
             )}
@@ -311,7 +311,7 @@ const CareerSimulatorPage = () => {
                   <h3 className="text-blue-400 font-semibold mb-3">🚀 Next Steps</h3>
                   <ol className="space-y-2">
                     {finalData.nextSteps.map((step: string, i: number) => (
-                      <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+                      <li key={i} className="text-white/60 text-sm flex items-start gap-2">
                         <span className="text-blue-400 font-bold">{i + 1}.</span> {step}
                       </li>
                     ))}

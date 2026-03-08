@@ -113,20 +113,20 @@ const Results = ({
             >
               {score} {t('results.outOf')} {totalQuestions} {t('results.correct').toLowerCase()}
             </Badge>
-            <p className="text-lg text-gray-300">
+            <p className="text-lg text-white/60">
               {getPerformanceMessage(percentage)}
             </p>
           </div>
         </CardHeader>
         <CardContent className="text-center space-y-4">
-          <div className="flex items-center justify-center space-x-2 text-gray-300">
+          <div className="flex items-center justify-center space-x-2 text-white/60">
             <Clock className="h-5 w-5" />
             <span>{t('results.timeTaken')}: {timeTaken}</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={onRetakeQuiz}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white"
             >
               <RotateCcw className="mr-2 h-4 w-4" />
               {t('results.retake')}
@@ -160,7 +160,7 @@ const Results = ({
             <Card key={question.id} className="bg-white/5 border-white/20 text-white">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary" className="bg-gray-600 text-white">
+                  <Badge variant="secondary" className="bg-white/[0.08] text-white">
                     {t('quiz.question')} {index + 1}
                   </Badge>
                   {isCorrect ? (
@@ -182,7 +182,7 @@ const Results = ({
                   } else if (option === userAnswer && !isCorrect) {
                     buttonClass += "bg-red-600 border-red-500 text-white";
                   } else {
-                    buttonClass += "bg-white/5 border-white/20 text-gray-300";
+                    buttonClass += "bg-white/[0.04] border-white/[0.08] text-white/60";
                   }
 
                   return (
@@ -203,7 +203,7 @@ const Results = ({
                 {question.explanation && (
                   <div className="mt-4 p-4 bg-blue-900/30 border border-blue-500/30 rounded-lg">
                     <h4 className="font-semibold text-blue-300 mb-2">{t('results.explanation')}:</h4>
-                    <p className="text-gray-300">{question.explanation}</p>
+                    <p className="text-white/60">{question.explanation}</p>
                   </div>
                 )}
               </CardContent>
