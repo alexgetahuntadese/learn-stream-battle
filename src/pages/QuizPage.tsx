@@ -399,12 +399,12 @@ const QuizPage = () => {
 
   if (!subject || !chapterId || !difficulty) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
