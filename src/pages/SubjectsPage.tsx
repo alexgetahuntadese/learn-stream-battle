@@ -16,6 +16,16 @@ const generateStars = (count: number) =>
     delay: Math.random() * 5,
     opacity: Math.random() * 0.5 + 0.1,
   }));
+
+const generateShootingStars = (count: number) =>
+  Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 60 + 20,
+    y: Math.random() * 40 + 5,
+    duration: Math.random() * 2 + 1.5,
+    delay: Math.random() * 8 + 4 + i * 6,
+    totalDelay: Math.random() * 15 + 8 + i * 8,
+  }));
 import { 
   Calculator, 
   Atom, 
