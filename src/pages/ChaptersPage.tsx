@@ -49,6 +49,9 @@ import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 import { grade11Physics } from '@/data/grade11Physics';
 import { grade9Subjects } from '@/data/grade9Subjects';
 import { grade10Subjects } from '@/data/grade10Subjects';
+import { grade10Biology } from '@/data/grade10BiologyQuestions';
+import { grade10MathematicsQuestions } from '@/data/grade10MathematicsQuestions';
+import { grade10PhysicsQuestions } from '@/data/grade10PhysicsQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
