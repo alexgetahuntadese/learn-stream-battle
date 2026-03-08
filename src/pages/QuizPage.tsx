@@ -94,6 +94,19 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
             correct: q.correct,
             explanation: q.explanation
           }));
+
+        case 'Civics':
+        case 'Civic Education':
+          const civicsData = grade11CivicsQuestions[chapter];
+          if (!civicsData) return [];
+          const filteredCivics = civicsData.filter(q => q.difficulty.toLowerCase() === difficultyLevel).slice(0, count);
+          return filteredCivics.map(q => ({
+            id: q.id,
+            question: q.question,
+            options: q.options,
+            correct: q.correct,
+            explanation: q.explanation
+          }));
           
         default:
           console.warn('Grade 11 subject not implemented:', subject);
