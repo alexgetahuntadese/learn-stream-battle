@@ -1,4 +1,5 @@
 // Import question data
+import { grade10MathematicsQuestions } from "@/data/grade10MathematicsQuestions";
 import { grade11AgricultureQuestions } from "@/data/grade11AgricultureQuestions";
 import { grade11Biology } from "@/data/grade11Biology";
 import { grade11Chemistry } from "@/data/grade11Chemistry";
@@ -49,6 +50,9 @@ const normalizeQuestion = (q: any): NormalizedQuestion => ({
 });
 
 const questionSets: Record<string, Record<string, any>> = {
+  "10": {
+    "Mathematics": grade10MathematicsQuestions,
+  },
   "11": {
     "Agriculture": grade11AgricultureQuestions,
     "Biology": grade11Biology,
