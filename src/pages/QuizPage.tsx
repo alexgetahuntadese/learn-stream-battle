@@ -41,9 +41,20 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
   
   try {
     // Handle Grade 11 subjects
-    // Handle Grade 9 and 10 - no questions yet
-    if (grade === '9' || grade === '10') {
-      console.warn(`Grade ${grade} questions not yet available for ${subject}`);
+    // Handle Grade 9 - no questions yet
+    if (grade === '9') {
+      console.warn(`Grade 9 questions not yet available for ${subject}`);
+      return [];
+    }
+
+    // Handle Grade 10
+    if (grade === '10') {
+      const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
+      if (subject === 'biology') {
+        allQuestions = getGrade10BiologyQuestions(chapter, difficultyLevel, count);
+        return allQuestions;
+      }
+      console.warn(`Grade 10 ${subject} questions not yet available`);
       return [];
     }
 
