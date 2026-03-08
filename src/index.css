@@ -94,6 +94,30 @@
     }
   }
 
+  @keyframes shooting-star {
+    0% {
+      transform: translateX(0) translateY(0) rotate(-45deg);
+      opacity: 0;
+      width: 0;
+    }
+    5% {
+      opacity: 1;
+      width: 80px;
+    }
+    15% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 0;
+      width: 120px;
+      transform: translateX(-300px) translateY(300px) rotate(-45deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-300px) translateY(300px) rotate(-45deg);
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
   }
