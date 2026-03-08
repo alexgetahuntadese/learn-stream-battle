@@ -113,6 +113,25 @@ export const grade11Subjects: Grade11Subject[] = [
     category: 'Social Sciences'
   },
   {
+    id: 'amharic',
+    name: 'Amharic',
+    icon: 'Type',
+    description: 'Comprehensive Amharic language, literature, and cultural heritage studies',
+    chapters: [
+      'ምዕራፍ አንድ: ቋንቋና ህብረተሰብ (Language and Society)',
+      'ምዕራፍ ሁለት: ቅርሶቻችን (Our Heritage)',
+      'ምዕራፍ ሦስት: ወግ (Traditional Literature)',
+      'ምዕራፍ አራት: ልቦለድ (Novel)',
+      'ምዕራፍ አምስት: የቋንቋ ስዛ (Linguistic Relevance)',
+      'ምዕራፍ ስድስት: ግጥም (Poetry)',
+      'ምዕራፍ ሰባት: አርበኝነት (Patriotism)',
+      'ምዕራፍ ስምንት: ትውፊት (Tradition and Lifestyle)',
+      'ምዕራፍ ዘጠኝ: ስኬት (Success)',
+      'ምዕራፍ አስር: ኪነጥበብ (Art)'
+    ],
+    category: 'Languages'
+  },
+  {
     id: 'english',
     name: 'English',
     icon: 'BookOpen',
