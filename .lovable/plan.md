@@ -1,27 +1,26 @@
 
 
-## Plan: Add Quiz Questions for Grade 11 Amharic (10 Units × 30 Questions)
+## Plan: Add 300 Quiz Questions for Grade 11 Amharic
 
 ### 1. Create `src/data/grade11AmharicQuestions.ts`
-New question bank with 300 total questions (10 per difficulty × 3 difficulties × 10 units):
+New file with 300 questions (10 Easy + 10 Medium + 10 Hard per unit × 10 units). Structure mirrors `grade11HistoryQuestions.ts` — keyed by unit name, each question has: id, question, options (4), correct, explanation, difficulty, chapter, subject.
 
-- **Unit 1**: ቋንቋና ህብረተሰብ (Language and Society) — questions on language functions, dialects, sociolinguistics
-- **Unit 2**: ቅርሶቻችን (Our Heritage) — questions on Ethiopian cultural heritage, preservation, tangible/intangible heritage
-- **Unit 3**: ወግ (Traditional Literature) — questions on Ethiopian oral traditions, proverbs, folk tales
-- **Unit 4**: ልቦለድ (Novel) — questions on novel elements, Ethiopian novelists, literary analysis
-- **Unit 5**: የቋንቋ ስዛ (Linguistic Relevance) — questions on grammar, syntax, language structure
-- **Unit 6**: ግጥም (Poetry) — questions on poetic forms, Ethiopian poetry, literary devices
-- **Unit 7**: አርበኝነት (Patriotism) — questions on Ethiopian patriotic literature, historical figures
-- **Unit 8**: ትውፊት (Tradition and Lifestyle) — questions on Ethiopian traditions, customs, cultural practices
-- **Unit 9**: ስኬት (Success) — questions on motivational literature, achievement themes
-- **Unit 10**: ኪነጥበብ (Art) — questions on Ethiopian art forms, theater, music, visual arts
-
-Each question: id, question, 4 options, correct answer, explanation, difficulty (Easy/Medium/Hard). Same interface as `HistoryQuestion`.
+**Units and question topics:**
+- Unit 1: ቋንቋና ህብረተሰብ — language functions, dialects, sociolinguistics
+- Unit 2: ቅርሶቻችን — Ethiopian heritage, tangible/intangible heritage
+- Unit 3: ወግ — oral traditions, proverbs, folk tales
+- Unit 4: ልቦለድ — novel elements, Ethiopian novelists, literary analysis
+- Unit 5: የቋንቋ ስዛ — grammar, syntax, morphology
+- Unit 6: ግጥም — poetic forms, literary devices, Ethiopian poets
+- Unit 7: አርበኝነት — patriotic literature, historical figures
+- Unit 8: ትውፊት — traditions, customs, cultural practices
+- Unit 9: ስኬት — motivational literature, achievement themes
+- Unit 10: ኪነጥበብ — art forms, theater, music, visual arts
 
 ### 2. Update `src/lib/quizUtils.ts`
-- Import `grade11AmharicQuestions`
-- Add `"Amharic": grade11AmharicQuestions` to the Grade 11 entry in `questionSets`
+- Add import: `import { grade11AmharicQuestions } from "@/data/grade11AmharicQuestions"`
+- Add `"Amharic": grade11AmharicQuestions` to `questionSets["11"]` (line 58)
 
-### 3. Update `src/pages/ChaptersPage.tsx`
-- Update the existing Amharic handler to pull question counts from the actual data instead of hardcoded 0
+### 3. Update `src/pages/ChaptersPage.tsx` (lines 389-413)
+Replace the hardcoded `questionsCount: 0` Amharic handler with one that reads actual question counts from the imported data, similar to the Geography/History handlers — computing easy/medium/hard breakdowns dynamically.
 
