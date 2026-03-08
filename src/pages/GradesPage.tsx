@@ -54,7 +54,7 @@ const GradesPage = () => {
   const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
       <TopBar />
       {/* Floating stars */}
       {stars.map((star) => (
