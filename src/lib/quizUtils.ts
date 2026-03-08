@@ -56,6 +56,7 @@ const questionSets: Record<string, Record<string, any>> = {
     "Mathematics": grade10MathematicsQuestions,
     "Physics": grade10PhysicsQuestions,
     "Chemistry": grade10ChemistryQuestions,
+    "English": grade10EnglishQuestions,
   },
   "11": {
     "Agriculture": grade11AgricultureQuestions,
