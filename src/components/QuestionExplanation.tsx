@@ -17,7 +17,7 @@ const QuestionExplanation = ({
   userAnswer 
 }: QuestionExplanationProps) => {
   return (
-    <Card className="bg-slate-700 border-slate-600 mt-4 animate-fade-in">
+    <Card className="bg-white/[0.04] border-white/[0.08] mt-4 animate-fade-in">
       <CardContent className="p-4 space-y-2">
         <div className="flex items-center gap-2">
           {isCorrect ? (
@@ -40,8 +40,8 @@ const QuestionExplanation = ({
           </p>
         )}
         
-        <div className="mt-2 p-3 bg-slate-800 rounded-md">
-          <h4 className="text-sm font-medium text-slate-300 mb-1">Explanation</h4>
+        <div className="mt-2 p-3 bg-white/[0.04] rounded-md border border-white/[0.08]">
+          <h4 className="text-sm font-medium text-white/60 mb-1">Explanation</h4>
           <p className="text-white text-sm">{explanation || "No explanation available."}</p>
         </div>
       </CardContent>

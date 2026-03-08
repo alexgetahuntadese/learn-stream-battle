@@ -35,7 +35,7 @@ const PerformancePage = () => {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-800 to-indigo-700 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 flex items-center justify-center">
         <div className="text-white">{t('common.loading')}</div>
       </div>
     );
@@ -53,7 +53,7 @@ const PerformancePage = () => {
   const scoreGrade = getScoreGrade(averageScore);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-800 to-indigo-700 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
@@ -67,7 +67,7 @@ const PerformancePage = () => {
             </Button>
             <div>
               <h1 className="text-3xl font-bold text-white">{t('performance.dashboard')}</h1>
-              <p className="text-purple-200">
+              <p className="text-white/50">
                 {data.profile.student_name || 'Student'}{t('performance.learningJourney')}
               </p>
             </div>
@@ -75,7 +75,7 @@ const PerformancePage = () => {
           <Button
             variant="outline"
             onClick={() => navigate('/profile')}
-            className="border-white/20 text-white hover:bg-white/10"
+            className="border-white/[0.08] text-white hover:bg-white/10"
           >
             <User className="mr-2 h-4 w-4" />
             {t('performance.editProfile')}
@@ -83,39 +83,39 @@ const PerformancePage = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card className="bg-white/10 border-white/20">
+          <Card className="bg-white/[0.04] border-white/[0.08]">
             <CardContent className="p-4 text-center">
               <Trophy className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
               <div className={`text-3xl font-bold ${scoreGrade.color}`}>
                 {averageScore > 0 ? scoreGrade.grade : '-'}
               </div>
-              <p className="text-sm text-gray-300">{t('performance.overallGrade')}</p>
+              <p className="text-sm text-white/50">{t('performance.overallGrade')}</p>
             </CardContent>
           </Card>
           
-          <Card className="bg-white/10 border-white/20">
+          <Card className="bg-white/[0.04] border-white/[0.08]">
             <CardContent className="p-4 text-center">
-              <Target className="h-8 w-8 text-purple-400 mx-auto mb-2" />
+              <Target className="h-8 w-8 text-violet-400 mx-auto mb-2" />
               <div className="text-3xl font-bold text-white">{averageScore}%</div>
-              <p className="text-sm text-gray-300">{t('performance.averageScore')}</p>
+              <p className="text-sm text-white/50">{t('performance.averageScore')}</p>
             </CardContent>
           </Card>
           
-          <Card className="bg-white/10 border-white/20">
+          <Card className="bg-white/[0.04] border-white/[0.08]">
             <CardContent className="p-4 text-center">
               <BookOpen className="h-8 w-8 text-blue-400 mx-auto mb-2" />
               <div className="text-3xl font-bold text-white">{totalQuizzes}</div>
-              <p className="text-sm text-gray-300">{t('performance.quizzesTaken')}</p>
+              <p className="text-sm text-white/50">{t('performance.quizzesTaken')}</p>
             </CardContent>
           </Card>
           
-          <Card className="bg-white/10 border-white/20">
+          <Card className="bg-white/[0.04] border-white/[0.08]">
             <CardContent className="p-4 text-center">
               <div className="h-8 w-8 text-2xl mx-auto mb-2">📚</div>
               <div className="text-3xl font-bold text-white">
                 {Object.keys(data.analysis.subject_scores).length}
               </div>
-              <p className="text-sm text-gray-300">{t('performance.subjectsStudied')}</p>
+              <p className="text-sm text-white/50">{t('performance.subjectsStudied')}</p>
             </CardContent>
           </Card>
         </div>
@@ -129,15 +129,15 @@ const PerformancePage = () => {
         </div>
 
         {totalQuizzes === 0 && (
-          <Card className="mt-8 bg-gradient-to-r from-purple-600 to-pink-600 border-0">
+          <Card className="mt-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 border-0">
             <CardContent className="p-6 text-center">
               <h3 className="text-xl font-bold text-white mb-2">{t('performance.startJourney')}</h3>
-              <p className="text-purple-100 mb-4">
+              <p className="text-white/70 mb-4">
                 {t('performance.takeQuizzes')}
               </p>
               <Button 
                 onClick={() => navigate('/grades')}
-                className="bg-white text-purple-600 hover:bg-gray-100"
+                className="bg-white text-violet-600 hover:bg-white/90"
               >
                 {t('index.browseQuizzes')}
               </Button>

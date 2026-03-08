@@ -542,7 +542,7 @@ const QuizPage = () => {
               <Button 
                 onClick={handleNextQuestion} 
                 disabled={!selectedAnswers[currentQuestionIndex]}
-                className="bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50"
+                className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white disabled:opacity-50"
               >
                 {currentQuestionIndex === questions.length - 1 ? 'Finish' : 'Next Question'}
               </Button>

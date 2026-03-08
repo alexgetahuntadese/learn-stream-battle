@@ -55,7 +55,6 @@ const ProfilePage = () => {
 
   const handleClearData = async () => {
     if (!user) return;
-    // Delete all quiz attempts for this user
     await supabase.from('quiz_attempts').delete().eq('user_id', user.id);
     setQuizCount(0);
     toast.success(t('profile.dataCleared'));
@@ -63,14 +62,14 @@ const ProfilePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-800 to-indigo-700 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-800 to-indigo-700 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center gap-4 mb-8">
           <Button
@@ -83,19 +82,19 @@ const ProfilePage = () => {
           </Button>
           <div>
             <h1 className="text-3xl font-bold text-white">{t('profile.studentProfile')}</h1>
-            <p className="text-purple-200">{t('profile.manageProfile')}</p>
+            <p className="text-white/50">{t('profile.manageProfile')}</p>
           </div>
         </div>
 
-        <Card className="bg-white/10 border-white/20 mb-6">
+        <Card className="bg-white/[0.04] border-white/[0.08] mb-6">
           <CardHeader>
             <div className="flex items-center gap-4">
-              <div className="p-4 bg-purple-500/20 rounded-full">
-                <User className="h-8 w-8 text-purple-400" />
+              <div className="p-4 bg-violet-500/20 rounded-full">
+                <User className="h-8 w-8 text-violet-400" />
               </div>
               <div>
                 <CardTitle className="text-white text-xl">{t('profile.profileSettings')}</CardTitle>
-                <CardDescription className="text-gray-300">
+                <CardDescription className="text-white/50">
                   {t('profile.nameAppears')}
                 </CardDescription>
               </div>
@@ -103,9 +102,9 @@ const ProfilePage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             {user?.email && (
-              <div className="flex items-center gap-2 p-3 bg-white/5 rounded-lg">
-                <Mail className="h-4 w-4 text-white/50" />
-                <span className="text-sm text-white/70">{user.email}</span>
+              <div className="flex items-center gap-2 p-3 bg-white/[0.04] rounded-lg border border-white/[0.08]">
+                <Mail className="h-4 w-4 text-white/40" />
+                <span className="text-sm text-white/60">{user.email}</span>
               </div>
             )}
             
@@ -116,33 +115,33 @@ const ProfilePage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder={t('host.enterName')}
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                className="bg-white/[0.04] border-white/[0.08] text-white placeholder:text-white/30"
               />
             </div>
             
-            <Button onClick={handleSave} className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button onClick={handleSave} className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white">
               <Save className="mr-2 h-4 w-4" />
               {t('profile.saveProfile')}
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 border-white/20 mb-6">
+        <Card className="bg-white/[0.04] border-white/[0.08] mb-6">
           <CardHeader>
             <CardTitle className="text-white text-lg">{t('profile.performanceStats')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex justify-between items-center p-4 bg-white/5 rounded-lg">
-              <span className="text-gray-300">{t('profile.totalQuizzes')}</span>
+            <div className="flex justify-between items-center p-4 bg-white/[0.04] rounded-lg border border-white/[0.08]">
+              <span className="text-white/60">{t('profile.totalQuizzes')}</span>
               <span className="text-2xl font-bold text-white">{quizCount}</span>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-red-500/10 border-red-500/30">
+        <Card className="bg-red-500/[0.06] border-red-500/20">
           <CardHeader>
             <CardTitle className="text-red-400 text-lg">{t('profile.dangerZone')}</CardTitle>
-            <CardDescription className="text-gray-400">
+            <CardDescription className="text-white/40">
               {t('profile.cannotBeUndone')}
             </CardDescription>
           </CardHeader>
@@ -154,15 +153,15 @@ const ProfilePage = () => {
                   {t('profile.clearAllData')}
                 </Button>
               </AlertDialogTrigger>
-              <AlertDialogContent className="bg-gray-900 border-gray-700">
+              <AlertDialogContent className="bg-slate-950 border-white/[0.08]">
                 <AlertDialogHeader>
                   <AlertDialogTitle className="text-white">{t('profile.areYouSure')}</AlertDialogTitle>
-                  <AlertDialogDescription className="text-gray-400">
+                  <AlertDialogDescription className="text-white/50">
                     {t('profile.deleteWarning')}
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel className="bg-gray-800 text-white border-gray-700 hover:bg-gray-700">
+                  <AlertDialogCancel className="bg-white/[0.04] text-white border-white/[0.08] hover:bg-white/[0.08]">
                     {t('common.cancel')}
                   </AlertDialogCancel>
                   <AlertDialogAction 

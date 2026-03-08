@@ -203,7 +203,7 @@ const Results = ({
                 {question.explanation && (
                   <div className="mt-4 p-4 bg-blue-900/30 border border-blue-500/30 rounded-lg">
                     <h4 className="font-semibold text-blue-300 mb-2">{t('results.explanation')}:</h4>
-                    <p className="text-gray-300">{question.explanation}</p>
+                    <p className="text-white/60">{question.explanation}</p>
                   </div>
                 )}
               </CardContent>

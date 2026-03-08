@@ -311,7 +311,7 @@ const CareerSimulatorPage = () => {
                   <h3 className="text-blue-400 font-semibold mb-3">🚀 Next Steps</h3>
                   <ol className="space-y-2">
                     {finalData.nextSteps.map((step: string, i: number) => (
-                      <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+                      <li key={i} className="text-white/60 text-sm flex items-start gap-2">
                         <span className="text-blue-400 font-bold">{i + 1}.</span> {step}
                       </li>
                     ))}
