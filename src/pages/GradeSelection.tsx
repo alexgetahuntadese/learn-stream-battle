@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import StarField from '@/components/StarField';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { GraduationCap, BookOpen, Users } from 'lucide-react';
@@ -16,7 +17,8 @@ const GradeSelection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-6 overflow-hidden relative">
+      <StarField starCount={40} shootingCount={3} />
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white mb-4">

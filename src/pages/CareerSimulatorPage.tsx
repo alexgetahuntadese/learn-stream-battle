@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import StarField from '@/components/StarField';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -88,7 +89,8 @@ const CareerSimulatorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 pt-14 px-4 pb-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 pt-14 px-4 pb-4 overflow-hidden relative">
+      <StarField starCount={40} shootingCount={2} />
       <TopBar />
       <div className="max-w-4xl mx-auto">
         {/* Header */}

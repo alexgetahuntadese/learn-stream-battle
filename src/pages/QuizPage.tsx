@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import StarField from '@/components/StarField';
 import { useParams, useNavigate } from 'react-router-dom';
 import { grade12Mathematics } from '@/data/grade12Mathematics';
 import { grade12PhysicsQuestions } from '@/data/grade12PhysicsQuestions';
@@ -335,7 +336,8 @@ const QuizPage = () => {
 
   if (isLoading) {
     return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <TopBar />
         <div className="flex items-center mb-6">
           <Button
@@ -363,7 +365,8 @@ const QuizPage = () => {
 
   if (error) {
     return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <TopBar />
         <div className="flex items-center mb-6">
           <Button
@@ -402,7 +405,8 @@ const QuizPage = () => {
 
   if (!subject || !chapterId || !difficulty) {
     return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <TopBar />
         <div className="flex items-center mb-6">
           <Button
@@ -426,7 +430,8 @@ const QuizPage = () => {
 
   if (questions.length === 0) {
     return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <TopBar />
         <div className="flex items-center mb-6">
           <Button
@@ -459,7 +464,8 @@ const QuizPage = () => {
 
   if (!currentQuestion) {
     return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <TopBar />
         <div className="flex items-center mb-6">
           <Button
@@ -488,7 +494,8 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <TopBar />
       <div className="mb-6">
         <Button

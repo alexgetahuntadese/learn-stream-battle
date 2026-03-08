@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import StarField from '@/components/StarField';
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -131,7 +132,8 @@ const SessionPage = () => {
 
   if (!session) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 flex items-center justify-center overflow-hidden relative">
+        <StarField starCount={30} shootingCount={2} />
         <div className="text-white text-xl">{t('common.loading')}</div>
       </div>
     );
@@ -139,7 +141,8 @@ const SessionPage = () => {
 
   if (session.status === 'completed') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4 overflow-hidden relative">
+        <StarField starCount={30} shootingCount={2} />
         <div className="max-w-2xl mx-auto">
           <Card className="bg-white/10 backdrop-blur-md border-white/20">
             <CardHeader className="text-center">
@@ -166,7 +169,8 @@ const SessionPage = () => {
     const isLastQuestion = session.current_question_index >= questions.length - 1;
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4 overflow-hidden relative">
+        <StarField starCount={30} shootingCount={2} />
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-4">
             <div className="text-white">
@@ -213,7 +217,8 @@ const SessionPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <div className="max-w-md mx-auto">
         <Button
           variant="ghost"
