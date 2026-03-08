@@ -217,7 +217,8 @@ const SessionPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <div className="max-w-md mx-auto">
         <Button
           variant="ghost"

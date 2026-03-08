@@ -64,14 +64,15 @@ const ProfilePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-95950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br fropurple-950 via-violet-900 to-purple-95900 pt-14 px-4 pb-4 md:p-8 md:pt-14">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
+      <StarField starCount={40} shootingCount={2} />
       <TopBar />
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center gap-4 mb-8">

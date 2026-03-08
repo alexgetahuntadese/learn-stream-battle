@@ -494,7 +494,8 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 overflow-hidden relative">
+      <StarField starCount={30} shootingCount={2} />
       <TopBar />
       <div className="mb-6">
         <Button
