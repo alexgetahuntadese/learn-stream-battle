@@ -159,7 +159,7 @@ const CareerSimulatorPage = () => {
                 <Card className="bg-white/5 border-white/10">
                   <CardContent className="p-4 space-y-3">
                     <div className="flex items-center gap-2 text-yellow-400"><Banknote className="h-5 w-5" /><span className="font-semibold text-white">Salary</span></div>
-                    <p className="text-gray-300 text-sm">{introData.careerInfo.salaryRange}</p>
+                    <p className="text-white/60 text-sm">{introData.careerInfo.salaryRange}</p>
                     <div className="flex items-center gap-2 text-blue-400 mt-3"><GraduationCap className="h-5 w-5" /><span className="font-semibold text-white">Universities</span></div>
                     <div className="flex flex-wrap gap-1">
                       {introData.careerInfo.universities?.map((u: string, i: number) => (
