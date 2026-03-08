@@ -34,6 +34,20 @@ const Index = () => {
   const { t } = useLanguage();
   const stars = useMemo(() => generateStars(60), []);
   const shootingStars = useMemo(() => generateShootingStars(4), []);
+  const recentAttempts = useMemo(() => getRecentAttempts(5), []);
+
+  const testimonials = [
+    { name: "Abigail Tesfaye", subject: "Biology", quote: "This app helped me score 95% on my national exam! The practice questions are spot on." },
+    { name: "Dawit Bekele", subject: "Mathematics", quote: "I went from struggling with calculus to topping my class. The explanations are incredible." },
+    { name: "Hanna Girma", subject: "Physics", quote: "The career simulator showed me my passion for engineering. Now I'm working towards it!" },
+    { name: "Yonas Tadesse", subject: "Chemistry", quote: "Studying became fun with the quizzes. I recommend this to every Ethiopian student." },
+  ];
+
+  const getScoreColor = (score: number) => {
+    if (score >= 80) return 'bg-emerald-500';
+    if (score >= 60) return 'bg-amber-500';
+    return 'bg-red-500';
+  };
 
   const features = [
     {
