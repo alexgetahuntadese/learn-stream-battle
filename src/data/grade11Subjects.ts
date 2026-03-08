@@ -152,12 +152,14 @@ export const grade11Subjects: Grade11Subject[] = [
     icon: 'Globe',
     description: 'Physical and human geography, mapping, and environmental studies',
     chapters: [
-      'Chapter 1: Physical Geography',
-      'Chapter 2: Human Geography',
-      'Chapter 3: Cartography and GIS',
-      'Chapter 4: Climate and Weather',
-      'Chapter 5: Natural Resources',
-      'Chapter 6: Environmental Issues'
+      'Chapter 1: Formation of the Continents',
+      'Chapter 2: Climate Classification and Climate Regions of Our World',
+      'Chapter 3: Natural Resources and Conflicts Over Resources',
+      'Chapter 4: Global Population Dynamics and Challenges',
+      'Chapter 5: Geography and Economic Development',
+      'Chapter 6: Major Global Environmental Changes',
+      'Chapter 7: Geographic Issues and Public Concerns',
+      'Chapter 8: Geo-spatial Information and Data Processing'
     ],
     category: 'Social Sciences'
   }
