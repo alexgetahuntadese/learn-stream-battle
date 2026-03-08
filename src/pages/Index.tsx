@@ -112,10 +112,10 @@ const Index = () => {
               variant="ghost"
               size="sm"
               onClick={() => navigate('/profile')}
-              className="text-white/70 hover:text-white hover:bg-white/10"
+              className="text-white hover:text-white hover:bg-white/10 font-medium"
             >
-              <User className="h-4 w-4 mr-1" />
-              <span className="hidden sm:inline">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+              <User className="h-4 w-4 mr-1.5" />
+              <span className="max-w-[120px] truncate">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
             </Button>
             <Button
               variant="ghost"
