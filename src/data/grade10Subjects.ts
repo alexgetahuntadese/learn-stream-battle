@@ -130,13 +130,14 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Scale',
     description: 'Government systems, constitution, human rights, and global citizenship',
     chapters: [
-      'Unit 1: The Ethiopian Constitution',
-      'Unit 2: Government Structure and Functions',
-      'Unit 3: Human Rights',
-      'Unit 4: Democracy and Elections',
-      'Unit 5: Rule of Law',
-      'Unit 6: Federalism in Ethiopia',
-      'Unit 7: Global Citizenship'
+      'Unit 1: Democracy And Democratization',
+      'Unit 2: Citizens In The Digital Technology Age',
+      'Unit 3: Understanding Good Governance',
+      'Unit 4: Peace And Indigenous Conflict Resolution Mechanisms',
+      'Unit 5: Federalism In Ethiopia',
+      'Unit 6: Human Rights',
+      'Unit 7: Patriotism',
+      'Unit 8: Globalization And Global Issues'
     ],
     category: 'Social Sciences'
   },
