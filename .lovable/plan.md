@@ -1,37 +1,99 @@
 
 
-## Plan: Add Grade 10 English Starter Quiz Questions
+# Add Afan Oromo Language Support
 
-### What
-Create **300 quiz questions** for Grade 10 English covering all 10 units (30 per unit: 10 Easy, 10 Medium, 10 Hard).
+## Overview
+Add bilingual support (English / Afan Oromo) to the EthioQuiz platform, allowing users to switch the entire UI to Afan Oromo (Oromiffa). This involves creating a translation system and translating all user-facing text.
 
-### Units (from `grade10Subjects.ts`)
-1. Population Growth
-2. Travel Behaviors
-3. Punctuality
-4. Tourist Attractions
-5. Honey Processing
-6. Migration
-7. Branding Ethiopia and National Identity
-8. The Healing Power of Plants
-9. Multilingualism
-10. Digital Vs Satellite Television
+## Approach
+Create a lightweight custom i18n system using React Context (no external library needed) with translation files for English and Afan Oromo.
 
-### Changes
+## New Files
 
-**1. Create `src/data/grade10EnglishQuestions.ts`**
-- Same structure as `grade10ChemistryQuestions.ts`: interface + exported object keyed by unit name
-- Questions focus on reading comprehension, vocabulary, grammar, and writing skills related to each unit's theme
-- 10 Easy / 10 Medium / 10 Hard per unit
+| File | Purpose |
+|------|---------|
+| `src/i18n/translations/en.ts` | English translation strings |
+| `src/i18n/translations/om.ts` | Afan Oromo translation strings |
+| `src/i18n/LanguageContext.tsx` | React context provider for language state and translation function |
+| `src/components/LanguageSwitcher.tsx` | Toggle button/dropdown to switch between English and Afan Oromo |
 
-**2. Update `src/pages/QuizPage.tsx`**
-- Import `grade10EnglishQuestions`
-- Add `'english': grade10EnglishQuestions` to the `grade10DataMap`
+## Translation Structure
 
-**3. Update `src/pages/ChaptersPage.tsx`**
-- Import `grade10EnglishQuestions`
-- Add English to the Grade 10 dynamic question count logic
+Translations will be organized by page/feature area:
 
-**4. Update `src/lib/quizUtils.ts`**
-- Add `"English": grade10EnglishQuestions` to `questionSets["10"]`
+```text
+translations = {
+  common: { back, home, loading, ... },
+  index: { title, subtitle, exploreSubjects, browseQuizzes, ... },
+  grades: { selectGrade, chooseGrade, hostSession, joinSession, ... },
+  quiz: { question, next, previous, submit, checkAnswer, ... },
+  results: { complete, score, correct, incorrect, retake, ... },
+  performance: { dashboard, overallGrade, averageScore, ... },
+  host: { hostQuiz, yourName, createSession, ... },
+  join: { joinQuiz, enterCode, ... },
+  career: { careerSuggestions, matchScore, ... },
+  subjects: { mathematics, physics, chemistry, biology, ... }
+}
+```
+
+## Key Afan Oromo Translations (Sample)
+
+| English | Afan Oromo |
+|---------|------------|
+| EthioQuiz 2050 | EthioQuiz 2050 |
+| Select Your Grade | Sadarkaa Kee Filadhu |
+| Browse Quizzes | Qormaata Ilaali |
+| My Performance | Gahee Koo |
+| Host Session | Waldaa Qopheessi |
+| Join Session | Waldaa Makamii |
+| Quiz Complete! | Qormaanni Xumurameera! |
+| Score | Qabxii |
+| Question | Gaaffii |
+| Next | Itti Aanee |
+| Previous | Kan Dura |
+| Submit | Galchi |
+| Back | Duubatti |
+| Correct | Sirrii |
+| Incorrect | Dogoggora |
+
+## Modified Files
+
+| File | Changes |
+|------|---------|
+| `src/App.tsx` | Wrap app in `LanguageProvider` |
+| `src/pages/Index.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/GradesPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/PerformancePage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/HostPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/JoinPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/SessionPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/ProfilePage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/QuizInterface.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/Results.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/QuizDashboard.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/performance/*.tsx` | Replace hardcoded text with `t()` calls |
+
+## Language Switcher UI
+
+- A floating button or header toggle on every page showing "EN / OM"
+- Selected language saved to `localStorage` so it persists across sessions
+- Placed in the top-right corner of the main layout
+
+## Implementation Order
+
+1. Create translation files (`en.ts` and `om.ts`) with all UI strings
+2. Create `LanguageContext.tsx` with provider, `useLanguage` hook, and `t()` function
+3. Create `LanguageSwitcher.tsx` component
+4. Wrap `App.tsx` in `LanguageProvider`
+5. Update all pages and components to use `t()` for text rendering
+6. Test language switching across all pages
+
+## Technical Details
+
+- Language preference stored in `localStorage` key `preferred_language`
+- Default language: English (`en`)
+- The `t()` function takes a dot-notation key (e.g., `t('quiz.next')`) and returns the translated string
+- Falls back to English if a translation key is missing in Afan Oromo
+- Quiz question content stays in English (translating question banks is a separate effort)
+- Only UI chrome/labels are translated
 
