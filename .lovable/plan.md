@@ -1,31 +1,99 @@
 
 
-## Plan: Add Grade 11 History with Updated Chapters and Quiz Questions
+# Add Afan Oromo Language Support
 
-### 1. Update `src/data/grade11Subjects.ts` — Fix History chapters
-Replace the 6 placeholder chapters (lines 139-146) with the correct 9 New Curriculum units:
-- Unit 1: History, Historiography, And Human Evolution
-- Unit 2: Major Spots Of Ancient World Civilizations Up To C.500 A.D
-- Unit 3: Peoples, States, And Historical Processes In Ethiopia And The Horn To The End Of The 13th Century
-- Unit 4: The Middle Ages And Early Modern World, C. 500 AD-1789
-- Unit 5: Peoples And States Of Africa To 1500
-- Unit 6: Africa And The Outside World: 1500-1880
-- Unit 7: States, Principalities, Population Movements, And Interactions In Ethiopia
-- Unit 8: Political, Social, And Economic Processes In Ethiopia, Mid 16th To Mid-19th Century
-- Unit 9: The Age Of Revolutions, 1789 To 1815
+## Overview
+Add bilingual support (English / Afan Oromo) to the EthioQuiz platform, allowing users to switch the entire UI to Afan Oromo (Oromiffa). This involves creating a translation system and translating all user-facing text.
 
-### 2. Create `src/data/grade11HistoryQuestions.ts`
-New question bank following the same `HistoryQuestion` interface from `grade12HistoryQuestions.ts`:
-- 9 units × 30 questions each (10 Easy, 10 Medium, 10 Hard) = 270 total questions
-- Each question: id, question, 4 options, correct answer, explanation, difficulty
-- Export `grade11HistoryQuestions` object keyed by unit name and a `getGrade11HistoryQuestions()` helper
+## Approach
+Create a lightweight custom i18n system using React Context (no external library needed) with translation files for English and Afan Oromo.
 
-### 3. Update `src/lib/quizUtils.ts`
-- Import `grade11HistoryQuestions`
-- Add `"History": grade11HistoryQuestions` to the Grade 11 entry in `questionSets`
+## New Files
 
-### 4. Update `src/pages/ChaptersPage.tsx`
-- Import `grade11HistoryQuestions`
-- Add handler for `decodedSubject === 'History' && grade === '11'`
-- Add `getGrade11HistoryChapterDescription()` helper with descriptions for all 9 units
+| File | Purpose |
+|------|---------|
+| `src/i18n/translations/en.ts` | English translation strings |
+| `src/i18n/translations/om.ts` | Afan Oromo translation strings |
+| `src/i18n/LanguageContext.tsx` | React context provider for language state and translation function |
+| `src/components/LanguageSwitcher.tsx` | Toggle button/dropdown to switch between English and Afan Oromo |
+
+## Translation Structure
+
+Translations will be organized by page/feature area:
+
+```text
+translations = {
+  common: { back, home, loading, ... },
+  index: { title, subtitle, exploreSubjects, browseQuizzes, ... },
+  grades: { selectGrade, chooseGrade, hostSession, joinSession, ... },
+  quiz: { question, next, previous, submit, checkAnswer, ... },
+  results: { complete, score, correct, incorrect, retake, ... },
+  performance: { dashboard, overallGrade, averageScore, ... },
+  host: { hostQuiz, yourName, createSession, ... },
+  join: { joinQuiz, enterCode, ... },
+  career: { careerSuggestions, matchScore, ... },
+  subjects: { mathematics, physics, chemistry, biology, ... }
+}
+```
+
+## Key Afan Oromo Translations (Sample)
+
+| English | Afan Oromo |
+|---------|------------|
+| EthioQuiz 2050 | EthioQuiz 2050 |
+| Select Your Grade | Sadarkaa Kee Filadhu |
+| Browse Quizzes | Qormaata Ilaali |
+| My Performance | Gahee Koo |
+| Host Session | Waldaa Qopheessi |
+| Join Session | Waldaa Makamii |
+| Quiz Complete! | Qormaanni Xumurameera! |
+| Score | Qabxii |
+| Question | Gaaffii |
+| Next | Itti Aanee |
+| Previous | Kan Dura |
+| Submit | Galchi |
+| Back | Duubatti |
+| Correct | Sirrii |
+| Incorrect | Dogoggora |
+
+## Modified Files
+
+| File | Changes |
+|------|---------|
+| `src/App.tsx` | Wrap app in `LanguageProvider` |
+| `src/pages/Index.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/GradesPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/PerformancePage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/HostPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/JoinPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/SessionPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/ProfilePage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/QuizInterface.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/Results.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/QuizDashboard.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/performance/*.tsx` | Replace hardcoded text with `t()` calls |
+
+## Language Switcher UI
+
+- A floating button or header toggle on every page showing "EN / OM"
+- Selected language saved to `localStorage` so it persists across sessions
+- Placed in the top-right corner of the main layout
+
+## Implementation Order
+
+1. Create translation files (`en.ts` and `om.ts`) with all UI strings
+2. Create `LanguageContext.tsx` with provider, `useLanguage` hook, and `t()` function
+3. Create `LanguageSwitcher.tsx` component
+4. Wrap `App.tsx` in `LanguageProvider`
+5. Update all pages and components to use `t()` for text rendering
+6. Test language switching across all pages
+
+## Technical Details
+
+- Language preference stored in `localStorage` key `preferred_language`
+- Default language: English (`en`)
+- The `t()` function takes a dot-notation key (e.g., `t('quiz.next')`) and returns the translated string
+- Falls back to English if a translation key is missing in Afan Oromo
+- Quiz question content stays in English (translating question banks is a separate effort)
+- Only UI chrome/labels are translated
 

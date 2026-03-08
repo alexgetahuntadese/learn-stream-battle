@@ -137,12 +137,15 @@ export const grade11Subjects: Grade11Subject[] = [
     icon: 'Clock',
     description: 'Ethiopian and world history, civilizations, and historical analysis',
     chapters: [
-      'Chapter 1: Ancient Civilizations',
-      'Chapter 2: Medieval Period',
-      'Chapter 3: Modern Ethiopian History',
-      'Chapter 4: World Wars',
-      'Chapter 5: Contemporary History',
-      'Chapter 6: Historical Research Methods'
+      'Unit 1: History, Historiography, And Human Evolution',
+      'Unit 2: Major Spots Of Ancient World Civilizations Up To C.500 A.D',
+      'Unit 3: Peoples, States, And Historical Processes In Ethiopia And The Horn To The End Of The 13th Century',
+      'Unit 4: The Middle Ages And Early Modern World, C. 500 AD-1789',
+      'Unit 5: Peoples And States Of Africa To 1500',
+      'Unit 6: Africa And The Outside World: 1500-1880',
+      'Unit 7: States, Principalities, Population Movements, And Interactions In Ethiopia',
+      'Unit 8: Political, Social, And Economic Processes In Ethiopia, Mid 16th To Mid-19th Century',
+      'Unit 9: The Age Of Revolutions, 1789 To 1815'
     ],
     category: 'Social Sciences'
   },
