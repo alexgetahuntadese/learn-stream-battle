@@ -1,12 +1,15 @@
 
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote } from "lucide-react";
+import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote, User, LogOut, LogIn } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { getRecentAttempts } from "@/lib/performanceUtils";
+import { migrateLocalDataToDb } from "@/lib/dbPerformanceUtils";
 import { formatDistanceToNow } from "date-fns";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 const generateStars = (count: number) =>
   Array.from({ length: count }, (_, i) => ({
@@ -32,9 +35,17 @@ const generateShootingStars = (count: number) =>
 const Index = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const { user, signOut } = useAuth();
   const stars = useMemo(() => generateStars(60), []);
   const shootingStars = useMemo(() => generateShootingStars(4), []);
   const recentAttempts = useMemo(() => getRecentAttempts(5), []);
+
+  // Migrate local data on first login
+  useEffect(() => {
+    if (user) {
+      migrateLocalDataToDb();
+    }
+  }, [user]);
 
   const testimonials = [
     { name: "Abigail Tesfaye", subject: "Biology", quote: "This app helped me score 95% on my national exam! The practice questions are spot on." },
@@ -93,6 +104,41 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8 overflow-hidden relative">
       <LanguageSwitcher />
+
+      {/* Auth buttons - top right */}
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+        {user ? (
+          <>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate('/profile')}
+              className="text-white/70 hover:text-white hover:bg-white/10"
+            >
+              <User className="h-4 w-4 mr-1" />
+              <span className="hidden sm:inline">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={signOut}
+              className="text-white/50 hover:text-white hover:bg-white/10"
+            >
+              <LogOut className="h-4 w-4" />
+            </Button>
+          </>
+        ) : (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate('/auth')}
+            className="text-white/70 hover:text-white hover:bg-white/10"
+          >
+            <LogIn className="h-4 w-4 mr-1" />
+            Sign In
+          </Button>
+        )}
+      </div>
 
       {/* Floating stars */}
       {stars.map((star) => (

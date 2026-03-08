@@ -1,59 +1,99 @@
 
 
-# Implementation Plan: Authentication + User Profiles
+# Add Afan Oromo Language Support
 
 ## Overview
-Add Email + Google sign-in with user profiles, migrating quiz progress from localStorage to the database so it syncs across devices.
+Add bilingual support (English / Afan Oromo) to the EthioQuiz platform, allowing users to switch the entire UI to Afan Oromo (Oromiffa). This involves creating a translation system and translating all user-facing text.
 
-## Database Changes
+## Approach
+Create a lightweight custom i18n system using React Context (no external library needed) with translation files for English and Afan Oromo.
 
-**1. `profiles` table**
-- `id` (uuid, FK to auth.users, PK)
-- `student_name` (text)
-- `avatar_url` (text, nullable)
-- `created_at`, `updated_at` (timestamps)
-- RLS: users can read/update only their own profile
+## New Files
 
-**2. `quiz_attempts` table**
-- `id` (uuid, PK)
-- `user_id` (uuid, FK to profiles)
-- `grade`, `subject`, `chapter`, `difficulty` (text)
-- `score` (integer), `correct_answers` (integer), `total_questions` (integer)
-- `time_spent` (text)
-- `attempted_at` (timestamptz)
-- RLS: users can insert/read only their own attempts
+| File | Purpose |
+|------|---------|
+| `src/i18n/translations/en.ts` | English translation strings |
+| `src/i18n/translations/om.ts` | Afan Oromo translation strings |
+| `src/i18n/LanguageContext.tsx` | React context provider for language state and translation function |
+| `src/components/LanguageSwitcher.tsx` | Toggle button/dropdown to switch between English and Afan Oromo |
 
-**3. Trigger**: Auto-create profile row on user signup via `auth.users` trigger.
+## Translation Structure
 
-## Auth Configuration
-- Enable Email auth (with email confirmation disabled per prior conversation)
-- Configure Google OAuth using Lovable Cloud managed credentials
-- Use `lovable.auth.signInWithOAuth("google")` for Google sign-in
+Translations will be organized by page/feature area:
 
-## Frontend Changes
+```text
+translations = {
+  common: { back, home, loading, ... },
+  index: { title, subtitle, exploreSubjects, browseQuizzes, ... },
+  grades: { selectGrade, chooseGrade, hostSession, joinSession, ... },
+  quiz: { question, next, previous, submit, checkAnswer, ... },
+  results: { complete, score, correct, incorrect, retake, ... },
+  performance: { dashboard, overallGrade, averageScore, ... },
+  host: { hostQuiz, yourName, createSession, ... },
+  join: { joinQuiz, enterCode, ... },
+  career: { careerSuggestions, matchScore, ... },
+  subjects: { mathematics, physics, chemistry, biology, ... }
+}
+```
 
-**New pages/components:**
-- `AuthPage.tsx` — Login/Register form with email + Google sign-in button
-- `AuthProvider` context — wraps app, provides `user`, `session`, `signOut`
-- `ProtectedRoute` component — redirects unauthenticated users to auth page
+## Key Afan Oromo Translations (Sample)
 
-**Modified files:**
-- `App.tsx` — Add AuthProvider, add `/auth` route, protect routes that need auth
-- `performanceUtils.ts` — Add functions to read/write quiz attempts from database instead of localStorage; keep localStorage as offline fallback
-- `ProfilePage.tsx` — Load/save profile from database, show user email
-- `Index.tsx` — Show login/logout button, user greeting
-- `Results.tsx` — Save quiz results to database when authenticated
+| English | Afan Oromo |
+|---------|------------|
+| EthioQuiz 2050 | EthioQuiz 2050 |
+| Select Your Grade | Sadarkaa Kee Filadhu |
+| Browse Quizzes | Qormaata Ilaali |
+| My Performance | Gahee Koo |
+| Host Session | Waldaa Qopheessi |
+| Join Session | Waldaa Makamii |
+| Quiz Complete! | Qormaanni Xumurameera! |
+| Score | Qabxii |
+| Question | Gaaffii |
+| Next | Itti Aanee |
+| Previous | Kan Dura |
+| Submit | Galchi |
+| Back | Duubatti |
+| Correct | Sirrii |
+| Incorrect | Dogoggora |
 
-## Routes
-- `/auth` — public, login/register page
-- All other routes — accessible but quiz saving requires auth
-- Profile/Performance pages — protected (require auth)
+## Modified Files
 
-## Data Migration
-On first login, check localStorage for existing quiz data and migrate it to the database, then clear local copy.
+| File | Changes |
+|------|---------|
+| `src/App.tsx` | Wrap app in `LanguageProvider` |
+| `src/pages/Index.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/GradesPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/PerformancePage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/HostPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/JoinPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/SessionPage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/pages/ProfilePage.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/QuizInterface.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/Results.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/QuizDashboard.tsx` | Replace hardcoded text with `t()` calls |
+| `src/components/performance/*.tsx` | Replace hardcoded text with `t()` calls |
 
-## Technical Notes
-- Google sign-in uses `@lovable.dev/cloud-auth-js` package via Configure Social Login tool
-- Email sign-in uses standard `supabase.auth.signInWithPassword` / `signUp`
-- Session managed via `supabase.auth.onAuthStateChange`
+## Language Switcher UI
+
+- A floating button or header toggle on every page showing "EN / OM"
+- Selected language saved to `localStorage` so it persists across sessions
+- Placed in the top-right corner of the main layout
+
+## Implementation Order
+
+1. Create translation files (`en.ts` and `om.ts`) with all UI strings
+2. Create `LanguageContext.tsx` with provider, `useLanguage` hook, and `t()` function
+3. Create `LanguageSwitcher.tsx` component
+4. Wrap `App.tsx` in `LanguageProvider`
+5. Update all pages and components to use `t()` for text rendering
+6. Test language switching across all pages
+
+## Technical Details
+
+- Language preference stored in `localStorage` key `preferred_language`
+- Default language: English (`en`)
+- The `t()` function takes a dot-notation key (e.g., `t('quiz.next')`) and returns the translated string
+- Falls back to English if a translation key is missing in Afan Oromo
+- Quiz question content stays in English (translating question banks is a separate effort)
+- Only UI chrome/labels are translated
 
