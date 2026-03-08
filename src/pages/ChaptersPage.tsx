@@ -41,6 +41,7 @@ import { grade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions'
 import { grade11Chemistry } from '@/data/grade11Chemistry';
 import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
 import { grade11EnglishQuestions } from '@/data/grade11EnglishQuestions';
+import { grade11GeographyQuestions } from '@/data/grade11GeographyQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -358,6 +359,32 @@ const ChaptersPage = () => {
       });
     }
 
+    // Handle Grade 11 Geography
+    if (decodedSubject === 'Geography' && grade === '11') {
+      return Object.keys(grade11GeographyQuestions).map((chapterName, index) => {
+        const questions = grade11GeographyQuestions[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: getGrade11GeographyChapterDescription(chapterName),
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
     if (decodedSubject === 'Geography' && grade === '12') {
       return Object.keys(grade12GeographyQuestions).map((unitName, index) => {
         const questions = grade12GeographyQuestions[unitName];
@@ -533,6 +560,20 @@ const ChaptersPage = () => {
       "Chapter 16: Diversified Food Production and Consumption": "Explore food diversification, processing, and sustainable consumption"
     };
     return descriptions[chapterName] || "Comprehensive study of agricultural concepts and practices";
+  };
+
+  const getGrade11GeographyChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Chapter 1: Formation of the Continents": "Study the formation of Earth and continents through Big Bang theory, continental drift, geological timescale, and supercontinents like Pangaea",
+      "Chapter 2: Climate Classification and Climate Regions of Our World": "Examine Köppen's climate classification, major world climatic regions, and Ethiopia's indigenous climate classification system",
+      "Chapter 3: Natural Resources and Conflicts Over Resources": "Discuss land resource management, resource depletion, transboundary rivers, and conflicts over natural resources",
+      "Chapter 4: Global Population Dynamics and Challenges": "Analyze world population growth, factors for accelerated growth, international migrations, and population policies",
+      "Chapter 5: Geography and Economic Development": "Examine effects of geographic location on development, climate extremes and poverty, landlocked countries, and intraregional trade in Africa",
+      "Chapter 6: Major Global Environmental Changes": "Address persistent environmental problems, poverty-environment nexus, and environmental degradation and sustainable development",
+      "Chapter 7: Geographic Issues and Public Concerns": "Cover population concerns, land degradation, desertification, drought, famine, deforestation, and the worldwide digital divide",
+      "Chapter 8: Geo-spatial Information and Data Processing": "Explore topographic map relief features, Geographic Information Systems (GIS), and ArcMap software basics"
+    };
+    return descriptions[chapterName] || "Comprehensive study of geographical concepts";
   };
 
   const getGrade11EnglishChapterDescription = (chapterName: string) => {
