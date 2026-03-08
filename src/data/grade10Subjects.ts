@@ -76,14 +76,16 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'BookOpen',
     description: 'Advanced reading, writing, literature, and communication skills',
     chapters: [
-      'Unit 1: Education and Development',
-      'Unit 2: Technology and Society',
-      'Unit 3: Literature and Culture',
-      'Unit 4: Environment and Conservation',
-      'Unit 5: Globalization',
-      'Unit 6: Media and Communication',
-      'Unit 7: Career Planning',
-      'Unit 8: Ethiopian Heritage'
+      'Unit 1: Population Growth',
+      'Unit 2: Travel Behaviors',
+      'Unit 3: Punctuality',
+      'Unit 4: Tourist Attractions',
+      'Unit 5: Honey Processing',
+      'Unit 6: Migration',
+      'Unit 7: Branding Ethiopia and National Identity',
+      'Unit 8: The Healing Power of Plants',
+      'Unit 9: Multilingualism',
+      'Unit 10: Digital Vs Satellite Television'
     ],
     category: 'Languages'
   },
