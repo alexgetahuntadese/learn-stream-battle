@@ -31,14 +31,12 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Atom',
     description: 'Motion, forces, electricity, magnetism, and modern physics',
     chapters: [
-      'Unit 1: Motion in Two Dimensions',
-      'Unit 2: Circular Motion and Gravitation',
-      'Unit 3: Electrostatics',
-      'Unit 4: Current Electricity',
+      'Unit 1: Vector Quantities',
+      'Unit 2: Uniformly Accelerated Motion',
+      'Unit 3: Elasticity and Static Equilibrium of Rigid Body',
+      'Unit 4: Static and Current Electricity',
       'Unit 5: Magnetism',
-      'Unit 6: Electromagnetic Induction',
-      'Unit 7: Atomic Physics',
-      'Unit 8: Nuclear Physics'
+      'Unit 6: Electromagnetic Waves and Geometrical Optics'
     ],
     category: 'Natural Sciences'
   },
