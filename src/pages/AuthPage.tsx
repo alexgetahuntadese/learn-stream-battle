@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import StarField from '@/components/StarField';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { lovable } from '@/integrations/lovable/index';
