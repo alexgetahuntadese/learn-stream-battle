@@ -387,31 +387,29 @@ const ChaptersPage = () => {
       });
     }
 
-    // Handle Grade 11 Amharic (no questions)
+    // Handle Grade 11 Amharic
     if (decodedSubject === 'Amharic' && grade === '11') {
-      const amharicChapters = [
-        { title: 'ምዕራፍ አንድ: ቋንቋና ህብረተሰብ (Language and Society)', description: 'Explores the relationship between language and society, communication, and sociolinguistic concepts' },
-        { title: 'ምዕራፍ ሁለት: ቅርሶቻችን (Our Heritage)', description: 'Studies Ethiopian cultural heritage, historical artifacts, and preservation of traditions' },
-        { title: 'ምዕራፍ ሦስት: ወግ (Traditional Literature)', description: 'Introduction to traditional Amharic literary forms and oral storytelling traditions' },
-        { title: 'ምዕራፍ አራት: ልቦለድ (Novel)', description: 'Analysis of Amharic novels, narrative techniques, and character development' },
-        { title: 'ምዕራፍ አምስት: የቋንቋ ስዛ (Linguistic Relevance)', description: 'Examines the relevance and application of linguistic concepts in everyday communication' },
-        { title: 'ምዕራፍ ስድስት: ግጥም (Poetry)', description: 'Study of Amharic poetry, poetic devices, meter, and literary analysis' },
-        { title: 'ምዕራፍ ሰባት: አርበኝነት (Patriotism)', description: 'Literature and texts exploring themes of patriotism and national identity' },
-        { title: 'ምዕራፍ ስምንት: ትውፊት (Tradition and Lifestyle)', description: 'Explores Ethiopian traditions, customs, and lifestyle through literary works' },
-        { title: 'ምዕራፍ ዘጠኝ: ስኬት (Success)', description: 'Texts and discussions on themes of success, achievement, and personal growth' },
-        { title: 'ምዕራፍ አስር: ኪነጥበብ (Art)', description: 'Study of Ethiopian art forms, aesthetics, and creative expression in literature' },
-      ];
-      return amharicChapters.map((ch, index) => ({
-        id: index + 1,
-        title: ch.title,
-        description: ch.description,
-        duration: '—',
-        difficulty: 'Medium' as const,
-        progress: 0,
-        isCompleted: false,
-        questionsCount: 0,
-        difficultyBreakdown: { easy: 0, medium: 0, hard: 0 }
-      }));
+      return Object.keys(grade11AmharicQuestions).map((chapterName, index) => {
+        const questions = grade11AmharicQuestions[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: `Grade 11 Amharic - ${chapterName}`,
+          duration: '30 min',
+          difficulty: 'Medium' as const,
+          progress: 0,
+          isCompleted: false,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
     }
 
     // Handle Grade 11 Geography
