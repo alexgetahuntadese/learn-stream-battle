@@ -8,6 +8,7 @@ import { simulatorCareers, SimulatorCareer } from '@/lib/careerSimulatorData';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/i18n/LanguageContext';
+import TopBar from "@/components/TopBar";
 
 type Stage = 'select' | 'loading' | 'intro' | 'scenario' | 'final';
 
