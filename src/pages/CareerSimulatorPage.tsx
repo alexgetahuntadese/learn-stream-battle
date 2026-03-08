@@ -8,6 +8,7 @@ import { simulatorCareers, SimulatorCareer } from '@/lib/careerSimulatorData';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/i18n/LanguageContext';
+import TopBar from "@/components/TopBar";
 
 type Stage = 'select' | 'loading' | 'intro' | 'scenario' | 'final';
 
@@ -87,7 +88,8 @@ const CareerSimulatorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate0 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 pt-14 px-4 pb-4">
+      <TopBar />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">

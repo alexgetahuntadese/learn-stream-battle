@@ -22,6 +22,7 @@ import Results from '@/components/Results';
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Eye } from 'lucide-react';
+import TopBar from "@/components/TopBar";
 
 interface Question {
   id: string;
@@ -334,7 +335,8 @@ const QuizPage = () => {
 
   if (isLoading) {
     return (
-    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+      <TopBar />
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
@@ -361,7 +363,8 @@ const QuizPage = () => {
 
   if (error) {
     return (
-    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+      <TopBar />
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
@@ -399,7 +402,8 @@ const QuizPage = () => {
 
   if (!subject || !chapterId || !difficulty) {
     return (
-    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+      <TopBar />
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
@@ -422,7 +426,8 @@ const QuizPage = () => {
 
   if (questions.length === 0) {
     return (
-    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+      <TopBar />
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
@@ -454,7 +459,8 @@ const QuizPage = () => {
 
   if (!currentQuestion) {
     return (
-    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+      <TopBar />
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
@@ -482,7 +488,8 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+      <TopBar />
       <div className="mb-6">
         <Button
           variant="ghost"

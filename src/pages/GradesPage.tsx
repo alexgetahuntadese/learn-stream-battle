@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { ArrowLeft, BookOpen, Trophy, Sparkles, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
+import TopBar from "@/components/TopBar";
 
 const generateStars = (count: number) =>
   Array.from({ length: count }, (_, i) => ({
@@ -53,7 +54,8 @@ const GradesPage = () => {
   const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
+      <TopBar />
       {/* Floating stars */}
       {stars.map((star) => (
         <div
