@@ -525,7 +525,7 @@ const QuizPage = () => {
           />
           
           <div className="flex justify-between items-center">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-white/40">
               Question {currentQuestionIndex + 1} of {questions.length}
             </div>
             <div className="flex gap-3">
