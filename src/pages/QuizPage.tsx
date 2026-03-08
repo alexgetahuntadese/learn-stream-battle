@@ -402,7 +402,8 @@ const QuizPage = () => {
 
   if (!subject || !chapterId || !difficulty) {
     return (
-    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+    <div className="container mx-auto pt-14 px-4 pb-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+      <TopBar />
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
