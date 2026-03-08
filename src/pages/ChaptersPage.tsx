@@ -47,6 +47,8 @@ import { grade11HistoryQuestions } from '@/data/grade11HistoryQuestions';
 import { grade11AmharicQuestions } from '@/data/grade11AmharicQuestions';
 import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 import { grade11Physics } from '@/data/grade11Physics';
+import { grade9Subjects } from '@/data/grade9Subjects';
+import { grade10Subjects } from '@/data/grade10Subjects';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -592,6 +594,25 @@ const ChaptersPage = () => {
       });
     }
     
+    // Handle Grade 9 and 10 subjects (no question data yet, show chapter structure)
+    if (grade === '9' || grade === '10') {
+      const gradeSubjects = grade === '9' ? grade9Subjects : grade10Subjects;
+      const subjectData = gradeSubjects.find(s => s.name === decodedSubject);
+      if (subjectData) {
+        return subjectData.chapters.map((chapter, index) => ({
+          id: index + 1,
+          title: chapter,
+          description: `Grade ${grade} ${decodedSubject} - ${chapter}`,
+          duration: '20 min',
+          difficulty: 'Medium' as const,
+          progress: 0,
+          isCompleted: false,
+          questionsCount: 0,
+          difficultyBreakdown: { easy: 0, medium: 0, hard: 0 }
+        }));
+      }
+    }
+
     // Fallback: return empty for subjects without question data yet
     return [];
   };

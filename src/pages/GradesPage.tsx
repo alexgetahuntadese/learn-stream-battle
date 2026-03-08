@@ -28,6 +28,24 @@ const generateShootingStars = (count: number) =>
 
 const gradeData = [
   {
+    number: 9,
+    subjects: 9,
+    icon: BookOpen,
+    accent: "from-emerald-500 to-teal-500",
+    glow: "shadow-emerald-500/30",
+    ring: "ring-emerald-400/30",
+    description: "Build your foundation",
+  },
+  {
+    number: 10,
+    subjects: 10,
+    icon: Sparkles,
+    accent: "from-cyan-500 to-blue-500",
+    glow: "shadow-cyan-500/30",
+    ring: "ring-cyan-400/30",
+    description: "Strengthen core skills",
+  },
+  {
     number: 11,
     subjects: 13,
     icon: BookOpen,
