@@ -217,7 +217,7 @@ const CareerSimulatorPage = () => {
                   </div>
                 )}
                 {scenarioData.progressNote && (
-                  <p className="text-purple-300 text-sm italic">💡 {scenarioData.progressNote}</p>
+                   <p className="text-violet-300 text-sm italic">💡 {scenarioData.progressNote}</p>
                 )}
                 <div className="bg-black/20 rounded-lg p-4">
                   <p className="font-semibold text-white mb-1">⚡ New Challenge:</p>
