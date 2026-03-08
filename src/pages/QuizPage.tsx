@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import StarField from '@/components/StarField';
 import { useParams, useNavigate } from 'react-router-dom';
 import { grade12Mathematics } from '@/data/grade12Mathematics';
 import { grade12PhysicsQuestions } from '@/data/grade12PhysicsQuestions';
