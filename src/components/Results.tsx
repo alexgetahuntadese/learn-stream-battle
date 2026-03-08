@@ -160,7 +160,7 @@ const Results = ({
             <Card key={question.id} className="bg-white/5 border-white/20 text-white">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary" className="bg-gray-600 text-white">
+                  <Badge variant="secondary" className="bg-white/[0.08] text-white">
                     {t('quiz.question')} {index + 1}
                   </Badge>
                   {isCorrect ? (
