@@ -8,9 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
-
-import Index from "./pages/Index";
-import GradeSelection from "./pages/GradeSelection";
+m "./pages/GradeSelection";
 import GradesPage from "./pages/GradesPage";
 import SubjectsPage from "./pages/SubjectsPage";
 import ChaptersPage from "./pages/ChaptersPage";
@@ -33,8 +31,7 @@ const App = () => (
             <Sonner />
             <LanguageSwitcher />
             <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index />} />
+                   <Route path="/" element={<Index />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/grades" element={<GradesPage />} />
                 <Route path="/grade/:grade" element={<GradeSelection />} />
