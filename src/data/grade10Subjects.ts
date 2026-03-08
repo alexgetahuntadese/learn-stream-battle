@@ -95,13 +95,14 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Globe',
     description: 'World geography, resources, urbanization, and development',
     chapters: [
-      'Unit 1: World Physical Geography',
-      'Unit 2: World Climate and Vegetation',
-      'Unit 3: World Population',
-      'Unit 4: World Economic Activities',
-      'Unit 5: Urbanization',
-      'Unit 6: Natural Resources and Development',
-      'Unit 7: Environmental Issues and Sustainability'
+      'Unit 1: Land-forms Of Africa',
+      'Unit 2: Climate Of Africa',
+      'Unit 3: Natural Resource Base Of Africa',
+      'Unit 4: Population of Africa',
+      'Unit 5: Major Economic and Cultural Activities of Africa',
+      'Unit 6: Human – Natural Environment Interactions',
+      'Unit 7: Geographic Issues And Public Concerns In Africa',
+      'Unit 8: Geospatial Information And Data Processing'
     ],
     category: 'Social Sciences'
   },
