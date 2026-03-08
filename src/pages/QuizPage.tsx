@@ -65,6 +65,7 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
         'mathematics': grade10MathematicsQuestions,
         'physics': grade10PhysicsQuestions,
         'chemistry': grade10ChemistryQuestions,
+        'english': grade10EnglishQuestions,
       };
       
       const subjectQuestions = grade10DataMap[subjectLower];

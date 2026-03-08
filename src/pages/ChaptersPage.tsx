@@ -607,6 +607,7 @@ const ChaptersPage = () => {
         'Mathematics': grade10MathematicsQuestions,
         'Physics': grade10PhysicsQuestions,
         'Chemistry': grade10ChemistryQuestions,
+        'English': grade10EnglishQuestions,
       };
 
       const questionData = grade10QuestionSets[decodedSubject];
