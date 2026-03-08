@@ -76,7 +76,7 @@ export const matricExams: MatricExamYear[] = [
       { subject: "Chemistry", questions: chemistry2006Questions },
       { subject: "Biology", questions: biology2006Questions },
       { subject: "English", questions: english2006Questions },
-      { subject: "Civics", questions: [] },
+      { subject: "Civics", questions: civics2006Questions },
     ],
   },
 ];
