@@ -225,7 +225,7 @@ const CareerSimulatorPage = () => {
                 </div>
                 {scenarioData.skillsUsed && (
                   <div className="flex gap-2 items-center">
-                    <span className="text-gray-400 text-sm">Skills used:</span>
+                    <span className="text-white/40 text-sm">Skills used:</span>
                     {scenarioData.skillsUsed.map((s: string, i: number) => (
                       <Badge key={i} className="bg-blue-500/20 text-blue-300 text-xs">{s}</Badge>
                     ))}
