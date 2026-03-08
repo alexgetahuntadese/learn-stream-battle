@@ -361,12 +361,12 @@ const QuizPage = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -380,14 +380,14 @@ const QuizPage = () => {
           <div className="space-x-4">
             <Button 
               onClick={initializeQuestions}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white"
             >
               Try Again
             </Button>
             <Button 
               variant="outline"
               onClick={handleBackToChapters}
-              className="border-white/20 text-white hover:bg-white/10"
+              className="border-white/[0.08] text-white hover:bg-white/10"
             >
               Go Back
             </Button>
