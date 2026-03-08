@@ -15,14 +15,13 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Calculator',
     description: 'Advanced algebra, trigonometry, coordinate geometry, and calculus introduction',
     chapters: [
-      'Unit 1: Polynomial Functions',
-      'Unit 2: Exponential and Logarithmic Functions',
-      'Unit 3: Trigonometric Functions',
-      'Unit 4: Coordinate Geometry',
-      'Unit 5: Statistics and Probability',
-      'Unit 6: Mathematical Reasoning and Proofs',
-      'Unit 7: Circles',
-      'Unit 8: Solid Geometry'
+      'Unit 1: Relations and Functions',
+      'Unit 2: Polynomial Functions',
+      'Unit 3: Exponential and Logarithmic Functions',
+      'Unit 4: Trigonometric Functions',
+      'Unit 5: Circles',
+      'Unit 6: Solid Figures',
+      'Unit 7: Coordinate Geometry'
     ],
     category: 'Mathematics'
   },
