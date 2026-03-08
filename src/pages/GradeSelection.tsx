@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import StarField from '@/components/StarField';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { GraduationCap, BookOpen, Users } from 'lucide-react';
