@@ -522,7 +522,7 @@ const QuizPage = () => {
             userAnswer={selectedAnswers[currentQuestionIndex]}
           />
           
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
             <div className="text-sm text-white/40">
               Question {currentQuestionIndex + 1} of {questions.length}
             </div>
@@ -531,15 +531,17 @@ const QuizPage = () => {
                 <Button
                   onClick={handleShowAnswer}
                   variant="outline"
+                  size="sm"
                   className="border-yellow-500/50 text-yellow-400 hover:bg-yellow-500/10 hover:border-yellow-400"
                 >
-                  <Eye className="mr-2 h-4 w-4" />
+                  <Eye className="mr-1 h-4 w-4" />
                   Show Answer
                 </Button>
               )}
               <Button 
                 onClick={handleNextQuestion} 
                 disabled={!selectedAnswers[currentQuestionIndex]}
+                size="sm"
                 className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white disabled:opacity-50"
               >
                 {currentQuestionIndex === questions.length - 1 ? 'Finish' : 'Next Question'}
