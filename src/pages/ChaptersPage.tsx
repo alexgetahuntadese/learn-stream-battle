@@ -44,6 +44,7 @@ import { grade11EnglishQuestions } from '@/data/grade11EnglishQuestions';
 import { grade11GeographyQuestions } from '@/data/grade11GeographyQuestions';
 import { grade11HistoryQuestions } from '@/data/grade11HistoryQuestions';
 import { grade11AmharicQuestions } from '@/data/grade11AmharicQuestions';
+import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -398,6 +399,31 @@ const ChaptersPage = () => {
           id: index + 1,
           title: chapterName,
           description: `Grade 11 Amharic - ${chapterName}`,
+          duration: '30 min',
+          difficulty: 'Medium' as const,
+          progress: 0,
+          isCompleted: false,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
+    // Handle Grade 11 Civics
+    if ((decodedSubject === 'Civics' || decodedSubject === 'Civic Education') && grade === '11') {
+      return Object.keys(grade11CivicsQuestions).map((chapterName, index) => {
+        const questions = grade11CivicsQuestions[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: `Grade 11 Civics - ${chapterName}`,
           duration: '30 min',
           difficulty: 'Medium' as const,
           progress: 0,

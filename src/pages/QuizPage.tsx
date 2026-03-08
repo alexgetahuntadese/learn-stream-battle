@@ -15,6 +15,7 @@ import { getGrade11PhysicsQuestions } from '@/data/grade11Physics';
 import { getGrade11ChemistryQuestions } from '@/data/grade11Chemistry';
 import { getGrade11AgricultureQuestions } from '@/data/grade11AgricultureQuestions';
 import { getGrade11MathematicsQuestions } from '@/data/grade11MathematicsQuestions';
+import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 
 import QuestionCard from '@/components/QuestionCard';
 import Results from '@/components/Results';
@@ -87,6 +88,19 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
             ? allMathQuestions.filter(q => q.difficulty.toLowerCase() === difficultyLevel.toLowerCase()) 
             : allMathQuestions).slice(0, count);
           return grade11MathQuestions.map(q => ({
+            id: q.id,
+            question: q.question,
+            options: q.options,
+            correct: q.correct,
+            explanation: q.explanation
+          }));
+
+        case 'Civics':
+        case 'Civic Education':
+          const civicsData = grade11CivicsQuestions[chapter];
+          if (!civicsData) return [];
+          const filteredCivics = civicsData.filter(q => q.difficulty.toLowerCase() === difficultyLevel).slice(0, count);
+          return filteredCivics.map(q => ({
             id: q.id,
             question: q.question,
             options: q.options,
