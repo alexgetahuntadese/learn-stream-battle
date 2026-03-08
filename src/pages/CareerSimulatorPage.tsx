@@ -163,7 +163,7 @@ const CareerSimulatorPage = () => {
                     <div className="flex items-center gap-2 text-blue-400 mt-3"><GraduationCap className="h-5 w-5" /><span className="font-semibold text-white">Universities</span></div>
                     <div className="flex flex-wrap gap-1">
                       {introData.careerInfo.universities?.map((u: string, i: number) => (
-                        <Badge key={i} variant="outline" className="text-xs border-white/20 text-gray-300">{u}</Badge>
+                        <Badge key={i} variant="outline" className="text-xs border-white/[0.08] text-white/60">{u}</Badge>
                       ))}
                     </div>
                   </CardContent>
