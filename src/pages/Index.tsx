@@ -1,8 +1,9 @@
 
 import { useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote, User, LogOut, LogIn } from "lucide-react";
+import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import TopBar from "@/components/TopBar";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { getRecentAttempts } from "@/lib/performanceUtils";
 import { migrateLocalDataToDb } from "@/lib/dbPerformanceUtils";
