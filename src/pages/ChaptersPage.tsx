@@ -53,6 +53,7 @@ import { grade10Biology } from '@/data/grade10BiologyQuestions';
 import { grade10MathematicsQuestions } from '@/data/grade10MathematicsQuestions';
 import { grade10PhysicsQuestions } from '@/data/grade10PhysicsQuestions';
 import { grade10ChemistryQuestions } from '@/data/grade10ChemistryQuestions';
+import { grade10EnglishQuestions } from '@/data/grade10EnglishQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
