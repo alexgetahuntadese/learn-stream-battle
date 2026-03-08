@@ -1,99 +1,39 @@
 
 
-# Add Afan Oromo Language Support
+# Fix UI and Font Color Consistency Across All Pages
 
-## Overview
-Add bilingual support (English / Afan Oromo) to the EthioQuiz platform, allowing users to switch the entire UI to Afan Oromo (Oromiffa). This involves creating a translation system and translating all user-facing text.
+## Problem
+Several pages use inconsistent background gradients, font colors, and button styles compared to the premium dark theme established on the Homepage, Grades, Subjects, and Chapters pages.
 
-## Approach
-Create a lightweight custom i18n system using React Context (no external library needed) with translation files for English and Afan Oromo.
+## Inconsistencies Found
 
-## New Files
+| Page | Current Background | Should Be |
+|------|-------------------|-----------|
+| ProfilePage | `from-slate-900 via-purple-800 to-indigo-700` | `from-slate-950 via-indigo-950 to-slate-900` |
+| PerformancePage | `from-slate-900 via-purple-800 to-indigo-700` | `from-slate-950 via-indigo-950 to-slate-900` |
+| QuizPage | Plain `bg-slate-900` (no gradient, no stars) | `from-slate-950 via-indigo-950 to-slate-900` |
+| CareerSimulatorPage | `from-slate-900 via-purple-900 to-indigo-900` | `from-slate-950 via-indigo-950 to-slate-900` |
 
-| File | Purpose |
-|------|---------|
-| `src/i18n/translations/en.ts` | English translation strings |
-| `src/i18n/translations/om.ts` | Afan Oromo translation strings |
-| `src/i18n/LanguageContext.tsx` | React context provider for language state and translation function |
-| `src/components/LanguageSwitcher.tsx` | Toggle button/dropdown to switch between English and Afan Oromo |
+Additional issues:
+- **ProfilePage**: Uses `text-purple-200`, `text-gray-300`, `text-gray-400` instead of `text-white/50`, `text-white/70` etc. Card backgrounds use `bg-white/10` instead of `bg-white/[0.04]`.
+- **PerformancePage**: Same mismatched card and text colors (`bg-white/10`, `text-gray-300`).
+- **QuizPage**: No gradient background, no decorative elements. Buttons use `bg-blue-600` instead of gradient style.
+- **CareerSimulatorPage**: Close but not exact match. Uses `text-purple-200`, `text-purple-100`.
+- **QuestionExplanation**: Uses `bg-slate-700`, `border-slate-600`, `bg-slate-800` -- old style.
 
-## Translation Structure
+## Changes
 
-Translations will be organized by page/feature area:
+**1. ProfilePage** -- Update background gradient, card styles, and text colors to match the glassmorphism dark theme.
 
-```text
-translations = {
-  common: { back, home, loading, ... },
-  index: { title, subtitle, exploreSubjects, browseQuizzes, ... },
-  grades: { selectGrade, chooseGrade, hostSession, joinSession, ... },
-  quiz: { question, next, previous, submit, checkAnswer, ... },
-  results: { complete, score, correct, incorrect, retake, ... },
-  performance: { dashboard, overallGrade, averageScore, ... },
-  host: { hostQuiz, yourName, createSession, ... },
-  join: { joinQuiz, enterCode, ... },
-  career: { careerSuggestions, matchScore, ... },
-  subjects: { mathematics, physics, chemistry, biology, ... }
-}
-```
+**2. PerformancePage** -- Same treatment: update background, card backgrounds to `bg-white/[0.04]` with `border-white/[0.08]`, text colors to `text-white/50` and `text-white/70`.
 
-## Key Afan Oromo Translations (Sample)
+**3. QuizPage** -- Update all state views (loading, error, quiz, etc.) to use the consistent gradient background. Update button colors to use violet/fuchsia gradient style.
 
-| English | Afan Oromo |
-|---------|------------|
-| EthioQuiz 2050 | EthioQuiz 2050 |
-| Select Your Grade | Sadarkaa Kee Filadhu |
-| Browse Quizzes | Qormaata Ilaali |
-| My Performance | Gahee Koo |
-| Host Session | Waldaa Qopheessi |
-| Join Session | Waldaa Makamii |
-| Quiz Complete! | Qormaanni Xumurameera! |
-| Score | Qabxii |
-| Question | Gaaffii |
-| Next | Itti Aanee |
-| Previous | Kan Dura |
-| Submit | Galchi |
-| Back | Duubatti |
-| Correct | Sirrii |
-| Incorrect | Dogoggora |
+**4. CareerSimulatorPage** -- Align background gradient and text color tokens.
 
-## Modified Files
+**5. QuestionExplanation** -- Update from slate-based colors to glassmorphism style (`bg-white/[0.04]`, `border-white/[0.08]`).
 
-| File | Changes |
-|------|---------|
-| `src/App.tsx` | Wrap app in `LanguageProvider` |
-| `src/pages/Index.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/GradesPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/PerformancePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/HostPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/JoinPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/SessionPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/ProfilePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizInterface.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/Results.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizDashboard.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/performance/*.tsx` | Replace hardcoded text with `t()` calls |
+**6. Results component** -- Already mostly correct but will normalize any remaining gray text colors.
 
-## Language Switcher UI
-
-- A floating button or header toggle on every page showing "EN / OM"
-- Selected language saved to `localStorage` so it persists across sessions
-- Placed in the top-right corner of the main layout
-
-## Implementation Order
-
-1. Create translation files (`en.ts` and `om.ts`) with all UI strings
-2. Create `LanguageContext.tsx` with provider, `useLanguage` hook, and `t()` function
-3. Create `LanguageSwitcher.tsx` component
-4. Wrap `App.tsx` in `LanguageProvider`
-5. Update all pages and components to use `t()` for text rendering
-6. Test language switching across all pages
-
-## Technical Details
-
-- Language preference stored in `localStorage` key `preferred_language`
-- Default language: English (`en`)
-- The `t()` function takes a dot-notation key (e.g., `t('quiz.next')`) and returns the translated string
-- Falls back to English if a translation key is missing in Afan Oromo
-- Quiz question content stays in English (translating question banks is a separate effort)
-- Only UI chrome/labels are translated
+All changes are purely cosmetic CSS class updates -- no logic or structural changes.
 
