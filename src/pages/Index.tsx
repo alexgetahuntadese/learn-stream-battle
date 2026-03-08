@@ -102,9 +102,9 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4 md:p-8 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
       {/* Top bar: language + auth */}
-      <div className="fixed top-4 right-4 z-50 flex items-center gap-1">
+      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end gap-1 px-4 py-2 bg-slate-950/80 backdrop-blur-md border-b border-white/[0.04]">
         <LanguageSwitcher />
         {user ? (
           <>
