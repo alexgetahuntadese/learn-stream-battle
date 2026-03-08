@@ -42,6 +42,7 @@ import { grade11Chemistry } from '@/data/grade11Chemistry';
 import { grade11EconomicsQuestions } from '@/data/grade11EconomicsQuestions';
 import { grade11EnglishQuestions } from '@/data/grade11EnglishQuestions';
 import { grade11GeographyQuestions } from '@/data/grade11GeographyQuestions';
+import { grade11HistoryQuestions } from '@/data/grade11HistoryQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -359,6 +360,32 @@ const ChaptersPage = () => {
       });
     }
 
+    // Handle Grade 11 History
+    if (decodedSubject === 'History' && grade === '11') {
+      return Object.keys(grade11HistoryQuestions).map((chapterName, index) => {
+        const questions = grade11HistoryQuestions[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: getGrade11HistoryChapterDescription(chapterName),
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
     // Handle Grade 11 Geography
     if (decodedSubject === 'Geography' && grade === '11') {
       return Object.keys(grade11GeographyQuestions).map((chapterName, index) => {
@@ -524,6 +551,21 @@ const ChaptersPage = () => {
       "Unit 7: Main Sectors, Sectorial Policies And Strategies Of Ethiopia": "Examine Ethiopia's economic sectors, development plans, and policy strategies"
     };
     return descriptions[chapterName] || "Comprehensive study of economic concepts and principles";
+  };
+
+  const getGrade11HistoryChapterDescription = (chapterName: string) => {
+    const descriptions: { [key: string]: string } = {
+      "Unit 1: History, Historiography, And Human Evolution": "Introduction to historical study, historiography methods, prehistory, and human evolution",
+      "Unit 2: Major Spots Of Ancient World Civilizations Up To C.500 A.D": "Rise of ancient civilizations in Africa, Asia, Europe, and the spread of Christianity",
+      "Unit 3: Peoples, States, And Historical Processes In Ethiopia And The Horn To The End Of The 13th Century": "Aksumite Kingdom, Sultanate of Shewa, Zagwe Dynasty, and Horn of Africa history",
+      "Unit 4: The Middle Ages And Early Modern World, C. 500 AD-1789": "Feudalism, capitalism, Renaissance, Reformation, Enlightenment, and global exploration",
+      "Unit 5: Peoples And States Of Africa To 1500": "Ancient and medieval African states, spread of Islam, and inter-regional exchanges",
+      "Unit 6: Africa And The Outside World: 1500-1880": "Slave trade, legitimate trade, European exploration, and missionary activities in Africa",
+      "Unit 7: States, Principalities, Population Movements, And Interactions In Ethiopia": "Christian Highland Kingdom, Islamic expansion, and population movements in Ethiopia",
+      "Unit 8: Political, Social, And Economic Processes In Ethiopia, Mid 16th To Mid-19th Century": "Zemene Mesafint, Gondarine period, land tenure, and socio-economic structures",
+      "Unit 9: The Age Of Revolutions, 1789 To 1815": "Industrial Revolution, American independence, French Revolution, and the rise of Napoleon"
+    };
+    return descriptions[chapterName] || "Comprehensive study of historical events and processes";
   };
 
   const getGrade11MathChapterDescription = (chapterName: string) => {
