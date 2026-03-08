@@ -132,7 +132,8 @@ const SessionPage = () => {
 
   if (!session) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 flex items-center justify-center overflow-hidden relative">
+        <StarField starCount={30} shootingCount={2} />
         <div className="text-white text-xl">{t('common.loading')}</div>
       </div>
     );
