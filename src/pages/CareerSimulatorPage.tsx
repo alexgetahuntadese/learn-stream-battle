@@ -117,7 +117,7 @@ const CareerSimulatorPage = () => {
                   <CardContent className="p-4 text-center">
                     <span className="text-4xl block mb-2">{career.icon}</span>
                     <h3 className="text-white font-semibold text-sm">{career.name}</h3>
-                    <Badge variant="outline" className="mt-1 text-[10px] border-white/20 te[0.08] text-white/4areer.field}</Badge>
+                    <Badge variant="outline" className="mt-1 text-[10px] border-white/[0.08] text-white/40">{career.field}</Badge>
                   </CardContent>
                 </Card>
               ))}
