@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle, XCircle, Clock, RotateCcw, ArrowLeft, BarChart3 } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { saveQuizAttempt } from '@/lib/performanceUtils';
+import { saveQuizAttemptToDb } from '@/lib/dbPerformanceUtils';
 import { useLanguage } from '@/i18n/LanguageContext';
 
 interface Question {
