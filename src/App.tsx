@@ -19,6 +19,9 @@ import PerformancePage from "./pages/PerformancePage";
 import ProfilePage from "./pages/ProfilePage";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
+import MatricExamPage from "./pages/MatricExamPage";
+import MatricYearPage from "./pages/MatricYearPage";
+import MatricQuizPage from "./pages/MatricQuizPage";
 
 const queryClient = new QueryClient();
 
