@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { ArrowLeft, BookOpen, Trophy, Sparkles, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
+import TopBar from "@/components/TopBar";
 
 const generateStars = (count: number) =>
   Array.from({ length: count }, (_, i) => ({
