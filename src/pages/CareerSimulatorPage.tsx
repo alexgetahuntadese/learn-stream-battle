@@ -129,8 +129,8 @@ const CareerSimulatorPage = () => {
         {stage === 'loading' && (
           <div className="flex flex-col items-center justify-center py-24 animate-fade-in">
             <Loader2 className="h-12 w-12 text-purple-400 animate-spin mb-4" />
-            <p className="text-purple-200 text-lg">Generating your scenario...</p>
-            <p className="text-purple-300/60 text-sm mt-1">AI is crafting a unique experience for you</p>
+            <p className="text-white/60 text-lg">Generating your scenario...</p>
+            <p className="text-white/30 text-sm mt-1">AI is crafting a unique experience for you</p>
           </div>
         )}
 
