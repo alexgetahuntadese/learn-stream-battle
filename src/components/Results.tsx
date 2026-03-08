@@ -53,7 +53,7 @@ const Results = ({
     const attemptChapter = chapter || params.chapterId || 'Unknown';
     const attemptDifficulty = difficulty || params.difficulty || 'medium';
     
-    saveQuizAttempt({
+    const attemptData = {
       grade: attemptGrade,
       subject: attemptSubject,
       chapter: attemptChapter,
@@ -62,7 +62,12 @@ const Results = ({
       correct_answers: score,
       total_questions: totalQuestions,
       time_spent: timeTaken,
-    });
+    };
+
+    // Save to localStorage (offline fallback)
+    saveQuizAttempt(attemptData);
+    // Save to database (if authenticated)
+    saveQuizAttemptToDb(attemptData);
   }, []);
   
   const getScoreColor = (percentage: number) => {
