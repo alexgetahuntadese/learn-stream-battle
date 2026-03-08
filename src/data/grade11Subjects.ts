@@ -97,6 +97,26 @@ export const grade11Subjects: Grade11Subject[] = [
     category: 'Other'
   },
   {
+    id: 'civics',
+    name: 'Civics',
+    icon: 'Scale',
+    description: 'Civic and ethical education covering democracy, rights, governance, and ethics',
+    chapters: [
+      'Unit 1: Building a Democratic System',
+      'Unit 2: Democratic Rights of Citizens',
+      'Unit 3: Nations, Nationalities and Peoples of Ethiopia',
+      'Unit 4: Constitutionalism and the Ethiopian Constitution',
+      'Unit 5: Ethics and Ethical Conduct',
+      'Unit 6: Patriotism and National Identity',
+      'Unit 7: Gender Equality and Development',
+      'Unit 8: Conflict Resolution and Peace Building',
+      'Unit 9: Good Governance',
+      'Unit 10: Economic Rights and Financial Literacy',
+      'Unit 11: Environmental Ethics and Sustainable Development'
+    ],
+    category: 'Social Sciences'
+  },
+  {
     id: 'economics',
     name: 'Economics',
     icon: 'TrendingUp',
