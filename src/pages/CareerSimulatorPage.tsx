@@ -213,7 +213,7 @@ const CareerSimulatorPage = () => {
                 {scenarioData.outcome && (
                   <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
                     <p className="text-green-300 text-sm font-medium mb-1">📌 What happened:</p>
-                    <p className="text-gray-200">{scenarioData.outcome}</p>
+                    <p className="text-white/70">{scenarioData.outcome}</p>
                   </div>
                 )}
                 {scenarioData.progressNote && (
