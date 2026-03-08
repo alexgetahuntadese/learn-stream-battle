@@ -112,13 +112,15 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Clock',
     description: 'Modern world history and Ethiopian modernization',
     chapters: [
-      'Unit 1: The Era of Princes (Zemene Mesafint)',
-      'Unit 2: The Making of Modern Ethiopia',
-      'Unit 3: Modern World History (1789-1914)',
-      'Unit 4: World War I and Its Aftermath',
-      'Unit 5: The Italian Invasion and WWII',
-      'Unit 6: Post-WWII World',
-      'Unit 7: Ethiopia from 1941 to Present'
+      'Unit 1: Development of Capitalism and Nationalism 1815-1914',
+      'Unit 2: Africa & the Colonial Experience (1880s-1960s)',
+      'Unit 3: Social, Economic & Political Developments in Ethiopia mid-19th C. to 1941',
+      'Unit 4: Society and Politics in the Age of World Wars 1914-1945',
+      'Unit 5: Global and Regional Developments Since 1945',
+      'Unit 6: Ethiopia: Internal Developments and External Influences from 1941 to 1991',
+      'Unit 7: Africa Since 1960',
+      'Unit 8: Post-1991 Developments in Ethiopia',
+      'Unit 9: Indigenous Knowledge and Heritages of Ethiopia'
     ],
     category: 'Social Sciences'
   },
