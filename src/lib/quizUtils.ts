@@ -5,6 +5,7 @@ import { grade11Chemistry } from "@/data/grade11Chemistry";
 
 import { grade11Physics } from "@/data/grade11Physics";
 import { grade11GeographyQuestions } from "@/data/grade11GeographyQuestions";
+import { grade11HistoryQuestions } from "@/data/grade11HistoryQuestions";
 import { grade11EnglishQuestions } from "@/data/grade11EnglishQuestions";
 import { grade12AgricultureQuestions } from "@/data/grade12AgricultureQuestions";
 import { grade12BiologyQuestions } from "@/data/grade12BiologyQuestions";
