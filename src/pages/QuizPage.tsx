@@ -483,20 +483,18 @@ const QuizPage = () => {
 
   return (
     <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center">
-          <Button
-            variant="ghost"
-            onClick={handleBackToChapters}
-            className="text-white hover:bg-white/10 mr-4"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
-          </Button>
-          <h2 className="text-2xl font-semibold text-white">
-            Grade {grade} {subject} - {chapterId} ({difficulty})
-          </h2>
-        </div>
+      <div className="mb-6">
+        <Button
+          variant="ghost"
+          onClick={handleBackToChapters}
+          className="text-white hover:bg-white/10 mb-2"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back
+        </Button>
+        <h2 className="text-lg sm:text-2xl font-semibold text-white">
+          Grade {grade} {subject} - {chapterId} ({difficulty})
+        </h2>
       </div>
 
       {showResults ? (
