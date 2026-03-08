@@ -1,99 +1,40 @@
 
 
-# Add Afan Oromo Language Support
+## Plan: Add Grade 11 Civic Education Curriculum
 
-## Overview
-Add bilingual support (English / Afan Oromo) to the EthioQuiz platform, allowing users to switch the entire UI to Afan Oromo (Oromiffa). This involves creating a translation system and translating all user-facing text.
+Civics already appears on the subjects page for both grades, but Grade 11 has no data file, no chapter definitions in `grade11Subjects.ts`, and no handler in `ChaptersPage.tsx`. This plan adds the full Grade 11 Civic Education curriculum based on the Ethiopian New Curriculum.
 
-## Approach
-Create a lightweight custom i18n system using React Context (no external library needed) with translation files for English and Afan Oromo.
+### Changes
 
-## New Files
+**1. Update `src/data/grade11Subjects.ts`**
+Add a new "Civics" subject entry under `'Social Sciences'` category with these chapters (based on the Ethiopian Grade 11 Civic and Ethical Education curriculum):
+- Unit 1: Building a Democratic System
+- Unit 2: Democratic Rights of Citizens
+- Unit 3: Nations, Nationalities and Peoples of Ethiopia
+- Unit 4: Constitutionalism and the Ethiopian Constitution
+- Unit 5: Ethics and Ethical Conduct
+- Unit 6: Patriotism and National Identity
+- Unit 7: Gender Equality and Development
+- Unit 8: Conflict Resolution and Peace Building
+- Unit 9: Good Governance
+- Unit 10: Economic Rights and Financial Literacy
+- Unit 11: Environmental Ethics and Sustainable Development
 
-| File | Purpose |
-|------|---------|
-| `src/i18n/translations/en.ts` | English translation strings |
-| `src/i18n/translations/om.ts` | Afan Oromo translation strings |
-| `src/i18n/LanguageContext.tsx` | React context provider for language state and translation function |
-| `src/components/LanguageSwitcher.tsx` | Toggle button/dropdown to switch between English and Afan Oromo |
+Icon: `"Scale"` (for justice/civics). ID: `"civics"`.
 
-## Translation Structure
+**2. Create `src/data/grade11CivicsQuestions.ts`**
+New question bank with 330 questions (10 Easy + 10 Medium + 10 Hard per unit × 11 units). Same interface as `grade12CivicsQuestions.ts`. Topics cover Ethiopian democracy, constitutional rights, ethics, patriotism, gender equality, conflict resolution, governance, and environmental ethics.
 
-Translations will be organized by page/feature area:
+**3. Update `src/lib/quizUtils.ts`**
+- Import `grade11CivicsQuestions`
+- Add `"Civics": grade11CivicsQuestions` to `questionSets["11"]`
 
-```text
-translations = {
-  common: { back, home, loading, ... },
-  index: { title, subtitle, exploreSubjects, browseQuizzes, ... },
-  grades: { selectGrade, chooseGrade, hostSession, joinSession, ... },
-  quiz: { question, next, previous, submit, checkAnswer, ... },
-  results: { complete, score, correct, incorrect, retake, ... },
-  performance: { dashboard, overallGrade, averageScore, ... },
-  host: { hostQuiz, yourName, createSession, ... },
-  join: { joinQuiz, enterCode, ... },
-  career: { careerSuggestions, matchScore, ... },
-  subjects: { mathematics, physics, chemistry, biology, ... }
-}
-```
+**4. Update `src/pages/ChaptersPage.tsx`**
+Add a handler block for `decodedSubject === 'Civic Education' && grade === '11'` that reads from `grade11CivicsQuestions`, computing question counts and difficulty breakdowns dynamically (same pattern as the Grade 12 Civics handler).
 
-## Key Afan Oromo Translations (Sample)
+**5. Update `src/pages/SubjectsPage.tsx`**
+Update the Civic Education entry in `baseSubjects` to show 11 chapters (it already does — no change needed there).
 
-| English | Afan Oromo |
-|---------|------------|
-| EthioQuiz 2050 | EthioQuiz 2050 |
-| Select Your Grade | Sadarkaa Kee Filadhu |
-| Browse Quizzes | Qormaata Ilaali |
-| My Performance | Gahee Koo |
-| Host Session | Waldaa Qopheessi |
-| Join Session | Waldaa Makamii |
-| Quiz Complete! | Qormaanni Xumurameera! |
-| Score | Qabxii |
-| Question | Gaaffii |
-| Next | Itti Aanee |
-| Previous | Kan Dura |
-| Submit | Galchi |
-| Back | Duubatti |
-| Correct | Sirrii |
-| Incorrect | Dogoggora |
-
-## Modified Files
-
-| File | Changes |
-|------|---------|
-| `src/App.tsx` | Wrap app in `LanguageProvider` |
-| `src/pages/Index.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/GradesPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/PerformancePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/HostPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/JoinPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/SessionPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/ProfilePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizInterface.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/Results.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizDashboard.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/performance/*.tsx` | Replace hardcoded text with `t()` calls |
-
-## Language Switcher UI
-
-- A floating button or header toggle on every page showing "EN / OM"
-- Selected language saved to `localStorage` so it persists across sessions
-- Placed in the top-right corner of the main layout
-
-## Implementation Order
-
-1. Create translation files (`en.ts` and `om.ts`) with all UI strings
-2. Create `LanguageContext.tsx` with provider, `useLanguage` hook, and `t()` function
-3. Create `LanguageSwitcher.tsx` component
-4. Wrap `App.tsx` in `LanguageProvider`
-5. Update all pages and components to use `t()` for text rendering
-6. Test language switching across all pages
-
-## Technical Details
-
-- Language preference stored in `localStorage` key `preferred_language`
-- Default language: English (`en`)
-- The `t()` function takes a dot-notation key (e.g., `t('quiz.next')`) and returns the translated string
-- Falls back to English if a translation key is missing in Afan Oromo
-- Quiz question content stays in English (translating question banks is a separate effort)
-- Only UI chrome/labels are translated
+**6. Update `src/pages/QuizPage.tsx`**
+Add a case for Grade 11 Civics in the question-loading switch so quizzes actually work.
 
