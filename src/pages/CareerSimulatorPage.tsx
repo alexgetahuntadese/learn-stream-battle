@@ -300,7 +300,7 @@ const CareerSimulatorPage = () => {
               <Card className="bg-white/5 border-white/10">
                 <CardContent className="p-5">
                   <h3 className="text-purple-400 font-semibold mb-2">🎓 Advice</h3>
-                  <p className="text-gray-300">{finalData.advice}</p>
+                  <p className="text-white/60">{finalData.advice}</p>
                 </CardContent>
               </Card>
             )}
