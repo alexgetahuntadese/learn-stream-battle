@@ -166,7 +166,7 @@ const SessionPage = () => {
     const isLastQuestion = session.current_question_index >= questions.length - 1;
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-800 to-indigo-700 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 p-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-4">
             <div className="text-white">
