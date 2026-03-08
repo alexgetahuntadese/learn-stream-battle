@@ -76,14 +76,16 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'BookOpen',
     description: 'Advanced reading, writing, literature, and communication skills',
     chapters: [
-      'Unit 1: Education and Development',
-      'Unit 2: Technology and Society',
-      'Unit 3: Literature and Culture',
-      'Unit 4: Environment and Conservation',
-      'Unit 5: Globalization',
-      'Unit 6: Media and Communication',
-      'Unit 7: Career Planning',
-      'Unit 8: Ethiopian Heritage'
+      'Unit 1: Population Growth',
+      'Unit 2: Travel Behaviors',
+      'Unit 3: Punctuality',
+      'Unit 4: Tourist Attractions',
+      'Unit 5: Honey Processing',
+      'Unit 6: Migration',
+      'Unit 7: Branding Ethiopia and National Identity',
+      'Unit 8: The Healing Power of Plants',
+      'Unit 9: Multilingualism',
+      'Unit 10: Digital Vs Satellite Television'
     ],
     category: 'Languages'
   },
@@ -93,13 +95,14 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Globe',
     description: 'World geography, resources, urbanization, and development',
     chapters: [
-      'Unit 1: World Physical Geography',
-      'Unit 2: World Climate and Vegetation',
-      'Unit 3: World Population',
-      'Unit 4: World Economic Activities',
-      'Unit 5: Urbanization',
-      'Unit 6: Natural Resources and Development',
-      'Unit 7: Environmental Issues and Sustainability'
+      'Unit 1: Land-forms Of Africa',
+      'Unit 2: Climate Of Africa',
+      'Unit 3: Natural Resource Base Of Africa',
+      'Unit 4: Population of Africa',
+      'Unit 5: Major Economic and Cultural Activities of Africa',
+      'Unit 6: Human – Natural Environment Interactions',
+      'Unit 7: Geographic Issues And Public Concerns In Africa',
+      'Unit 8: Geospatial Information And Data Processing'
     ],
     category: 'Social Sciences'
   },
@@ -109,13 +112,15 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Clock',
     description: 'Modern world history and Ethiopian modernization',
     chapters: [
-      'Unit 1: The Era of Princes (Zemene Mesafint)',
-      'Unit 2: The Making of Modern Ethiopia',
-      'Unit 3: Modern World History (1789-1914)',
-      'Unit 4: World War I and Its Aftermath',
-      'Unit 5: The Italian Invasion and WWII',
-      'Unit 6: Post-WWII World',
-      'Unit 7: Ethiopia from 1941 to Present'
+      'Unit 1: Development of Capitalism and Nationalism 1815-1914',
+      'Unit 2: Africa & the Colonial Experience (1880s-1960s)',
+      'Unit 3: Social, Economic & Political Developments in Ethiopia mid-19th C. to 1941',
+      'Unit 4: Society and Politics in the Age of World Wars 1914-1945',
+      'Unit 5: Global and Regional Developments Since 1945',
+      'Unit 6: Ethiopia: Internal Developments and External Influences from 1941 to 1991',
+      'Unit 7: Africa Since 1960',
+      'Unit 8: Post-1991 Developments in Ethiopia',
+      'Unit 9: Indigenous Knowledge and Heritages of Ethiopia'
     ],
     category: 'Social Sciences'
   },
@@ -125,13 +130,14 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Scale',
     description: 'Government systems, constitution, human rights, and global citizenship',
     chapters: [
-      'Unit 1: The Ethiopian Constitution',
-      'Unit 2: Government Structure and Functions',
-      'Unit 3: Human Rights',
-      'Unit 4: Democracy and Elections',
-      'Unit 5: Rule of Law',
-      'Unit 6: Federalism in Ethiopia',
-      'Unit 7: Global Citizenship'
+      'Unit 1: Democracy And Democratization',
+      'Unit 2: Citizens In The Digital Technology Age',
+      'Unit 3: Understanding Good Governance',
+      'Unit 4: Peace And Indigenous Conflict Resolution Mechanisms',
+      'Unit 5: Federalism In Ethiopia',
+      'Unit 6: Human Rights',
+      'Unit 7: Patriotism',
+      'Unit 8: Globalization And Global Issues'
     ],
     category: 'Social Sciences'
   },
@@ -141,12 +147,15 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Type',
     description: 'Advanced Amharic language, literature, and critical analysis',
     chapters: [
-      'ምዕራፍ 1: ንባብ (Reading)',
-      'ምዕራፍ 2: ሰዋሰው (Grammar)',
-      'ምዕራፍ 3: ግጥም (Poetry)',
-      'ምዕራፍ 4: ድራማ (Drama)',
-      'ምዕራፍ 5: ጽሑፍ (Writing)',
-      'ምዕራፍ 6: ቋንቋ ጥናት (Language Study)'
+      'ምዕራፍ አንድ: ቋንቋና ማህበረሰብ',
+      'ምዕራፍ ሁለት: ባህላዊ ጋብቻ',
+      'ምዕራፍ ሶስት: ሴቶች እና እድገት',
+      'ምዕራፍ አራት: በልዩነት ውስጥ ያለ አንድነት',
+      'ምዕራፍ አምስት: የቋንቋ ለዛ',
+      'ምዕራፍ ስድስት: የታላላቆች ሚና',
+      'ምዕራፍ ሰባት: ረጅም ልቦለድ',
+      'ምዕራፍ ስምንት: ማህበራዊ መገናኛ ብዙኀን',
+      'ምዕራፍ ዘጠኝ: ሥራ ፈጠራ'
     ],
     category: 'Languages'
   },
@@ -156,13 +165,14 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'TrendingUp',
     description: 'Introduction to economics, markets, and Ethiopian economy',
     chapters: [
-      'Unit 1: Basic Economic Concepts',
-      'Unit 2: Demand, Supply and Market Equilibrium',
-      'Unit 3: Theory of Production and Costs',
-      'Unit 4: Market Structures',
-      'Unit 5: National Income',
-      'Unit 6: Money and Banking',
-      'Unit 7: The Ethiopian Economy'
+      'Unit 1: Theory of Consumer Behaviour',
+      'Unit 2: Theories of Demand and Supply',
+      'Unit 3: Theories of Production and Cost',
+      'Unit 4: Market Structure',
+      'Unit 5: Banking and Finance',
+      'Unit 6: Economic Growth',
+      'Unit 7: The Ethiopian Economy',
+      'Unit 8: Business Startups and Innovation'
     ],
     category: 'Social Sciences'
   }
