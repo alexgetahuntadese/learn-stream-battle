@@ -1,9 +1,12 @@
 
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Users, Zap } from "lucide-react";
+import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { getRecentAttempts } from "@/lib/performanceUtils";
+import { formatDistanceToNow } from "date-fns";
+import { Badge } from "@/components/ui/badge";
 
 const generateStars = (count: number) =>
   Array.from({ length: count }, (_, i) => ({
