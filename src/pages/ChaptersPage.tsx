@@ -49,6 +49,9 @@ import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 import { grade11Physics } from '@/data/grade11Physics';
 import { grade9Subjects } from '@/data/grade9Subjects';
 import { grade10Subjects } from '@/data/grade10Subjects';
+import { grade10Biology } from '@/data/grade10BiologyQuestions';
+import { grade10MathematicsQuestions } from '@/data/grade10MathematicsQuestions';
+import { grade10PhysicsQuestions } from '@/data/grade10PhysicsQuestions';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -594,15 +597,61 @@ const ChaptersPage = () => {
       });
     }
     
-    // Handle Grade 9 and 10 subjects (no question data yet, show chapter structure)
-    if (grade === '9' || grade === '10') {
-      const gradeSubjects = grade === '9' ? grade9Subjects : grade10Subjects;
-      const subjectData = gradeSubjects.find(s => s.name === decodedSubject);
+    // Handle Grade 10 subjects with question data
+    if (grade === '10') {
+      // Map subject names to their question data
+      const grade10QuestionSets: Record<string, Record<string, any[]>> = {
+        'Biology': grade10Biology,
+        'Mathematics': grade10MathematicsQuestions,
+        'Physics': grade10PhysicsQuestions,
+      };
+
+      const questionData = grade10QuestionSets[decodedSubject];
+      if (questionData) {
+        return Object.keys(questionData).map((chapterName, index) => {
+          const questions = questionData[chapterName];
+          const easyQuestions = questions.filter((q: any) => q.difficulty === 'Easy').length;
+          const mediumQuestions = questions.filter((q: any) => q.difficulty === 'Medium').length;
+          const hardQuestions = questions.filter((q: any) => q.difficulty === 'Hard').length;
+          return {
+            id: index + 1,
+            title: chapterName,
+            description: `Grade 10 ${decodedSubject} - ${chapterName}`,
+            duration: getDurationEstimate(questions.length),
+            difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+            progress: 0,
+            isCompleted: false,
+            questionsCount: questions.length,
+            difficultyBreakdown: { easy: easyQuestions, medium: mediumQuestions, hard: hardQuestions }
+          };
+        });
+      }
+
+      // Fallback for Grade 10 subjects without question data
+      const subjectData = grade10Subjects.find(s => s.name === decodedSubject);
       if (subjectData) {
         return subjectData.chapters.map((chapter, index) => ({
           id: index + 1,
           title: chapter,
-          description: `Grade ${grade} ${decodedSubject} - ${chapter}`,
+          description: `Grade 10 ${decodedSubject} - ${chapter}`,
+          duration: '20 min',
+          difficulty: 'Medium' as const,
+          progress: 0,
+          isCompleted: false,
+          questionsCount: 0,
+          difficultyBreakdown: { easy: 0, medium: 0, hard: 0 }
+        }));
+      }
+    }
+
+    // Handle Grade 9 subjects (no question data yet)
+    if (grade === '9') {
+      const subjectData = grade9Subjects.find(s => s.name === decodedSubject);
+      if (subjectData) {
+        return subjectData.chapters.map((chapter, index) => ({
+          id: index + 1,
+          title: chapter,
+          description: `Grade 9 ${decodedSubject} - ${chapter}`,
           duration: '20 min',
           difficulty: 'Medium' as const,
           progress: 0,
