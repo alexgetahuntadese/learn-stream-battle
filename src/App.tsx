@@ -8,7 +8,8 @@ import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
-m "./pages/GradeSelection";
+import Index from "./pages/Index";
+import GradeSelection from "./pages/GradeSelection";
 import GradesPage from "./pages/GradesPage";
 import SubjectsPage from "./pages/SubjectsPage";
 import ChaptersPage from "./pages/ChaptersPage";
@@ -29,9 +30,9 @@ const App = () => (
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            <LanguageSwitcher />
             <BrowserRouter>
-                   <Route path="/" element={<Index />} />
+              <Routes>
+                <Route path="/" element={<Index />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/grades" element={<GradesPage />} />
                 <Route path="/grade/:grade" element={<GradeSelection />} />
