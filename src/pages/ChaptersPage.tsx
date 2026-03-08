@@ -45,6 +45,7 @@ import { grade11GeographyQuestions } from '@/data/grade11GeographyQuestions';
 import { grade11HistoryQuestions } from '@/data/grade11HistoryQuestions';
 import { grade11AmharicQuestions } from '@/data/grade11AmharicQuestions';
 import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
+import { grade11Physics } from '@/data/grade11Physics';
 
 const ChaptersPage = () => {
   const navigate = useNavigate();
@@ -428,6 +429,32 @@ const ChaptersPage = () => {
           difficulty: 'Medium' as const,
           progress: 0,
           isCompleted: false,
+          questionsCount: questions.length,
+          difficultyBreakdown: {
+            easy: easyQuestions,
+            medium: mediumQuestions,
+            hard: hardQuestions
+          }
+        };
+      });
+    }
+
+    // Handle Grade 11 Physics
+    if (decodedSubject === 'Physics' && grade === '11') {
+      return Object.keys(grade11Physics).map((chapterName, index) => {
+        const questions = grade11Physics[chapterName];
+        const easyQuestions = questions.filter(q => q.difficulty === 'Easy').length;
+        const mediumQuestions = questions.filter(q => q.difficulty === 'Medium').length;
+        const hardQuestions = questions.filter(q => q.difficulty === 'Hard').length;
+        
+        return {
+          id: index + 1,
+          title: chapterName,
+          description: `Grade 11 Physics - ${chapterName}`,
+          duration: getDurationEstimate(questions.length),
+          difficulty: getDominantDifficulty(easyQuestions, mediumQuestions, hardQuestions),
+          progress: Math.floor(Math.random() * 101),
+          isCompleted: Math.random() > 0.7,
           questionsCount: questions.length,
           difficultyBreakdown: {
             easy: easyQuestions,
