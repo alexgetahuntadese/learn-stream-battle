@@ -165,13 +165,14 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'TrendingUp',
     description: 'Introduction to economics, markets, and Ethiopian economy',
     chapters: [
-      'Unit 1: Basic Economic Concepts',
-      'Unit 2: Demand, Supply and Market Equilibrium',
-      'Unit 3: Theory of Production and Costs',
-      'Unit 4: Market Structures',
-      'Unit 5: National Income',
-      'Unit 6: Money and Banking',
-      'Unit 7: The Ethiopian Economy'
+      'Unit 1: Theory of Consumer Behaviour',
+      'Unit 2: Theories of Demand and Supply',
+      'Unit 3: Theories of Production and Cost',
+      'Unit 4: Market Structure',
+      'Unit 5: Banking and Finance',
+      'Unit 6: Economic Growth',
+      'Unit 7: The Ethiopian Economy',
+      'Unit 8: Business Startups and Innovation'
     ],
     category: 'Social Sciences'
   }
