@@ -175,7 +175,7 @@ const Index = () => {
               <div
                 key={index}
                 onClick={() => navigate(feature.route)}
-                className={`group relative cursor-pointer opacity-0 animate-fade-in ${feature.colSpan ? 'md:col-span-2' : ''}`}
+                className={`group relative cursor-pointer opacity-0 animate-fade-in ${(feature as any).colSpan ? 'md:col-span-2' : ''}`}
                 style={{ animationDelay: `${0.3 + 0.15 * index}s`, animationFillMode: 'forwards' }}
               >
                 <div className={`absolute -inset-1 bg-gradient-to-r ${feature.accent} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`} />
