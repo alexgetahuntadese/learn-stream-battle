@@ -40,6 +40,12 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
   
   try {
     // Handle Grade 11 subjects
+    // Handle Grade 9 and 10 - no questions yet
+    if (grade === '9' || grade === '10') {
+      console.warn(`Grade ${grade} questions not yet available for ${subject}`);
+      return [];
+    }
+
     if (grade === '11') {
       const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
       

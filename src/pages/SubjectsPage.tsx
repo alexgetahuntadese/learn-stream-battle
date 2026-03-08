@@ -139,6 +139,32 @@ const SubjectsPage = () => {
       },
     ];
 
+    // For grades 9 and 10, add Amharic
+    if (gradeNum === '9' || gradeNum === '10') {
+      baseSubjects.push(
+        {
+          name: 'Amharic',
+          description: 'Amharic language, grammar, literature, and composition',
+          chapters: gradeNum === '9' ? 6 : 6,
+          estimatedTime: '25 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.Amharic,
+        }
+      );
+      if (gradeNum === '10') {
+        baseSubjects.push(
+          {
+            name: 'Economics',
+            description: 'Introduction to economics, markets, and the Ethiopian economy',
+            chapters: 7,
+            estimatedTime: '28 hours',
+            difficulty: 'Intermediate',
+            icon: subjectIcons.Economics,
+          }
+        );
+      }
+    }
+
     // Add grade-specific subjects
     if (gradeNum === '11') {
       baseSubjects.push(
