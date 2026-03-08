@@ -592,6 +592,28 @@ const ChaptersPage = () => {
       });
     }
     
+    // Handle Grade 9 and 10 subjects (no question data yet, show chapter structure)
+    if (grade === '9' || grade === '10') {
+      const gradeSubjects = grade === '9' 
+        ? (await import('@/data/grade9Subjects')).grade9Subjects
+        : (await import('@/data/grade10Subjects')).grade10Subjects;
+      
+      const subjectData = gradeSubjects.find(s => s.name === decodedSubject || s.name === decodedSubject.replace('Civic Education', 'Civic Education'));
+      if (subjectData) {
+        return subjectData.chapters.map((chapter, index) => ({
+          id: index + 1,
+          title: chapter,
+          description: `Grade ${grade} ${decodedSubject} - ${chapter}`,
+          duration: '20 min',
+          difficulty: 'Medium' as const,
+          progress: 0,
+          isCompleted: false,
+          questionsCount: 0,
+          difficultyBreakdown: { easy: 0, medium: 0, hard: 0 }
+        }));
+      }
+    }
+
     // Fallback: return empty for subjects without question data yet
     return [];
   };
