@@ -64,6 +64,7 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
       const grade10DataMap: Record<string, Record<string, any[]>> = {
         'mathematics': grade10MathematicsQuestions,
         'physics': grade10PhysicsQuestions,
+        'chemistry': grade10ChemistryQuestions,
       };
       
       const subjectQuestions = grade10DataMap[subjectLower];
