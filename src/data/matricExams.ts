@@ -21,6 +21,7 @@ import { physics2006Questions } from './physics2006Questions';
 import { chemistry2006Questions } from './chemistry2006Questions';
 import { biology2006Questions } from './biology2006Questions';
 import { english2006Questions } from './english2006Questions';
+import { civics2006Questions } from './civics2006Questions';
 
 export const matricExams: MatricExamYear[] = [
   {
