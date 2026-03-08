@@ -221,7 +221,7 @@ const CareerSimulatorPage = () => {
                 )}
                 <div className="bg-black/20 rounded-lg p-4">
                   <p className="font-semibold text-white mb-1">⚡ New Challenge:</p>
-                  <p className="text-gray-200">{scenarioData.newScenario}</p>
+                  <p className="text-white/70">{scenarioData.newScenario}</p>
                 </div>
                 {scenarioData.skillsUsed && (
                   <div className="flex gap-2 items-center">
