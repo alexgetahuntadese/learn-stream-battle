@@ -147,12 +147,15 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Type',
     description: 'Advanced Amharic language, literature, and critical analysis',
     chapters: [
-      'ምዕራፍ 1: ንባብ (Reading)',
-      'ምዕራፍ 2: ሰዋሰው (Grammar)',
-      'ምዕራፍ 3: ግጥም (Poetry)',
-      'ምዕራፍ 4: ድራማ (Drama)',
-      'ምዕራፍ 5: ጽሑፍ (Writing)',
-      'ምዕራፍ 6: ቋንቋ ጥናት (Language Study)'
+      'ምዕራፍ አንድ: ቋንቋና ማህበረሰብ',
+      'ምዕራፍ ሁለት: ባህላዊ ጋብቻ',
+      'ምዕራፍ ሶስት: ሴቶች እና እድገት',
+      'ምዕራፍ አራት: በልዩነት ውስጥ ያለ አንድነት',
+      'ምዕራፍ አምስት: የቋንቋ ለዛ',
+      'ምዕራፍ ስድስት: የታላላቆች ሚና',
+      'ምዕራፍ ሰባት: ረጅም ልቦለድ',
+      'ምዕራፍ ስምንት: ማህበራዊ መገናኛ ብዙኀን',
+      'ምዕራፍ ዘጠኝ: ሥራ ፈጠራ'
     ],
     category: 'Languages'
   },
