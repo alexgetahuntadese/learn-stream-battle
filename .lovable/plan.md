@@ -1,99 +1,39 @@
 
 
-# Add Afan Oromo Language Support
+## Plan: Enhance Homepage UI
 
-## Overview
-Add bilingual support (English / Afan Oromo) to the EthioQuiz platform, allowing users to switch the entire UI to Afan Oromo (Oromiffa). This involves creating a translation system and translating all user-facing text.
+The current homepage is functional but plain compared to the polished GradesPage which has floating stars, shooting stars, glowing orbs, and refined glassmorphism cards. This plan brings the homepage to the same premium level.
 
-## Approach
-Create a lightweight custom i18n system using React Context (no external library needed) with translation files for English and Afan Oromo.
+### Changes to `src/pages/Index.tsx`
 
-## New Files
+**1. Add floating stars + shooting stars background**
+Reuse the same `generateStars` and `generateShootingStars` pattern from GradesPage, plus the decorative blurred gradient orbs.
 
-| File | Purpose |
-|------|---------|
-| `src/i18n/translations/en.ts` | English translation strings |
-| `src/i18n/translations/om.ts` | Afan Oromo translation strings |
-| `src/i18n/LanguageContext.tsx` | React context provider for language state and translation function |
-| `src/components/LanguageSwitcher.tsx` | Toggle button/dropdown to switch between English and Afan Oromo |
+**2. Upgrade hero section**
+- Add a pill badge above the title (e.g. "Ethiopian Curriculum" with a GraduationCap icon) matching GradesPage style
+- Make the title larger on desktop with tighter tracking
+- Add a subtle gradient text effect on the title (white to purple-200)
 
-## Translation Structure
+**3. Redesign the feature cards**
+Replace the current simple glassmorphism cards with the refined GradesPage card pattern:
+- Ultra-subtle `bg-white/[0.04]` base with `backdrop-blur-xl`
+- Glow effect behind each card on hover (colored blur that fades in)
+- Smoother border transitions (`border-white/[0.08]` to `border-white/[0.15]`)
+- Scale-up on hover with `group-hover:scale-[1.02]`
+- Larger icons in gradient-filled rounded squares (like the grade number badges)
+- Bottom action hint with arrow animation
 
-Translations will be organized by page/feature area:
+**4. Upgrade stats section**
+- Wrap stats in a glassmorphism container with border
+- Add icon for each stat
+- Animated counting effect via CSS or simple presentation improvement
+- Slightly larger numbers with gradient coloring
 
-```text
-translations = {
-  common: { back, home, loading, ... },
-  index: { title, subtitle, exploreSubjects, browseQuizzes, ... },
-  grades: { selectGrade, chooseGrade, hostSession, joinSession, ... },
-  quiz: { question, next, previous, submit, checkAnswer, ... },
-  results: { complete, score, correct, incorrect, retake, ... },
-  performance: { dashboard, overallGrade, averageScore, ... },
-  host: { hostQuiz, yourName, createSession, ... },
-  join: { joinQuiz, enterCode, ... },
-  career: { careerSuggestions, matchScore, ... },
-  subjects: { mathematics, physics, chemistry, biology, ... }
-}
-```
+**5. Add LanguageSwitcher**
+Position the existing `LanguageSwitcher` component in the top-right corner for easy access from the homepage.
 
-## Key Afan Oromo Translations (Sample)
+### Files Modified
+- `src/pages/Index.tsx` — full redesign with all enhancements above
 
-| English | Afan Oromo |
-|---------|------------|
-| EthioQuiz 2050 | EthioQuiz 2050 |
-| Select Your Grade | Sadarkaa Kee Filadhu |
-| Browse Quizzes | Qormaata Ilaali |
-| My Performance | Gahee Koo |
-| Host Session | Waldaa Qopheessi |
-| Join Session | Waldaa Makamii |
-| Quiz Complete! | Qormaanni Xumurameera! |
-| Score | Qabxii |
-| Question | Gaaffii |
-| Next | Itti Aanee |
-| Previous | Kan Dura |
-| Submit | Galchi |
-| Back | Duubatti |
-| Correct | Sirrii |
-| Incorrect | Dogoggora |
-
-## Modified Files
-
-| File | Changes |
-|------|---------|
-| `src/App.tsx` | Wrap app in `LanguageProvider` |
-| `src/pages/Index.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/GradesPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/PerformancePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/HostPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/JoinPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/SessionPage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/pages/ProfilePage.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizInterface.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/Results.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/QuizDashboard.tsx` | Replace hardcoded text with `t()` calls |
-| `src/components/performance/*.tsx` | Replace hardcoded text with `t()` calls |
-
-## Language Switcher UI
-
-- A floating button or header toggle on every page showing "EN / OM"
-- Selected language saved to `localStorage` so it persists across sessions
-- Placed in the top-right corner of the main layout
-
-## Implementation Order
-
-1. Create translation files (`en.ts` and `om.ts`) with all UI strings
-2. Create `LanguageContext.tsx` with provider, `useLanguage` hook, and `t()` function
-3. Create `LanguageSwitcher.tsx` component
-4. Wrap `App.tsx` in `LanguageProvider`
-5. Update all pages and components to use `t()` for text rendering
-6. Test language switching across all pages
-
-## Technical Details
-
-- Language preference stored in `localStorage` key `preferred_language`
-- Default language: English (`en`)
-- The `t()` function takes a dot-notation key (e.g., `t('quiz.next')`) and returns the translated string
-- Falls back to English if a translation key is missing in Afan Oromo
-- Quiz question content stays in English (translating question banks is a separate effort)
-- Only UI chrome/labels are translated
+### No new dependencies needed
 
