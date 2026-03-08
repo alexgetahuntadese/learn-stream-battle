@@ -20,6 +20,7 @@ import { grade11CivicsQuestions } from '@/data/grade11CivicsQuestions';
 import { getGrade10BiologyQuestions } from '@/data/grade10BiologyQuestions';
 import { grade10MathematicsQuestions } from '@/data/grade10MathematicsQuestions';
 import { grade10PhysicsQuestions } from '@/data/grade10PhysicsQuestions';
+import { grade10ChemistryQuestions } from '@/data/grade10ChemistryQuestions';
 
 import QuestionCard from '@/components/QuestionCard';
 import Results from '@/components/Results';
@@ -63,6 +64,7 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
       const grade10DataMap: Record<string, Record<string, any[]>> = {
         'mathematics': grade10MathematicsQuestions,
         'physics': grade10PhysicsQuestions,
+        'chemistry': grade10ChemistryQuestions,
       };
       
       const subjectQuestions = grade10DataMap[subjectLower];
