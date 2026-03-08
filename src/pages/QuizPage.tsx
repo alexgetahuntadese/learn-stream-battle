@@ -22,6 +22,7 @@ import Results from '@/components/Results';
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Eye } from 'lucide-react';
+import TopBar from "@/components/TopBar";
 
 interface Question {
   id: string;
