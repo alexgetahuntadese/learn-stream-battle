@@ -96,7 +96,7 @@ const AuthPage = () => {
             {/* Google Sign In */}
             <Button
               variant="outline"
-              className="w-full border-white/20 text-white hover:bg-white/10 h-11"
+              className="w-full border-white/20 bg-white text-gray-700 hover:bg-gray-100 h-11 font-medium"
               onClick={handleGoogleSignIn}
               disabled={loading}
             >
