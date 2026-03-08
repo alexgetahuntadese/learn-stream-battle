@@ -510,7 +510,7 @@ const QuizPage = () => {
         />
       ) : (
         <div className="space-y-6">
-          <p className="text-gray-300 mb-2">
+          <p className="text-white/50 mb-2">
             Time Elapsed: <span className="font-bold text-white">{formatTime(elapsedTime)}</span>
           </p>
           
