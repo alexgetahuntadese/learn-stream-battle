@@ -140,14 +140,24 @@ const SubjectsPage = () => {
 
     // Add grade-specific subjects
     if (gradeNum === '11') {
-      baseSubjects.push({
-        name: 'Agriculture',
-        description: 'Crop production, livestock management, natural resources, and sustainable farming practices',
-        chapters: 16,
-        estimatedTime: '50 hours',
-        difficulty: 'Intermediate',
-        icon: subjectIcons.Agriculture,
-      });
+      baseSubjects.push(
+        {
+          name: 'Agriculture',
+          description: 'Crop production, livestock management, natural resources, and sustainable farming practices',
+          chapters: 16,
+          estimatedTime: '50 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.Agriculture,
+        },
+        {
+          name: 'Amharic',
+          description: 'Amharic language, literature, poetry, and cultural heritage',
+          chapters: 10,
+          estimatedTime: '30 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.Amharic,
+        }
+      );
     }
 
     if (gradeNum === '12') {
