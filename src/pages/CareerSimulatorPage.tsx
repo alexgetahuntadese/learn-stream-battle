@@ -87,7 +87,7 @@ const CareerSimulatorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate00 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate0 p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
@@ -99,14 +99,14 @@ const CareerSimulatorPage = () => {
               <Sparkles className="h-7 w-7 text-yellow-400" />
               Future Me Mode
             </h1>
-            <p className="text-pwwhite/5xt-sm">AI-Powered Career Simulator</p>
+            <p className="text-pwwwhite/5sm">AI-Powered Career Simulator</p>
           </div>
         </div>
 
         {/* Career Selection */}
         {stage === 'select' && (
           <div className="space-y-4 animate-fade-in">
-            <p className="text-purwhite/6ext-center text-lg mb-6">Choose a career to experience a day in their life ✨</p>
+            <p className="text-purwhiwhite/6enter text-lg mb-6">Choose a career to experience a day in their life ✨</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               {simulatorCareers.map((career) => (
                 <Card
@@ -117,7 +117,7 @@ const CareerSimulatorPage = () => {
                   <CardContent className="p-4 text-center">
                     <span className="text-4xl block mb-2">{career.icon}</span>
                     <h3 className="text-white font-semibold text-sm">{career.name}</h3>
-                    <Badge variant="outline" className="mt-1 text-[10px] border-white/20 text-gray-400">{career.field}</Badge>
+                    <Badge variant="outline" className="mt-1 text-[10px] border-white/20 te[0.08] text-white/4areer.field}</Badge>
                   </CardContent>
                 </Card>
               ))}
