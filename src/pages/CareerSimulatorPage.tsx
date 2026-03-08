@@ -177,7 +177,7 @@ const CareerSimulatorPage = () => {
                       ))}
                     </div>
                     <div className="flex items-center gap-2 text-purple-400 mt-3"><TrendingUp className="h-5 w-5" /><span className="font-semibold text-white">Growth</span></div>
-                    <p className="text-gray-300 text-sm">{introData.careerInfo.growthOutlook}</p>
+                    <p className="text-white/60 text-sm">{introData.careerInfo.growthOutlook}</p>
                   </CardContent>
                 </Card>
               </div>
