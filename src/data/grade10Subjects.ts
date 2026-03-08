@@ -49,13 +49,12 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Flask',
     description: 'Organic chemistry, electrochemistry, and industrial chemistry',
     chapters: [
-      'Unit 1: Introduction to Organic Chemistry',
-      'Unit 2: Hydrocarbons',
-      'Unit 3: Oxygen-Containing Organic Compounds',
-      'Unit 4: Electrochemistry',
-      'Unit 5: Industrial Chemistry',
-      'Unit 6: Chemistry and Society',
-      'Unit 7: Environmental Chemistry'
+      'Unit 1: Chemical Reactions And Stoichiometry',
+      'Unit 2: Solutions',
+      'Unit 3: Important Inorganic Compounds',
+      'Unit 4: Energy Changes And Electro-Chemistry',
+      'Unit 5: Metals And Non Metals',
+      'Unit 6: Hydrocarbons And Their Natural Sources'
     ],
     category: 'Natural Sciences'
   },
