@@ -1,6 +1,7 @@
 // Import question data
 import { grade10MathematicsQuestions } from "@/data/grade10MathematicsQuestions";
 import { grade10PhysicsQuestions } from "@/data/grade10PhysicsQuestions";
+import { grade10ChemistryQuestions } from "@/data/grade10ChemistryQuestions";
 import { grade11AgricultureQuestions } from "@/data/grade11AgricultureQuestions";
 import { grade11Biology } from "@/data/grade11Biology";
 import { grade11Chemistry } from "@/data/grade11Chemistry";
