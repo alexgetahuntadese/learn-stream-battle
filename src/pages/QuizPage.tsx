@@ -52,33 +52,32 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
     // Handle Grade 10
     if (grade === '10') {
       const difficultyLevel = difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
-      if (subject === 'biology' || subject === 'Biology') {
+      const subjectLower = subject.toLowerCase();
+      
+      if (subjectLower === 'biology') {
         allQuestions = getGrade10BiologyQuestions(chapter, difficultyLevel, count);
         return allQuestions;
       }
       
       // Handle Math and Physics via their data objects
-      let grade10Data: any = null;
-      switch (subject) {
-        case 'Mathematics':
-        case 'mathematics':
-          grade10Data = grade10MathematicsQuestions[chapter];
-          break;
-        case 'Physics':
-        case 'physics':
-          grade10Data = grade10PhysicsQuestions[chapter];
-          break;
-      }
+      const grade10DataMap: Record<string, Record<string, any[]>> = {
+        'mathematics': grade10MathematicsQuestions,
+        'physics': grade10PhysicsQuestions,
+      };
       
-      if (grade10Data && Array.isArray(grade10Data)) {
-        const filtered = grade10Data.filter((q: any) => q.difficulty?.toLowerCase() === difficultyLevel).slice(0, count);
-        return filtered.map((q: any, index: number) => ({
-          id: q.id || `q-${index}`,
-          question: q.question,
-          options: q.options,
-          correct: q.correct,
-          explanation: q.explanation || 'No explanation provided.'
-        }));
+      const subjectQuestions = grade10DataMap[subjectLower];
+      if (subjectQuestions) {
+        const chapterData = subjectQuestions[chapter];
+        if (chapterData && Array.isArray(chapterData)) {
+          const filtered = chapterData.filter((q: any) => q.difficulty?.toLowerCase() === difficultyLevel).slice(0, count);
+          return filtered.map((q: any, index: number) => ({
+            id: q.id || `q-${index}`,
+            question: q.question,
+            options: q.options,
+            correct: q.correct,
+            explanation: q.explanation || 'No explanation provided.'
+          }));
+        }
       }
       
       console.warn(`Grade 10 ${subject} questions not yet available`);
