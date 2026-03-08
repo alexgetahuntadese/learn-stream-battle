@@ -287,7 +287,7 @@ const CareerSimulatorPage = () => {
                   <h3 className="text-orange-400 font-semibold mb-3">📈 Areas to Improve</h3>
                   <ul className="space-y-2">
                     {finalData.areasToImprove?.map((s: string, i: number) => (
-                      <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+                      <li key={i} className="text-white/60 text-sm flex items-start gap-2">
                         <span className="text-orange-400 mt-0.5">→</span> {s}
                       </li>
                     ))}
