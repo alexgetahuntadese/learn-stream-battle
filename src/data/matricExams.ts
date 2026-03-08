@@ -17,6 +17,8 @@ export interface MatricExamYear {
 }
 
 import { math2006Questions } from './math2006Questions';
+import { physics2006Questions } from './physics2006Questions';
+import { chemistry2006Questions } from './chemistry2006Questions';
 
 export const matricExams: MatricExamYear[] = [
   {
@@ -67,8 +69,8 @@ export const matricExams: MatricExamYear[] = [
     year: 2006,
     subjects: [
       { subject: "Mathematics", questions: math2006Questions },
-      { subject: "Physics", questions: [] },
-      { subject: "Chemistry", questions: [] },
+      { subject: "Physics", questions: physics2006Questions },
+      { subject: "Chemistry", questions: chemistry2006Questions },
       { subject: "Biology", questions: [] },
       { subject: "English", questions: [] },
       { subject: "Civics", questions: [] },
