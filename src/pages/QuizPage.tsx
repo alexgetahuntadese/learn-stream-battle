@@ -454,12 +454,12 @@ const QuizPage = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="container mx-auto p-4 min-h-screen bg-slate-900">
+    <div className="container mx-auto p-4 min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
         <div className="flex items-center mb-6">
           <Button
             variant="ghost"
             onClick={handleBackToChapters}
-            className="text-white hover:bg-slate-800 mr-4"
+            className="text-white hover:bg-white/10 mr-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
@@ -472,7 +472,7 @@ const QuizPage = () => {
           <p className="text-red-400">Unable to load the current question. Please try refreshing the page.</p>
           <Button 
             onClick={initializeQuestions}
-            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+            className="mt-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white"
           >
             Retry
           </Button>
