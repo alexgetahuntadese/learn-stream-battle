@@ -200,6 +200,71 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+        {/* Recent Activity / Testimonials */}
+        <div
+          className="w-full max-w-2xl mt-8 opacity-0 animate-fade-in"
+          style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
+        >
+          <div className="bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6">
+            {recentAttempts.length > 0 ? (
+              <>
+                <div className="flex items-center gap-2 mb-5">
+                  <Trophy className="h-5 w-5 text-amber-400" />
+                  <h3 className="text-lg font-bold text-white">Recent Activity</h3>
+                </div>
+                <div className="space-y-3">
+                  {recentAttempts.map((attempt, i) => (
+                    <div
+                      key={attempt.attempt_id}
+                      className="flex items-center justify-between p-3 bg-white/[0.04] rounded-xl border border-white/[0.06] hover:bg-white/[0.08] transition-colors"
+                      style={{ animationDelay: `${1.1 + i * 0.1}s` }}
+                    >
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-white truncate">{attempt.subject}</p>
+                        <p className="text-xs text-white/40 truncate">{attempt.chapter} • Grade {attempt.grade}</p>
+                      </div>
+                      <div className="flex items-center gap-2 ml-3">
+                        <Badge className="text-xs border-white/20 text-white/60 capitalize" variant="outline">
+                          {attempt.difficulty}
+                        </Badge>
+                        <Badge className={`${getScoreColor(attempt.score)} text-white text-xs`}>
+                          {attempt.score}%
+                        </Badge>
+                      </div>
+                      <span className="text-xs text-white/30 ml-3 whitespace-nowrap">
+                        {formatDistanceToNow(new Date(attempt.attempted_at), { addSuffix: true })}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center gap-2 mb-5">
+                  <Quote className="h-5 w-5 text-violet-400" />
+                  <h3 className="text-lg font-bold text-white">What Students Say</h3>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {testimonials.map((t, i) => (
+                    <div
+                      key={i}
+                      className="p-4 bg-white/[0.04] rounded-xl border border-white/[0.06]"
+                    >
+                      <p className="text-sm text-white/50 italic mb-3">"{t.quote}"</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium text-white/70">{t.name}</span>
+                        <Badge variant="outline" className="text-xs border-white/20 text-white/40">
+                          {t.subject}
+                        </Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
