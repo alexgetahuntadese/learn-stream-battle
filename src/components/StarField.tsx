@@ -26,6 +26,42 @@ const StarField = ({ starCount = 50, shootingCount = 3 }: { starCount?: number; 
 
   return (
     <>
+      {/* Nebula glow layers */}
+      <div
+        className="absolute pointer-events-none rounded-full blur-[120px]"
+        style={{
+          width: '45%',
+          height: '50%',
+          left: '5%',
+          top: '10%',
+          background: 'radial-gradient(ellipse, rgba(139,92,246,0.25) 0%, rgba(109,40,217,0.12) 50%, transparent 70%)',
+          animation: 'nebula-drift 12s ease-in-out infinite alternate',
+        }}
+      />
+      <div
+        className="absolute pointer-events-none rounded-full blur-[100px]"
+        style={{
+          width: '40%',
+          height: '45%',
+          right: '0%',
+          top: '30%',
+          background: 'radial-gradient(ellipse, rgba(167,139,250,0.2) 0%, rgba(124,58,237,0.1) 50%, transparent 70%)',
+          animation: 'nebula-drift 15s ease-in-out 3s infinite alternate-reverse',
+        }}
+      />
+      <div
+        className="absolute pointer-events-none rounded-full blur-[140px]"
+        style={{
+          width: '35%',
+          height: '40%',
+          left: '30%',
+          bottom: '5%',
+          background: 'radial-gradient(ellipse, rgba(192,132,252,0.18) 0%, rgba(147,51,234,0.08) 50%, transparent 70%)',
+          animation: 'nebula-drift 18s ease-in-out 6s infinite alternate',
+        }}
+      />
+
+      {/* Stars */}
       {stars.map((star) => (
         <div
           key={star.id}
@@ -40,6 +76,8 @@ const StarField = ({ starCount = 50, shootingCount = 3 }: { starCount?: number; 
           }}
         />
       ))}
+
+      {/* Shooting stars */}
       {shootingStars.map((star) => (
         <div
           key={`shooting-${star.id}`}
