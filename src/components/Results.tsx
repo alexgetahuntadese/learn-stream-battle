@@ -182,7 +182,7 @@ const Results = ({
                   } else if (option === userAnswer && !isCorrect) {
                     buttonClass += "bg-red-600 border-red-500 text-white";
                   } else {
-                    buttonClass += "bg-white/5 border-white/20 text-gray-300";
+                    buttonClass += "bg-white/[0.04] border-white/[0.08] text-white/60";
                   }
 
                   return (
