@@ -90,7 +90,16 @@ const Index = () => {
       accent: "from-amber-400 to-orange-500",
       glow: "amber-500",
       ring: "ring-amber-400/30",
-      colSpan: true,
+    },
+    {
+      icon: ScrollText,
+      title: "📜 National Matric Exams",
+      description: "Practice with real past national exam questions organized by year.",
+      buttonText: "Browse Past Exams",
+      route: '/matric',
+      accent: "from-orange-500 to-red-500",
+      glow: "orange-500",
+      ring: "ring-orange-400/30",
     },
   ];
 
