@@ -87,7 +87,7 @@ const CareerSimulatorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate900 p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
@@ -99,7 +99,7 @@ const CareerSimulatorPage = () => {
               <Sparkles className="h-7 w-7 text-yellow-400" />
               Future Me Mode
             </h1>
-            <p className="text-purple-200 text-sm">AI-Powered Career Simulator</p>
+            <p className="text-pwhite/5 text-sm">AI-Powered Career Simulator</p>
           </div>
         </div>
 
