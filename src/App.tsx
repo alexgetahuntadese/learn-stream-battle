@@ -32,14 +32,14 @@ const App = () => (
             <Sonner />
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Index />} />
+                <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
                 <Route path="/auth" element={<AuthPage />} />
-                <Route path="/grades" element={<GradesPage />} />
-                <Route path="/grade/:grade" element={<GradeSelection />} />
-                <Route path="/grade/:grade/subjects" element={<SubjectsPage />} />
-                <Route path="/grade/:grade/subject/:subject/chapters" element={<ChaptersPage />} />
-                <Route path="/grade/:grade/subject/:subject/chapter/:chapterId/difficulty/:difficulty/quiz" element={<QuizPage />} />
-                <Route path="/career-simulator" element={<CareerSimulatorPage />} />
+                <Route path="/grades" element={<ProtectedRoute><GradesPage /></ProtectedRoute>} />
+                <Route path="/grade/:grade" element={<ProtectedRoute><GradeSelection /></ProtectedRoute>} />
+                <Route path="/grade/:grade/subjects" element={<ProtectedRoute><SubjectsPage /></ProtectedRoute>} />
+                <Route path="/grade/:grade/subject/:subject/chapters" element={<ProtectedRoute><ChaptersPage /></ProtectedRoute>} />
+                <Route path="/grade/:grade/subject/:subject/chapter/:chapterId/difficulty/:difficulty/quiz" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
+                <Route path="/career-simulator" element={<ProtectedRoute><CareerSimulatorPage /></ProtectedRoute>} />
                 <Route path="/performance" element={<ProtectedRoute><PerformancePage /></ProtectedRoute>} />
                 <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
