@@ -65,12 +65,12 @@ export const grade10Subjects: Grade10Subject[] = [
     icon: 'Leaf',
     description: 'Genetics, evolution, ecology, and biotechnology',
     chapters: [
-      'Unit 1: Genetics and Heredity',
-      'Unit 2: Evolution',
-      'Unit 3: Human Health and Disease',
-      'Unit 4: Ecology and Environment',
-      'Unit 5: Biotechnology',
-      'Unit 6: Biodiversity and Conservation'
+      'Unit 1: Sub-fields of Biology',
+      'Unit 2: Plants',
+      'Unit 3: Biochemical molecules',
+      'Unit 4: Cell reproduction',
+      'Unit 5: Human Biology',
+      'Unit 6: Ecological interaction'
     ],
     category: 'Natural Sciences'
   },
