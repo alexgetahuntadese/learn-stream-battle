@@ -22,6 +22,7 @@ import { grade10MathematicsQuestions } from '@/data/grade10MathematicsQuestions'
 import { grade10PhysicsQuestions } from '@/data/grade10PhysicsQuestions';
 import { grade10ChemistryQuestions } from '@/data/grade10ChemistryQuestions';
 import { grade10EnglishQuestions } from '@/data/grade10EnglishQuestions';
+import { grade10CivicsQuestions } from '@/data/grade10CivicsQuestions';
 
 import QuestionCard from '@/components/QuestionCard';
 import Results from '@/components/Results';
@@ -67,6 +68,8 @@ const getQuestionsForSubject = (subject: string, chapter: string, difficulty: st
         'physics': grade10PhysicsQuestions,
         'chemistry': grade10ChemistryQuestions,
         'english': grade10EnglishQuestions,
+        'civic education': grade10CivicsQuestions,
+        'civics': grade10CivicsQuestions,
       };
       
       const subjectQuestions = grade10DataMap[subjectLower];
