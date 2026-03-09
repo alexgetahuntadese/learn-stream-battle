@@ -68,17 +68,6 @@ export const matricExams: MatricExamYear[] = [
       { subject: "Civics", questions: [] },
     ],
   },
-  {
-    year: 2006,
-    subjects: [
-      { subject: "Mathematics", questions: math2006Questions },
-      { subject: "Physics", questions: physics2006Questions },
-      { subject: "Chemistry", questions: chemistry2006Questions },
-      { subject: "Biology", questions: biology2006Questions },
-      { subject: "English", questions: english2006Questions },
-      { subject: "Civics", questions: civics2006Questions },
-    ],
-  },
 ];
 
 export const getMatricYears = () => matricExams.map((e) => e.year);
