@@ -317,7 +317,7 @@ const QuizPage = () => {
   }, [subject, chapterId, difficulty]);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
+    let intervalId: ReturnType<typeof setInterval>;
 
     if (!showResults && !isLoading && startTime > 0 && questions.length > 0) {
       intervalId = setInterval(() => {
